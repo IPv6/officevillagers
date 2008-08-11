@@ -1,0 +1,99 @@
+<LevelInfo>
+	<OfficeTexture val="\actors\office\map\office_map.spr" />
+	<NamedLocations val="\actors\office\locations.txt" />
+	<NavigationMap val="\actors\office\map\navmap.txt" />
+	<ActionsDescription val="\actors\actions\*.txt" />
+	<DefaultState val="\actors\actions\saved_state.txt" />
+	<ItemDescriptions val="\actors\items\office_items.txt" />
+	<Body2SpeedRate val="1000" />
+	<Move2SpeedRate val="300" />
+	<Prophessions>
+		<Prophession>
+			<Name val="NONE" />
+		</Prophession>
+		
+		<Prophession>
+			<Name val="STAGER" />
+			<NoPocketPosSync val="1" />
+		</Prophession>
+		
+		<Prophession>
+			<Name val="AUTHOR" />
+			<BodySpr val="1" />
+			<NoPocketPosSync val="1" />
+		</Prophession>
+		<Prophession>
+			<Name val="AUTHOR-EXPERT" />
+			<BaseName val="AUTHOR" />
+			<BodySpr val="1" />
+			<NoPocketPosSync val="1" />
+		</Prophession>
+		<Prophession>
+			<Name val="CREATOR" />
+			<BodySpr val="0" />
+			<NoPocketPosSync val="1" />
+		</Prophession>
+		<Prophession>
+			<Name val="CREATOR-EXPERT" />
+			<BaseName val="CREATOR" />
+			<BodySpr val="0" />
+			<NoPocketPosSync val="1" />
+		</Prophession>
+		<Prophession>
+			<Name val="FINANCIER" />
+			<BodySpr val="2" />
+			<NoPocketPosSync val="1" />
+		</Prophession>
+		<Prophession>
+			<Name val="FINANCIER-EXPERT" />
+			<BaseName val="FINANCIER" />
+			<BodySpr val="2" />
+			<NoPocketPosSync val="1" />
+		</Prophession>
+		<Prophession>
+			<Name val="JANITOR" />
+			<BodySpr val="3" />
+			<NoPocketPosSync val="1" />
+		</Prophession>
+		<Prophession>
+			<Name val="JANITOR-EXPERT" />
+			<BaseName val="JANITOR" />
+			<BodySpr val="3" />
+			<NoPocketPosSync val="1" />
+		</Prophession>
+
+		<Prophession>
+			<Name val="FURNITURE" />
+			<NoThink val="1" />
+			<NoPocketPosSync val="1" />
+			<ChangeNavigation val="1" />
+		</Prophession>
+		<Prophession>
+			<Name val="FURNITURE.WALL" />
+			<NoThink val="1" />
+			<NoPocketPosSync val="1" />
+			<ChangeNavigation val="2" />
+		</Prophession>
+		
+		<Prophession>
+			<Name val="COLLECTIBLE.SMALLTRASH" />
+			<NoThink val="1" />
+			<NoPocketPosSync val="0" />
+			<ChangeNavigation val="0" />
+		</Prophession>
+		<Prophession>
+			<Name val="COLLECTIBLE.RANDOM" />
+			<NoThink val="1" />
+			<NoPocketPosSync val="0" />
+			<ChangeNavigation val="0" />
+		</Prophession>
+		<Prophession>
+			<Name val="COLLECTIBLE.FURNITURE" />
+			<NoThink val="1" />
+			<NoPocketPosSync val="1" />
+			<ChangeNavigation val="1" />
+		</Prophession>
+
+
+	</Prophessions>
+</LevelInfo>

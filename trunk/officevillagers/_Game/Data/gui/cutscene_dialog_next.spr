@@ -1,0 +1,4 @@
+[Sprite]
+-Texture:effects\cursor_click_hint.png
+-Animation.Texture:t500 m2x1
+-Size: w2

@@ -1,0 +1,241 @@
+[Event]
+-Name:OFFICE.ENDOFDAY
+-Prq.IsGlobalEvent:0
+-Protected:2
+-Priority:-1
+-Disable.Person.UI:0
+-Think.Speed:1
+-Script.Off:
+	local aSitPers = thisActor.CutsceneSittinPersons;
+	local i;
+	for(i=0;i<aSitPers.len();i++)
+	{
+		actor_Unsit(aSitPers[i]);
+	}
+-Script.In:
+	//если статей хватает, игра запускает вёрстку номера и играет сооствествующие звуки/анимации
+	if(gui_GetIssueProgressCur()>=gui_GetIssueProgressMax()){
+		//core_Warning("запускается вёрстка номера");
+		//core_Warning("играет анимация и звук");
+	};
+	
+	//если статей не хватает...вёрски номера тогда нет, так как нет и самого номера...для анимации/звука тогда тоже рано, так как готов номер или нет - решится чуть позже
+	
+	//подготовка катсцены..рассажвиание всех за столом, центровка кмеры и т.д.
+	gui_FadeIn();
+	actorWait_Timeout(1);
+	local actorSh = actor_GetActor("ACTOR.SHEKEL");
+	local actorAg = actor_GetActor("ACTOR.AGATA");
+	local actorSi = actor_GetActor("ACTOR.SINTI");
+	local actorBo = actor_GetActor("ACTOR.BOB");
+
+	actor_AttachCamera(actorAg);
+	actor_SetActorPos(actorSh,"CutScene1::Shekel");
+	actor_SetActorPos(actorAg,"CutScene1::Agata");
+	actor_SetActorPos(actorSi,"CutScene1::Sinty");
+	actor_SetActorPos(actorBo,"CutScene1::Bob");
+	local aSitPers = [];
+	aSitPers.append(actorSh);
+	aSitPers.append(actorAg);
+	aSitPers.append(actorSi);
+	aSitPers.append(actorBo);
+	local aOldest3Pers = getOldestPersons();
+	if(aOldest3Pers.len()>3){
+		aOldest3Pers.resize(3);
+	}
+	aSitPers.extend(aOldest3Pers);
+	local i=0;
+	local sitArray = [2,3,4,5,6,1];
+	for(i=0;i<aSitPers.len() && i<6;i++){
+		actorWait_SwitchToAction(aSitPers[i],"Cutscene.driver");
+		actor_SitOnChairX(aSitPers[i],"TABLE.AGATAMAIN",sitArray[i],true);
+	}
+	thisActor.CutsceneSittinPersons <- aSitPers;
+	actorWait_Timeout(1);
+	gui_FadeOut();
+	
+	//если статей не хватает (т.е. нмера нет) переход на ивент "номер не сдан"
+	if(gui_GetIssueProgressCur()<gui_GetIssueProgressMax()){
+		actor_SwitchToAction(thisActor,"OFFICE.LEVELNOTFINISHED");
+		return;		
+	};
+	
+	//иначе переход на ивент - высчет тиража
+	actor_SwitchToAction(thisActor,"OFFICE.CIRCULATION.CALCULATION");
+	
+[Event]
+-Name:OFFICE.LEVELNOTFINISHED
+-Prq.IsGlobalEvent:0
+-Protected:2
+-Priority:-1
+-Disable.Person.UI:0
+-Think.Speed:1
+-Script.In:
+	local dialogFile = core_GetDataPath("text\\end_level_scene_dialog.lng");
+
+	//всё что касается загашника пока закомменчено, до тех пор, пока он цлеиком не реализован вместе с остальными технологиями
+	//если есть статьи в загашнике и их хватает
+	//Агата: "К сожалению, выпустить журнал в полном обьёме мы не успели, но благодаря оставшимся статьям, написанным от прошлого номера, нам кое-как удалось укомплектовать этот."
+	//анмиация добавления статей к тем, что были сделаны в кранче
+	//играет анимация и звук
+	//переход на ивент - высчет тиража
+
+	//если есть сттьи в загашнике и их НЕ хватает
+	//Агата: "К сожалению, выпустить журнал в полном обьёме мы не успели. У нас остались некоторые статьи от прошлого номера, но их не хватает для наполнения этого. Номер в продажу не поступил. Мы остались без денег и лишились части аудитории."
+	//если есть загашник - он обнудяется, а потом все статьи переходят в него
+	
+	//core_Warning("играет анимация и звук");
+	gui_ShowDialog(dialogFile, { _section="DIALOG1", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
+	
+	//выставляем готовность текущего номера на ноль
+	actor_SetAttribute(thisActor, "MagazineCirculation", 0);
+	//скрипт переходит на ивент с обьявлением настроек следущего номера
+	actor_SwitchToAction(thisActor,"OFFICE.NEXT.LEVEL.OPTIONS");
+	
+	
+	
+[Event]
+-Name:OFFICE.CIRCULATION.CALCULATION
+-Prq.IsGlobalEvent:0
+-Protected:2
+-Priority:-1
+-Disable.Person.UI:0
+-Think.Speed:1
+-Script.In:
+	local dialogFile = core_GetDataPath("text\\end_level_scene_dialog.lng");
+	
+	//берём среднее арифметическое высчетов качества
+	actor_SetAttribute(thisActor, "MagazineCirculation", actor_GetAttributeN(thisActor, "MagazineQualitySum") / actor_GetAttributeN(thisActor, "MagazineQualityNum"));
+	
+	 //тираж = качество * (1- статей_в_кранче/статей_всего)
+	 actor_SetAttribute(thisActor, "MagazineCirculation", actor_GetAttributeN(thisActor, "MagazineCirculation") * (1 - (actor_GetAttributeN(thisActor, "IssueProgressInCrunch") / actor_GetAttributeN(thisActor, "IssueProgressMax"))));
+	 
+	//если остаются статьи и есть загашник, он обнуляется и статьи добавлятся к нему
+	//core_Warning("идёт анимация, где показывается результат");
+	//переход на ивент с обьявлением настроек следующего номера
+	actor_SwitchToAction(thisActor,"OFFICE.NEXT.LEVEL.OPTIONS");
+	
+	
+	
+[Event]
+-Name:OFFICE.NEXT.LEVEL.OPTIONS
+-Prq.IsGlobalEvent:0
+-Protected:2
+-Priority:-1
+-Disable.Person.UI:0
+-Think.Speed:1
+-Script.In:
+	local dialogFile = core_GetDataPath("text\\end_level_scene_dialog.lng");
+	
+	//если 0-60 процентов и пятый уровень (срабатывает всего раз, когда других уровней ещё не было) - тут пускаем хинт, подсказывающий игроку как довести номер до окупаемоси
+	if (actor_GetAttributeN(thisActor,"MagazineCirculation")<0.6 && actor_GetAttributeN(thisActor, "Level")==5 && actor_GetAttributeN(thisActor, "officenextleveloptionsOpener")==0){
+		//core_Warning("пускаем хинт, пдсказывающий, как доветси номер до окупаемости");
+		actor_SetAttribute(thisActor,"officenextleveloptionsOpener", 1);
+	}
+
+	//если 0 процентов и пятый (нижний) уровень (не первый раз)
+	//Агата - "Не продано ни одного нашего номера. Это кошмарно. Синьти, ты либо что-то пишешь, либо одно из двух. Уволить никого из вас я не могу, но если та ки дальше будет продолжаться, нам лучше будет закрыться."
+	if (actor_GetAttributeN(thisActor,"MagazineCirculation")==0 && actor_GetAttributeN(thisActor, "Level")==5){
+		gui_ShowDialog(dialogFile, { _section="DIALOG3", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
+	}
+	
+	//если 0 процентов
+	//Агата - "Не продано ни одного нашего номера. Это очень плохо. Мы держимся исключительно на деньги спонсоров и наши запасы. Но если так удет продолжаться, закончатся и они. Я решила, что нам лучше всего будет уменьшить тираж."
+	if (actor_GetAttributeN(thisActor,"MagazineCirculation")==0 && actor_GetAttributeN(thisActor, "Level")>5){
+		gui_ShowDialog(dialogFile, { _section="DIALOG4", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
+		//спуск на уровень ниже
+		actor_SetAttribute(thisActor, "Level", actor_GetAttributeN(thisActor, "Level")-1);
+	}
+	
+	//если 0-60 процентов
+	//Агата - "Продано слишком мало номеров, чтобы мы могли работать так же, как работали раньше. Я считаю, что нам нужно уменьшить тираж".
+	if (actor_GetAttributeN(thisActor,"MagazineCirculation")<0.6 && actor_GetAttributeN(thisActor, "Level")>5){
+		gui_ShowDialog(dialogFile, { _section="DIALOG5", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
+		//спуск на уровень ниже
+		actor_SetAttribute(thisActor, "Level", actor_GetAttributeN(thisActor, "Level")-1);
+	}
+
+	//если 0-60 процентов и пятый (нижний) уровень
+	//Агата - "Продано очень мало номеров. Это плохо. Синьти, Шекель, Боб вы либо работаете, либо одно из двух. Уволить никого из вас я не могу, но если так и дальше будет продолжаться, нам лучше будет закрыться.".
+	if (actor_GetAttributeN(thisActor,"MagazineCirculation")<0.6 && actor_GetAttributeN(thisActor, "Level")==5){
+		gui_ShowDialog(dialogFile, { _section="DIALOG6", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
+		//спуск на уровень ниже
+		actor_SetAttribute(thisActor, "Level", actor_GetAttributeN(thisActor, "Level")-1);
+	}
+		
+
+	//если 60-80 процентов - отстаётся тот же уровень
+	//Агата - "Ситуация неплохая - мы уверенно держимся у своей аудитории, но чтобы поднять тираж, нам нужно лучшее качество"
+	//уровень остаётся
+	if (actor_GetAttributeN(thisActor,"MagazineCirculation")>=0.6 && actor_GetAttributeN(thisActor, "MagazineCirculation")<0.8){
+		gui_ShowDialog(dialogFile, { _section="DIALOG7", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
+	}
+	
+	//если 80-100 процентов
+	//Агата - "Продажи просто отличные. Коллеги, вы великолепно справляетесь со своей работой. Я решила расширить производство."
+	//идёт на уровень выше
+	if (actor_GetAttributeN(thisActor,"MagazineCirculation")>=0.8){
+		gui_ShowDialog(dialogFile, { _section="DIALOG8", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
+		actor_SetAttribute(thisActor, "Level", actor_GetAttributeN(thisActor, "Level")+1);
+	}
+
+	//далее:
+	//Агата - "В текущем номере нам нужно сдать №№ статей. Для его продвижения понадобится постоянная работа минимум №№ финансисов."
+	gui_SetIssueProgressMax(getGlobal(format("IssueProgressMax%i", actor_GetAttributeN(thisActor, "Level"))));
+	gui_SetAttribute(thisActor, "FinansierMax", getGlobal(format("FinansierMax%i", actor_GetAttributeN(thisActor, "Level"))));
+	gui_ShowDialog(dialogFile, { _section="DIALOG9", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
+	
+	//запсукается ивент  других дел по окончанию номера
+	actor_SwitchToAction(thisActor,"OFFICE.END.LEVEL.ELSE");
+	
+	
+[Event]
+-Name:OFFICE.END.LEVEL.ELSE
+-Prq.IsGlobalEvent:0
+-Protected:2
+-Priority:-1
+-Disable.Person.UI:0
+-Think.Speed:1
+-Script.In:
+	//(в этот ивнет будем заноситьв севозможные обсуждения вскяих нововведений, открытие новых технолгий, квесты и т.д.)
+	local dialogFile = core_GetDataPath("text\\end_level_scene_dialog.lng");
+	
+
+	//Агата - "У вас есть, что добавить?"
+	gui_ShowDialog(dialogFile, { _section="DIALOG10", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
+	
+	//пока тут ничего нет, но будет всякое)
+	
+	//Шекель - "Нет."
+	gui_ShowDialog(dialogFile, { _section="DIALOG11", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
+	
+	//если был кранч:
+	//Агата - "Тогда можете отдыхать, а птом сразу за работу над следующм номером."
+	if (actor_GetAttributeN(thisActor, "IssueProgressInCrunch")>0){
+		gui_ShowDialog(dialogFile, { _section="DIALOG12", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
+	}
+	
+	//елси не было кранча:
+	//Агата - "Тогда работать."
+	if (actor_GetAttributeN(thisActor, "IssueProgressInCrunch")==0){
+		gui_ShowDialog(dialogFile, { _section="DIALOG13", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
+	}
+	
+	//откучивание камеры
+	//перевод всех на пустой ивент
+	local actorSh = actor_GetActor("ACTOR.SHEKEL");
+	local actorAg = actor_GetActor("ACTOR.AGATA");
+	local actorSi = actor_GetActor("ACTOR.SINTI");
+	local actorBo = actor_GetActor("ACTOR.BOB");
+	actor_DetachCamera(actorAg);
+	for(i=0;i<aSitPers.len() && i<6;i++){
+		local aSitPers = actor_GetAttribute(thisActor, "aSitPers[i]");
+		actorWait_SwitchToAction(aSitPers,"");
+	}
+	actorWait_SwitchToAction(actorSh,"");
+	actorWait_SwitchToAction(actorAg,"");
+	actorWait_SwitchToAction(actorSi,"");
+	actorWait_SwitchToAction(actorBo,"");
+	
+	gui_SetIssueProgressCur(0);
+	actorWait_SwitchToAction(thisActor,"Office_script");	

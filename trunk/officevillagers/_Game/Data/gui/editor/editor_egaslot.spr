@@ -1,0 +1,6 @@
+[Sprite]
+-Parent:editor_global_attr
+-Texture:\gui\empty.png
+-Label:?slot
+-Event.Mouse.Over.Image:\gui\dialog_frame_big.png
+-Event.Mouse.Over.Sound:menu_button_over

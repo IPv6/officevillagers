@@ -1,0 +1,25 @@
+[Event]
+-Name:CutScene1SideEvents
+-Prq.IsGlobalEvent:0
+-Protected:2
+-Priority:-1
+
+[Step]
+-Name:CutScene1.BobWalking
+-Prq.IsGlobalEvent:0
+-Protected:2
+-Priority:-1
+-Disable.Person.UI:1
+-Walk.Speed:0.5
+-Script.In:
+	actor_SendToLocation(thisActor,"SCENES_CutScene1::Bob2");
+
+[Step]
+-Name:CutScene1.BobWalkingBack
+-Prq.IsGlobalEvent:0
+-Protected:2
+-Priority:-1
+-Disable.Person.UI:1
+-Walk.Speed:1.3
+-Script.In:
+	actor_SendToLocation(thisActor,"SCENES_Tutorial::SINTI_LOOK3");

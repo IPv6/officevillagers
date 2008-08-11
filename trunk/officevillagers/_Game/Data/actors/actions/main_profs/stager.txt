@@ -1,0 +1,77 @@
+[Event]
+-Name:pre_STAGER_Script
+-Prq.Prophessions:STAGER
+-Priority:0
+-Prq.InCutscene:0
+-Prq.IsGlobalEvent:0
+-Protected:0
+-Script.In:
+	//если стажёр занят (то есть игрок ему передал учителя) его перекидывает на стажёрский ивент
+	if (actor_GetAttribute(thisActor,"__BUSY")==1){
+		actor_SwitchToAction(thisActor,"STAGER_Script");
+		return;
+	}
+	//иначе он убегает страдать фигнёй....сам себе учителя он не ищет
+	actor_SwitchToAction(thisActor,"NONE_Script");
+
+	
+[Event]
+-Name:STAGER_Script
+-Priority:-1
+-Prq.IsGlobalEvent:0
+-Protected:0
+-Script.In:
+	//ивент устанавливающий счётчики
+	local teacherToSet = actor_GetAttributeS(thisActor,"__ScheduledTeacher");
+	if(teacherToSet=="")
+	{
+		actor_SwitchToAction(thisActor,"");
+		return;
+	}
+	core_Warning(format("Stager to teacher [%s]",teacherToSet));
+	actor_SetTeacher(thisActor,teacherToSet,true);
+	actor_SetAttribute(thisActor,"time_percent_tire",getTime());
+	//опыт
+	actor_SetAttribute(thisActor,"time_percent_exp",getTime());
+	actor_SwitchToAction(thisActor,"STAGER_Styding");
+	
+[Event]
+-Name:STAGER_Styding
+-Priority:-1
+-Prq.IsGlobalEvent:0
+-Protected:0
+-Script.In:
+	actor_SetActionLabel(thisActor,"STAGER.1");
+	//нужно добавить, чтобы при смене профессии или при окончании обучения стажёр сбрасывал обе переменные (__BUSY и teather) на ноль
+	//счётчик усталости...1% за 13 секунд - при 70% автор убегает отдыхать...т.е. это раз в 15 минут примерно...
+	
+	if(getTime()-actor_GetAttributeN(thisActor,"time_percent_tire")>getGlobal("stager_tire_sec")){
+		actor_SetAttribute(thisActor,"tire",actor_GetAttributeN(thisActor,"tire")+1);
+		actor_SetAttribute(thisActor,"time_percent_tire",actor_GetAttributeN(thisActor,"time_percent_tire")-getGlobal("stager_tire_sec"));
+		actor_AddIcon(thisActor, "boredom_p1");
+	}
+
+	//счётчик набора опыта
+	if(getTime()-actor_GetAttributeN(thisActor,"time_percent_exp")>getGlobal("StagerExpTime")){
+		addExpa(thisActor,1);
+		actor_SetAttribute(thisActor, "time_percent_exp", actor_GetAttributeN(thisActor, "time_percent_exp")- getGlobal( "StagerExpTime"));
+		actor_AddIcon(thisActor, "exp_p1");
+	}
+	
+	//когда опыт набран
+	if(isProfExpaOk(thisActor)){
+		actor_SetProfession(thisActor, actor_getTeacher(thisActor).ProfessionN);
+		quest_conditions({ Quest4=1});
+	}
+	
+	//если усталость 70 или выше, пускаем стажёра отдыхать
+	if(actor_GetAttributeN(thisActor,"tire")>(getGlobal("danger_tire")-1)){
+		actor_UnsetTeacher(thisActor);
+		actor_SwitchToAction(thisActor,"NONE_Script");
+		return;
+	}
+	
+	//ивент срабатывает раз в 10 секунд
+	actorWait_Timeout(10);
+	actor_RestartAction(thisActor);
+	

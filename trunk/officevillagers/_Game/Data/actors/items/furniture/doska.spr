@@ -1,0 +1,5 @@
+[Sprite]
+-Texture:doska.png
+-MapY2Z:-100
+-SizeFromTexture:1
+

@@ -1,0 +1,6 @@
+[Sprite]
+-Texture:dot.png
+-Alpha:0.9
+-Event.Mouse.Drag.Action:naviMapDotDragBegin
+-Event.Mouse.RClick.Action:naviMapDotDelete
+

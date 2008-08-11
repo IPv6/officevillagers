@@ -1,0 +1,7 @@
+<Actor>
+	<Name val="COLLECTIBLE" />
+	<Enabled val="0" />
+	<Sprite val="actors\items\collectible\collectible.spr?collectible_number=0" />
+	<ActorProphession val="COLLECTIBLE.RANDOM" />
+	<Items></Items>
+</Actor>

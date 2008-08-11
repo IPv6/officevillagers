@@ -1,0 +1,7 @@
+[Sprite]
+-Texture:stars.png
+-Atlas: x5 y0 w8 h1
+-Alpha:1.0 t300
+-Position: x-1 y0 z-0.0001
+-Animation.Size:t1500 s0.4
+-Selfdestruction:1800 f100

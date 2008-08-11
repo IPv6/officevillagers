@@ -1,0 +1,19 @@
+[Sprite]
+-Texture:${virtualNode}
+-Name:cutscene_dialog
+-Label:?some Text...
+-Fade:1.0 t200
+-Animation.OnDestroy:\gui\effects\fade_n_delete.spr?time=100
+
+[Sprite]
+-AsChild:1
+-Texture:\gui\cutscene_dialog_next.spr
+-Name:_click2Next
+-Position: x18.3 y-1.8 z0
+-Alpha:0
+
+[Sprite]
+-AsChild:1
+-Texture:${bgimage}
+-Size: h6.18
+-Position: x0.0 y-0.36 z0.001

@@ -1,0 +1,13 @@
+[Sprite]
+-Texture:baloons.png
+-AsMutable:0
+-Position: x1 y3 z-0.00001
+-Size:2.3
+
+[Sprite]
+-AsChild:1
+-AsMutable:0
+-Texture:talk1.png
+-Atlas: x${xnum} y${ynum} w4 h4
+-Position: y0.1 z-0.0000001
+-Size:0.5

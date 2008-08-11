@@ -1,0 +1,33 @@
+[Dialog]
+// Меню показа инф. сообщения
+-DialogName:alert_dialog
+-Event.Keyboard.Esc.Pressed:core_CloseDialog("alert_dialog",300);
+-ModalDialog:1
+-Position:z-0.6
+
+[Sprite]
+// Текст
+-Name:alert_dialog_field
+-Texture:${virtualNode}
+-Position: x0 y2.4 z-0.011
+-Label:MENU.ALERT.TITLE
+
+[Sprite]
+// Кнопка Ok
+-Texture:menu_button_small.spr
+-Label:MENU.BUTTON.OK.LABEL
+-Label.Formatting:<dx=-0.3><dy=-0.2>
+-Size: w3
+-Position: x0 y-2.1 z-0.01
+-Event.Mouse.Click.Action:core_CloseDialog("alert_dialog",300);
+-Event.Mouse.Over.Image:menu_button_over_small.spr
+-Event.Mouse.Over.Sound:menu_button_over
+-Event.Mouse.Click.Image:menu_button_over_small.spr
+-Event.Mouse.Click.Sound:menu_button_click
+-Event.Mouse.Click.KeyShortcut:${VK_RETURN}
+
+[Sprite]
+// Фон
+-Texture:dialog_frame_small.png
+-Position:z0.01
+-Size: w21 h10.5

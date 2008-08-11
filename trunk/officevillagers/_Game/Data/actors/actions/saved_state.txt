@@ -1,0 +1,88 @@
+<Office>
+	<ProgressMax val="100" />
+	<ProgressCur val="0" />
+	<ProgressTime_Now val="0" />
+	<ProgressTime_Max val="172800" />
+	<ProgressTime_Crunch val="0" />
+
+	<!-- Описание начального положения в игре -->
+	<Actors>
+		<Actor>
+			<Name val="Office" />
+			<Sprite />
+			<Position.Location val="SCENES_Tutorial::iniDOT3" />
+			<ActorType val="-1" />
+			<ActorProphession val="NONE" />
+			<CurrentAction val="TutorialMainScript" />
+			<AttributesOverload val="\actors\actions\office_globals.txt" />
+			<Items></Items>
+		</Actor>
+		${include(saved_state_heaps.txt)}
+		${include(saved_state_walls.txt)}
+		${include(saved_state_tables.txt)}
+		<Actor>
+			<Name val="ACTOR.SHEKEL" />
+			<Sprite val="actors\persons\human.spr?hsex=s" />
+			<Body val="0" />
+			<Head val="0" />
+			<BodyLock val="1" />
+			<Position.x val="0.000000" />
+			<Position.y val="0.200000" />
+			<Position.Location val="INIT::ACTOR_SHEKEL" />
+			<ActorType val="1" />
+			<ActorProphession val="NONE" />
+			<ActorValidProphession val="CREATOR" />
+			<CurrentAction val="Cutscene.driver" />
+			<Attributes />
+			<Items></Items>
+		</Actor>
+		<Actor>
+			<Name val="ACTOR.AGATA" />
+			<Sprite val="actors\persons\human.spr?hsex=s" />
+			<Body val="2" />
+			<Head val="1" />
+			<BodyLock val="1" />
+			<Position.x val="9.000000" />
+			<Position.y val="7.200000" />
+			<Position.Location val="INIT::ACTOR_AGATA" />
+			<ActorType val="1" />
+			<ActorProphession val="NONE" />
+			<ActorValidProphession val="AUTHOR,FINANCIER" />
+			<CurrentAction val="Cutscene.driver" />
+			<Attributes />
+			<Items></Items>
+		</Actor>
+		<Actor>
+			<Name val="ACTOR.SINTI" />
+			<Sprite val="actors\persons\human.spr?hsex=s" />
+			<Body val="1" />
+			<Head val="2" />
+			<BodyLock val="1" />
+			<Position.x val="5.000000" />
+			<Position.y val="-2.200000" />
+			<Position.Location val="INIT::ACTOR_SINTY" />
+			<ActorType val="1" />
+			<ActorProphession val="NONE" />
+			<ActorValidProphession val="AUTHOR" />
+			<CurrentAction val="Cutscene.driver" />
+			<Attributes />
+			<Items></Items>
+		</Actor>
+		<Actor>
+			<Name val="ACTOR.BOB" />
+			<Sprite val="actors\persons\human.spr?hsex=s" />
+			<Body val="3" />
+			<Head val="3" />
+			<BodyLock val="1" />
+			<Position.x val="-10.000000" />
+			<Position.y val="2" />
+			<Position.Location val="INIT::ACTOR_BOB" />
+			<ActorType val="1" />
+			<ActorProphession val="NONE" />
+			<ActorValidProphession val="JANITOR" />
+			<CurrentAction val="Cutscene.driver" />
+			<Attributes />
+			<Items></Items>
+		</Actor>
+	</Actors>
+</Office>

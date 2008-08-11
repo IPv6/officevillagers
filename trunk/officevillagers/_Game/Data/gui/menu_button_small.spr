@@ -1,0 +1,4 @@
+[Sprite]
+-Texture:buttons\secondary_buttons.png
+-Atlas:x0 y0 w2 h1
+-Size: h1

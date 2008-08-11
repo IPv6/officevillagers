@@ -1,0 +1,278 @@
+<!-- Столы авторов -->
+<Actor>
+	<Name val="TABLE.AUTHOR1_L" />
+	<Sprite val="actors\items\furniture\table.author_l.spr" />
+	<Position.Location val="Furniture::TABLE.AUTHOR1_L" />
+	<Position.LocationEntr val="Furniture::TABLE.AUTHOR1_LCHECK" />
+	Furniture::TABLE.AUTHOR1_LCHECK
+	<ActorProphession val="FURNITURE" />
+	<Items></Items>
+</Actor>
+<Actor>
+	<Name val="TABLE.AUTHOR1_R" />
+	<Enabled val="0" />
+	<Sprite val="actors\items\furniture\table.author_r.spr" />
+	<Position.Location val="Furniture::TABLE.AUTHOR1_R" />
+	<Position.LocationEntr val="Furniture::TABLE.AUTHOR1_RCHECK" />
+	<ActorProphession val="FURNITURE" />
+	<Items></Items>
+</Actor>
+<Actor>
+	<Name val="TABLE.AUTHOR2_L" />
+	<Enabled val="0" />
+	<Sprite val="actors\items\furniture\table.author_l.spr" />
+	<Position.Location val="Furniture::TABLE.AUTHOR2_L" />
+	<Position.LocationEntr val="Furniture::TABLE.AUTHOR2_LCHECK" />
+	<ActorProphession val="FURNITURE" />
+	<Items></Items>
+</Actor>
+<Actor>
+	<Name val="TABLE.AUTHOR3_L" />
+	<Enabled val="0" />
+	<Sprite val="actors\items\furniture\table.author_l.spr" />
+	<Position.Location val="Furniture::TABLE.AUTHOR3_L" />
+	<Position.LocationEntr val="Furniture::TABLE.AUTHOR3_LCHECK" />
+	<ActorProphession val="FURNITURE" />
+	<Items></Items>
+</Actor>		
+<Actor>
+	<Name val="TABLE.AUTHOR4_L" />
+	<Enabled val="0" />
+	<Sprite val="actors\items\furniture\table.author_l.spr" />
+	<Position.Location val="Furniture::TABLE.AUTHOR4_L" />
+	<Position.LocationEntr val="Furniture::TABLE.AUTHOR4_LCHECK" />
+	<ActorProphession val="FURNITURE" />
+	<Items></Items>
+</Actor>
+<Actor>
+	<Name val="TABLE.AUTHOR5_L" />
+	<Enabled val="0" />
+	<Sprite val="actors\items\furniture\table.author_l.spr" />
+	<Position.Location val="Furniture::TABLE.AUTHOR5_L" />
+	<Position.LocationEntr val="Furniture::TABLE.AUTHOR5_LCHECK" />
+	<ActorProphession val="FURNITURE" />
+	<Items></Items>
+</Actor>
+<Actor>
+	<Name val="TABLE.AUTHOR6_L" />
+	<Enabled val="0" />
+	<Sprite val="actors\items\furniture\table.author_l.spr" />
+	<Position.Location val="Furniture::TABLE.AUTHOR6_L" />
+	<Position.LocationEntr val="Furniture::TABLE.AUTHOR6_LCHECK" />
+	<ActorProphession val="FURNITURE" />
+	<Items></Items>
+</Actor>
+<Actor>
+	<Name val="TABLE.AUTHOR7_L" />
+	<Enabled val="0" />
+	<Sprite val="actors\items\furniture\table.author_l.spr" />
+	<Position.Location val="Furniture::TABLE.AUTHOR7_L" />
+	<Position.LocationEntr val="Furniture::TABLE.AUTHOR7_LCHECK" />
+	<ActorProphession val="FURNITURE" />
+	<Items></Items>
+</Actor>
+
+<!-- Столы редакторов -->
+
+<Actor>
+	<Name val="ARTICLE_TABLE" />
+	<Sprite val="actors\items\furniture\objects.spr?image=ctolmain_small.png" />
+	<Position.Location val="Furniture::TABLE.EDITOR1_L" />
+	<Position.LocationEntr val="Furniture::TABLE.EDITOR1_LCHECK" />
+	<ActorProphession val="FURNITURE" />
+	<Items></Items>
+</Actor>
+
+<Actor>
+	<Name val="TABLE.EDITOR1_R" />
+	<Enabled val="0" />
+	<Sprite val="actors\items\furniture\table.author_r.spr" />
+	<Position.Location val="Furniture::TABLE.EDITOR1_R" />
+	<Position.LocationEntr val="Furniture::TABLE.EDITOR1_RCHECK" />
+	<ActorProphession val="FURNITURE" />
+	<Items></Items>
+</Actor>
+<Actor>
+	<Name val="TABLE.EDITOR2_R" />
+	<Enabled val="0" />
+	<Sprite val="actors\items\furniture\table.author_r.spr" />
+	<Position.Location val="Furniture::TABLE.EDITOR2_R" />
+	<Position.LocationEntr val="Furniture::TABLE.EDITOR2_RCHECK" />
+	<ActorProphession val="FURNITURE" />
+	<Items></Items>
+</Actor>
+
+<Actor>
+	<Name val="TABLE.EDITOR3_R" />
+	<Enabled val="0" />
+	<Sprite val="actors\items\furniture\table.author_r.spr" />
+	<Position.Location val="Furniture::TABLE.EDITOR3_R" />
+	<Position.LocationEntr val="Furniture::TABLE.EDITOR3_RCHECK" />
+	<ActorProphession val="FURNITURE" />
+	<Items></Items>
+</Actor>
+<Actor>
+	<Name val="TABLE.EDITOR4_R" />
+	<Enabled val="0" />
+	<Sprite val="actors\items\furniture\table.author_r.spr" />
+	<Position.Location val="Furniture::TABLE.EDITOR4_R" />
+	<Position.LocationEntr val="Furniture::TABLE.EDITOR4_RCHECK" />
+	<ActorProphession val="FURNITURE" />
+	<Items></Items>
+</Actor>
+<Actor>
+	<Name val="DOSKA" />
+	<Enabled val="1" />
+	<Sprite val="\actors\items\furniture\doska.spr" />
+	<Position.Location val="Furniture::DOSKA" />
+	<Position.LocationEntr val="Furniture::DOSKACHECK" />
+	<ActorProphession val="FURNITURE" />
+	<Items></Items>
+</Actor>
+
+
+<Actor>
+	<Name val="TABLE.AGATAMAIN" />
+	<Sprite val="actors\items\furniture\agatatable.spr?not1=0&not2=1&not3=1&not4=1&not5=1&not6=1" />
+	<Position.Location val="Furniture::TABLE.EDITOR5_L" />
+	<ActorProphession val="FURNITURE" />
+	<Items></Items>
+</Actor>
+<Actor>
+	<Name val="TABLE.AGATAMAIN_2" />
+	<Sprite val="actors\items\furniture\agatatable.spr?not1=1&not2=0&not3=1&not4=1&not5=1&not6=1" />
+	<Position.Location val="Furniture::TABLE.EDITOR5_L" />
+	<ActorProphession val="FURNITURE" />
+	<Items></Items>
+</Actor>
+<Actor>
+	<Name val="TABLE.AGATAMAIN_3" />
+	<Sprite val="actors\items\furniture\agatatable.spr?not1=1&not2=1&not3=0&not4=1&not5=1&not6=1" />
+	<Position.Location val="Furniture::TABLE.EDITOR5_L" />
+	<ActorProphession val="FURNITURE" />
+	<Items></Items>
+</Actor>
+<Actor>
+	<Name val="TABLE.AGATAMAIN_4" />
+	<Sprite val="actors\items\furniture\agatatable.spr?not1=1&not2=1&not3=1&not4=0&not5=1&not6=1" />
+	<Position.Location val="Furniture::TABLE.EDITOR5_L" />
+	<ActorProphession val="FURNITURE" />
+	<Items></Items>
+</Actor>
+<Actor>
+	<Name val="TABLE.AGATAMAIN_5" />
+	<Sprite val="actors\items\furniture\agatatable.spr?not1=1&not2=1&not3=1&not4=1&not5=0&not6=1" />
+	<Position.Location val="Furniture::TABLE.EDITOR5_L" />
+	<ActorProphession val="FURNITURE" />
+	<Items></Items>
+</Actor>
+<Actor>
+	<Name val="TABLE.AGATAMAIN_6" />
+	<Sprite val="actors\items\furniture\agatatable.spr?not1=1&not2=1&not3=1&not4=1&not5=1&not6=0" />
+	<Position.Location val="Furniture::TABLE.EDITOR5_L" />
+	<ActorProphession val="FURNITURE" />
+	<Items></Items>
+</Actor>
+<Actor>
+	<Name val="TABLE.AGATASIDE" />
+	<Sprite val="actors\items\furniture\agatatable-small.spr" />
+	<Position.Location val="Furniture::TABLE.EDITOR5_SIDE" />
+	<ActorProphession val="FURNITURE" />
+	<Items></Items>
+</Actor>
+
+
+
+<Actor>
+	<Name val="TABLE.FINANSIST1_L" />
+	<Enabled val="0" />
+	<Sprite val="actors\items\furniture\table.author_l.spr" />
+	<Position.Location val="Furniture::FINANSISTTABLE1_L" />
+	<ActorProphession val="FURNITURE" />
+	<Items></Items>
+</Actor>
+
+
+<!-- предметы, которые не столы -->
+
+<Actor>
+	<Name val="KUBIKI" />
+	<Sprite val="actors\items\furniture\objects.spr?image=cubics.png" />
+	<Position.Location val="Furniture::DOT2" />
+	<ActorProphession val="FURNITURE" />
+	<Items></Items>
+</Actor>
+
+<Actor>
+	<Name val="AKVARIUM" />
+	<Sprite val="actors\items\furniture\objects.spr?image=aquarium.png" />
+	<Position.Location val="Furniture::DOT4" />
+	<ActorProphession val="FURNITURE" />
+	<Items></Items>
+</Actor>
+
+<Actor>
+	<Name val="CHESS" />
+	<Sprite val="actors\items\furniture\objects.spr?image=check_stol.png" />
+	<Position.Location val="Furniture::DOT5" />
+	<ActorProphession val="FURNITURE" />
+	<Items></Items>
+</Actor>
+
+<Actor>
+	<Name val="MARKET_MONITOR1" />
+	<Sprite val="actors\items\furniture\objects.spr?image=market_monitor_blue.png" />
+	<Position.Location val="Furniture::DOT12" />
+	<ActorProphession val="FURNITURE" />
+	<Items></Items>
+</Actor>
+<Actor>
+	<Name val="MARKET_MONITOR2" />
+	<Sprite val="actors\items\furniture\objects.spr?image=market_monitor_green.png" />
+	<Position.Location val="Furniture::DOT13" />
+	<ActorProphession val="FURNITURE" />
+	<Items></Items>
+</Actor>
+<Actor>
+	<Name val="MARKET_MONITOR3" />
+	<Sprite val="actors\items\furniture\objects.spr?image=market_monitor_orange.png" />
+	<Position.Location val="Furniture::DOT14" />
+	<ActorProphession val="FURNITURE" />
+	<Items></Items>
+</Actor>
+<Actor>
+	<Name val="MARKET_DOSKA" />
+	<Sprite val="actors\items\furniture\objects.spr?image=trashheap_market_doska.png" />
+	<Position.Location val="Furniture::DOT10" />
+	<ActorProphession val="FURNITURE" />
+	<Items></Items>
+</Actor>
+<Actor>
+	<Name val="FLOWERS1" />
+	<Sprite val="actors\items\furniture\objects.spr?image=trashheap_cwety.png" />
+	<Position.Location val="Furniture::DOT8" />
+	<ActorProphession val="FURNITURE" />
+	<Items></Items>
+</Actor>
+<Actor>
+	<Name val="FLOWERS2" />
+	<Sprite val="actors\items\furniture\objects.spr?image=trashheap_cwety.png" />
+	<Position.Location val="Furniture::DOT9" />
+	<ActorProphession val="FURNITURE" />
+	<Items></Items>
+</Actor>
+
+<Actor>
+	<Name val="COOLER1" />
+	<Sprite val="actors\items\furniture\objects.spr?image=trashheap_cooler.png" />
+	<Position.Location val="Furniture::DOT6" />
+	<ActorProphession val="FURNITURE" />
+	<Items></Items>
+</Actor>
+<Actor>
+	<Name val="COOLER2" />
+	<Sprite val="actors\items\furniture\objects.spr?image=trashheap_cooler.png" />
+	<Position.Location val="Furniture::DOT7" />
+	<ActorProphession val="FURNITURE" />
+	<Items></Items>
+</Actor>

@@ -1,0 +1,82 @@
+[Dialog]
+// Меню вместе с фоном и всей анимацией
+-DialogName:main_menu
+-BackgroundImage:menu_bg.jpg
+-BackgroundMusic:comics.ogg
+-Event.Keyboard.Esc.Pressed:core_OpenDialog("exit_game");
+-Event.OnCreate.Action:game_initMainMenuDialog();
+-CloseOtherDialogs:${all}
+-ModalDialog:0
+
+[Sprite]
+// Кнопка Старт
+-Parent:main_menu
+-Texture:menu_button.spr
+-Label:MENU.BUTTON.START.LABEL
+-Size:4
+-Position:x0.5 y8 z-0.001
+-Event.Mouse.Click.Action:startGameButton(false);
+-Event.Mouse.Click.Image:menu_button_over.spr
+-Event.Mouse.Click.Sound:menu_button_click
+-Event.Mouse.Click.KeyShortcut:${VK_RETURN}
+-Event.Mouse.Over.Image:menu_button_over.spr
+-Event.Mouse.Over.Sound:menu_button_over
+
+[Sprite]
+// Кнопка Старт2
+-Parent:main_menu
+-Texture:menu_button.spr
+-Label:MENU.BUTTON.STARTOVER.LABEL
+-Name:StartOverButton
+-Size:4
+-Position:x0.5 y5 z-0.001
+-Event.Mouse.Click.Action:startGameButton(true);
+-Event.Mouse.Click.Image:menu_button_over.spr
+-Event.Mouse.Click.Sound:menu_button_click
+-Event.Mouse.Over.Image:menu_button_over.spr
+-Event.Mouse.Over.Sound:menu_button_over
+
+[Sprite]
+// Кнопка Опции
+-Parent:main_menu
+-Texture:menu_button.spr
+-Label:MENU.BUTTON.OPTIONS.LABEL
+-Size:4
+-Position:x0.5 y1 z-0.001
+-Event.Mouse.Click.Action:core_OpenDialog("options_dialog");
+-Event.Mouse.Click.Image:menu_button_over.spr
+-Event.Mouse.Click.Sound:menu_button_click
+-Event.Mouse.Over.Image:menu_button_over.spr
+-Event.Mouse.Over.Sound:menu_button_over
+
+[Sprite]
+// Кнопка Выход
+-Parent:main_menu
+-Texture:menu_button.spr
+-Label:MENU.BUTTON.EXIT.LABEL
+-Size:4
+-Position:x0.5 y-3 z-0.001
+-Event.Mouse.Click.Action:core_CloseGame();
+-Event.Mouse.Click.Image:menu_button_over.spr
+-Event.Mouse.Click.Sound:menu_button_click
+-Event.Mouse.Over.Image:menu_button_over.spr
+-Event.Mouse.Over.Sound:menu_button_over
+
+[Sprite]
+-Parent:main_menu
+-Name:profile_greeting
+-Label:???
+-Position:x10 y13 z-0.001
+
+[Sprite]
+// Кнопка Профилей
+-Parent:main_menu
+-Texture:menu_button.spr
+-Label:MENU.BUTTON.PROFILES.LABEL
+-Size:4
+-Position:x10 y11 z-0.001
+-Event.Mouse.Click.Action:core_OpenDialog("profiles_dialog");
+-Event.Mouse.Click.Image:menu_button_over.spr
+-Event.Mouse.Click.Sound:menu_button_click
+-Event.Mouse.Over.Image:menu_button_over.spr
+-Event.Mouse.Over.Sound:menu_button_over

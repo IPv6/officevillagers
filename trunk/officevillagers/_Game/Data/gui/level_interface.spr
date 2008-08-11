@@ -1,0 +1,109 @@
+[Sprite]
+-Texture:${virtualNode}
+-Name:main_level_interface
+
+//==============================
+[Sprite]
+// Полоса уровня сдачи номера
+-AsChild:1
+-Name:progress_slider
+-Texture:\gui\level_interface.png
+-Atlas:x0 y31 w1 h32
+-Size: w30.3
+-Position:x5 y14.5 z0.09
+
+[Sprite]
+// Подложка Полосы уровня сдачи номера
+-AsChild:1
+-Texture:\gui\level_interface.png
+-Atlas:x0 y28 w2 h32
+-Size: w41 р2
+-Position:x0 y15 z0.099
+
+[Sprite]
+// Маркер паузы
+-AsChild:1
+-Texture:${virtualNode}
+-Name:pauseMarker
+-Size: w4
+-Position:x0 y13.8 z0.09
+-Label:LEVEL.TIMEPAUSED
+//==============================
+
+[Sprite]
+-AsChild:1
+// Левая половина интерфейса
+-Texture:level_interface.png
+-Atlas:x0 y0 w4 h1
+-Size: h40.2
+-Position:x-15.1 y0 z0.1 s0
+-Event.Mouse.Click.Block:1
+
+[Sprite]
+-AsChild:1
+// Нижнаяя половина интерфейса - 2
+-Texture:level_interface.png
+-Atlas:x0 y5 w1 h8
+-Size: w40.2 h5.2
+-Position:x0 y-7.53 z0.1 s-1
+-Event.Mouse.Click.Block:1
+
+[Sprite]
+-AsChild:1
+// Нижнаяя половина интерфейса
+-Texture:level_interface.png
+-Atlas:x0 y6 w1 h8
+-Size: w40.2
+-Position:x0 y-12.65 z0.1 s1
+-Event.Mouse.Click.Block:1
+
+[Sprite]
+-AsChild:1
+// Кнопка Menu
+-Name:levelMenuButton
+-Texture:level_interface.png
+-Atlas:x4 y0 w8 h16
+-Size: w6 h3
+-Position:x-15 y12.3 z-0.212
+-Label:GUI.LEVEL.MENU.BUTTON
+-Event.Mouse.Click.Action:level_OpenMenu
+-Event.Mouse.Click.Sound:menu_button_click
+-Event.Mouse.Over.Image:level_interface_button_menu.spr
+-Event.Mouse.Over.Sound:menu_button_over
+
+[Sprite]
+-AsChild:1
+// Кнопка Quests
+-Name:quests_button
+-Texture:level_interface.png
+-Atlas:x4 y0 w8 h16
+-Size: w6 h3
+-Position:x-15 y-14 z-0.212
+-Label:GUI.LEVEL.QUESTS.BUTTON
+-Event.Mouse.Click.Action:level_OpenQuests
+-Event.Mouse.Click.Sound:menu_button_click
+-Event.Mouse.Over.Image:level_interface_button_menu.spr
+-Event.Mouse.Over.Sound:menu_button_over
+
+[Sprite]
+-AsChild:1
+// Кнопка Technology
+-Name:techs_button
+-Texture:level_interface.png
+-Atlas:x4 y0 w8 h16
+-Size: w6 h3
+-Position:x-15 y-6.7 z-0.212
+-Label:GUI.LEVEL.TECH.BUTTON
+-Event.Mouse.Click.Action:level_OpenTechs
+-Event.Mouse.Click.Sound:menu_button_click
+-Event.Mouse.Over.Image:level_interface_button_menu.spr
+-Event.Mouse.Over.Sound:menu_button_over
+
+[Sprite]
+-AsChild:1
+// Маркер того что делает выбранный	 перс
+-Texture:${virtualNode}
+-Name:hudWTDMarker
+-Position:x0 y-13.8 z0.09
+-Label:LEVEL.TIMEPAUSED
+

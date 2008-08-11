@@ -1,0 +1,8 @@
+[Sprite]
+-Texture:slider_bg.png
+-Size: w10
+-Position: z0.0001
+-Label:MENU.LOADING
+-Label.Formatting:<dy=2>
+-Name:_preloaderSpr
+-Animation.Slider:texture[gui\preloader\loading.spr] attribute[preprc]

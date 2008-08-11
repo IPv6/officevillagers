@@ -1,0 +1,5 @@
+[Sprite]
+-Texture:${image}
+-MapY2Z:-100
+-SizeFromTexture:1
+

@@ -1,0 +1,6 @@
+[Sprite]
+-Texture:square.png
+-Event.Mouse.Drag.Action:nlDotDragBegin
+-Event.Mouse.RClick.Action:nlRClick
+-Event.Mouse.Over.In.Script:nlOnOver
+-Label:?-

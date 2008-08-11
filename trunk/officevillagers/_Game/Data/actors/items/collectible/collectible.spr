@@ -1,0 +1,6 @@
+[Sprite]
+-Texture:collectibles.png
+-Atlas:x${collectible_number} y0 w8 h1
+-Position: x0 y0 s4
+
+

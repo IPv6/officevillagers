@@ -1,0 +1,4 @@
+[Sprite]
+-Texture:\comics\emoticons\${iconame}
+-Name:cutscene_dialog_ico
+-Size: w4.9

@@ -1,0 +1,29 @@
+[Sprite]
+-Texture:${virtualNode}
+-Size:1.73
+-MapY2Z:-100
+
+[Sprite]
+-AsChild:1
+-LocalID:${SUBID_BODY}
+-Texture:bodies_${hsex}.png
+-Atlas:x0 y0 w16 h4
+-Position:x0 y0.9 s1
+-TextureFiltering:1
+-Size:h2
+
+[Sprite]
+-AsChild:1
+-LocalID:${SUBID_HEAD}
+-Texture:heads_${hsex}.png
+-Atlas:x0 y0 w7 h16
+-Position:x0 y1.2 s2
+-Size:h2
+
+[Sprite]
+-AsChild:1
+-Texture:human_labels.spr
+
+[Sprite]
+-AsChild:1
+-Texture:human_ehandler.spr

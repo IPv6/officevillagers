@@ -1,0 +1,60 @@
+<LevelItems>
+	<Items>
+	<ItemDescription>
+		<Name val="sitting" />
+		<InSprParent val="99999" />
+		<ScriptOnAttach val="event_OnSit" />
+		<ScriptOnSpawn val="event_OnSitSpawn" />
+		<ScriptOnDetach val="event_OnUnSit" />
+	</ItemDescription>
+	<ItemDescription>
+		<Name val="fly_icon" />
+		<DefaultSpr val="\actors\items\itm_fly_icon.spr" />
+		<AutoArrange val="1" />
+		<InSprParent val="0" />
+		<SaveInSaves val="0" />
+	</ItemDescription>
+	<ItemDescription>
+		<Name val="collectible_item" />
+		<DefaultSpr val="\actors\items\collectible\itm_collectible.spr" />
+	</ItemDescription>
+	<ItemDescription>
+		<Name val="article" />
+		<DefaultSpr val="\actors\items\itm_article.spr" />
+	</ItemDescription>
+	<ItemDescription>
+		<Name val="progress_baloon" />
+		<DefaultSpr val="\actors\items\itm_progress_baloon.spr" />
+	</ItemDescription>
+	<ItemDescription>
+		<Name val="tutorial_arrow" />
+		<DefaultSpr val="\actors\items\itm_tutorial_arrow.spr" />
+		<SaveInSaves val="0" />
+	</ItemDescription>
+	<ItemDescription>
+		<Name val="shvabra" />
+		<DefaultSpr val="\actors\items\itm_shvabra.spr" />
+	</ItemDescription>
+	<ItemDescription>
+		<Name val="talk_baloon" />
+		<DefaultSpr val="\actors\items\talks\itm_baloon.spr" />
+		<SaveInSaves val="0" />
+		<ScriptOnSpawn val="initTalkBaloonSprite" />
+	</ItemDescription>
+	<ItemDescription>
+		<Name val="cursor_hint" />
+		<DefaultSpr val="\gui\effects\cursor_hint.spr" />
+		<SaveInSaves val="0" />
+	</ItemDescription>
+	<ItemDescription>
+		<Name val="cursor_hint_absolute" />
+		<DefaultSpr val="\gui\effects\cursor_hinta.spr" />
+		<SaveInSaves val="0" />
+	</ItemDescription>
+	<ItemDescription>
+		<Name val="cursor_hint_person" />
+		<DefaultSpr val="\gui\effects\cursor_hint_person.spr" />
+		<SaveInSaves val="0" />
+	</ItemDescription>
+	</Items>
+</LevelItems>

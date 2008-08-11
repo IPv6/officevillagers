@@ -1,0 +1,146 @@
+[DIALOG1-1]
+#PAGEBEGIN:(none.png)
+На одном из этажей стояло несколько сотрудников, битый час дожидаясь лифта.
+#PAGEEND
+
+[DIALOG1-2]
+#PAGEBEGIN:(sinty.png)
+...
+#PAGEEND
+
+[DIALOG1]
+#PAGEBEGIN:(shekel.png)
+Это все вы виноваты!
+#PAGEEND
+
+#PAGEBEGIN:(shekel.png)
+Я только и хотел, что найти автомат с газировкой!
+#PAGEEND
+
+#PAGEBEGIN:(agata.png)
+...
+#PAGEEND
+
+#PAGEBEGIN:(sinty.png)
+...
+#PAGEEND
+
+#PAGEBEGIN:(agata.png)
+Надоело.
+Я пойду пешком.
+#PAGEEND
+
+#PAGEBEGIN:(shekel.png)
+Пешком?!
+#PAGEEND
+
+#PAGEBEGIN:(sinty.png)
+Я слышала, что на лестницах последние времена не спокойно. А вдруг ограбят?
+#PAGEEND
+
+#PAGEBEGIN:(shekel.png)
+Ты что? Газет не читаешь? Мы ведь в юго-западном крыле. Здесь же начальство недалеко... где-то. Все должно быть спокойно... наверное...
+#PAGEEND
+
+#PAGEBEGIN:(sinty.png)
+А как же призрак секретарши с сто семнадцатого этажа? Говорят, он все еще ползает по лестничным пролетам в поисках отдела планирования бизнеса.
+#PAGEEND
+
+#PAGEBEGIN:(agata.png)
+Ну и ждите тогда этого лифта, пока сами не станете призраками. А я пошла.
+#PAGEEND
+
+[DIALOG2-1]
+#PAGEBEGIN:(none.png)
+Через некоторое время....
+#PAGEEND
+
+[DIALOG2]
+#PAGEBEGIN:(shekel.png)
+Зря мы сюда зашли. Зря, говорю вам.
+#PAGEEND
+
+#PAGEBEGIN:(sinty.png)
+Н-да. Давайте действительно лучше вернемся. У нас в отделе уже обед должен быть.
+#PAGEEND
+
+#PAGEBEGIN:(agata.png)
+Нет. Снова назад подниматься я не стану! Сейчас вот найдем другой лифт... где-нибудь...
+#PAGEEND
+
+[DIALOG3]
+#PAGEBEGIN:(none.png)
+Неожиданно, единственная лампочка погасла.
+#PAGEEND
+
+[DIALOG3a]
+#PAGEBEGIN:(shekel.wow.png)
+Просто чудесно! И куда дальше?
+#PAGEEND
+
+#PAGEBEGIN:(shekel.png)
+Ох, пропадем мы здесь.
+#PAGEEND
+
+#PAGEBEGIN:(agata.png)
+Эй! Ты мне на ногу наступил!
+#PAGEEND
+
+#PAGEBEGIN:(shekel.png)
+Мне кажется, или кроме нас тут еще кто-то есть?
+#PAGEEND
+
+#PAGEBEGIN:(sinty.png)
+Это призрак секретарши!
+#PAGEEND
+
+#PAGEBEGIN:(shekel.png)
+А-а-а! Меня кто-то коснулся. О дух, секретарши - отпусти нас.
+#PAGEEND
+
+[DIALOG4]
+#PAGEBEGIN:(agata.png)
+Эй вы! Кончайте паниковать! Смотрите лучше - там какой-то свет. Идем туда.
+#PAGEEND
+
+[DIALOG5]
+#PAGEBEGIN:(sinty.wow.png)
+...
+#PAGEEND
+
+#PAGEBEGIN:(shekel.wow.png)
+Ничего себе!
+#PAGEEND
+
+#PAGEBEGIN:(agata.png)
+Извините, вы не подскажете что это за отдел?
+#PAGEEND
+
+#PAGEBEGIN:(bob.png)
+Они еще спрашивают.
+#PAGEEND
+
+#PAGEBEGIN:(agata.png)
+Что значит "Еще спрашивают"? Как не вежливо
+#PAGEEND
+
+#PAGEBEGIN:(sinty.png)
+А где все? Кто тут всем управляет?
+#PAGEEND
+
+#PAGEBEGIN:(bob.png)
+Издеваетесь что ли? Вы тут управляете
+#PAGEEND
+
+#PAGEBEGIN:(shekel.wow.png)
+Мы?!
+#PAGEEND
+
+#PAGEBEGIN:(sinty.png)
+Действительно. Вон ведь приказ висит. "Назначаются начальниками редакционного отдела со стандартным окладом".
+#PAGEEND
+
+#PAGEBEGIN:(shekel.wow.png)
+Ну вот. А я только хотел найти автомат с газировкой.
+#PAGEEND
+[END]<-Обязательный тег, указывающий на окончание файла диалогов

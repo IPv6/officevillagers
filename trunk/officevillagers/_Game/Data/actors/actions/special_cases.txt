@@ -1,0 +1,105 @@
+[Event]
+// ƒействие дл€ неинтерактивных объектов типа столов и т.п.
+-Name:SleepMode
+// „тобы пока объект делает это действие, никакое другое действие не могло бы его отвлечь (2 - это значит если он делает и любое из подчиненных действий тоже)
+-Protected:2
+// „тобы никто не мог подхватить это действие автоматически
+-Priority:-1
+
+[Event]
+// Cutscene - ивент автоматически сбрасываетс€ при завершении катсцен!
+-Name:Cutscene.driver
+-Prq.IsGlobalEvent:0
+// „тобы пока перс делает это действие, никакое другое действие не могло бы его отвлечь (2 - это значит если он делает и любое из подчиненных действий тоже)
+-Protected:2
+// „тобы никто не мог подхватить это действие автоматически
+-Priority:-1
+// „тобы человечка нельз€ было схватить и перетащить
+-Disable.Person.UI:1
+
+[Event]
+-Name:Talking
+-Prq.IsGlobalEvent:0
+// „тобы пока перс делает это действие, никакое другое действие не могло бы его отвлечь (2 - это значит если он делает и любое из подчиненных действий тоже)
+-Protected:2
+// „тобы никто не мог подхватить это действие автоматически
+-Priority:-1
+-Disable.Person.UI:0
+-Script.Off:
+	// —брасываем партнеру ивент. ѕри драге этого перса например разговор прерветс€!
+	actor_DelItem(thisActor,"talk_baloon");
+	actor_DelItem(actor_GetAttributeS(thisActor,"TalkPartner"),"talk_baloon");
+	actor_SwitchToAction(actor_GetAttributeS(thisActor,"TalkPartner"),"");
+-Script.In:
+	$ifdebug actor_SetAttribute(thisActor,"__DEBUG","0");
+	local point=actor_GetAttributeS(thisActor,"TalkPoint");
+	if(point==""){
+		$ifdebug core_Alert("talk wtf!-3");
+		actor_SwitchToAction(thisActor,"");
+		return;
+	}
+	$ifdebug actor_SetAttribute(thisActor,"__DEBUG","1");
+	actorWait_GoTo(thisActor,point);
+	$ifdebug actor_SetAttribute(thisActor,"__DEBUG","2");
+	local isInitiator=actor_GetAttributeN(thisActor,"TalkInitiator");
+	local partner=actor_GetActor(actor_GetAttributeS(thisActor,"TalkPartner"));
+	// ∆дем пока партнер придет в нужную точку
+	while(actor_IsMovingToLocation(partner,point)==true){
+		if(isInitiator){
+			// ѕровер€ем дистанцию. если достаточна€ - то останавливаем движени€
+			local thisPos=actor_GetActorPos(thisActor);
+			local partnerPos=actor_GetActorPos(partner);
+			if(calcDistance2(thisPos,partnerPos)<2.0*2.0){
+				//ќстанавливаем напарника
+				actor_CancelWalking(partner);
+				break;
+			}
+		}
+		$ifdebug actor_SetAttribute(thisActor,"__DEBUG",format("%s: %s still moving to %s!",thisActor.Name,actor_GetActor(partner).Name,point));
+		::suspend();
+	}
+	$ifdebug actor_SetAttribute(thisActor,"__DEBUG","3");
+	if(partner.Action!="Talking" || actor_GetAttributeS(partner,"TalkPartner")!=thisActor.Name){
+		// „то-то его сбило пока мы шли!!! прерываем разговор!!!
+		$ifdebug actor_SetAttribute(thisActor,"__DEBUG","4");
+		actor_SwitchToAction(thisActor,"");
+		return;
+	}
+	$ifdebug actor_SetAttribute(thisActor,"__DEBUG","5");
+	if(isInitiator>0){
+		$ifdebug actor_SetAttribute(thisActor,"__DEBUG","6");
+		actor_EnsureDistance(partner,thisActor,2,true);
+		actor_OrientBody(thisActor,partner);
+		actor_OrientBody(partner,thisActor);
+		$ifdebug actor_SetAttribute(thisActor,"__DEBUG","7");
+		// √оворим
+		local lTalkCycles=core_Rnd(2,7),i=0;
+		local xn=0,yn=0;
+		for(i=0;i<lTalkCycles;i++){
+			// „тобы шла ротаци€ между картинкой и троеточием (»рина предложила)....
+			if(i==0 || (xn==0 && yn==0 && core_Rnd(0,100)>30)){
+				xn=core_Rnd(0,4);
+				yn=core_Rnd(0,4);
+			}else{
+				xn=0;
+				yn=0;
+			}
+			actor_AddItem(((i%2)==0)?thisActor:partner,"talk_baloon",format("xnum=%i&ynum=%i",xn,yn));
+			actorWait_Timeout(4+core_Rnd(0,10));
+			actor_DelItem(((i%2)==0)?thisActor:partner,"talk_baloon");
+			if(partner.Action!="Talking" || actor_GetAttributeS(partner,"TalkPartner")!=thisActor.Name){
+				break;
+			}
+		}
+	}else{
+		$ifdebug actor_SetAttribute(thisActor,"__DEBUG","8");
+		while(partner.Action=="Talking")// ∆дем пока инициатор наговоритс€
+		{
+			$ifdebug actor_SetAttribute(thisActor,"__DEBUG","9");
+			::suspend();
+		}
+	}
+	$ifdebug actor_SetAttribute(thisActor,"__DEBUG","10");
+	// ¬се, поговорили
+	actor_SwitchToAction(thisActor,"");
+	$ifdebug actor_SetAttribute(thisActor,"__DEBUG","11");

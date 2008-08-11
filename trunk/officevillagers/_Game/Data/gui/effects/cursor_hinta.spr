@@ -1,0 +1,13 @@
+[Sprite]
+-Parent:${parnt}
+-Texture:cursor_click_hint.png
+-Animation.Texture:t500 m2x1
+-Position: z-0.1
+-Size: w2
+//Animation.ByScriptMethod:effect_SizeDrifting
+
+[Sprite]
+-AsChild:1
+-Texture:cursor_hint.png
+-Position: x-1.0 y-1.0 z-0.001
+-Size:0.7

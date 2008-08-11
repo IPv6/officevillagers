@@ -1,0 +1,17 @@
+<Actor>
+	<Name val="${RANDOM_NAMES_M} ${RANDOM_FAM_M}" />
+	<Enabled val="1" />
+	<Sprite val="actors\persons\human.spr?hsex=m" />
+	<Body val="0" />
+	<Head val="4" />
+	<BodyLock val="0" />
+	<Position.x val="0.0" />
+	<Position.y val="0.0" />
+	<Position.Location val="SCENES_Tutorial::iniDOT2" />
+	<ActorType val="1" />
+	<ActorProphession val="STAGER" />
+	<ActorValidProphession val="" />
+	<CurrentAction val="" />
+	<Attributes />
+	<Items></Items>
+</Actor>

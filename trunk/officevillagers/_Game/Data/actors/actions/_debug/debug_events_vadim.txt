@@ -1,0 +1,67 @@
+[Event]
+-Name:Debug
+-Prq.IsGlobalEvent:0
+// Чтобы пока перс делает это действие, никакое другое действие не могло бы его отвлечь (2 - это значит если он делает и любое из подчиненных действий тоже)
+-Protected:-1
+// Чтобы никто не мог подхватить это действие автоматически
+-Priority:-1
+// Максимальная скорость обработки данного действия (по умолчанию - 5!)
+-Think.Speed:1
+-Script.In:
+
+	core_Warning("Debug!");
+	actor_SetAttribute("ARTICLE_TABLE","Articles",3);
+	local actorSi1 = actor_GetActor("ACTOR.SINTI1");
+	local actorSi2 = actor_GetActor("ACTOR.SINTI2");
+	local actorSi = actor_GetActor("ACTOR.SINTI");
+	local actorSh = actor_GetActor("ACTOR.SHEKEL");
+	local actorAg = actor_GetActor("ACTOR.AGATA");
+	local actorBo = actor_GetActor("ACTOR.BOB");
+	actor_SetProfession(actorSi,"AUTHOR");
+	actor_SetProfession(actorSh,"CREATOR-EXPERT");
+	actor_SetProfession(actorAg,"AUTHOR-EXPERT");
+	actor_SetProfession(actorBo,"JANITOR");
+	actor_SwitchToAction(actorSi,"");
+	actor_SwitchToAction(actorSh,"");
+	actor_SwitchToAction(actorAg,"");
+	actor_SwitchToAction(actorBo,"");
+	local actor2 = actor_GetActor("ACTOR2");
+	local actor3 = actor_GetActor("ACTOR3");
+	local actor4 = actor_GetActor("ACTOR4");
+	local actor5 = actor_GetActor("ACTOR5");
+	local actor6 = actor_GetActor("ACTOR6");
+	local actor7 = actor_GetActor("ACTOR7");
+	local actor8 = actor_GetActor("ACTOR8");
+	actor_SetProfession(actorSi1,"JANITOR-EXPERT");
+	actor_SetProfession(actorSi2,"JANITOR-EXPERT");
+	actor_SetProfession(actor2,"JANITOR-EXPERT");
+	actor_SetProfession(actor3,"JANITOR-EXPERT");
+	actor_SetProfession(actor4,"JANITOR-EXPERT");
+	actor_SetProfession(actor5,"JANITOR");
+	actor_SetProfession(actor6,"JANITOR-EXPERT");
+	actor_SetProfession(actor7,"JANITOR-EXPERT");
+	actor_SetProfession(actor8,"JANITOR-EXPERT");
+	actor_SwitchToAction(actor2,"");
+	actor_SwitchToAction(actor3,"");
+	actor_SwitchToAction(actor4,"");
+	actor_SwitchToAction(actor5,"");
+	actor_SwitchToAction(actor6,"");
+	actor_SwitchToAction(actor7,"");
+	actor_SwitchToAction(actor8,"");
+	
+	actor_SwitchToAction(actorSi1,"");
+	actor_SwitchToAction(actorSi2,"");
+	
+[Event]
+-Name:Debug_table_Script
+-Priority:-1
+-Prq.IsGlobalEvent:0
+-Protected:0
+-Script.In:
+	actorWait_Timeout(999);
+	actorWait_Timeout(999);
+	actorWait_Timeout(999);
+	actorWait_Timeout(999);
+	actorWait_Timeout(999);
+	
+	

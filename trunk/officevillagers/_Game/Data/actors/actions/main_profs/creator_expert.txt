@@ -1,0 +1,11 @@
+[Event]
+-Name:pre_CREATOR-EXPERT_Script
+-Prq.Prophessions:CREATOR-EXPERT
+-Priority:0
+-Prq.InCutscene:0
+-Prq.IsGlobalEvent:0
+// „тобы пока перс делает это действие, другое действие не могло бы его отвлечь (2 - это значит если он делает и любое из подчиненных действий тоже)
+-Protected:0
+// пока что просто переключает на креатор сркипт...потом ещЄ должен смотреть, нужно ли кого-то лечить... это прикрутить когда будет настроение
+-Script.In:
+	actor_SwitchToAction(thisActor,"CREATOR_Script");

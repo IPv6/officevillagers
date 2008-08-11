@@ -1,0 +1,4 @@
+<${setNextPage:${thisfolder}\comicspage1.lng}><${setBgImage:${thisfolder}\comicspage0.jpg}><${dialogs:comics_dialog0}>
+<${setSkipPage:${thisfolder}\comicspage1.lng}>
+<${translate:comicspage_text0}>
+<dy=-20>

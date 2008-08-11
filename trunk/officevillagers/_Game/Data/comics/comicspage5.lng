@@ -1,0 +1,3 @@
+<${setNextPage:${thisfolder}\comicspage6.lng}><${setBgImage:${thisfolder}\comicspage5.jpg}><${dialogs:comics_dialog5}>
+<${setSkipPage:${thisfolder}\comicspage6.lng}>
+ 

@@ -1,0 +1,221 @@
+//0 (такого квеста нет)
+//1 (еще не открыт)
+//2 (открыт)
+//3 (закрыт)
+function gui_QuestCheck(questNum)
+{
+	local safe=game_GetSafe();
+	if(!("quests" in safe)){
+		safe.quests <- {};
+	}
+	local quest=quest_GetQuest(questNum);
+	if(!(quest.ID in safe.quests)){
+		// Квест еще не был открыт
+		safe.quests[quest.ID] <- {};
+		safe.quests[quest.ID].ID <- quest.ID;
+		safe.quests[quest.ID].State <- 1;
+		safe.quests[quest.ID].OpenTime <- 0;
+		safe.quests[quest.ID].CloseTime <- 0;
+	}
+	return safe.quests[quest.ID].State;
+}
+
+function quest_set(questNum,state)
+{
+	gui_QuestCheck(questNum);// Обновляем все данные
+	local quest=quest_GetQuest(questNum);
+	local safe=game_GetSafe();
+	safe.quests[quest.ID].State <- state;
+}
+
+function gui_QuestPreOpen(questNum)
+{
+	local questState=gui_QuestCheck(questNum);
+	local quest=quest_GetQuest(questNum);
+	if(questState != 1){
+		return false;
+	}
+	quest_set(questNum,1);
+	return true;
+}
+
+function gui_QuestOpen(questNum)
+{
+	local questState=gui_QuestCheck(questNum);
+	local quest=quest_GetQuest(questNum);
+	if(questState != 1 && quest.AllowReopen==0){
+		core_Alert(format("Error trying to open quest %i (state = %i)",questNum,questState));
+		return false;
+	}
+	//core_Alert(format("quest %i state %i",questNum,questState));
+	addQuestsHighlight();
+	quest_set(questNum,2);
+	local safe=game_GetSafe();
+	safe.quests[quest.ID].OpenTime <- level_TimeAbs();
+	return true;
+}
+
+function gui_QuestClose(questNum)
+{
+	local office=actor_GetActor();
+	local questState=gui_QuestCheck(questNum);
+	local quest=quest_GetQuest(questNum);
+    if(questState != 2){
+        //core_Alert(format("Error trying to open quest %i (state = %i)",questNum,questState));
+        return false;
+    }
+	addQuestsHighlight();
+	quest_set(questNum,3);
+	local safe=game_GetSafe();
+	safe.quests[quest.ID].CloseTime <- level_TimeAbs();
+	return true;
+}
+
+g_QuestCache <- {};
+g_questNames <- "";
+function quest_GetQuest(questNum)
+{
+	local questName;
+	if(questNum.tostring().find("quest_") != null){
+		questName=questNum;
+	}else{
+		questName = "quest_"+questNum.tostring();
+	}
+	if( questName in g_QuestCache){
+		return g_QuestCache[questName];
+	}
+	if(g_questNames == ""){
+		g_questNames=core_GetDataPath("\\text\\quest_names.lng");
+	}
+	// Читаем из файла
+	local lQuestFile=core_GetDataPath("\\actors\\quests\\"+questName+".txt");
+	local lQuestContent=core_ReadTextFile(lQuestFile);
+	g_QuestCache[questName] <- {};
+	local Name = core_GetSprIniParameter("Name",lQuestContent);
+	if(Name.len()==0)
+	{
+		core_Alert(format("Undeclared quest used!!! %s",questName));
+		return null;
+	}
+	g_QuestCache[questName].ID <- questName;
+	g_QuestCache[questName].Name <- core_Translate(Name,g_questNames);
+	//core_Alert(Name+";l "+g_questNames+"\n"+g_QuestCache[questName].Name);
+	g_QuestCache[questName].AllowReopen <- core_GetSprIniParameter("Reopen",lQuestContent).tointeger();
+	return g_QuestCache[questName];
+}
+
+function addQuestsHighlight()
+{
+	clearQuestsHighlight(true);
+	core_CreateSprite("gui\\button_hightlight.spr","quests_button",{z=-0.0001, name="quests_highlight"});
+}
+
+function clearQuestsHighlight(bFast)
+{
+	if(bFast){
+		core_DeleteSprite("quests_highlight");
+	}else{
+		core_FadeSprite("quests_highlight",1.0,0.0,400,1);
+	}
+}
+
+function level_OpenQuests(param)
+{
+	if(floorAttachInterval != 0 || floorAutoDragInterval != 0
+		|| humanDragInterval != 0){
+		// У нас идет скрипт... нельзя
+		return;
+	}
+	clearQuestsHighlight(false);
+	gui_ShowDialog(null,null);
+	core_OpenDialog("level_quests");
+}
+
+function level_CloseQuests()
+{
+	core_CloseDialog("level_quests");
+}
+
+function quest_timecompare(a,b)
+{
+	if(a.openTime>b.openTime){
+		return 1;
+	}else if(a.openTime<b.openTime){
+		return -1;
+	}
+	return 0;
+}
+
+
+function getOpenQuests()
+{
+	local i=0;
+	local quests=[];
+	local safe=game_GetSafe();
+	if(!("quests" in safe)){
+		return quests;
+	}
+	//local str=core_SerializeObj(safe.quests);core_Alert(str);
+	foreach(questSt in safe.quests){
+		if("State" in questSt && (questSt.State==2 || questSt.State==1))
+		{
+			local questID=questSt.ID;
+			//core_Alert(questID+" "+questSt.State.tostring());
+			local quest=quest_GetQuest(questID);
+			local questItem = {};
+			questItem.questNum <- questID;
+			questItem.locName <- quest.Name;
+			questItem.state <- safe.quests[questID].State;
+			questItem.openTime <- safe.quests[questID].OpenTime;
+			quests.append(questItem);
+		}
+	}
+	quests.sort(quest_timecompare);
+	return quests;
+}
+
+g_Quest_Slots <- 0;
+g_SkipQuest_Slots <- 0;
+g_QuestsOnPage <- 5;
+function initQuestDialog(skipItems)
+{
+	local egaSlot0=core_GetNode("quest_slot0");
+	local i=0;
+	if(!egaSlot0){
+		g_Quest_Slots = 0;
+		for(i=0;i<g_QuestsOnPage;i++){
+			core_CreateSprite("gui\\level_quest_slot.spr","level_quests",{x=0, y=7-2.5*i, z=-0.0002, w=1, h=1, name=format("quest_slot%i",g_Quest_Slots++) });
+		}
+	}
+	local attrId=0;
+	local attrByNum="";
+	g_SkipQuest_Slots = skipItems;
+	local quests = getOpenQuests();
+	if(g_SkipQuest_Slots>quests.len())
+	{
+		g_SkipQuest_Slots = quests.len()-g_QuestsOnPage;
+	}
+	if(g_SkipQuest_Slots<0)
+	{
+		g_SkipQuest_Slots = 0;
+	}
+	for(i=0; i<g_Quest_Slots; i++)
+	{
+		local slotNode=core_GetNode(format("quest_slot%i",i));
+		slotNode._alpha=1.0;
+		local thisQuestNum = g_SkipQuest_Slots+i;
+		if(thisQuestNum >= quests.len()){
+			core_EnableNode(slotNode,false);
+		}else{
+			core_EnableNode(slotNode,true);
+			core_SetNodeText(slotNode,format("<font-size:-1>\n%s",quests[thisQuestNum].locName));
+			if(quests[thisQuestNum].state==1)
+			{
+				slotNode._alpha=0.5;
+				//core_Alert("addfade!");
+			}
+			//core_SetNodeAction(slotNode,format("editAttrEditDialog(\"%s\",\"%s\");",thisActor.Name,attrByNum.name));
+		}
+		core_SetNode(format("quest_slot%i",i),slotNode);
+	}
+}

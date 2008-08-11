@@ -1,0 +1,87 @@
+[Dialog]
+-DialogName:person_interface_pseudo
+-ModalDialog:1
+// Позиция - НАД фейдером
+-Position: z-2.1
+-Event.OnCreate.Action:initPersonPseudoInterfaceDialog();
+-Event.OnDestroy.Action:deinitPersonPseudoInterfaceDialog();
+-Event.Keyboard.Esc.Pressed:/*закрыть нельзя*/
+-FadeInEffect:1
+-PauseGame:1
+
+[Sprite]
+-Texture:level_interface.png
+-Name:person_interface_name
+-Atlas:x3 y2 w4 h16
+-Size: w9
+-Position: y6
+-Label:????
+
+[Sprite]
+-Texture:level_interface.png
+-Name:_piAUTHORbt
+-Atlas:x10 y2 w16 h16
+-Size: w2.5
+-Position: x-4 y1 z-0.001
+-Label:AUTHOR
+-Label.Formatting:<dx=2><left>
+-Event.Mouse.Click.Action:personChooseProfessionPseudo("AUTHOR");
+-Event.Mouse.Click.Sound:menu_button_click
+-Event.Mouse.Over.Sound:menu_button_over
+
+[Sprite]
+-Texture:level_interface.png
+-Name:_piFINANCIERbt
+-Atlas:x11 y2 w16 h16
+-Size: w2.5
+-Position: x-4 y-1 z-0.002
+-Label:FINANCIER
+-Label.Formatting:<dx=2><left>
+-Event.Mouse.Click.Action:personChooseProfessionPseudo("FINANCIER");
+-Event.Mouse.Click.Sound:menu_button_click
+-Event.Mouse.Over.Sound:menu_button_over
+
+[Sprite]
+-Texture:level_interface.png
+-Name:_piCREATORbt
+-Atlas:x10 y3 w16 h16
+-Size: w2.5
+-Position: x-4 y-3 z-0.0021
+-Label:CREATOR
+-Label.Formatting:<dx=2><left>
+-Event.Mouse.Click.Action:personChooseProfessionPseudo("CREATOR");
+-Event.Mouse.Click.Sound:menu_button_click
+-Event.Mouse.Over.Sound:menu_button_over
+
+[Sprite]
+-Texture:level_interface.png
+-Name:_piJANITORbt
+-Atlas:x11 y3 w16 h16
+-Size: w2.5
+-Position: x-4 y-5 z-0.001
+-Label:JANITOR
+-Label.Formatting:<dx=2><left>
+-Event.Mouse.Click.Action:personChooseProfessionPseudo("JANITOR");
+-Event.Mouse.Click.Sound:menu_button_click
+-Event.Mouse.Over.Sound:menu_button_over
+
+[Sprite]
+// Приглашение
+-Texture:dialog_frame_top.png
+-Position: x0 y10 z-0.011
+-Label:MENU.DIALOG.NEWPERSON.LABEL
+-Label.Formatting:<dx=-0.2>
+-Size: w6 h3
+
+[Sprite]
+// Фон
+-Texture:dialog_frame_big.png
+-Position:z0.01
+-Size: 20.3
+
+[Sprite]
+// Фон - зачернение
+-Texture:black.png
+-Alpha:0.4 t500
+-Position: z0.011
+-Size: w50 h50

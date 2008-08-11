@@ -1,0 +1,4 @@
+[Sprite]
+-Texture:cursor_hint_person.png
+-Position: z-0.1
+-Size: w2

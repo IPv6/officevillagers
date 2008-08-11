@@ -1,0 +1,9 @@
+[Sprite]
+-Texture:${virtualNode}
+-LocalID:${SUBID_LABELS}
+
+[Sprite]
+-AsChild:1
+-Text:???
+-LocalID:${SUBID_LB_NAME}
+-Position: y4 z-0.0001

@@ -1,0 +1,205 @@
+[Dialog]
+// Меню вместе с фоном и всей анимацией
+-DialogName:editor_global_attr
+-Event.Keyboard.Esc.Pressed:core_CloseDialog("editor_global_attr");
+-Event.OnCreate.Action:fillAttrEditDialog(g_LastEGA_Mask,g_LastEGA_Skip);
+-Position: z-2
+-ModalDialog:1
+-FadeInEffect:1
+-PauseGame:1
+
+[Sprite]
+-Parent:editor_global_attr
+-Texture:\gui\menu_button_small.spr
+-Label:?Квесты
+-Size: w2.2
+-Position:x0 y11 z-0.001
+-Event.Mouse.Click.Action:SetModeAttrEditDialog("QUESTS");
+-Event.Mouse.Click.Image:\gui\menu_button_over_small.spr
+-Event.Mouse.Click.Sound:menu_button_click
+-Event.Mouse.Over.Image:\gui\menu_button_over_small.spr
+-Event.Mouse.Over.Sound:menu_button_over
+
+[Sprite]
+-Parent:editor_global_attr
+-Texture:\gui\menu_button_small.spr
+-Label:?Техно
+-Size: w2.2
+-Position:x7 y11 z-0.001
+-Event.Mouse.Click.Action:SetModeAttrEditDialog("QUESTS");
+-Event.Mouse.Click.Image:\gui\menu_button_over_small.spr
+-Event.Mouse.Click.Sound:menu_button_click
+-Event.Mouse.Over.Image:\gui\menu_button_over_small.spr
+-Event.Mouse.Over.Sound:menu_button_over
+
+[Sprite]
+-Parent:editor_global_attr
+-Texture:\gui\menu_button_small.spr
+-Label:?Актеры
+-Size: w2.2
+-Position:x-13 y11 z-0.001
+-Event.Mouse.Click.Action:chooseActorsEditDialog("*",null,null);
+-Event.Mouse.Click.Image:\gui\menu_button_over_small.spr
+-Event.Mouse.Click.Sound:menu_button_click
+-Event.Mouse.Over.Image:\gui\menu_button_over_small.spr
+-Event.Mouse.Over.Sound:menu_button_over
+
+[Sprite]
+-Parent:editor_global_attr
+-Texture:\gui\menu_button_small.spr
+-Label:?Attribs
+-Size: w2.2
+-Position:x-13 y8 z-0.001
+-Event.Mouse.Click.Action:SetModeAttrEditDialog("ATTRIBUES");
+-Event.Mouse.Click.Image:\gui\menu_button_over_small.spr
+-Event.Mouse.Click.Sound:menu_button_click
+-Event.Mouse.Over.Image:\gui\menu_button_over_small.spr
+-Event.Mouse.Over.Sound:menu_button_over
+
+[Sprite]
+-Parent:editor_global_attr
+-Texture:\gui\menu_button_small.spr
+-Label:?Params
+-Size: w2.2
+-Position:x-13 y6 z-0.001
+-Event.Mouse.Click.Action:SetModeAttrEditDialog("PARAMS");
+-Event.Mouse.Click.Image:\gui\menu_button_over_small.spr
+-Event.Mouse.Click.Sound:menu_button_click
+-Event.Mouse.Over.Image:\gui\menu_button_over_small.spr
+-Event.Mouse.Over.Sound:menu_button_over
+
+[Sprite]
+-Parent:editor_global_attr
+-Texture:\gui\menu_button_small.spr
+-Label:?ALL
+-Size: w2.2
+-Position:x-13 y2 z-0.001
+-Event.Mouse.Click.Action:fillAttrEditDialog("*",0);
+-Event.Mouse.Click.Image:\gui\menu_button_over_small.spr
+-Event.Mouse.Click.Sound:menu_button_click
+-Event.Mouse.Over.Image:\gui\menu_button_over_small.spr
+-Event.Mouse.Over.Sound:menu_button_over
+
+[Sprite]
+-Parent:editor_global_attr
+-Name:editAttrOffgl
+-Texture:\gui\menu_button_small.spr
+-Label:?GLOBAL
+-Size: w2.2
+-Position:x-13 y0 z-0.001
+-Event.Mouse.Click.Action:fillAttrEditDialog("GLOBAL::*",0);
+-Event.Mouse.Click.Image:\gui\menu_button_over_small.spr
+-Event.Mouse.Click.Sound:menu_button_click
+-Event.Mouse.Over.Image:\gui\menu_button_over_small.spr
+-Event.Mouse.Over.Sound:menu_button_over
+
+[Sprite]
+-Parent:editor_global_attr
+-Texture:\gui\menu_button_small.spr
+-Label:?Clone
+-Size: w2.2
+-Position:x-13 y-2 z-0.001
+-Event.Mouse.Click.Action:CloneAttrEditDialog();
+-Event.Mouse.Click.Image:\gui\menu_button_over_small.spr
+-Event.Mouse.Click.Sound:menu_button_click
+-Event.Mouse.Over.Image:\gui\menu_button_over_small.spr
+-Event.Mouse.Over.Sound:menu_button_over
+
+[Sprite]
+-Parent:editor_global_attr
+-Texture:\gui\menu_button_small.spr
+-Label:?Delete
+-Size: w2.2
+-Position:x-13 y-4 z-0.001
+-Event.Mouse.Click.Action:DeleteAttrEditDialog();
+-Event.Mouse.Click.Image:\gui\menu_button_over_small.spr
+-Event.Mouse.Click.Sound:menu_button_click
+-Event.Mouse.Over.Image:\gui\menu_button_over_small.spr
+-Event.Mouse.Over.Sound:menu_button_over
+
+[Sprite]
+-Parent:editor_global_attr
+-Texture:\gui\empty.png
+-Name:editor_global_attr_status
+-Label:?ALL
+-Position:x0 y9.3 z-0.001
+
+[Sprite]
+-Parent:editor_global_attr
+-Texture:\gui\menu_button_small.spr
+-Label:?SAVE
+-Size: w2.2
+-Position:x-13 y-6 z-0.001
+-Event.Mouse.Click.Action:saveAttrEditDialog();
+-Event.Mouse.Click.Image:\gui\menu_button_over_small.spr
+-Event.Mouse.Click.Sound:menu_button_click
+-Event.Mouse.Over.Image:\gui\menu_button_over_small.spr
+-Event.Mouse.Over.Sound:menu_button_over
+
+[Sprite]
+-Parent:editor_global_attr
+-Texture:\gui\menu_button_small.spr
+-Label:?Save Game
+-Size: w2.2
+-Position:x14 y11 z-0.001
+-Event.Mouse.Click.Action:SaveGameAttrEditDialog();
+-Event.Mouse.Click.Image:\gui\menu_button_over_small.spr
+-Event.Mouse.Click.Sound:menu_button_click
+-Event.Mouse.Over.Image:\gui\menu_button_over_small.spr
+-Event.Mouse.Over.Sound:menu_button_over
+
+[Sprite]
+-Parent:editor_global_attr
+-Texture:\gui\menu_button_small.spr
+-Label:?Load Game
+-Size: w2.2
+-Position:x14 y-12.5 z-0.001
+-Event.Mouse.Click.Action:LoadGameAttrEditDialog();
+-Event.Mouse.Click.Image:\gui\menu_button_over_small.spr
+-Event.Mouse.Click.Sound:menu_button_click
+-Event.Mouse.Over.Image:\gui\menu_button_over_small.spr
+-Event.Mouse.Over.Sound:menu_button_over
+
+[Sprite]
+-Parent:editor_global_attr
+-Texture:\gui\menu_button_small.spr
+-Label:?}}}
+-Size: w4 h2
+-Position:x4 y-12.5 z-0.001
+-Event.Mouse.Click.Action:fillAttrEditDialog(g_LastEGA_Mask, g_LastEGA_Skip+10);
+-Event.Mouse.Click.Sound:menu_button_click
+-Event.Mouse.Over.Image:\gui\dialog_frame_big.png
+-Event.Mouse.Over.Sound:menu_button_over
+
+[Sprite]
+-Parent:editor_global_attr
+-Texture:\gui\menu_button_small.spr
+-Label:?{{{
+-Size: w4 h2
+-Position:x-4 y-12.5 z-0.001
+-Event.Mouse.Click.Action:fillAttrEditDialog(g_LastEGA_Mask, g_LastEGA_Skip-10);
+-Event.Mouse.Click.Sound:menu_button_click
+-Event.Mouse.Over.Image:\gui\dialog_frame_big.png
+-Event.Mouse.Over.Sound:menu_button_over
+
+[Sprite]
+-Parent:editor_global_attr
+-Texture:panels.png
+-Position:x0 y-1.5 z-0.00099
+-Size:w19 h20
+-Alpha:0.5
+
+[Sprite]
+-Parent:editor_global_attr
+-Texture:panels.png
+-Position:x0 y9.4 z-0.00099
+-Size:w40 h1.5
+-Alpha:0.7
+
+[Sprite]
+-Parent:editor_global_attr
+-Texture:\gui\black.png
+-Size:40
+-Alpha:0.5
+
+

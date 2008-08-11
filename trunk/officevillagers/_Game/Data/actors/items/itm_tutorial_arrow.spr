@@ -1,0 +1,32 @@
+[Sprite]
+-Texture:${virtualNode}
+-Parent:officeFloor
+
+[Sprite]
+-AsChild:1
+-Texture:\gui\cursor_grab.png
+-Atlas:x0 y0 w8 h1
+-Size:3
+-Position: x1 y1 z-0.00014
+-Animation.Scripted:effect_CursorDrift("${from_to}")
+
+[Sprite]
+-AsChild:1
+-Texture:\gui\cursor_punktir.png
+-Size:3
+-Position: x0 y0 z-0.00011
+-Animation.Scripted:effect_MatchPos("${from_to}")
+
+[Sprite]
+-AsChild:1
+-Texture:\gui\cursor_punktir_cirk.png
+-Size:3
+-Position: x0 y0 z-0.00012
+-Animation.Scripted:effect_MatchPosL("${from_to}")
+
+[Sprite]
+-AsChild:1
+-Texture:\gui\cursor_punktir_cirk.png
+-Size:3
+-Position: x0 y0 z-0.00013
+-Animation.Scripted:effect_MatchPosR("${from_to}")

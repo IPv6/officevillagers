@@ -1,0 +1,60 @@
+[Dialog]
+// Меню вместе с фоном и всей анимацией
+-DialogName:level_quests
+-Event.Keyboard.Esc.Pressed:core_CloseDialog("level_quests");
+-Event.OnCreate.Action:initQuestDialog(0);
+-Position: z-2
+-ModalDialog:1
+-FadeInEffect:1
+-PauseGame:1
+
+[Sprite]
+-Parent:level_quests
+-Texture:\gui\menu_button_small.spr
+-Label:MENU.BUTTON.CLOSE.LABEL
+-Size: w2.2
+-Position:x0 y-12 z-0.001
+-Event.Mouse.Click.Action:level_CloseQuests();
+-Event.Mouse.Click.Image:\gui\menu_button_over_small.spr
+-Event.Mouse.Click.Sound:menu_button_click
+-Event.Mouse.Over.Image:\gui\menu_button_over_small.spr
+-Event.Mouse.Over.Sound:menu_button_over
+
+[Sprite]
+-Parent:level_quests
+-Texture:\gui\empty.png
+-Label:?}}}
+-Size: w4 h2
+-Position:x9 y-12 z-0.001
+//Event.Mouse.Click.Action:fillAttrEditDialog(null, g_LastEGA_Mask, g_LastEGA_Skip+10);
+-Event.Mouse.Click.Sound:menu_button_click
+-Event.Mouse.Over.Image:\gui\dialog_frame_big.png
+-Event.Mouse.Over.Sound:menu_button_over
+-Alpha:0
+
+[Sprite]
+-Parent:level_quests
+-Texture:\gui\empty.png
+-Label:?{{{
+-Size: w4 h2
+-Position:x-9 y-12 z-0.001
+//Event.Mouse.Click.Action:fillAttrEditDialog(null, g_LastEGA_Mask, g_LastEGA_Skip-10);
+-Event.Mouse.Click.Sound:menu_button_click
+-Event.Mouse.Over.Image:\gui\dialog_frame_big.png
+-Event.Mouse.Over.Sound:menu_button_over
+-Alpha:0
+
+[Sprite]
+// Приглашение
+-Parent:level_quests
+-Texture:dialog_frame_top.png
+-Position: x0 y11.3 z-0.011
+-Label:MENU.DIALOG.QUESTS.LABEL
+-Label.Formatting:<dx=-0.2>
+-Size: w6 h3
+
+[Sprite]
+-Parent:level_quests
+-Texture:\gui\quest_bg.jpg
+-Size: 37
+

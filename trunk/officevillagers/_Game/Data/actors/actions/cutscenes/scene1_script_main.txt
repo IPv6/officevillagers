@@ -1,0 +1,128 @@
+[Event]
+-Name:CutScene1
+-Prq.IsGlobalEvent:0
+-Protected:2
+-Priority:-1
+-Disable.Person.UI:0
+-Think.Speed:1
+-Script.On:
+	game_CutsceneBegin({_who="Office", _action="CutScene1_finish", _tutorial=true, _changeUI=false});
+-Script.Off:
+	gui_QuestOpen(2);
+	gui_QuestOpen(5);
+	game_CutsceneEnd({_changeUI=false});
+	if(gui_isCutSceneWasSkipped()){
+		// Иначе - фейд в саму игру
+		gui_FadeIn();
+	}
+
+-Script.In:
+	local dialogFile = core_GetDataPath("text\\scene1_dialog.lng");
+	local actorSh = actor_GetActor("ACTOR.SHEKEL");
+	local actorAg = actor_GetActor("ACTOR.AGATA");
+	local actorSi = actor_GetActor("ACTOR.SINTI");
+	local actorBo = actor_GetActor("ACTOR.BOB");
+
+	gui_FadeIn();
+	actorWait_Timeout(1);
+	actor_AttachCamera(actorAg);
+	actorWait_SwitchToAction(actorSh,"Cutscene.driver");
+	actorWait_SwitchToAction(actorAg,"Cutscene.driver");
+	actorWait_SwitchToAction(actorSi,"Cutscene.driver");
+	actorWait_SwitchToAction(actorBo,"Cutscene.driver");
+	actor_SetActorPos(actorSh,"SCENES_CutScene1::Shekel");
+	actor_SetActorPos(actorAg,"SCENES_CutScene1::Agata");
+	actor_SetActorPos(actorSi,"SCENES_CutScene1::Sinty");
+	actor_SetActorPos(actorBo,"SCENES_CutScene1::Bob");
+	actor_SitOnChair(actorAg,"TABLE.AGATASIDE",true);
+	actor_SitOnChairX(actorSh,"TABLE.AGATAMAIN",3,true);
+	actor_SitOnChairX(actorSi,"TABLE.AGATAMAIN",4,true);
+	actorWait_Timeout(1);
+	gui_FadeOut();
+	actorWait_Timeout(3);
+	gui_ShowDialog(dialogFile, { _section="DIALOG2", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
+	actor_SwitchToAction(actorBo,"CutScene1.BobWalking");
+	gui_ShowDialog(dialogFile, { _section="DIALOG2-2", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
+	actorWait_Timeout(2);
+	gui_ShowDialog(dialogFile, { _section="DIALOG3", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
+	while(gui_IsDialogOpen()==true){
+		::suspend();
+	}
+	actor_SwitchToAction(actorBo,"CutScene1.BobWalkingBack");
+	actorWait_Timeout(3);
+	local timeToNewIsuue=level_GetTimeToNewIssue()*game_GetGameSpeed();
+	local dateNow=core_GetDate();
+	dateNow=core_AddTime2Date(dateNow,timeToNewIsuue);
+	local addVars=[];
+	addVars.append({name="day", value=format("%i",dateNow._day)});
+	addVars.append({name="month", value=core_Translate(format("MONTH_OF%i",dateNow._month))});
+	addVars.append({name="hour", value=format("%i",dateNow._hour)});
+	addVars.append({name="min", value=format("%i",dateNow._min)});
+
+	gui_ShowDialog(dialogFile, { _section="DIALOG4", _close=true, _vars=addVars, _dialogBg="\\gui\\comics_interface_dialog.png"});
+	actorWait_Timeout(1);
+	gui_ShowDialog(dialogFile, { _section="DIALOG5", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
+	actorWait_SwitchToAction(actorSh,"");
+	actorWait_SwitchToAction(actorAg,"");
+	actorWait_SwitchToAction(actorSi,"");
+	actorWait_SwitchToAction(actorBo,"");
+	actor_SendToLocation(actorAg,"SCENES_CutScene1::iniDOT1");
+	actor_SetProfessionRaw(actorSh,"CREATOR");
+	actor_SetProfessionRaw(actorAg,"AUTHOR-EXPERT");
+	actor_SetProfessionRaw(actorSi,"AUTHOR");
+	actor_SetProfessionRaw(actorBo,"JANITOR");
+	actor_DetachCamera();
+	if(actor_GetAttributeN("Office","flag_Person1Added")==0){
+		actor_SetAttribute("Office","flag_Person1Added",1);
+		actor_NewPerson("person_male",true);
+	}
+	actor_SwitchToAction("Office","CutScene1_finish");
+	
+	//3) добавить нового перса и выставить ему пофессию - финансист...нужен скрипт добавления перса
+	//4) направить агату и новенького работать финансистом
+	//нужна расстановка мебели в комнате финансистов
+	//5) отправить шекеля креативить - нужна расстановка в комнате креативщиков
+	//6) отправить синьти авторствовать, а боба - убираться
+	//7) включить игру.
+
+[Event]
+-Name:CutScene1_finish
+-Prq.IsGlobalEvent:0
+-Protected:2
+-Priority:-1
+-Disable.Person.UI:0
+-Think.Speed:1
+-Script.In:
+	// Предварительные действия
+	actorWait_Timeout(2);
+	game_CutsceneEnd({});
+	//gui_FadeIn();  - после того, как интерфейс сделают видным при фейде - откоментить это
+	// Если не спрашивали имя журнала - спрашиваем
+	if(actor_GetAttributeN("Office","flag_MagNameAsked")==0){
+		actor_SetAttribute("Office","flag_MagNameAsked",1);
+		game_AskMagazineName();
+	}
+	// Если не создавали допперсону - создаем
+	if(actor_GetAttributeN("Office","flag_Person1Added")==0){
+		actor_SetAttribute("Office","flag_Person1Added",1);
+		actor_NewPerson("person_male",true);
+	}
+    // устанавливаем профессии и сбрасываем ивенты (мы ведь не знаем в какой момент был пропуск?)
+    local actorSh = actor_GetActor("ACTOR.SHEKEL");
+    local actorAg = actor_GetActor("ACTOR.AGATA");
+    local actorSi = actor_GetActor("ACTOR.SINTI");
+    local actorBo = actor_GetActor("ACTOR.BOB");
+    actor_SetProfessionRaw(actorSh,"CREATOR");
+    actor_SetProfessionRaw(actorAg,"FINANCIER");
+    actor_SetProfessionRaw(actorSi,"AUTHOR");
+    actor_SetProfessionRaw(actorBo,"JANITOR");
+	actorWait_SwitchToAction(actorSh,"");
+	actorWait_SwitchToAction(actorAg,"");
+	actorWait_SwitchToAction(actorSi,"");
+	actorWait_SwitchToAction(actorBo,"");
+	actor_SetActorPos(actorSh,"SCENES_CutScene1::Shekel");
+	actor_SetActorPos(actorAg,"SCENES_CutScene1::Agata");
+	actor_SetActorPos(actorSi,"SCENES_CutScene1::Sinty");
+	actor_SetActorPos(actorBo,"SCENES_CutScene1::Bob");
+	gui_FadeOut();
+	actor_SwitchToAction("Office","Office_script");

@@ -1,0 +1,7 @@
+[Dialog]
+-DialogName:comics_startup
+-Event.Keyboard.Esc.Pressed:/*none*/
+-Event.OnCreate.Action:showComics("${thisfolder}\\comicspage0.lng");
+-BackgroundMusic:comics.ogg
+-CloseOtherDialogs:${all}
+-ModalDialog:1
