@@ -1,0 +1,3 @@
+-Name:QUEST_6
+-Description:QUEST_6_DESC
+-Reopen:0

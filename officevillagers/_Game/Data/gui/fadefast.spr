@@ -1,0 +1,6 @@
+[Sprite]
+-Texture:fade.jpg
+-Name:_fader
+-Size: w60 h60
+-Position: z-2
+-Event.Mouse.Click.Block:1

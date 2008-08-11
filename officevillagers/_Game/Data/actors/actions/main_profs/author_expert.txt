@@ -1,0 +1,181 @@
+[Event]
+-Name:pre_AUTHOR-EXPERT_Script
+-Prq.Prophessions:AUTHOR-EXPERT
+-Priority:0
+-Prq.InCutscene:0
+-Prq.IsGlobalEvent:0
+-Protected:0
+-Script.In:
+	//если в руках у редатора есть статья, он ищет свободный стол, накотором ничего не редактируется
+	if (actor_HasItem(thisActor,"article")==true){
+		local thisTable = actor_GetActorsByAttribute2("TABLE.EDITOR*", "__BUSY", 0, "material_progress", 0);
+		//и если не находит, возвращает статью на место (с небольшой сценкой, состоящей из выхода на центр отдела и мотания башкой)
+		if (!thisTable){
+			actor_SetActionLabel(thisActor,"AUTHOR.5");
+			actorWait_GoTo(thisActor,"Furniture::TABLE.EDITOR3_RCHECK");
+			actor_OrientHead(thisActor,90);
+			actorWait_Timeout(1);
+			actor_OrientHead(thisActor,270);
+			actorWait_Timeout(1);
+			actor_SetActionLabel(thisActor,"AUTHOR.6");
+			actorWait_GoTo(thisActor,"Furniture::ArticleTable");
+			actor_DelItem(thisActor,"article");
+			actor_SetAttribute("ARTICLE_TABLE","Articles",actor_GetAttributeN("ARTICLE_TABLE","Articles")+1);
+			actor_RestartAction(thisActor);
+			return;
+		}
+	}
+	//если статьи в руках нет, ищет просто свободный стол
+	local thisTable = null;
+	if (actor_HasItem(thisActor,"article")==false){
+		local thisTable = actor_GetActorsByAttribute("TABLE.EDITOR*", "__BUSY", 0);
+	}
+	//если стол не найден, он пытается немного пописать статьи
+	if (!thisTable){
+		actor_SwitchToAction(thisActor,"pre_AUTHOR_Script");
+		return;
+	}
+	//если найден, идёт к столу
+	actor_SetActionLabel(thisActor,"AUTHOR.1");
+	if(nloc_GetWalkableState("Furniture::"+thisTable.Name+"CHECK")!=1){
+		actor_SwitchToAction(thisActor,"pre_AUTHOR_Script");
+		return;
+	}	
+	
+	//если пока он шёл, место кто-то занял, он как дурак стоит три секунды, а потом отправляется искать новое...сюда надо ещё настроение плохое привязать и мотание башкой
+	if (actor_IsSitting(thisTable)==true){
+		actor_SetActionLabel(thisActor,"AUTHOR.2");
+		actorWait_Timeout(3);
+		actor_RestartAction(thisActor);
+		return;
+	}
+	//если всё путём, то сажаем редактора работать
+	actor_SetAttribute(thisTable,"__BUSY",1);
+	actor_SitOnChair(thisActor,thisTable,true);
+	actor_SwitchToAction(thisActor,"AUTHOR-EXPERT_Script");	
+	
+[Event]
+-Name:AUTHOR-EXPERT_Script
+-Prq.Prophessions:AUTHOR-EXPERT
+-Prq.Locations:Furniture::TABLE.EDITOR5_L
+-Priority:-1
+-Prq.IsGlobalEvent:0
+-Protected:0
+-Script.In:
+	//узнаём, куда он сел
+	local thisTable = actor_IsSittingGetTable(thisActor);
+		
+	//если у него при этом есть статья в руках, то сразу добавляем её на стол и выставляем один процент готовности
+	if (actor_HasItem(thisActor,"article")==true){
+		actor_DelItem(thisActor,"article");
+		actor_SetAttribute(thisTable,"material_progress",actor_GetAttributeN(thisTable,"material_progress")+1);
+		if(!actor_HasItem(thisTable,"progress_baloon")){
+			actor_AddItem(thisTable,"progress_baloon","attrName=material_progress");
+		}
+	}
+	
+	//смотрим, есть ли недоредактированные статьи на столе редактора...если есть - отправляем работать над ними
+	if (actor_GetAttributeN(thisTable,"material_progress")>0){
+		actor_SetAttribute(thisActor,"time_percent_tire",getTime());
+		actor_SetAttribute(thisTable,"time_percent_material",getTime());
+		actor_SwitchToAction(thisActor,"AUTHOR-EXPERT_working");
+		return;
+	}
+	
+	//иначе посылаем редактора смотреть, есть ли статьи на редактирование - если есть, то забирает их и запускает ивент сначала, чтобы искаль стол, куда бы их положить, чтобы приступить к их редактированию
+	actor_SetActionLabel(thisActor,"AUTHOR.7");
+	ActorWait_GoTo(thisActor,"Furniture::ArticleTable");
+	if (actor_GetAttributeN("ARTICLE_TABLE","Articles")>0){
+		actor_SetAttribute("ARTICLE_TABLE","Articles",actor_GetAttributeN("ARTICLE_TABLE","Articles")-1);
+		actor_AddItem(thisActor,"article");
+		actor_SwitchToAction(thisActor,"pre_AUTHOR-EXPERT_Script");
+		return;
+	}
+	
+	//если статей нет, то отправляем редатора немного поработать автором
+	if (actor_GetAttributeN("ARTICLE_TABLE","Articles")==0){
+		actor_SwitchToAction(thisActor,"pre_AUTHOR_Script");
+		return;
+	}
+	
+	
+[Event]
+-Name:AUTHOR-EXPERT_working
+-Priority:-1
+-Prq.IsGlobalEvent:0
+-Protected:0
+-Script.In:
+
+	local thisTable = actor_IsSittingGetTable(thisActor);
+
+	//проигрывание ивента - раз в 10 секунд, до те пор, пока статья не будет отредактирована (либо пока актора не выдернет игрок или скука или другой вышестоящий ивент при этом никакого Script.off не нужно так как всё сохраняется с погрешность в 10 секунд)
+	actorWait_Timeout(10);
+	actor_SetActionLabel(thisActor,"AUTHOR.8");
+	//счётчик прогресса редактирования статьи...пускай редактируется стаья чуть быстрее чем автор её пишет - 1% за 40 секунд..
+	if(getTime()-actor_GetAttributeN(thisTable,"time_percent_material")>getGlobal("editing_work_sec")){
+		actor_SetAttribute(thisTable,"material_progress",actor_GetAttributeN(thisTable,"material_progress")+1);
+		actor_SetAttribute(thisTable, "time_percent_material", actor_GetAttributeN(thisTable, "time_percent_material")-getGlobal("editing_work_sec"));
+		actor_AddIcon(thisActor, "article_p1");
+	}
+
+
+
+	//статья готова
+	if (actor_GetAttributeN(thisTable,"material_progress")==100){
+		actor_SetAttribute(thisTable,"material_progress",0);
+		actor_SwitchToAction(thisActor,"AUTHOR-EXPERT_Endworking");
+		return;
+	}
+
+	//счётчик усталости...1% за 13 секунд - при 70% актор убегает отдыхать...т.е. это раз в 15 минут примерно...
+	if(getTime()-actor_GetAttributeN(thisActor,"time_percent_tire")>getGlobal("editing_tire_sec")){
+		actor_SetAttribute(thisActor,"tire",actor_GetAttributeN(thisActor,"tire")+1);
+		actor_SetAttribute(thisActor, "time_percent_tire",actor_GetAttributeN(thisActor, "time_percent_tire")-getGlobal("editing_tire_sec"));
+		actor_AddIcon(thisActor, "boredom_p1");
+	}
+
+	//если усталость 70 или выше, пускаем актора отдыхать (проверка на готовность статьи прописана выше по тексту, так что если усталость и готовность наступит одновременно, усталый редактор всё равно зарелизит статью и даже может сэкономить единичку усталости)
+	if(actor_GetAttributeN(thisActor,"tire")>(getGlobal("danger_tire")-1)){
+		actor_SwitchToAction(thisActor,"NONE");
+		return;
+	}
+
+	//пускаем ивент сначала, чтобы повторил проверки через десять секунд
+	actor_RestartAction(thisActor);
+	return;
+	
+	//потом нужно прикрутить сюда ещё аналогичные счётчики для набора опыта и смены настроения....пока это не нужно - редактор пока один - Агата...у неё опыт не набирается... а настроение поначалу не важно
+
+	
+[Event]
+-Name:AUTHOR-EXPERT_Endworking
+-Priority:-1
+-Prq.IsGlobalEvent:0
+-Protected:0
+-Script.In:
+	local thisTable = actor_IsSittingGetTable(thisActor);
+
+	//когда статья доредактирована, редактор добавляет её к статьям номера и перезапускается)...сюда ещё красивую анимацию
+	
+	actor_DelItem(thisTable,"progress_baloon","attrName=material_progress");	
+	actor_SitOnChair(thisActor,thisTable,false);
+	actor_SetAttribute(thisTable,"__BUSY",0);
+	gui_SetIssueProgressCur(gui_GetIssueProgressCur()+1);
+	
+	
+	//если текущая статься - последняя необходимая для сдачи номера
+	if (gui_GetIssueProgressCur() == GetIssueProgressMax()){
+		//core_Warning("играет анимация и звук");
+		//отключается высчет качества номера
+		actor_SetAttribute(actor_GetActor(), Opener_QualityCheck, 0);
+		
+		//проверка, изобрели ли уже загашник
+		//если не изобрели, то агата сообщает, что авторов желательно переправить на другую работу/учёбу, так как пользы от них никакой, разве что опыт набирают и стажёров учат
+		local dialogFile = core_GetDataPath("actors\\actions\\cutscenes\\end_level_scene_dialog.lng");
+		gui_ShowDialog(dialogFile, { _section="DIALOG2", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
+		
+		//если изобрели, агата сообщает что теперь статьи будут отправляться в загашник, и если в следующещем номере сатей не хватит, можно будет использовать эти (но только в следующем потом загашник обнулится, плюс они потеряют актуалность, то-есть будут "якобы" нулевого качества )
+	}
+	
+	//ивент отключается, что автоматически скидывает автора на pre_AUTHOR-EXPERT_Script, который вернёт его снова на этот скрипт, если автосркий стол всё ещё свободен или выберет другой авторский стол...или направит по путям скуки
+	actor_SwitchToAction(thisActor,"");

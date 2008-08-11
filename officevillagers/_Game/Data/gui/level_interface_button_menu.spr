@@ -1,0 +1,3 @@
+[Sprite]
+-Texture:level_interface.png
+-Atlas:x5 y0 w8 h16

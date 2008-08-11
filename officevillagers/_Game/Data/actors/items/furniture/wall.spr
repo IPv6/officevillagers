@@ -1,0 +1,11 @@
+[Sprite]
+-Texture:${virtualNode}
+-MapY2Z:-100
+
+[Sprite]
+-AsChild:1
+-Texture:${image}
+-SizeFromTexture:1
+-Size:0.8
+-Align: x0.0 y0.5
+-MapY2Z:-100

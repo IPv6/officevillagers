@@ -1,0 +1,5 @@
+[Sprite]
+-Texture:${image}
+-MapY2Z:-100
+-Position: x${xoffset} y${yoffset}
+-SizeFromTexture:1

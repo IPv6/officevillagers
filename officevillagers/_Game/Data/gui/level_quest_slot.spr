@@ -1,0 +1,6 @@
+[Sprite]
+// Приглашение
+-Texture:dialog_frame_top.png
+-Position: z-0.011
+-Label:?...
+-Size: w15 h3

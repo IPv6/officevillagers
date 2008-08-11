@@ -1,0 +1,48 @@
+OptionLong[GLOBAL::max_collectibles_perlevel]=20
+
+//время, за которое разнеы професси получают процент усталости
+OptionLong[GLOBAL::author_tire_sec]=13
+OptionLong[GLOBAL::creator_tire_sec]=13
+OptionLong[GLOBAL::editing_tire_sec]=13
+OptionLong[GLOBAL::finansier_tire_sec]=13
+OptionLong[GLOBAL::janitor_tire_sec]=13
+OptionLong[GLOBAL::stager_tire_sec]=13
+
+//время, за которое работники делает процент работы (статьи, идеи)
+OptionLong[GLOBAL::author_work_sec]=72
+OptionLong[GLOBAL::creator_work_sec]=66
+OptionLong[GLOBAL::editing_work_sec]=66
+
+//время, котрое уборщик убирает мусор
+OptionLong[GLOBAL::cleaning_trash_sec]=45
+
+//граница усталости, выше которой персы убегают отдыхать
+OptionLong[GLOBAL::danger_tire]=70
+
+//дополнительное время, которое перс стоит на точке отдыха
+OptionLong[GLOBAL::rest_time]=1
+
+//количество усталости, восполняемое прохожденеим по одному из путей скуки
+OptionLong[GLOBAL::step_of_rest]=35
+
+//количество статей, которые нужно написать чтобы закончить номер на разных уровнях
+OptionLong[GLOBAL::IssueProgressMax5]=10
+OptionLong[GLOBAL::IssueProgressMax6]=11
+OptionLong[GLOBAL::IssueProgressMax7]=12
+OptionLong[GLOBAL::IssueProgressMax8]=13
+OptionLong[GLOBAL::IssueProgressMax9]=14
+OptionLong[GLOBAL::IssueProgressMax10]=15
+
+//максимальное количество редакторов на разны уровнях
+OptionLong[GLOBAL::FinansierMax5]=1
+OptionLong[GLOBAL::FinansierMax6]=1
+OptionLong[GLOBAL::FinansierMax7]=1
+OptionLong[GLOBAL::FinansierMax8]=2
+OptionLong[GLOBAL::FinansierMax9]=2
+OptionLong[GLOBAL::FinansierMax10]=2
+
+//сколько опыта набрать стажеру чтобы стать специалистом
+OptionLong[GLOBAL::StagerExpMax]=30
+
+//сколько секунд стажер тратит на получение единицы опыта
+OptionLong[GLOBAL::StagerExpTime]=60

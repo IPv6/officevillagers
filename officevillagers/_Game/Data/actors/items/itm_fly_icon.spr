@@ -1,0 +1,8 @@
+[Sprite]
+-Texture:\gui\effects\flyicons\${icon}.png
+-Position: x0 y3 z-0.1
+-Size:h1
+-Animation.Move:d3 y0.1 t4000
+-Selfdestruction:t4000 f2000
+//Custom.Attributes: Item_AutoArrange[1]
+

@@ -1,0 +1,125 @@
+[Event]
+-Name:pre_AUTHOR_Script
+-Prq.Prophessions:AUTHOR
+-Priority:0
+-Prq.InCutscene:0
+-Prq.IsGlobalEvent:0
+-Protected:0
+-Script.In:
+	local thisTable = actor_GetActorsByAttribute("TABLE.AUTHOR*","__BUSY",0);
+	if (!thisTable){
+		$ifdebug core_Warning("no free tables");
+		actor_SwitchToAction(thisActor,"NONE_Script");
+		return;
+	}
+	actor_SetActionLabel(thisActor,"AUTHOR.1");
+	if(nloc_GetWalkableState(thisTable)!=1){
+		$ifdebug core_Warning("no walkable tables "+thisTable.Name);
+		actor_SwitchToAction(thisActor,"pre_AUTHOR_Script");
+		return;
+	}
+	actorWait_GoTo(thisActor,"Furniture::"+thisTable.Name+"CHECK");
+
+	//если пока он шёл, место кто-то занял, он как дурак стоит три секуунды, а потом отправляется искать новое...сюда надо ещё настроение плохое привязать м мотание башкой
+	if (actor_IsSitting(thisTable)==true){
+		actor_SetActionLabel(thisActor,"AUTHOR.2");
+		actorWait_Timeout(3);
+		actor_RestartAction(thisActor);
+		return;
+	}
+	//core_Warning("sending to sit");
+	actor_SetAttribute(thisTable,"__BUSY",1);
+	actor_SitOnChair(thisActor,thisTable,true);
+	actor_SwitchToAction(thisActor,"AUTHOR_Script");
+
+
+	
+	
+[Event]
+-Name:AUTHOR_Script
+-Priority:-1
+-Prq.IsGlobalEvent:0
+-Protected:0
+-Script.In:
+	//получаем стол, на случай, если актор был отправлен игроком, а не прескриптом 
+	local thisTable = actor_IsSittingGetTable(thisActor);
+	if(thisTable!=""){
+		//пускаем счётчики
+		actor_SetAttribute(thisActor,"time_percent_tire",getTime());
+		actor_SetAttribute(thisTable,"time_percent_material",getTime());
+		//ставим следующий кадр для анимации иконки прогресса статьи...всего 20 кадров... по кадру на 5 процентов..знаю что это можно сделать изящнее....но ведь работает)
+		if(!actor_HasItem(thisTable,"progress_baloon")){
+			actor_AddItem(thisTable,"progress_baloon","attrName=material_progress");
+		}
+		actor_SwitchToAction(thisActor,"AUTHOR_Writing");
+	}
+	//core_Warning("No sit table!!!");
+	
+[Event]
+-Name:AUTHOR_Writing
+-Priority:-1
+-Prq.IsGlobalEvent:0
+-Protected:0
+-Script.In:
+	local thisTable = actor_IsSittingGetTable(thisActor);
+	if(thisTable == ""){
+		actor_SwitchToAction(thisActor,"");
+		return;
+	}
+	actor_SetActionLabel(thisActor,"AUTHOR.3");
+	//проигрывание ивента - раз в 10 секунд, до те пор, пока статья не будет написана (либо пока автоар не выдернет игрок или скука или другйо вышестоящий ивент при этом никакого Script.off не нужно так как всё сохраняется с погрешность в 10 секунд)
+	actorWait_Timeout(10);
+
+	//счётчик прогресса написания статьи...1% за 72 секунды = 100% за 2 часа..
+	if(getTime()-actor_GetAttributeN(thisTable,"time_percent_material")>getGlobal("author_work_sec")){
+		actor_SetAttribute(thisTable,"material_progress",actor_GetAttributeN(thisTable,"material_progress")+1);
+		actor_AddIcon(thisActor, "article_p1");
+		actor_SetAttribute(thisTable, "time_percent_material", actor_GetAttributeN(thisTable, "time_percent_material")-getGlobal("author_work_sec"));
+	}
+
+	//статья готова (если отдых будет пятиминутный, то на неё должно уйти 8 отдыхов и 2 часа 40 минут реального времени)
+	if (actor_GetAttributeN(thisTable,"material_progress")==100){
+		actor_SetAttribute(thisTable,"material_progress",0);
+		actor_SwitchToAction(thisActor,"AUTHOR_EndWriting");
+		return;
+	}
+
+	//счётчик усталости...1% за 13 секунд - при 70% автор убегает отдыхать...т.е. это раз в 15 минут примерно...
+	
+	if(getTime()-actor_GetAttributeN(thisActor,"time_percent_tire")>getGlobal("author_tire_sec")){
+		actor_SetAttribute(thisActor,"tire",actor_GetAttributeN(thisActor,"tire")+1);
+		actor_SetAttribute(thisActor,"time_percent_tire",actor_GetAttributeN(thisActor,"time_percent_tire")-getGlobal("author_tire_sec"));
+		actor_AddIcon(thisActor, "boredom_p1");
+	}
+
+	//если усталость 70 или выше, пускаем автора отдыхать (проверка на готовность статьи прописана выше по тексту, так что если усталость и готовность наступит одновременно, усталый автор всё равно потащит номер и даже может сэкономить единичку усталости)
+	if(actor_GetAttributeN(thisActor,"tire")>(getGlobal("danger_tire")-1)){
+		actor_SwitchToAction(thisActor,"NONE_Script");
+		return;
+	}
+
+	//пускаем ивент сначала, чтобы повторил проверки через десять секунд
+	actor_RestartAction(thisActor);
+
+	//потом нужно прикрутить сюда ещё аналогичные счётчики для набора опыта и смены настроения....пока это не нужно - автор пока один - Синьти...у неё опыт не набирается... а настроение поначалу не важно
+
+[Event]
+-Name:AUTHOR_EndWriting
+-Priority:-1
+-Prq.IsGlobalEvent:0
+-Protected:0
+-Script.In:
+	local thisTable = actor_IsSittingGetTable(thisActor);
+
+	//когда статья написана, автор тащит её редакторам и добавляет единичку в редакторский стол...я решил отказаться от передачи статьи в руки редакторов...имхо тока лишний гемор с этим..ругань с автором мы устроим и без передачи
+	actor_DelItem(thisTable,"progress_baloon","attrName=material_progress");
+	actor_SitOnChair(thisActor,thisTable,false);
+	actor_SetActionLabel(thisActor,"AUTHOR.4");
+	actor_SetAttribute(thisTable,"__BUSY",0);
+	actor_AddItem(thisActor,"article");
+	actorWait_GoTo(thisActor,"Furniture::ArticleTable");
+	actor_DelItem(thisActor,"article");
+	actor_SetAttribute("ARTICLE_TABLE","Articles",actor_GetAttributeN("ARTICLE_TABLE","Articles")+1);
+
+	//ивент отключается, что автоматически скидывает автора на pre_AUTHOR_Script, который вернёт его снова на этот скрипт, если автосркий стол всё ещё свободен или выберет другой авторский стол...или направит по путям скуки
+	actor_SwitchToAction(thisActor,"");

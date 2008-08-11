@@ -1,0 +1,108 @@
+[Dialog]
+// Авторы
+-DialogName:profiles_dialog
+-ModalDialog:1
+-Event.Keyboard.Esc.Pressed:core_CloseDialog("profiles_dialog",300);
+-Event.OnCreate.Action:Profiles_initDialog();
+-Event.OnDestroy.Action:Profiles_deinitDialog();
+-Position:z-0.55
+-FadeInEffect:1
+
+[Sprite]
+-Texture:menu_button_small.spr
+-Label:???
+-Size: w5
+-Position: x0 y5 z-0.01
+-Name:profile_slot0
+-Event.Mouse.Click.Action:Profiles_ActivateSlot(0);
+-Event.Mouse.Over.Image:menu_button_over_small.spr
+-Event.Mouse.Over.Sound:menu_button_over
+-Event.Mouse.Click.Image:menu_button_over_small.spr
+-Event.Mouse.Click.Sound:menu_button_click
+
+[Sprite]
+-Texture:menu_button_small.spr
+-Label:???
+-Size: w5
+-Position: x0 y2 z-0.01
+-Name:profile_slot1
+-Event.Mouse.Click.Action:Profiles_ActivateSlot(1);
+-Event.Mouse.Over.Image:menu_button_over_small.spr
+-Event.Mouse.Over.Sound:menu_button_over
+-Event.Mouse.Click.Image:menu_button_over_small.spr
+-Event.Mouse.Click.Sound:menu_button_click
+
+[Sprite]
+-Texture:menu_button_small.spr
+-Label:???
+-Size: w5
+-Position: x0 y-1 z-0.01
+-Name:profile_slot2
+-Event.Mouse.Click.Action:Profiles_ActivateSlot(2);
+-Event.Mouse.Over.Image:menu_button_over_small.spr
+-Event.Mouse.Over.Sound:menu_button_over
+-Event.Mouse.Click.Image:menu_button_over_small.spr
+-Event.Mouse.Click.Sound:menu_button_click
+
+[Sprite]
+-Texture:menu_button_small.spr
+-Label:MENU.BUTTON.CLOSE.LABEL
+-Label.Formatting:<dx=0.0><dy=0.0>
+-Size: w3
+-Position: x0 y-7.5 z-0.01
+-Event.Mouse.Click.Action:core_CloseDialog("profiles_dialog",300);
+-Event.Mouse.Over.Image:menu_button_over_small.spr
+-Event.Mouse.Over.Sound:menu_button_over
+-Event.Mouse.Click.Image:menu_button_over_small.spr
+-Event.Mouse.Click.Sound:menu_button_click
+
+[Sprite]
+-Texture:menu_button_small.spr
+-Label:MENU.BUTTON.ADDPLAYER.LABEL
+-Label.Formatting:<dx=0.0><dy=0.0>
+-Size: w3
+-Position: x-5 y-5 z-0.01
+-Event.Mouse.Click.Action:Profiles_AddProfile();
+-Event.Mouse.Over.Image:menu_button_over_small.spr
+-Event.Mouse.Over.Sound:menu_button_over
+-Event.Mouse.Click.Image:menu_button_over_small.spr
+-Event.Mouse.Click.Sound:menu_button_click
+
+[Sprite]
+-Texture:menu_button_small.spr
+-Label:MENU.BUTTON.DELPLAYER.LABEL
+-Label.Formatting:<dx=0.0><dy=0.0>
+-Size: w3
+-Position: x5 y-5 z-0.01
+-Event.Mouse.Click.Action:Profiles_DelProfile();
+-Event.Mouse.Over.Image:menu_button_over_small.spr
+-Event.Mouse.Over.Sound:menu_button_over
+-Event.Mouse.Click.Image:menu_button_over_small.spr
+-Event.Mouse.Click.Sound:menu_button_click
+
+[Sprite]
+// Маркер
+-Texture:menu_marker.spr
+-Name:profile_marker
+-Position: x0 y0 z-0.012
+
+[Sprite]
+// Приглашение
+-Texture:dialog_frame_top.png
+-Position: x0 y10 z-0.011
+-Label:MENU.DIALOG.PROFILES.LABEL
+-Label.Formatting:<dx=-0.2>
+-Size: w6 h3
+
+[Sprite]
+// Фон
+-Texture:dialog_frame_big.png
+-Position:z0.01
+-Size: 20.3
+
+[Sprite]
+// Фон - зачернение
+-Texture:black.png
+-Alpha:0.4 t500
+-Position: z0.011
+-Size: w50 h50

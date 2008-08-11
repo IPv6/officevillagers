@@ -1,0 +1,140 @@
+[Dialog]
+// Меню опций
+-DialogName:options_dialog
+-ModalDialog:1
+-CloseOtherDialogs:options_dialog exit_game
+-Position:z-0.47
+-Event.Keyboard.Esc.Pressed:core_CloseDialog("options_dialog",300);
+-FadeInEffect:1
+
+[Sprite]
+// Кнопка Ok
+-Texture:menu_button_small.spr
+-Label:MENU.BUTTON.OK.LABEL
+-Label.Formatting:<dx=-0.3><dy=0.0>
+-Size: w3
+-Position: x4 y-6.7 z-0.01
+-Event.Mouse.Click.Action:core_CloseDialog("options_dialog",300);
+-Event.Mouse.Over.Image:menu_button_over_small.spr
+-Event.Mouse.Over.Sound:menu_button_over
+-Event.Mouse.Click.Image:menu_button_over_small.spr
+-Event.Mouse.Click.Sound:menu_button_click
+-Event.Mouse.Click.KeyShortcut:${VK_RETURN}
+
+[Sprite]
+// Кнопка Авторы
+-Texture:menu_button_small.spr
+-Label:MENU.BUTTON.AUTHORS.LABEL
+-Label.Formatting:<dx=-0.3><dy=0.0>
+-Size: w3
+-Position: x-4 y-6.7 z-0.01
+-Event.Mouse.Click.Action:core_OpenDialog("authors_dialog");
+-Event.Mouse.Over.Image:menu_button_over_small.spr
+-Event.Mouse.Over.Sound:menu_button_over
+-Event.Mouse.Click.Image:menu_button_over_small.spr
+-Event.Mouse.Click.Sound:menu_button_click
+
+[Sprite]
+// Полный экран
+-Label:MENU.OPTION.FULLSCREEN
+-Label.Formatting:<right><font-size:-1><font-face:alt>
+-Texture:${virtualNode}
+-Position: x-1.5 y-3 z-0.01
+-Size: w12 h6
+
+[Sprite]
+// Полный экран - кнопка
+-Name:option_fullscreen
+-Label:TEXT.EMPTY.SPACE
+-Label.Formatting:<left>
+-Texture:${virtualNode}
+-Position: x4 y-3 z-0.01
+-Size: w8 h2
+-Event.OnCreate.Action:core_SetNodeText("option_fullscreen","<font-face:alt>\n"+(core_GetFullscreen()!=0?core_Translate("OPTION.LABEL.FULLSCREEN"):core_Translate("OPTION.LABEL.WINDOWED")));
+-Event.Mouse.Click.Action:core_SetFullscreen(core_GetFullscreen()==0?1:0);core_SetNodeText("option_fullscreen","<font-face:alt>\n"+(core_GetFullscreen()!=0?core_Translate("OPTION.LABEL.FULLSCREEN"):core_Translate("OPTION.LABEL.WINDOWED")));
+-Event.Mouse.Over.Sound:menu_button_over
+-Event.Mouse.Click.Sound:menu_button_click
+
+[Sprite]
+// Игровой курсор
+-Label:MENU.OPTION.WINCURSOR
+-Label.Formatting:<right><font-size:-1><font-face:alt>
+-Texture:${virtualNode}
+-Position: x-1.5 y0 z-0.01
+-Size: w12 h6
+
+[Sprite]
+// Игровой курсор - кнопка
+-Name:option_wincursor
+-Label:TEXT.EMPTY.SPACE
+-Label.Formatting:<left><font-face:alt>
+-Texture:${virtualNode}
+-Position: x4 y0 z-0.01
+-Size: w8 h2
+-Event.OnCreate.Action:core_SetNodeText("option_wincursor","<font-face:alt>\n"+(core_GetCursor()==0?core_Translate("OPTION.LABEL.WINCURSOR"):core_Translate("OPTION.LABEL.FANCYCURSOR")));
+-Event.Mouse.Click.Action:core_SetCursor(core_GetCursor()==0?1:0);core_SetNodeText("option_wincursor","<font-face:alt>\n"+(core_GetCursor()==0?core_Translate("OPTION.LABEL.WINCURSOR"):core_Translate("OPTION.LABEL.FANCYCURSOR")));
+-Event.Mouse.Over.Sound:menu_button_over
+-Event.Mouse.Click.Sound:menu_button_click
+
+[Sprite]
+// Громкость эффектов - текст
+-Label:MENU.OPTION.SOUNDVOL
+-Label.Formatting:<right><font-size:-1><font-face:alt>
+-Texture:${virtualNode}
+-Position: x-2 y3 z-0.01
+-Size: w12 h6
+
+[Sprite]
+// Громкость музыки - текст
+-Label:MENU.OPTION.MUSICVOL
+-Label.Formatting:<right><font-size:-1><font-face:alt>
+-Texture:${virtualNode}
+-Position: x-2 y6 z-0.01
+-Size: w12 h6
+
+[Sprite]
+// Громкость эффектов - кнопка
+-Name:option_effectvol
+-Label:TEXT.EMPTY.SPACE
+-Texture:volslider_bg.spr
+-Position: x3.5 y3 z-0.01
+-Size:w9 h3
+-Animation.Slider:texture[gui\volslider.spr] attribute[sliderval] vertical[0] 
+-Event.OnCreate.Action:core_SetNodeAttribute("option_effectvol","sliderval",core_GetSoundVolume(1));
+-Event.Mouse.Click.Action:handleVolume_Effects
+-Event.Mouse.Over.Sound:menu_button_over
+-Event.Mouse.Click.Sound:menu_button_click
+
+[Sprite]
+// Громкость музыки - кнопка
+-Name:option_musicvol
+-Label:TEXT.EMPTY.SPACE
+-Texture:volslider_bg.spr
+-Position: x3.5 y6 z-0.01
+-Size:w9 h3
+-Animation.Slider:texture[gui\volslider.spr] attribute[sliderval] vertical[0] 
+-Event.OnCreate.Action:core_SetNodeAttribute("option_musicvol","sliderval",core_GetSoundVolume(0));
+-Event.Mouse.Click.Action:handleVolume_Music
+-Event.Mouse.Over.Sound:menu_button_over
+-Event.Mouse.Click.Sound:menu_button_click
+
+[Sprite]
+// Приглашение
+-Texture:dialog_frame_top.png
+-Position: x0 y10 z-0.011
+-Label:MENU.OPTIONS.TITLE
+-Label.Formatting:<dx=-0.2><font-face:alt>
+-Size: w6 h3
+
+[Sprite]
+// Фон
+-Texture:dialog_frame_big.png
+-Position:z0.01
+-Size: 20
+
+[Sprite]
+// Фон - зачернение
+-Texture:black.png
+-Alpha:0.4 t500
+-Position: z0.011
+-Size: w60 h60

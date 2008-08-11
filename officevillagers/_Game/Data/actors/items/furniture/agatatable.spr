@@ -1,0 +1,128 @@
+[Sprite]
+-MapY2Z:-100
+-Position: s0
+-Size:w12 h12
+
+[Sprite]
+-IgnoreSprite:${not1}
+-AsChild:1
+-Texture:agatatable.png
+-MapY2Z:-100
+-Position: s0
+
+[Sprite]
+-IgnoreSprite:${not1}
+-AsChild:1
+-Visible:1
+-Texture:chair-agata-down.png
+-LocalID:${SUBID_SIT}
+-Size:0.3
+-Position: x-3 y3.2 s-1
+
+[Sprite]
+-IgnoreSprite:${not1}
+-AsChild:1
+-Visible:0
+-Texture:chair-agata-down.png
+-LocalID:${SUBID_SITX}
+-Size:0.3
+-MapY2Z:-100
+-Position: x-3 y2.7 s-2
+
+[Sprite]
+-IgnoreSprite:${not2}
+-AsChild:1
+-Visible:1
+-Texture:chair-agata-up.png
+-LocalID:${SUBID_SIT}
+-Size:0.3
+-Position: x-3 y-3.2 s3
+
+[Sprite]
+-IgnoreSprite:${not2}
+-AsChild:1
+-Visible:0
+-Texture:chair-agata-up.png
+-LocalID:${SUBID_SITX}
+-Size:0.3
+-MapY2Z:-100
+-Position: x-3 y-3.0 s4
+-Custom.Attributes: OnSeatY[0.1]
+
+[Sprite]
+-IgnoreSprite:${not3}
+-AsChild:1
+-Visible:1
+-Texture:chair-agata-down.png
+-LocalID:${SUBID_SIT}
+-Size:0.3
+-Position: x0 y3.2 s-3
+
+[Sprite]
+-IgnoreSprite:${not3}
+-AsChild:1
+-Visible:0
+-Texture:chair-agata-down.png
+-LocalID:${SUBID_SITX}
+-Size:0.3
+-MapY2Z:-100
+-Position: x0 y2.7 s-4
+
+[Sprite]
+-IgnoreSprite:${not4}
+-AsChild:1
+-Visible:1
+-Texture:chair-agata-up.png
+-LocalID:${SUBID_SIT}
+-Size:0.3
+-Position: x0 y-3.2 s5
+
+[Sprite]
+-IgnoreSprite:${not4}
+-AsChild:1
+-Visible:0
+-Texture:chair-agata-up.png
+-LocalID:${SUBID_SITX}
+-Size:0.3
+-MapY2Z:-100
+-Position: x0 y-3.0 s6
+-Custom.Attributes: OnSeatY[0.1]
+
+[Sprite]
+-IgnoreSprite:${not5}
+-AsChild:1
+-Visible:1
+-Texture:chair-agata-down.png
+-LocalID:${SUBID_SIT}
+-Size:0.3
+-Position: x3 y3.2 s-5
+
+[Sprite]
+-IgnoreSprite:${not5}
+-AsChild:1
+-Visible:0
+-Texture:chair-agata-down.png
+-LocalID:${SUBID_SITX}
+-Size:0.3
+-MapY2Z:-100
+-Position: x3 y2.7 s-6
+
+[Sprite]
+-IgnoreSprite:${not6}
+-AsChild:1
+-Visible:1
+-Texture:chair-agata-up.png
+-LocalID:${SUBID_SIT}
+-Size:0.3
+-Position: x3 y-3.2 s7
+
+[Sprite]
+-IgnoreSprite:${not6}
+-AsChild:1
+-Visible:0
+-Texture:chair-agata-up.png
+-LocalID:${SUBID_SITX}
+-Size:0.3
+-MapY2Z:-100
+-Position: x3 y-3.0 s8
+-Custom.Attributes: OnSeatY[0.1]

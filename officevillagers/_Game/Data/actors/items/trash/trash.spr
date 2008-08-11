@@ -1,0 +1,7 @@
+[Sprite]
+-Texture:trash.png
+-AsMutable:1
+-Atlas:x${rnd(0,3)} y0 w4 h1
+-Size:2
+-MapY2Z:-100
+

@@ -1,0 +1,5 @@
+[Sprite]
+-Texture:\gui\effects\progress_baloon.png
+-Atlas: x0 y0 w8 h1
+-Position: x0 y0 z-0.00001
+-Animation.Scripted:effect_ActorProgress("${attrName}")

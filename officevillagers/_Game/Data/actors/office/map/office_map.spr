@@ -1,0 +1,6 @@
+[Sprite]
+-Texture:office_bg.jpg
+-Name:officeFloor
+-Size:86
+-Event.Mouse.Drag.Action:officeMapLClick
+-Event.Mouse.Click.Block:2

@@ -1,0 +1,37 @@
+[Sprite]
+-Texture:table1-left.png
+-Size:w12
+-MapY2Z:-100
+-Position: x2
+
+[Sprite]
+-AsChild:1
+-Visible:1
+-Texture:chair1-left.png
+-LocalID:${SUBID_SIT}
+-MapY2Z:-100
+-Size:0.3
+-Position: x-0.5 y-1.0
+
+[Sprite]
+-AsChild:1
+-Visible:0
+-Texture:chair1-left.png
+-LocalID:${SUBID_SITX}
+-MapY2Z:-100
+-Size:0.3
+-Position: x0 y-0.5
+
+[Sprite]
+-AsChild:1
+-Visible:1
+-Texture:${virtualNode}
+-LocalID:${SUBID_ITEMATTACH}
+-Position: x-2 y2
+
+[Sprite]
+-AsChild:1
+-Visible:0
+-Texture:${virtualNode}
+-LocalID:${SUBID_DEFDROP}
+-Position: x1 y-1

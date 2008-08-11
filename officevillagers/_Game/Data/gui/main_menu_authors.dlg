@@ -1,0 +1,48 @@
+[Dialog]
+// Авторы
+-DialogName:authors_dialog
+-ModalDialog:1
+-Event.Keyboard.Esc.Pressed:core_CloseDialog("authors_dialog",300);
+-Position:z-0.55
+-FadeInEffect:1
+
+[Sprite]
+-Texture:menu_button_small.spr
+-Label:MENU.BUTTON.CLOSE.LABEL
+-Label.Formatting:<dx=0.0><dy=0.0>
+-Size: w3
+-Position: x0 y-7 z-0.01
+-Event.Mouse.Click.Action:core_CloseDialog("authors_dialog",300);
+-Event.Mouse.Over.Image:menu_button_over_small.spr
+-Event.Mouse.Over.Sound:menu_button_over
+-Event.Mouse.Click.Image:menu_button_over_small.spr
+-Event.Mouse.Click.Sound:menu_button_click
+
+[Sprite]
+// Полный экран
+-Texture:${virtualNode}
+-Name:authors_text_body
+-Label:#authors.lng
+-Label.Formatting:<face=alt>
+-Position: x0 y6.5 z-0.01
+
+[Sprite]
+// Приглашение
+-Texture:dialog_frame_top.png
+-Position: x0 y10 z-0.011
+-Label:MENU.DIALOG.AUTHORS.LABEL
+-Label.Formatting:<dx=-0.2><font-face:alt>
+-Size: w7 h3.5
+
+[Sprite]
+// Фон
+-Texture:dialog_frame_big.png
+-Position:z0.01
+-Size: 20.3
+
+[Sprite]
+// Фон - зачернение
+-Texture:black.png
+-Alpha:0.4 t500
+-Position: z0.011
+-Size: w50 h50

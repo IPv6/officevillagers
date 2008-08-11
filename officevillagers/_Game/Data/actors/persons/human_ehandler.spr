@@ -1,0 +1,10 @@
+[Sprite]
+-Position:x0 y1.1 s0
+-Size: w1.2 h2.7
+-Event.Mouse.Drag.Action:onDragActor
+-Event.Mouse.Over.In.Script:onActorMouseOver
+-Event.Mouse.Over.Out.Script:onActorMouseOut
+
+[Sprite]
+-LocalID:${SUBID_SHADOW}
+-Texture:human_shadow.png

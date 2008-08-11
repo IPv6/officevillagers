@@ -1,0 +1,49 @@
+[Dialog]
+// Меню выхода из игры
+-DialogName:exit_game
+-Event.Keyboard.Esc.Pressed:{};/*Do NOTHING!*/
+-ModalDialog:1
+-CloseOtherDialogs:exit_game
+-Position:z-0.51
+-FadeInEffect:1
+-PauseGame:1
+
+[Sprite]
+// Кнопка Ok
+-Texture:menu_button_small.spr
+-Label:MENU.BUTTON.OK.LABEL
+-Size: w3
+-Position: x-4 y-1.8 z-0.01
+-Event.Mouse.Click.Action:core_CloseGame();
+-Event.Mouse.Over.Image:menu_button_over_small.spr
+-Event.Mouse.Over.Sound:menu_button_over
+-Event.Mouse.Click.Image:menu_button_over_small.spr
+-Event.Mouse.Click.Sound:menu_button_click
+-Event.Mouse.Click.KeyShortcut:${VK_RETURN}
+
+[Sprite]
+// Кнопка Выход
+-Texture:menu_button_small.spr
+-Label:MENU.BUTTON.CANCEL.LABEL
+-Size: w3
+-Position: x4 y-1.8 z-0.01
+-Event.Mouse.Click.Action:core_CloseDialog("exit_game",300);
+-Event.Mouse.Over.Image:menu_button_over_small.spr
+-Event.Mouse.Over.Sound:menu_button_over
+-Event.Mouse.Click.Image:menu_button_over_small.spr
+-Event.Mouse.Click.Sound:menu_button_click
+
+[Sprite]
+// Фон
+-Texture:dialog_frame_small.png
+-Label:MENU_DOYOUREALLY.WHANTTOEXIT
+-Label.Formatting:<dy=1.8><face=alt>
+-Position:z0.01
+-Size: w20 h10
+
+[Sprite]
+// Фон - зачернение
+-Texture:black.png
+-Alpha:0.4 t500
+-Position: z0.011
+-Size: w50 h50

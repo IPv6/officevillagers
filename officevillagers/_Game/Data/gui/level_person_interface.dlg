@@ -1,0 +1,90 @@
+[Dialog]
+-DialogName:person_interface
+-ModalDialog:1
+-Position: x0 z-0.3
+-Event.OnCreate.Action:initPersonInterfaceDialog();
+-Event.OnDestroy.Action:deinitPersonInterfaceDialog();
+-Event.Keyboard.Esc.Pressed:core_CloseDialog("person_interface");
+-FadeInEffect:1
+-PauseGame:1
+
+[Sprite]
+// Малое поле, отлавливает вывод мыши
+-Texture:black.png
+-Alpha:0.004
+-Size: w10 h10
+-Event.Mouse.Over.Out.Script:onDragOutPInterface
+
+[Sprite]
+// Большое поле, отлавливает клик мыши за пределами интерфейса
+-Texture:black.png
+-Alpha:0.0004
+-Size: w40 h40
+-Position: z0.1
+-Event.Mouse.Click.Action:onClickOutPInterface
+
+[Sprite]
+-Texture:level_interface.png
+-Name:person_interface_name
+-Atlas:x3 y2 w4 h16
+-Size: w6
+-Position: y4
+-Label:????
+
+[Sprite]
+-Texture:level_interface.png
+-Name:_piAUTHORbt
+-Atlas:x10 y2 w16 h16
+-Size: w2.5
+-Alpha:0.1
+-Position: x-2.5 y0.1 z-0.001
+-Event.Mouse.Click.Action:personChooseProfession("AUTHOR");
+-Event.Mouse.Click.Sound:menu_button_click
+-Event.Mouse.Over.Sound:menu_button_over
+-Event.Mouse.Over.In.Script:onPUIMouseOver("AUTHOR");
+-Event.Mouse.Over.Out.Script:onPUIMouseOut("AUTHOR");
+
+[Sprite]
+-Texture:level_interface.png
+-Name:_piFINANCIERbt
+-Atlas:x11 y2 w16 h16
+-Size: w2.5
+-Alpha:0.1
+-Position: x-1.2 y-2 z-0.002
+-Event.Mouse.Click.Action:personChooseProfession("FINANCIER");
+-Event.Mouse.Click.Sound:menu_button_click
+-Event.Mouse.Over.Sound:menu_button_over
+-Event.Mouse.Over.In.Script:onPUIMouseOver("FINANCIER");
+-Event.Mouse.Over.Out.Script:onPUIMouseOut("FINANCIER");
+
+[Sprite]
+-Texture:level_interface.png
+-Name:_piCREATORbt
+-Atlas:x10 y3 w16 h16
+-Size: w2.5
+-Alpha:0.1
+-Position: x1.2 y-2 z-0.0021
+-Event.Mouse.Click.Action:personChooseProfession("CREATOR");
+-Event.Mouse.Click.Sound:menu_button_click
+-Event.Mouse.Over.Sound:menu_button_over
+-Event.Mouse.Over.In.Script:onPUIMouseOver("CREATOR");
+-Event.Mouse.Over.Out.Script:onPUIMouseOut("CREATOR");
+
+[Sprite]
+-Texture:level_interface.png
+-Name:_piJANITORbt
+-Atlas:x11 y3 w16 h16
+-Size: w2.5
+-Alpha:0.1
+-Position: x2.5 y0.1 z-0.001
+-Event.Mouse.Click.Action:personChooseProfession("JANITOR");
+-Event.Mouse.Click.Sound:menu_button_click
+-Event.Mouse.Over.Sound:menu_button_over
+-Event.Mouse.Over.In.Script:onPUIMouseOver("JANITOR");
+-Event.Mouse.Over.Out.Script:onPUIMouseOut("JANITOR");
+
+[Sprite]
+-Texture:${virtualNode}
+-Name:_pistatus
+-Position: x0 y-4.5 z-0.001
+-Label:?

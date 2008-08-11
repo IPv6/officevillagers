@@ -1,0 +1,4 @@
+[Sprite]
+-Texture:\gui\black.png
+-Selfdestruction:t8000 f1000
+-Alpha:0.4

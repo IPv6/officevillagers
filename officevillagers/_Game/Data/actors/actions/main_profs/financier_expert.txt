@@ -1,0 +1,11 @@
+[Event]
+-Name:pre_FINANCIER-EXPERT_Script
+-Prq.Prophessions:FINANCIER-EXPERT
+-Priority:0
+-Prq.InCutscene:0
+-Prq.IsGlobalEvent:0
+// Чтобы пока перс делает это действие, другое действие не могло бы его отвлечь (2 - это значит если он делает и любое из подчиненных действий тоже)
+-Protected:0
+-Script.In:
+//пока пускай просто перекидывает на финансистов
+	actor_SwitchToAction(thisActor,"FINANCIER_Script");

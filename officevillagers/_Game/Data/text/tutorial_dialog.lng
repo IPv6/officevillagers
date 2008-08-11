@@ -1,0 +1,180 @@
+[DIALOG5]
+#PAGEBEGIN:(shekel.wow.png)
+Вау!!!
+#PAGEEND
+
+#PAGEBEGIN:(sinty.wow.png)
+Как тут...
+#PAGEEND
+
+#PAGEBEGIN:(agata.png)
+...запущено.
+#PAGEEND
+
+#PAGEBEGIN:(sinty.png)
+А мне кажется - очень уютно.
+#PAGEEND
+
+[DIALOG1]
+#PAGEBEGIN:(shekel.asking.png)
+И что нам теперь делать?
+#PAGEEND
+
+#PAGEBEGIN:(agata.angry.png)
+Работать! Эй там, кто-нибудь! Возьмите ка за шкирку этого лентяя и перетащите на его рабочее место у компьютеров.
+#PAGEEND
+
+#PAGEBEGIN:(shekel.angry.png)
+Я сам пойду!
+#PAGEEND
+
+#PAGEBEGIN:(agata.png)
+Никуда он сам не пойдет, пока не возьмешь за шкирку и пинка не отвесишь.
+#PAGEEND
+
+[DIALOG3]
+#PAGEBEGIN:(game.png)
+Задание: Возьмите Шекеля левой кнопкой мыши и отпустите у компьютера, чтобы он начал работать.
+#PAGEEND
+
+[DIALOG4-1]
+#PAGEBEGIN:(agata.png)
+Ну и чего стоим? Тексты писать кто будет? Дядя?
+#PAGEEND
+
+#PAGEBEGIN:(shekel.red.png)
+Я не умею.
+#PAGEEND
+
+#PAGEBEGIN:(agata.png)
+И за что только зарплату получал.
+#PAGEEND
+
+[DIALOG4-2]
+#PAGEBEGIN:(game.png)
+Кликните на Шекеле левой кнопкой мыши, чтобы посмотреть, какие профессии он знает.
+#PAGEEND
+
+[DIALOG4b-1]
+#PAGEBEGIN:(agata.png)
+Н-да. Действительно. Ты ведь у нас креативщик. Можно конечно тебя и переучить, но времени нет. А ну быстро отправляйся искать помещение для работы и не смей мешать авторам!
+#PAGEEND
+
+[DIALOG4b-2]
+#PAGEBEGIN:(game.png)
+Задание: Смените у Шекеля профессию на "Креативщик", чтобы он занялся работой креативщика (поиском комнаты).
+#PAGEEND
+
+[DIALOG6-1]
+#PAGEBEGIN:(agata.png)
+Синьти, замени этого оболтуса. 
+#PAGEEND
+
+[DIALOG6-2]
+#PAGEBEGIN:(game.png)
+Переключите профессию Синьти на "авторы" и перенесите ее к компьютеру, чтобы она начала работать над материалами.
+#PAGEEND
+
+[DIALOG8]
+#PAGEBEGIN:(agata.png)
+Где тут у прошлого начальника был кабинет?
+#PAGEEND
+
+#PAGEBEGIN:(bob.png)
+Эх... и кто тут только раньше не работал.
+#PAGEEND
+
+#PAGEBEGIN:(agata.angry.png)
+Я кажется вопрос задала.
+#PAGEEND
+
+#PAGEBEGIN:(bob.png)
+Да.. кто только не работал...
+#PAGEEND
+
+#PAGEBEGIN:(agata.png)
+... Чтож, я беру себе тот, что покрупнее. Быстро приберите там, чтобы я могла начать работу.
+#PAGEEND
+
+#PAGEBEGIN:(bob.angry.png)
+Извините, мисс, но попрошу без фамильярностей. Дойдет очередь до вашего кабинета, тогда и уберусь. А то ходят тут всякие в грязнах ботинках, командуют...
+#PAGEEND
+
+#PAGEBEGIN:(agata.png)
+Чтож. Посмотрим.
+#PAGEEND
+
+[DIALOG9]
+#PAGEBEGIN:(agata.png)
+Выглядит так, будто здесь когда-то уже была редакция журнала.
+#PAGEEND
+
+[DIALOG10]
+#PAGEBEGIN:(agata.png)
+Смотри ка, даже какие-то наброски сохранились.
+#PAGEEND
+
+[DIALOG11]
+#PAGEBEGIN:(game.png)
+Обратите внимание на появившуюся полоску сверху экрана. Она показывает, сколько статей осталось сдать, чтобы выпустить журнал.
+#PAGEEND
+
+#PAGEBEGIN:(game.png)
+Если статей будет недостаточно - журнал не выйдет в продажу, поэтому, во что бы то ни стало все нужно сдать вовремя.
+#PAGEEND
+
+[DIALOG12]
+#PAGEBEGIN:(agata.png)
+Похоже, им не хватило всего одного материала, перед тем как все закрылось. И было это... не более дня назад. Статьи совсем новые.
+Что же с ними такого стряслось?
+#PAGEEND
+
+[DIALOG122]
+#PAGEBEGIN:(agata.angry.png)
+Синьти!
+#PAGEEND
+
+[DIALOG13]
+#PAGEBEGIN:(sinty.png)
+Мэм?
+#PAGEEND
+
+#PAGEBEGIN:(agata.png)
+У тебя готово?
+#PAGEEND
+
+#PAGEBEGIN:(sinty.red.png)
+В...вот.
+#PAGEEND
+
+#PAGEBEGIN:(agata.png)
+Так... так... так... вот здесь ничего... в остальном чушь полнейшая.
+#PAGEEND
+
+#PAGEBEGIN:(sinty.red.png)
+Переписать, да?
+#PAGEEND
+
+#PAGEBEGIN:(agata.png)
+Нет времени. Сейчас подредактирую и прокатит. Иди дальше работать.
+#PAGEEND
+
+[DIALOG14]
+#PAGEBEGIN:(shekel.png)
+Я нашел помещение!
+#PAGEEND
+
+#PAGEBEGIN:(agata.png)
+Отлично. Давай выберем название для журнала.
+#PAGEEND
+ 
+[DIALOG15]
+#PAGEBEGIN:(agata.png)
+Так. Теперь пошли, посмотрим что с версткой, и будем выпускать номер.
+#PAGEEND
+
+#PAGEBEGIN:(agata.png)
+У наших предшественников был тираж в сто тысяч, но нам сейчас больше десяти не вытянуть. Это как раз позволит нанять еще одного или двух сотрудников.
+#PAGEEND
+
+[END]<-Обязательный тег, указывающий на окончание файла диалогов

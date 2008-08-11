@@ -1,0 +1,28 @@
+[Sprite]
+-Texture:${virtualNode}
+-MapY2Z:-100
+
+[Sprite]
+-AsChild:1
+-Texture:agatatable-small.png
+-Size:h10
+-MapY2Z:-100
+-Position: x0 y-0.01
+
+[Sprite]
+-AsChild:1
+-Visible:1
+-Texture:chair-agata-left.png
+-LocalID:${SUBID_SIT}
+-MapY2Z:-100
+-Size:h4
+-Position: x3 s1
+
+[Sprite]
+-AsChild:1
+-Visible:0
+-Texture:chair-agata-left.png
+-LocalID:${SUBID_SITX}
+-MapY2Z:-100
+-Size:h4
+-Position: x2.7 y0 s2

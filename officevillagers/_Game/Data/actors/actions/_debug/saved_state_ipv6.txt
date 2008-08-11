@@ -1,0 +1,63 @@
+<Office>
+	<ProgressMax val="100" />
+	<ProgressCur val="0" />
+	<ProgressTime_Now val="0" />
+	<ProgressTime_Max val="10000" />
+	<ProgressTime_Crunch val="0" />
+	<BaseSaveFile val="\actors\actions\saved_state.txt" />
+	<!-- Описание начального положения в игре -->
+	<!-- Ограничения: -->
+	<!-- 1) нельзя удалять неиспользуеные поля (нужно оставлять их пустыми) -->
+	<!-- 2) нельзя менять порядок полей -->
+	<!-- Описания полей: -->
+	<!-- ActorType -->
+	<!-- -1. Офис, глобальный актер отвечающий за координацию работы всего. Должен присутсвовать обязательно в единственном жекземпляре -->
+	<!-- 0. Любой неподвижный интерактивный объект, которому будет необходимо как либо "думать" -->
+	<!-- 1. Персонаж -->
+	<Actors>
+		<Actor>
+			<Name val="Office" />
+			<Sprite />
+			<Position.Location val="INIT::ACTOR_SHEKEL" />
+			<ActorType val="-1" />
+			<ActorProphession val="NONE" />
+			<CurrentAction val="Debug2" />
+			<AttributesOverload val="\actors\actions\office_globals.txt" />
+			<Items></Items>
+		</Actor>
+		<Actor>
+			<Name val="ACTOR.SHEKEL" />
+			<Sprite val="actors\persons\human.spr?hsex=s" />
+			<Body val="0" />
+			<Head val="0" />
+			<BodyLock val="1" />
+			<Position.x val="0.000000" />
+			<Position.y val="0.200000" />
+			<Position.Location val="_DEBUG::DOT1" />
+			<ActorType val="1" />
+			<CreationTime val="1000" />
+			<ActorProphession val="NONE" />
+			<ActorValidProphession val="CREATOR" />
+			<CurrentAction val="" />
+			<Attributes />
+			<Items></Items>
+			<AutoClone val="0"/>
+		</Actor>
+		<Actor>
+			<Name val="ACTOR.AGATA" />
+			<Sprite val="actors\persons\human.spr?hsex=s" />
+			<Body val="2" />
+			<Head val="1" />
+			<BodyLock val="1" />
+			<Position.x val="9.000000" />
+			<Position.y val="7.200000" />
+			<Position.Location val="_DEBUG::DOT2" />
+			<ActorType val="1" />
+			<ActorProphession val="NONE" />
+			<ActorValidProphession val="AUTHOR,FINANCIER" />
+			<CurrentAction val="Cutscene.driver" />
+			<Attributes />
+			<Items></Items>
+		</Actor>
+	</Actors>
+</Office>

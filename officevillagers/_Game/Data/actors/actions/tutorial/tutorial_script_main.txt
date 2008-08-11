@@ -1,0 +1,163 @@
+[Event]
+-Name:TutorialMainScript
+-Prq.IsGlobalEvent:0
+// Чтобы пока перс делает это действие, никакое другое действие не могло бы его отвлечь (2 - это значит если он делает и любое из подчиненных действий тоже)
+-Protected:2
+// Чтобы никто не мог подхватить это действие автоматически
+-Priority:-1
+// Чтобы человечка нельзя было схватить и перетащить
+-Disable.Person.UI:1
+// Максимальная скорость обработки данного действия (по умолчанию - 5!)
+-Think.Speed:1
+-Script.On:
+	location_AttachCamera({_name="SCENES_Tutorial::Camera1", _time=0.001});
+	game_CutsceneBegin({_who="Office", _action="CutScene1_finish", _tutorial=true, _changeUI=false});
+	actor_SetAttribute("Office","flag_MagNameAsked",0);// Сброс если был перезапуск туториала
+	actor_SetAttribute("Office","flag_Person1Added",0);// Сброс если был перезапуск туториала
+	gui_EnableInterface(false);
+	local actorSh = actor_GetActor("ACTOR.SHEKEL");
+	local actorAg = actor_GetActor("ACTOR.AGATA");
+	local actorSi = actor_GetActor("ACTOR.SINTI");
+	local actorBo = actor_GetActor("ACTOR.BOB");
+
+	// Задаем умолчания
+	actorSh._ProfChangeAccess <- false;
+	actorAg._ProfChangeAccess <- false;
+	actorSi._ProfChangeAccess <- false;
+	actorBo._ProfChangeAccess <- false;
+	gFlag_hDragAllowCameraSlide=false;// Чтобы при драгах камера не велась за персом
+	//gFlag_hIntCenterCameraOnPers=false;// Чтобы интерфейс не центрировал камеру
+	
+-Script.Off:
+	// Отключаем все что могли надобавлять в процессе тьюториала
+	//core_Warning("Tut off!");
+	gui_ShowDialog(null,null);
+	location_DetachCamera();
+	// устанавливаем профессии
+	local actorSh = actor_GetActor("ACTOR.SHEKEL");
+	local actorAg = actor_GetActor("ACTOR.AGATA");
+	local actorSi = actor_GetActor("ACTOR.SINTI");
+	local actorBo = actor_GetActor("ACTOR.BOB");
+	actor_SetProfessionRaw(actorSh,"NONE");
+	actor_SetProfessionRaw(actorAg,"NONE");
+	actor_SetProfessionRaw(actorSi,"NONE");
+	actor_SetProfessionRaw(actorBo,"NONE");
+	actor_DelItem(actorBo,"shvabra");
+
+	// Восстанавливаем умолчания
+	actorSh._ProfChangeAccess = true;
+	actorAg._ProfChangeAccess = true;
+	actorSi._ProfChangeAccess = true;
+	actorBo._ProfChangeAccess = true;
+	gFlag_hIntCloseOnProfchange = true;// Для ручного закрытия диалога
+	gFlag_hIntCloseOnMoveout = true;
+	gFlag_hIntRawSetProfession = false;
+	//gFlag_hIntCenterCameraOnPers=true;
+	gFlag_hDragAllowCameraSlide=true;// Чтобы при драгах камера велась за персом
+
+	// После тьюториала сразу переходим к первой катсцене
+	gui_SetIssueProgressCur(0);
+	game_CutsceneEnd({_changeUI=false});// Мы переходим или в  другую катсцену или в спецметод, выключать интерфейс не надо
+	if(!gui_isCutSceneWasSkipped()){
+		gui_StartCutscene("CutScene1");
+		
+	}else{
+		// Иначе - фейд в саму игру
+		gui_FadeIn();
+		
+	}
+	
+-Script.In:
+	// Актеры тьюториала
+	local dialogFile = core_GetDataPath("text\\tutorial_dialog.lng");
+	local actorSh = actor_GetActor("ACTOR.SHEKEL");
+	local actorAg = actor_GetActor("ACTOR.AGATA");
+	local actorSi = actor_GetActor("ACTOR.SINTI");
+	local actorBo = actor_GetActor("ACTOR.BOB");
+
+	actorWait_SwitchToAction(actorSh,"Cutscene.driver");
+	actorWait_SwitchToAction(actorAg,"Cutscene.driver");
+	actorWait_SwitchToAction(actorSi,"Cutscene.driver");
+	actorWait_SwitchToAction(actorBo,"Cutscene.driver");
+
+	// Первый диалог
+	actor_OrientBody(actorAg,180);
+	actor_SetActorPos(actorSh,"SCENES_Tutorial::SHEKEL.0");
+	gui_ShowDialog(dialogFile, { _section="DIALOG5", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
+	location_AttachCamera({_name="SCENES_Tutorial::Camera2", _time=14});
+	actor_SwitchToAction(actorSi,"Tutorial.SintiLookingAround");
+	actor_SwitchToAction(actorBo,"Tutorial.BobWorking");
+	actorWait_Timeout(13);
+	while(gui_IsDialogOpen()==true){
+		::suspend();
+	}
+	gui_ShowDialog(dialogFile, { _section="DIALOG1", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
+
+	{// Блок ожидания от игрока перетаскивания Шeкеля на стол с компьютерами
+		gui_ShowDialog(dialogFile, { _section="DIALOG3", _close=false, _dialogBg="\\gui\\comics_interface_dialog.png", _noMoreIcon=true});
+		actorWait_SwitchToAction(actorSh,"Tutorial.Shekel.WaitingStol");
+		actorWait_WaitToActionStart(actorSh,"Tutorial.Shekel.OnStol");
+	
+		actor_SetActorPos(actorSh,"SCENES_Tutorial::DOT2");
+		location_AttachCamera({_name="SCENES_Tutorial::Camera3", _time=3});
+		gui_ShowDialog(null,null);// Закрываем диалог
+	}
+	{// Блок ожидания от игрока выбора профессии у Шeкеля
+		actorWait_GoTo(actorAg,"SCENES_Tutorial::DOT7");
+		actor_OrientBody(actorAg,actorSh);
+		actor_OrientHead(actorAg,actorSh);
+		gui_ShowDialog(dialogFile, { _section="DIALOG4-1", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
+		{	// =====================================
+			// Этот код не менять!!!
+			// =====================================
+			actor_AddItem(actorSh,"cursor_hint","x[2]&y[4]");
+			gui_ShowDialog(dialogFile, { _section="DIALOG4-2", _close=false, _dialogBg="\\gui\\comics_interface_dialog.png", _noMoreIcon=true});
+			actorWait_SwitchToAction(actorSh,"Tutorial.Shekel.WaitingProfLook");
+			gFlag_hIntCloseOnProfchange = false;
+			gFlag_hIntCloseOnMoveout = false;
+			gFlag_hIntRawSetProfession = true;
+			actorSh._ProfChangeAccess = true;
+			actorWait_InterfaceOpened(actorSh,true);
+			actor_DelItem(actorSh,"cursor_hint");
+			gui_ShowDialog(null,null);
+			gui_ShowDialog(dialogFile, { _section="DIALOG4b-1", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
+			// Идем дальше
+			actor_AddItem(actorSh,"cursor_hint_absolute","parnt=_piCREATORbt&x[2.5]&y[3]&z[-0.5]");
+			actor_SetProfessionRaw(actorSh,"NONE");// Чтобы игрок намеренно кликнул куда показыявают
+			gui_ShowDialog(dialogFile, { _section="DIALOG4b-2", _close=false, _dialogBg="\\gui\\comics_interface_dialog.png", _noMoreIcon=true});
+			actor_SwitchToAction(actorSh,"Tutorial.Shekel.WaitingProfChange");
+			actorWait_WaitToActionStart(actorSh,"Tutorial.Shekel.OnProfChange");
+			actor_DelItem(actorSh,"cursor_hint");
+			gui_ShowDialog(null,null);// Закрываем диалог
+			// Для ручного закрытия диалога
+			gFlag_hIntCloseOnProfchange = true;
+			gFlag_hIntCloseOnMoveout = true;
+			gFlag_hIntRawSetProfession = false;
+			closePersonInterfaceDialog(false,false);
+		}
+	}
+	{// Выбор профессии Синти
+		actorWait_GoTo(actorAg,"SCENES_Tutorial::DOT6");
+		actor_OrientBody(actorAg,180);
+		actorWait_SwitchToAction(actorSi,"");// Нужно, так как сейчас паралельно синти делает другой ивент, который шлет ее по локациям!!!
+		actorWait_GoTo(actorSi,"SCENES_Tutorial::SINTI_LOOK4");
+		actor_OrientBody(actorSi,0);
+		gui_ShowDialog(dialogFile, { _section="DIALOG6-1", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
+		actorSi._ProfChangeAccess = true;
+		gui_ShowDialog(dialogFile, { _section="DIALOG6-2", _close=false, _dialogBg="\\gui\\comics_interface_dialog.png", _noMoreIcon=true});
+		actorWait_SwitchToAction(actorSi,"Tutorial.Sinty.WaitingProfChange");
+		actorWait_WaitToActionStart(actorSi,"Tutorial.SintyWorking");
+		gui_ShowDialog(null,null);
+	}
+	actorWait_SwitchToAction(actorAg,"Tutorial.AgataVsBob");
+	actorWait_WaitToActionStart(actorAg,"Tutorial.AgataVsBobEnd");
+	
+	actorWait_SwitchToAction(actorSi,"Tutorial.AgataVsSinty");
+	actorWait_WaitToActionStart(actorSi,"Tutorial.AgataVsSintyEnd");
+	
+	actorWait_SwitchToAction(actorSh,"Tutorial.AgataVsShekel");
+	actorWait_WaitToActionStart(actorSh,"Tutorial.AgataVsShekelEnd");
+	actorWait_SwitchToAction(actorAg,"Tutorial.AgataVsShekel2");
+	actorWait_SwitchToAction(actorSh,"Tutorial.AgataVsShekel3");
+	actorWait_WaitToActionStart(actorSh,"Tutorial.End");
+	actor_SwitchToAction(thisActor,"");

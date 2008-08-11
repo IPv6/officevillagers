@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual C++ Express 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Game", "Game.vcproj", "{8AD59290-6613-47E2-8E0A-B7FD84468041}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A79653F2-73F4-4F57-AE86-4AEBDE795232} = {A79653F2-73F4-4F57-AE86-4AEBDE795232}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "squirrel", "..\..\..\PROJECTS_ROOT_LIBRARY\squirrel\squirrel\squirrel.vcproj", "{A79653F2-73F4-4F57-AE86-4AEBDE795232}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug - Unicode|Win32 = Debug - Unicode|Win32
+		Debug|Win32 = Debug|Win32
+		Release - Fast FPU|Win32 = Release - Fast FPU|Win32
+		Release - Unicode|Win32 = Release - Unicode|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8AD59290-6613-47E2-8E0A-B7FD84468041}.Debug - Unicode|Win32.ActiveCfg = Debug|Win32
+		{8AD59290-6613-47E2-8E0A-B7FD84468041}.Debug - Unicode|Win32.Build.0 = Debug|Win32
+		{8AD59290-6613-47E2-8E0A-B7FD84468041}.Debug|Win32.ActiveCfg = Debug|Win32
+		{8AD59290-6613-47E2-8E0A-B7FD84468041}.Debug|Win32.Build.0 = Debug|Win32
+		{8AD59290-6613-47E2-8E0A-B7FD84468041}.Release - Fast FPU|Win32.ActiveCfg = Release|Win32
+		{8AD59290-6613-47E2-8E0A-B7FD84468041}.Release - Fast FPU|Win32.Build.0 = Release|Win32
+		{8AD59290-6613-47E2-8E0A-B7FD84468041}.Release - Unicode|Win32.ActiveCfg = Release|Win32
+		{8AD59290-6613-47E2-8E0A-B7FD84468041}.Release - Unicode|Win32.Build.0 = Release|Win32
+		{8AD59290-6613-47E2-8E0A-B7FD84468041}.Release|Win32.ActiveCfg = Release|Win32
+		{8AD59290-6613-47E2-8E0A-B7FD84468041}.Release|Win32.Build.0 = Release|Win32
+		{A79653F2-73F4-4F57-AE86-4AEBDE795232}.Debug - Unicode|Win32.ActiveCfg = Release|Win32
+		{A79653F2-73F4-4F57-AE86-4AEBDE795232}.Debug - Unicode|Win32.Build.0 = Release|Win32
+		{A79653F2-73F4-4F57-AE86-4AEBDE795232}.Debug|Win32.ActiveCfg = Debug|Win32
+		{A79653F2-73F4-4F57-AE86-4AEBDE795232}.Debug|Win32.Build.0 = Debug|Win32
+		{A79653F2-73F4-4F57-AE86-4AEBDE795232}.Release - Fast FPU|Win32.ActiveCfg = Release - Unicode|Win32
+		{A79653F2-73F4-4F57-AE86-4AEBDE795232}.Release - Fast FPU|Win32.Build.0 = Release - Unicode|Win32
+		{A79653F2-73F4-4F57-AE86-4AEBDE795232}.Release - Unicode|Win32.ActiveCfg = Release - Unicode|Win32
+		{A79653F2-73F4-4F57-AE86-4AEBDE795232}.Release - Unicode|Win32.Build.0 = Release - Unicode|Win32
+		{A79653F2-73F4-4F57-AE86-4AEBDE795232}.Release|Win32.ActiveCfg = Release|Win32
+		{A79653F2-73F4-4F57-AE86-4AEBDE795232}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

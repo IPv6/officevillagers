@@ -1,0 +1,70 @@
+<Actor>
+	<Name val="Wall1" />
+	<Sprite val="\actors\items\furniture\wall.spr?image=wall1.png" />
+	<Position.Location val="FurniWALL::wall1" />
+	<ActorProphession val="FURNITURE.WALL" />
+	<Items></Items>
+</Actor>
+<Actor>
+	<Name val="Wall2" />
+	<Sprite val="\actors\items\furniture\wall.spr?image=wall2.png" />
+	<Position.Location val="FurniWALL::wall2" />
+	<ActorProphession val="FURNITURE.WALL" />
+	<Items></Items>
+</Actor>
+<Actor>
+	<Name val="Wall3" />
+	<Sprite val="\actors\items\furniture\wall.spr?image=wall3.png" />
+	<Position.Location val="FurniWALL::DOT1" />
+	<ActorProphession val="FURNITURE.WALL" />
+	<Items></Items>
+</Actor>
+<Actor>
+	<Name val="Wall5" />
+	<Sprite val="\actors\items\furniture\wall.spr?image=wall5.png" />
+	<Position.Location val="FurniWALL::DOT3" />
+	<ActorProphession val="FURNITURE.WALL" />
+	<Items></Items>
+</Actor>
+<Actor>
+	<Name val="Wall7" />
+	<Sprite val="\actors\items\furniture\wall.spr?image=wall7.png" />
+	<Position.Location val="FurniWALL::DOT5" />
+	<ActorProphession val="FURNITURE.WALL" />
+	<Items></Items>
+</Actor>
+<Actor>
+	<Name val="Wall8" />
+	<Sprite val="\actors\items\furniture\wall.spr?image=wall8.png" />
+	<Position.Location val="FurniWALL::DOT6" />
+	<ActorProphession val="FURNITURE.WALL" />
+	<Items></Items>
+</Actor>
+<Actor>
+	<Name val="Wall9" />
+	<Sprite val="\actors\items\furniture\wall.spr?image=wall9.png" />
+	<Position.Location val="FurniWALL::DOT7" />
+	<ActorProphession val="FURNITURE.WALL" />
+	<Items></Items>
+</Actor>
+<Actor>
+	<Name val="Wall10" />
+	<Sprite val="\actors\items\furniture\wall.spr?image=wall10.png" />
+	<Position.Location val="FurniWALL::DOT8" />
+	<ActorProphession val="FURNITURE.WALL" />
+	<Items></Items>
+</Actor>
+<Actor>
+	<Name val="Wall11" />
+	<Sprite val="\actors\items\furniture\wall.spr?image=wall11.png" />
+	<Position.Location val="FurniWALL::DOT9" />
+	<ActorProphession val="FURNITURE.WALL" />
+	<Items></Items>
+</Actor>
+<Actor>
+	<Name val="Wall12" />
+	<Sprite val="\actors\items\furniture\wall.spr?image=wall12.png" />
+	<Position.Location val="FurniWALL::DOT10" />
+	<ActorProphession val="FURNITURE.WALL" />
+	<Items></Items>
+</Actor>

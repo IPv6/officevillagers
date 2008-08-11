@@ -1,0 +1,66 @@
+<Manifest>
+  <InitialScriptFile val="scripts\startup.nut" />
+  <InitialScriptCode val="startGame();" />
+  <SoundFolder val="sounds\" />
+  <MusicFolder val="sounds\music\" />
+  <DefaultLanguage val="data_en" />
+  <DefaultLngFile val="text\common_strings.lng" />
+  <DefaultWindowTitle val="GAME.TITLE" />
+  <Modifiers_DefaultPixelSize val="0.0527" />
+  <Fonts>
+    <Font>
+      <InternalName val="main" />
+      <Description val="gui\font_main.xml" />
+      <Scale val="7" />
+    </Font>
+    <Font>
+      <InternalName val="alt" />
+      <Description val="gui\font_alt.xml" />
+      <Scale val="10" />
+      <KerningScale val="1.0" />
+      <KerningShift val="-0.02" />
+      <KerningSpaceShift val="0.05" />
+    </Font>
+  </Fonts>
+  <Cursors>
+    <Cursor>
+      <InternalName val="main" />
+      <Texture val="gui\cursor_usual.png" />
+    </Cursor>
+    <Cursor>
+      <InternalName val="click" />
+      <Texture val="gui\cursor_grab.png" />
+    </Cursor>
+  </Cursors>
+  <AtlasLists>
+    <AtlasList>
+      <InternalName val="main" />
+      <Data>
+        actors\persons\*.png
+      </Data>
+    </AtlasList>
+    <AtlasList>
+      <InternalName val="items1" />
+      <Data>
+        actors\items\*.png
+        actors\items\trash\*.png
+        actors\items\talks\*.png
+        actors\items\collectible\*.png
+      </Data>
+    </AtlasList>
+    <AtlasList>
+      <InternalName val="items2" />
+      <Data>
+        actors\items\furniture\*.png
+      </Data>
+    </AtlasList>
+  </AtlasLists>
+  <ParticleGroups>
+  </ParticleGroups>
+  <CustomOptions>
+  </CustomOptions>
+  <CustomSettings>
+  Option[NavigationReperPoint]=FurniDrops::BARR_FROM
+  OptionLong[PersonBodyZeroSprite]=1
+  </CustomSettings>
+</Manifest>

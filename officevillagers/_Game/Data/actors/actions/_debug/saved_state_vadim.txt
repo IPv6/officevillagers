@@ -1,0 +1,233 @@
+<Office>
+	<ProgressMax val="100" />
+	<ProgressCur val="0" />
+	<ProgressTime_Now val="0" />
+	<ProgressTime_Max val="10000" />
+	<ProgressTime_Crunch val="0" />
+	<BaseSaveFile val="\actors\actions\saved_state.txt" />
+	<!-- Описание начального положения в игре -->
+	<!-- Ограничения: -->
+	<!-- 1) нельзя удалять неиспользуеные поля (нужно оставлять их пустыми) -->
+	<!-- 2) нельзя менять порядок полей -->
+	<!-- Описания полей: -->
+	<!-- ActorType -->
+	<!-- -1. Офис, глобальный актер отвечающий за координацию работы всего. Должен присутсвовать обязательно в единственном жекземпляре -->
+	<!-- 0. Любой неподвижный интерактивный объект, которому будет необходимо как либо "думать" -->
+	<!-- 1. Персонаж -->
+	<Actors>
+		<Actor>
+			<Name val="Debug" />
+			<ActorProphession val="NONE" />
+			<CurrentAction val="Debug" />
+			<Items></Items>
+		</Actor>
+		<Actor>
+			<Name val="ACTOR.SINTI1" />
+			<Sprite val="actors\persons\human.spr?hsex=s" />
+			<Body val="1" />
+			<Head val="2" />
+			<BodyLock val="1" />
+			<Position.x val="5.000000" />
+			<Position.y val="-2.200000" />
+			<Position.Location val="_DEBUG::SINTY1" />
+			<ActorType val="1" />
+			<ActorProphession val="AUTHOR" />
+			<ActorValidProphession val="AUTHOR-EXPERT,FINANCIER-EXPERT,JANITOR-EXPERT,CREATOR-EXPERT" />
+			<Attributes />
+			<Items></Items>
+		</Actor>
+		<Actor>
+			<Name val="ACTOR.SINTI2" />
+			<Sprite val="actors\persons\human.spr?hsex=s" />
+			<Body val="1" />
+			<Head val="2" />
+			<BodyLock val="1" />
+			<Position.x val="5.000000" />
+			<Position.y val="-2.200000" />
+			<Position.Location val="_DEBUG::SINTY2" />
+			<ActorType val="1" />
+			<ActorProphession val="AUTHOR" />
+			<ActorValidProphession val="AUTHOR-EXPERT,FINANCIER-EXPERT,JANITOR-EXPERT,CREATOR-EXPERT" />
+			<Attributes />
+			<Items></Items>
+		</Actor>
+		
+		<Actor>
+			<Name val="Office" />
+			<Sprite />
+			<Position.Location val="SCENES_Tutorial::iniDOT3" />
+			<ActorType val="-1" />
+			<ActorProphession val="NONE" />
+			<CurrentAction val="Office_script" />
+			<AttributesOverload val="\actors\actions\office_globals.txt" />
+			<Items></Items>
+		</Actor>
+		<Actor>
+			<Name val="ACTOR.SHEKEL" />
+			<Sprite val="actors\persons\human.spr?hsex=s" />
+			<Body val="0" />
+			<Head val="0" />
+			<BodyLock val="1" />
+			<Position.x val="0.000000" />
+			<Position.y val="0.200000" />
+			<Position.Location val="INIT::ACTOR_SHEKEL" />
+			<ActorType val="1" />
+			<ActorProphession val="NONE" />
+			<ActorValidProphession val="CREATOR" />
+			<Attributes />
+			<Items></Items>
+		</Actor>
+		<Actor>
+			<Name val="ACTOR.AGATA" />
+			<Sprite val="actors\persons\human.spr?hsex=s" />
+			<Body val="2" />
+			<Head val="1" />
+			<BodyLock val="1" />
+			<Position.x val="9.000000" />
+			<Position.y val="7.200000" />
+			<Position.Location val="INIT::ACTOR_AGATA" />
+			<ActorType val="1" />
+			<ActorProphession val="NONE" />
+			<ActorValidProphession val="AUTHOR,FINANCIER" />
+			<Attributes />
+			<Items></Items>
+		</Actor>
+		<Actor>
+			<Name val="ACTOR.SINTI" />
+			<Sprite val="actors\persons\human.spr?hsex=s" />
+			<Body val="1" />
+			<Head val="2" />
+			<BodyLock val="1" />
+			<Position.x val="5.000000" />
+			<Position.y val="-2.200000" />
+			<Position.Location val="INIT::ACTOR_SINTY" />
+			<ActorType val="1" />
+			<ActorProphession val="NONE" />
+			<ActorValidProphession val="AUTHOR" />
+			<Attributes />
+			<Items></Items>
+		</Actor>
+		<Actor>
+			<Name val="ACTOR.BOB" />
+			<Sprite val="actors\persons\human.spr?hsex=s" />
+			<Body val="3" />
+			<Head val="3" />
+			<BodyLock val="1" />
+			<Position.x val="-10.000000" />
+			<Position.y val="2" />
+			<Position.Location val="INIT::ACTOR_BOB" />
+			<ActorType val="1" />
+			<ActorProphession val="NONE" />
+			<ActorValidProphession val="JANITOR" />
+			<Attributes />
+			<Items></Items>
+		</Actor>
+			<Actor>
+			<Name val="ACTOR2"/>
+			<Sprite val="actors\persons\human.spr?hsex=m" />
+			<Body val="1" />
+			<Head val="1" />
+			<BodyLock val="0" />
+			<Position.x val="0.000000" />
+			<Position.y val="0.200000" />
+			<Position.Location val="FINANCIER::DOT3" />
+			<ActorType val="1" />
+			<ActorProphession val="NONE" />
+			<ActorValidProphession val="AUTHOR-EXPERT,FINANCIER-EXPERT,JANITOR-EXPERT,CREATOR-EXPERT" />
+			<Attributes />
+			<Items></Items>
+		</Actor>
+			<Actor>
+			<Name val="ACTOR3" />
+			<Sprite val="actors\persons\human.spr?hsex=m" />
+			<Body val="2" />
+			<Head val="2" />
+			<BodyLock val="0" />
+			<Position.x val="0.000000" />
+			<Position.y val="0.200000" />
+			<Position.Location val="FINANCIER::DOT2" />
+			<ActorType val="1" />
+			<ActorProphession val="NONE" />
+			<ActorValidProphession val="AUTHOR-EXPERT,FINANCIER-EXPERT,JANITOR-EXPERT,CREATOR-EXPERT" />
+			<Attributes />
+			<Items></Items>
+		</Actor>
+			<Actor>
+			<Name val="ACTOR4" />
+			<Sprite val="actors\persons\human.spr?hsex=m" />
+			<Body val="3" />
+			<Head val="3" />
+			<BodyLock val="0" />
+			<Position.x val="0.000000" />
+			<Position.y val="0.200000" />
+			<Position.Location val="FINANCIER::DOT1" />
+			<ActorType val="1" />
+			<ActorProphession val="NONE" />
+			<ActorValidProphession val="AUTHOR-EXPERT,FINANCIER-EXPERT,JANITOR-EXPERT,CREATOR-EXPERT" />
+			<Attributes />
+			<Items></Items>
+		</Actor>
+			<Actor>
+			<Name val="ACTOR5" />
+			<Sprite val="actors\persons\human.spr?hsex=w" />
+			<Body val="0" />
+			<Head val="0" />
+			<BodyLock val="0" />
+			<Position.x val="0.000000" />
+			<Position.y val="0.200000" />
+			<Position.Location val="CREATOR::DOT4" />
+			<ActorType val="1" />
+			<ActorProphession val="NONE" />
+			<ActorValidProphession val="AUTHOR-EXPERT,FINANCIER-EXPERT,JANITOR-EXPERT,CREATOR-EXPERT" />
+			<Attributes />
+			<Items></Items>
+		</Actor>
+			<Actor>
+			<Name val="ACTOR6" />
+			<Sprite val="actors\persons\human.spr?hsex=w" />
+			<Body val="1" />
+			<Head val="1" />
+			<BodyLock val="0" />
+			<Position.x val="0.000000" />
+			<Position.y val="0.200000" />
+			<Position.Location val="CREATOR::DOT3" />
+			<ActorType val="1" />
+			<ActorProphession val="NONE" />
+			<ActorValidProphession val="AUTHOR-EXPERT,FINANCIER-EXPERT,JANITOR-EXPERT,CREATOR-EXPERT" />
+			<Attributes />
+			<Items></Items>
+		</Actor>
+		
+			<Actor>
+			<Name val="ACTOR7" />
+			<Sprite val="actors\persons\human.spr?hsex=w" />
+			<Body val="2" />
+			<Head val="2" />
+			<BodyLock val="0" />
+			<Position.x val="0.000000" />
+			<Position.y val="0.200000" />
+			<Position.Location val="CREATOR::DOT1" />
+			<ActorType val="1" />
+			<ActorProphession val="NONE" />
+			<ActorValidProphession val="AUTHOR-EXPERT,FINANCIER-EXPERT,JANITOR-EXPERT,CREATOR-EXPERT" />
+			<Attributes />
+			<Items></Items>
+		</Actor>
+			<Actor>
+			<Name val="ACTOR8" />
+			<Sprite val="actors\persons\human.spr?hsex=w" />
+			<Body val="3" />
+			<Head val="3" />
+			<BodyLock val="0" />
+			<Position.x val="0.000000" />
+			<Position.y val="0.200000" />
+			<Position.Location val="CREATOR::DOT2" />
+			<ActorType val="1" />
+			<ActorProphession val="NONE" />
+			<ActorValidProphession val="AUTHOR-EXPERT,FINANCIER-EXPERT,JANITOR-EXPERT,CREATOR-EXPERT" />
+			<Attributes />
+			<Items></Items>
+		</Actor>
+		
+	</Actors>
+</Office>

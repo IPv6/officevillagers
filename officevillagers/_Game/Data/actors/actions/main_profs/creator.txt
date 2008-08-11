@@ -1,0 +1,150 @@
+[Event]
+-Name:pre_CREATOR_Script
+-Prq.Prophessions:CREATOR
+-Priority:0
+-Prq.InCutscene:0
+-Prq.IsGlobalEvent:0
+-Protected:0
+-Script.In:
+	actor_SwitchToAction(thisActor,"CREATOR_Script");
+
+[Event]
+-Name:CREATOR_Script
+-Prq.Prophessions:CREATOR,CREATOR-EXPERT
+-Prq.Locations:CREATOR::MAIN
+-Priority:-1
+-Prq.IsGlobalEvent:0
+-Protected:0
+-Script.In:
+	//подготовительный ивент, один раз пускающий таймеры
+	actor_SetAttribute(thisActor,"time_percent_tire",getTime());
+	actor_SetAttribute(thisActor,"time_percent_material",getTime());
+	actor_SwitchToAction(thisActor,"CREATOR_WORK");
+		
+[Event]
+-Name:CREATOR_WORK
+-Priority:-1
+-Prq.IsGlobalEvent:0
+-Protected:0
+-Script.In:
+	//Ивент со всеми проверками
+	//счётчик прогресса рождения идеи...пускай идея в 66 секунд..
+	if(getTime()-actor_GetAttributeN(thisActor,"time_percent_material")>getGlobal("creator_work_sec")){
+		actor_SetAttribute("Office","ideas",actor_GetAttributeN("Office", "ideas")+1);
+		actor_SetAttribute(thisActor, "time_percent_material", actor_GetAttributeN(thisActor, "time_percent_material")-getGlobal("creator_work_sec"));
+		actor_AddIcon(thisActor, "techpoint_p1");
+	}
+	//счётчик усталости...1% за 13 секунд
+	if(getTime()-actor_GetAttributeN(thisActor,"time_percent_tire")>getGlobal("creator_tire_sec")){
+		actor_SetAttribute(thisActor,"tire",actor_GetAttributeN(thisActor,"tire")+1);
+		actor_SetAttribute(thisActor,"time_percent_tire",actor_GetAttributeN(thisActor,"time_percent_tire")-getGlobal("creator_tire_sec"));
+		actor_AddIcon(thisActor, "boredom_p1");
+	}
+
+	//если усталость 70 или выше, пускаем актора отдыхать (проверка на готовность статьи прописана выше по тексту, так что если усталость и готовность наступит одновременно, усталый автор всё равно потащит номер и даже может сэкономить единичку усталости)
+	if(actor_GetAttributeN(thisActor,"tire")>(getGlobal("danger_tire")-1)){
+		actor_SwitchToAction(thisActor,"NONE_Script");
+		return;
+	}
+	
+	//теперь пускаем самый неиспользуемый из микроивентов
+	eventManager(thisActor,"CREATOR_Sub*");
+
+[Event]
+-Name:CREATOR_Sub_any1
+-Priority:-1
+-Prq.IsGlobalEvent:0
+-Script.In:
+	if(nloc_GetWalkableState("CREATOR::DOT1")==1){
+		actor_SetActionLabel(thisActor,"CREATOR.1");
+		actorWait_GoTo(thisActor,"CREATOR::DOT1");
+		actorWait_Timeout(10);
+	}
+	actor_SwitchToAction(thisActor,"CREATOR_WORK");
+	
+	
+[Event]
+-Name:CREATOR_Sub_any2
+-Priority:-1
+-Prq.IsGlobalEvent:0
+-Script.In:
+	if(nloc_GetWalkableState("CREATOR::DOT2")==1){
+		actor_SetActionLabel(thisActor,"CREATOR.1");
+		actorWait_GoTo(thisActor,"CREATOR::DOT2");
+		actorWait_Timeout(10);
+	}
+	actor_SwitchToAction(thisActor,"CREATOR_WORK");
+	
+		
+	
+[Event]
+-Name:CREATOR_Sub_any3
+-Priority:-1
+-Prq.IsGlobalEvent:0
+-Script.In:
+	if(nloc_GetWalkableState("CREATOR::DOT3")==1){
+		actor_SetActionLabel(thisActor,"CREATOR.1");
+		actorWait_GoTo(thisActor,"CREATOR::DOT3");
+		actorWait_Timeout(10);
+	}
+		actor_SwitchToAction(thisActor,"CREATOR_WORK");
+	
+[Event]
+-Name:CREATOR_Sub_any4
+-Priority:-1
+-Prq.IsGlobalEvent:0
+-Script.In:
+	if(nloc_GetWalkableState("CREATOR::DOT4")==1){
+		actor_SetActionLabel(thisActor,"CREATOR.1");
+		actorWait_GoTo(thisActor,"CREATOR::DOT4");
+		actorWait_Timeout(10);
+	}
+	actor_SwitchToAction(thisActor,"CREATOR_WORK");
+	
+[Event]
+-Name:CREATOR_Sub_any5
+-Priority:-1
+-Prq.IsGlobalEvent:0
+-Script.In:
+	if(nloc_GetWalkableState("CREATOR::DOT5")==1){
+		actor_SetActionLabel(thisActor,"CREATOR.1");
+		actorWait_GoTo(thisActor,"CREATOR::DOT5");
+		actorWait_Timeout(10);
+	}
+	actor_SwitchToAction(thisActor,"CREATOR_WORK");
+	
+[Event]
+-Name:CREATOR_Sub_any6
+-Priority:-1
+-Prq.IsGlobalEvent:0
+-Script.In:
+	if(nloc_GetWalkableState("CREATOR::DOT6")==1){
+		actor_SetActionLabel(thisActor,"CREATOR.1");
+		actorWait_GoTo(thisActor,"CREATOR::DOT6");
+		actorWait_Timeout(10);
+	}
+	actor_SwitchToAction(thisActor,"CREATOR_WORK");
+	
+[Event]
+-Name:CREATOR_Sub_any7
+-Priority:-1
+-Prq.IsGlobalEvent:0
+-Script.In:
+	if(nloc_GetWalkableState("CREATOR::DOT7")==1){
+		actor_SetActionLabel(thisActor,"CREATOR.1");
+		actorWait_GoTo(thisActor,"CREATOR::DOT7");
+		actorWait_Timeout(10);
+	}
+	actor_SwitchToAction(thisActor,"CREATOR_WORK");
+	
+[Event]
+-Name:CREATOR_Sub_any8
+-Priority:-1
+-Prq.IsGlobalEvent:0
+-Script.In:
+	if(nloc_GetWalkableState("CREATOR::DOT8")==1){
+		actor_SetActionLabel(thisActor,"CREATOR.1");
+		actorWait_GoTo(thisActor,"CREATOR::DOT8");
+		actorWait_Timeout(10);
+	}
+	actor_SwitchToAction(thisActor,"CREATOR_WORK");

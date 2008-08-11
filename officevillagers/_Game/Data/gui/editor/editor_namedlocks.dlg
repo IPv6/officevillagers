@@ -1,0 +1,113 @@
+[Dialog]
+// Меню вместе с фоном и всей анимацией
+-DialogName:editor_namedloc
+-BackgroundImage:\gui\fade.jpg
+-Event.Keyboard.Esc.Pressed:core_OpenDialog("main_menu");
+-Event.OnCreate.Action:initNamedLocDialog();
+-Event.OnKey.Action:onkeyNamedLocDialog
+-CloseOtherDialogs:${all}
+-ModalDialog:0
+
+[Sprite]
+-Parent:editor_namedloc
+-Texture:\gui\menu_button_small.spr
+-Label:?Помощь
+-Size: w2.6
+-Position:x15 y14 z-0.001
+-Event.Mouse.Click.Action:
+	core_Alert(
+		"Задание именованных локаций\n"+
+		"Control-Кликайте на карте чтобы добавить локацию\n"+
+		"(имя будет сгенерено автоматом.. Или Control+Shift)\n"+
+		"Изменяйте ее размер клавишами 'wsad', позицию - стрелками (+шифт)\n"+
+		"Правый клик на локации/точке - удаление/переименовка\n"+
+		"MouseDrag, MouseWheel: zoom, Num0: reset, Ctrl-S: save\n"+
+		"Shift-Клик на нескольких локациях - меню выбора одной из них\n"+
+		"Не забудьте сохранить в файл (Ctrl-S) перед выходом/сменой префикса!");
+-Event.Mouse.Click.Image:\gui\menu_button_over_small.spr
+-Event.Mouse.Click.Sound:menu_button_click
+-Event.Mouse.Over.Image:\gui\menu_button_over_small.spr
+-Event.Mouse.Over.Sound:menu_button_over
+
+[Sprite]
+-Parent:editor_namedloc
+-RenderOrder:1
+-Texture:\gui\black.png
+-Alpha:0.5
+-Label:????
+-Name:curPrefixName
+-Position:x15 y9.2 z-0.001
+-Size: w8 h5
+
+[Sprite]
+-Parent:editor_namedloc
+-Texture:\gui\menu_button_small.spr
+-Label:?Switch
+-Size: w2.6
+-Position:x15 y6 z-0.001
+-Event.Mouse.Click.Action:chooseNLGroupToEdit();
+-Event.Mouse.Click.Image:\gui\menu_button_over_small.spr
+-Event.Mouse.Click.Sound:menu_button_click
+-Event.Mouse.Over.Image:\gui\menu_button_over_small.spr
+-Event.Mouse.Over.Sound:menu_button_over
+
+[Sprite]
+-Parent:editor_namedloc
+-Name:nlocSaveBt
+-Texture:\gui\menu_button_small.spr
+-Label:?В файл
+-Alpha:0.1
+-Size: w2.6
+-Position:x15 y4 z-0.001
+-Event.Mouse.Click.Action:namlocExport();
+-Event.Mouse.Click.Image:\gui\menu_button_over_small.spr
+-Event.Mouse.Click.Sound:menu_button_click
+-Event.Mouse.Over.Image:\gui\menu_button_over_small.spr
+-Event.Mouse.Over.Sound:menu_button_over
+
+[Sprite]
+-Parent:editor_namedloc
+-Texture:\gui\menu_button_small.spr
+-Label:?Show names
+-Size: w2.6
+-Position:x15 y2 z-0.001
+-Event.Mouse.Click.Action:showNlNames();
+-Event.Mouse.Click.Image:\gui\menu_button_over_small.spr
+-Event.Mouse.Click.Sound:menu_button_click
+-Event.Mouse.Over.Image:\gui\menu_button_over_small.spr
+-Event.Mouse.Over.Sound:menu_button_over
+
+[Sprite]
+-Parent:editor_namedloc
+-Texture:\gui\menu_button_small.spr
+-Label:?Закрыть
+-Size: w2.6
+-Position:x15 y-14 z-0.001
+-Event.Mouse.Click.Action:core_OpenDialog("main_menu");
+-Event.Mouse.Click.Image:\gui\menu_button_over_small.spr
+-Event.Mouse.Click.Sound:menu_button_click
+-Event.Mouse.Over.Image:\gui\menu_button_over_small.spr
+-Event.Mouse.Over.Sound:menu_button_over
+
+[Sprite]
+-Parent:editor_namedloc
+-Name:curDotName
+-RenderOrder:1
+-Texture:${virtualNode}
+-Label:?<имя локации>
+-Position:x0 y-14 z-0.001
+
+[Sprite]
+-Parent:editor_namedloc
+-Name:mainFloor
+-Texture:office_bg_editor.jpg
+-Size:46
+-Position: x0 z10
+-Event.Mouse.Click.Action:mainFloorNLClick();
+
+[Sprite]
+// Для отлова относительного смещения
+-Parent:editor_namedloc
+-Name:mainFloorX
+-Size:46
+-Position: x0 z10

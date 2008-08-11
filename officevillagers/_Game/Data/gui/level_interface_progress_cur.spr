@@ -1,0 +1,12 @@
+[Sprite]
+-Texture:level_interface.png
+-Atlas:x0 y30 w1 h32
+-Size: w29
+-Position: z-0.011
+
+[Sprite]
+-Texture:level_interface.png
+-Name:gui_progr_curstopper
+-Atlas:x15 y3 w16 h16
+-Size: w1
+-Position: z-0.012

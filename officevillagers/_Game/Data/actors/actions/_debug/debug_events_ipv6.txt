@@ -1,0 +1,282 @@
+[Event]
+-Name:Debug2
+-Prq.IsGlobalEvent:0
+// Чтобы пока перс делает это действие, никакое другое действие не могло бы его отвлечь (2 - это значит если он делает и любое из подчиненных действий тоже)
+-Protected:-1
+// Чтобы никто не мог подхватить это действие автоматически
+-Priority:-1
+// Максимальная скорость обработки данного действия (по умолчанию - 5!)
+-Think.Speed:1
+-Script.On:
+	core_Warning("IPv6-Debug!");
+	//game_CutsceneBegin({});
+-Script.In:
+	
+	local i=0;
+	local actorSh = actor_GetActor("ACTOR.SHEKEL");
+	local actorAg = actor_GetActor("ACTOR.AGATA");
+	local actorSi = actor_GetActor("ACTOR.SINTI");
+	local actorBo = actor_GetActor("ACTOR.BOB");
+	
+	actor_SwitchToAction(actorSi,"SleepMode");
+	actor_SwitchToAction(actorAg,"Debug_table_Script");
+	actor_SwitchToAction(actorSh,"Debug_table_Script");//SleepMode
+	actor_SwitchToAction(actorBo,"Debug_table_Script");
+	actor_SwitchToAction("Office","SleepMode");
+	
+	if(false)
+	{// Диалоги
+		local dialogFile = core_GetDataPath("text\\tutorial_dialog.lng");
+		gui_ShowDialog(dialogFile, { _section="DIALOG5", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
+		gui_ShowDialog(dialogFile, { _section="DIALOG5", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
+		gui_ShowDialog(dialogFile, { _section="DIALOG5", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
+		gui_ShowDialog(dialogFile, { _section="DIALOG5", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
+		gui_ShowDialog(dialogFile, { _section="DIALOG5", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
+		gui_ShowDialog(dialogFile, { _section="DIALOG3", _close=false, _dialogBg="\\gui\\comics_interface_dialog.png"});
+		actorWait_Timeout(10);
+		gui_ShowDialog(null,null);// Закрываем диалог
+	}
+	
+	if(false)
+	{// Разговоры
+		actor_SwitchToAction("Office","Office_script");
+		actor_SwitchToAction(actorAg,"NONE_Script");
+		actor_SwitchToAction(actorSh,"NONE_Script");
+		//actor_SwitchToAction(actorBo,"NONE_Script");
+		//actor_SwitchToAction(actorSi,"NONE_Script");
+	}
+	if(false)
+	{// Тест посадки за агатовский стол
+		//actor_SitOnChair(actorSi,"TABLE.AGATASIDE",true);
+		actor_SitOnChairX(actorSh,"TABLE.AGATAMAIN",1,true);
+		actor_SitOnChairX(actorAg,"TABLE.AGATAMAIN",2,true);
+		actor_SitOnChairX(actorBo,"TABLE.AGATAMAIN",3,true);
+		actor_SitOnChairX(actor_GetActor("ACTOR.SHEKEL1"),"TABLE.AGATAMAIN",4,true);
+		actor_SitOnChairX(actor_GetActor("ACTOR.SHEKEL2"),"TABLE.AGATAMAIN",5,true);
+		actor_SitOnChairX(actor_GetActor("ACTOR.SHEKEL3"),"TABLE.AGATAMAIN",6,true);
+		actor_OrientHead(actorSi,actorSh);
+		actorWait_Timeout(5);
+		actor_OrientHead(actorSi,0);
+		actor_OrientHead(actorSi,90);
+		actor_OrientHead(actorSi,180);
+		actor_OrientHead(actorSi,-30);
+		actorWait_Timeout(5);
+	}
+	
+	if(false)
+	{// карман
+		actor_AddItem(actorAg,"collectible_item","collectible_number=0");
+		actor_PutIntoPocket(actorAg,actor_GetActor("Wall1"),"collectible_item");
+	}
+	
+	if(false)
+	{//Мусорщики
+		actor_SetProfessionRaw(actorBo,"JANITOR");
+		actor_SwitchToAction(actorBo,"");
+		actor_SwitchToAction("Office","Office_script");
+	}
+	
+	
+	if(false)
+	{//Удаление/создание актеров
+		local newActor=actor_CreateActor("person_male","ACTORTEST");
+		local newCollectible=actor_CreateActor("collectible","TESTCOLLECTIBLE");
+		actor_DeleteActor(newCollectible);
+	}
+	
+	if(false)
+	{//Автопосадка группой
+		actorWait_Timeout(5);
+		actor_SetActorPos(actorSh,"CutScene1::Shekel");
+		actor_SetActorPos(actorAg,"CutScene1::Agata");
+		actor_SetActorPos(actorSi,"CutScene1::Sinty");
+		actor_SetActorPos(actorBo,"CutScene1::Bob");
+		local aSitPers = [];
+		aSitPers.append(actorSh);
+		aSitPers.append(actorSi);
+		aSitPers.append(actorBo);
+		local aOldest3Pers = getOldestPersons();
+		if(aOldest3Pers.len()>3){
+			aOldest3Pers.resize(3);
+		}
+		aSitPers.extend(aOldest3Pers);
+		actor_SitOnChair(actorAg,"TABLE.EDITOR5A_L",true);
+		actorWait_Timeout(10);
+		game_SaveGame();
+		core_Alert("!!!");
+	}
+	
+	/*
+	//gui_StartCutscene("Quest4_Cutscene");
+	game_CutsceneBegin({});
+	game_CutsceneEnd({});
+	gui_QuestOpen(5);
+	gui_QuestOpen(1);
+	gui_QuestOpen(2);
+	*/
+
+	/*
+	actor_AddIcon(actorBo,"techpoint_p1");
+	actor_AddIcon(actorBo,"techpoint_p1");
+	actor_AddIcon(actorBo,"techpoint_p1");
+	actor_AddIcon(actorSi,"techpoint_p1");
+	actor_AddIcon(actorSi,"techpoint_p1");
+	actor_AddIcon(actorSi,"techpoint_p1");
+	*/
+
+	/*// Тест сериализации
+	local aaa = [];
+	aaa.append(1.99);
+	aaa.append("!!!");
+	aaa.append(88);
+	aaa.append({test1=1, test2="test2"});
+	local str=core_SerializeObj(aaa);
+	local aa2=core_DeserializeObj(str);
+	if(aa2[1]!="!!!" || aa2[0]!=1.99 || aa2[2]!=88 || aa2[3].test1!=1 || aa2[3].test2!="test2"){
+		core_Alert(format("ERROR!!! %f - %s - %i",aa2[0],aa2[1],aa2[2]));
+	}else{
+		core_Alert(str);
+		core_Warning("SqSer test passed");
+	}
+	local dataSafe=game_GetSafe();
+	dataSafe.test <- "testVar";
+	dataSafe.testMirror <- thisActor;
+	*/
+	
+	/*//Выбор имени журнала
+	game_AskMagazineName();
+	game_StartPuzzle();
+	*/
+	
+	/*
+	actor_SwitchToAction(actorSh,"SleepMode");
+	actorWait_GoTo(actorSh,"TutorialSideEvents::SHEKEL.1");
+	*/
+	
+	/*// Вычисление времени до конца номера
+	local timeToNewIsuue=level_GetTimeToNewIssue()*game_GetGameSpeed();
+	local dateNow=core_GetDate();
+	dateNow=core_AddTime2Date(dateNow,timeToNewIsuue);
+	local timeStr=format("%i %i %i %i:%i:%i",dateNow._day,dateNow._month,dateNow._year,dateNow._hour,dateNow._min,dateNow._sec);
+	*/
+	
+	/*// Показ хинтов
+	gui_ShowHint("!!!!!!",3.9);
+	actorWait_Timeout(1);
+	gui_ShowHint("?????",3.9);
+	actorWait_Timeout(10);
+	gui_ShowHint(timeStr,100);
+	actorWait_Timeout(5);
+	*/
+	
+	/*// Получение древнейшей персоны
+	local out=getOldestPersons();
+	if(out.len()>0){
+	//core_Warning(format("oldestfound: %i",out.len()));
+	//for(i=0;i<out.len();i++){core_Warning(out[i].Name);};
+	}
+	*/
+	
+	/*
+	local actorBob = actor_GetActor("ACTOR.BOB");
+	local actorSi = actor_GetActor("ACTOR.SINTI");
+	local actorAg = actor_GetActor("ACTOR.AGATA");
+	local actorSh = actor_GetActor("ACTOR.SHEKEL");
+	actor_SwitchToAction(actorBob,"SleepMode");
+	actor_SwitchToAction(actorSi,"SleepMode");
+	actor_SwitchToAction(actorAg,"SleepMode");
+	actorWait_Timeout(50);
+	*/
+	
+	/*
+	// Тест двоных иконок
+	actor_AddIcon(actorSh, "boredom_p1");
+	actor_AddIcon(actorSh, "article_p1");
+	actor_AddIcon(actorSh, "full_rest");
+	actorWait_Timeout(5);
+	actor_AddIcon(actorAg, "boredom_p1");
+	actorWait_Timeout(1);
+	actor_AddIcon(actorAg, "article_p1");
+	actorWait_Timeout(15);
+	*/
+	
+	/*
+	// Тест анимированной швабры
+	actor_AddItem(actorBob,"shvabra");
+	actorWait_Timeout(10);
+	actor_DelItem(actorBob,"shvabra");
+
+	actor_AddItem(actorSi,"article");
+	actor_AddItem(actorBob,"shvabra");
+	actorWait_Timeout(5);
+	actor_DelItem(actorSi,"article");
+	actor_DelItem(actorBob,"shvabra");
+
+	*/
+	
+	/*
+	// Тест поворота головы
+	//actorWait_Timeout(3);core_Warning("2Agata");
+	actor_OrientHead(actorSh,actorAg);
+	//actorWait_Timeout(3);core_Warning("2Bob");
+	actor_OrientBody(actorSh,actorBob);
+	//actorWait_Timeout(3);core_Warning("2Sinti");
+	actor_OrientHead(actorSh,actorSi);
+	actorWait_Timeout(3);
+	*/
+	
+	/*
+	// Тест прогрессбара
+	actor_AddItem(actorBob,"progress_baloon","attrName=material_progress");
+	actor_SetAttribute(actorBob,"material_progress",1);
+	actorWait_Timeout(3);
+	actor_SetAttribute(actorBob,"material_progress",10);
+	actorWait_Timeout(3);
+	actor_SetAttribute(actorBob,"material_progress",30);
+	actorWait_Timeout(3);
+	actor_SetAttribute(actorBob,"material_progress",40);
+	actorWait_Timeout(3);
+	actor_SetAttribute(actorBob,"material_progress",50);
+	actorWait_Timeout(3);
+	actor_SetAttribute(actorBob,"material_progress",70);
+	actorWait_Timeout(3);
+	actor_SetAttribute(actorBob,"material_progress",90);
+	actorWait_Timeout(3);
+	actor_SetAttribute(actorBob,"material_progress",100);
+	actor_DelItem(actorBob,"progress_baloon");
+	*/
+	/*
+	// тест таймера
+	actor_StartTimer(thisActor,"testo");
+	::suspend();
+	::suspend();
+	::suspend();
+	::suspend();
+	//core_Warning(format("timer=%02f",actor_GetTimer(thisActor,"testo")));
+	*/
+	
+	/*
+	// тест отбора по атрибуту - число
+	actor_SetAttribute(actorBob,"testo",1);
+	
+	local res=actor_GetActorsByAttribute("ACTOR*","testo",1);
+	if(!res){
+		//core_Warning(format("rndactor=%s","???"));
+	}else{
+		//core_Warning(format("rndactor=%s",res.Name));
+	}
+	*/
+	
+	/*
+	// тест отбора по атрибуту - строка
+	actor_SetAttribute(actorBob,"testos","!!!");
+	
+	local res=actor_GetActorsByAttribute("ACTOR*","testos","!!!");
+	if(!res){
+		//core_Warning(format("rndactor s=%s","???"));
+	}else{
+		//core_Warning(format("rndactor s=%s",res.Name));
+	}
+	*/
+	actorWait_Timeout(500000);
+	actor_RestartAction(thisActor);

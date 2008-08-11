@@ -1,0 +1,6 @@
+[Sprite]
+-Texture:${image}
+-MapY2Z:-100
+-SizeFromTexture:1
+-Align: x0.5 y-0.5
+-AlignInParent: x-0.5 y0.5

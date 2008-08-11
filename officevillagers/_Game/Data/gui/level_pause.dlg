@@ -1,0 +1,93 @@
+[Dialog]
+-DialogName:level_menu_dialog
+-ModalDialog:1
+-Position:z-0.47
+-Event.Keyboard.Esc.Pressed:core_CloseDialog("level_menu_dialog");
+-FadeInEffect:1
+-PauseGame:1
+
+[Sprite]
+// Кнопка Ok
+-Texture:menu_button_small.spr
+-Label:MENU.BUTTON.OK.LABEL
+-Size: w3
+-Position: x4 y-6.7 z-0.01
+-Event.Mouse.Click.Action:core_CloseDialog("level_menu_dialog");
+-Event.Mouse.Over.Image:menu_button_over_small.spr
+-Event.Mouse.Over.Sound:menu_button_over
+-Event.Mouse.Click.Image:menu_button_over_small.spr
+-Event.Mouse.Click.Sound:menu_button_click
+-Event.Mouse.Click.KeyShortcut:${VK_RETURN}
+
+[Sprite]
+// Кнопка В меню
+-Texture:menu_button_small.spr
+-Label:MENU.BUTTON.TOMENU.LABEL
+-Size: w3
+-Position: x-4 y-6.7 z-0.01
+-Event.Mouse.Click.Action:TransitionOpenDialog("main_menu","fade");
+-Event.Mouse.Over.Image:menu_button_over_small.spr
+-Event.Mouse.Over.Sound:menu_button_over
+-Event.Mouse.Click.Image:menu_button_over_small.spr
+-Event.Mouse.Click.Sound:menu_button_click
+
+[Sprite]
+// Громкость эффектов - текст
+-Label:MENU.OPTION.SOUNDVOL
+-Label.Formatting:<right><font-size:-1><face=alt>
+-Texture:${virtualNode}
+-Position: x-2 y0 z-0.01
+-Size: w12 h6
+
+[Sprite]
+// Громкость музыки - текст
+-Label:MENU.OPTION.MUSICVOL
+-Label.Formatting:<right><font-size:-1><face=alt>
+-Texture:${virtualNode}
+-Position: x-2 y3 z-0.01
+-Size: w12 h6
+
+[Sprite]
+// Громкость эффектов - кнопка
+-Name:option_effectvol
+-Label:TEXT.EMPTY.SPACE
+-Texture:volslider_bg.spr
+-Position: x3.5 y0 z-0.01
+-Size:w9 h3
+-Animation.Slider:texture[gui\volslider.spr] attribute[sliderval] vertical[0] 
+-Event.OnCreate.Action:core_SetNodeAttribute("option_effectvol","sliderval",core_GetSoundVolume(1));
+-Event.Mouse.Click.Action:handleVolume_Effects
+-Event.Mouse.Over.Sound:menu_button_over
+-Event.Mouse.Click.Sound:menu_button_click
+
+[Sprite]
+// Громкость музыки - кнопка
+-Name:option_musicvol
+-Label:TEXT.EMPTY.SPACE
+-Texture:volslider_bg.spr
+-Position: x3.5 y3 z-0.01
+-Size:w9 h3
+-Animation.Slider:texture[gui\volslider.spr] attribute[sliderval] vertical[0] 
+-Event.OnCreate.Action:core_SetNodeAttribute("option_musicvol","sliderval",core_GetSoundVolume(0));
+-Event.Mouse.Click.Action:handleVolume_Music
+-Event.Mouse.Over.Sound:menu_button_over
+-Event.Mouse.Click.Sound:menu_button_click
+
+[Sprite]
+// просто текст
+-Label:MENU.LEVELOPTION.DSCTEXT
+-Label.Formatting:<face=alt>
+-Texture:${virtualNode}
+-Position: x0 y6 z-0.01
+
+[Sprite]
+// Фон
+-Texture:dialog_frame_big.png
+-Position:z0.01
+-Size: 20
+
+[Sprite]
+-Texture:black.png
+-Alpha:0.4 t500
+-Position: z0.011
+-Size: h50 h50

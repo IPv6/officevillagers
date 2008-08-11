@@ -1,0 +1,9 @@
+[Sprite]
+-Texture:fade.jpg
+-Name:_fader
+-Size: w60 h60
+-Position: z-2
+
+// Чтобы при появлении фейда все кнопки под ним блокировались...
+-Event.Mouse.Click.Action:onFadeClick
+-Event.Mouse.Click.Block:-1

@@ -1,0 +1,9 @@
+[Sprite]
+-Size:1
+
+[Sprite]
+-AsChild:1
+-Texture:level_interface.png
+-Atlas:x0 y0 w4 h16
+-Size: w2 h2
+-Position: x-4

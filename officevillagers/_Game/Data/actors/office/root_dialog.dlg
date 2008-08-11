@@ -1,0 +1,38 @@
+[Dialog]
+-DialogName:main_office_level
+-Event.OnCreate.Action:event_OnStartGame(null);
+-BackgroundImage:\gui\fade.jpg
+-BackgroundMusic:office.ogg
+-CloseOtherDialogs:${all}
+-ModalDialog:0
+-Event.OnKey.Action:levelKeyHandler
+//Event.Keyboard.Esc.Pressed:core_OpenDialog("exit_game");
+-Event.Keyboard.Esc.Pressed:level_OpenMenu("");
+
+// Описание уровня
+-OfficeDescription:\actors\office\office_declaration.txt
+
+[Sprite]
+-Texture:\gui\level_interface.spr
+
+[Sprite]
+-Texture:\gui\cutscene_interface.spr
+-Visible:0
+-Name:cutscene_interface_static
+
+[Sprite]
+-Texture:${virtualNode}
+-Name:level_interface_static
+
+[Sprite]
+// Кнопка "Пропустить диалог"
+-Visible:0
+-Name:GuiSkipCutscene
+-Texture:\gui\menu_button.spr?button=comic_buttons
+-Size: w2.5
+-Position: x12.6 y12 z-2.01
+-Label:GUI.LEVEL.SKIP.BUTTON
+-Event.Mouse.Over.Image:\gui\menu_button_over.spr?button=comic_buttons
+-Event.Mouse.Click.Sound:menu_button_click
+-Event.Mouse.Over.Sound:menu_button_over
+-Event.Mouse.Click.Action:gui_SkipCurrentCutscene

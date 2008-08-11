@@ -1,0 +1,77 @@
+[Dialog]
+-DialogName:puzzle_main
+-ModalDialog:1
+-Position:z-2.5
+-Event.OnCreate.Action:game_initPuzzleDialog();
+-Event.Keyboard.Esc.Pressed:/*NOPE!*/
+-PauseGame:1
+
+[Sprite]
+-Texture:buttons_bg.png
+-Name:puzzle_buttons_bg
+-Size:14
+-Position:x11 y7 z-0.001
+
+[Sprite]
+// Фон
+-Name:puzzle_bgroot
+-Texture:puzzle_bg0.jpg
+-Position:z0.01
+-Size: w38 h38
+
+[Sprite]
+// Лого
+-Name:puzzle_logoroot
+-Texture:${virtualNode}
+-Position:x-12 y5.5 z0.01
+-Size:w8 h4
+
+
+[Sprite]
+-Texture:${virtualNode}
+-Label:?...
+-Name:puzzle_magname
+-Position:x0 y5
+
+
+[Sprite]
+// Кнопка Ok
+-Parent:puzzle_buttons_bg
+-Texture:\gui\level_interface.png
+-Atlas:x4 y0 w8 h16
+-Event.Mouse.Click.Sound:menu_button_click
+-Event.Mouse.Over.Image:\gui\level_interface_button_menu.spr
+-Event.Mouse.Over.Sound:menu_button_over
+-Event.Mouse.Click.KeyShortcut:${VK_RETURN}
+-Label:PUZZLE.BUTTON.OK.LABEL
+-Size: w6
+-Position: x2.5 y-1.8 z-0.01
+-Event.Mouse.Click.Action:game_closePuzzleDialog();
+
+[Sprite]
+// Кнопка Next bg
+-Parent:puzzle_buttons_bg
+-Texture:\gui\level_interface.png
+-Atlas:x4 y0 w8 h16
+-Event.Mouse.Click.Sound:menu_button_click
+-Event.Mouse.Over.Image:\gui\level_interface_button_menu.spr
+-Event.Mouse.Over.Sound:menu_button_over
+-Event.Mouse.Click.KeyShortcut:${VK_RETURN}
+-Label:PUZZLE.BUTTON.NEXTBG.LABEL
+-Size: w6
+-Position: x2.5 y1 z-0.01
+-Event.Mouse.Click.Action:game_PuzzleDialogNextBG();
+
+[Sprite]
+// Кнопка Next logo
+-Parent:puzzle_buttons_bg
+-Texture:\gui\level_interface.png
+-Atlas:x4 y0 w8 h16
+-Event.Mouse.Click.Sound:menu_button_click
+-Event.Mouse.Over.Image:\gui\level_interface_button_menu.spr
+-Event.Mouse.Over.Sound:menu_button_over
+-Event.Mouse.Click.KeyShortcut:${VK_RETURN}
+-Label:PUZZLE.BUTTON.NEXTLOGO.LABEL
+-Size: w6
+-Position: x2.5 y4.2 z-0.01
+-Event.Mouse.Click.Action:game_PuzzleDialogNextLogo();

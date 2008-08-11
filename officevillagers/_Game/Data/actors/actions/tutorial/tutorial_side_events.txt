@@ -1,0 +1,357 @@
+[Event]
+-Name:TutorialSideEvents
+-Prq.IsGlobalEvent:0
+-Protected:2
+-Priority:-1
+
+[Step]
+-Name:Tutorial.SintiLookingAround
+-Prq.IsGlobalEvent:0
+-Protected:2
+-Priority:-1
+-Disable.Person.UI:1
+-Walk.Speed:0.5
+-Script.In:
+	//actorWait_GoTo(thisActor,{SCENES_Tutorial::SINTI_LOOK1", _relative="SCENES_Tutorial::AUTHORTABLE", _x=-1, _y=0});
+	actor_OrientHead(thisActor,90);
+	actorWait_Timeout(2);
+	actor_OrientHead(thisActor,270);
+	 actorWait_Timeout(2);
+	actorWait_GoTo(thisActor,"SCENES_Tutorial::SINTI_LOOK2");
+	actor_OrientHead(thisActor,90);
+	 actorWait_Timeout(2);
+	actor_OrientHead(thisActor,270);
+	 actorWait_Timeout(2);
+	actorWait_GoTo(thisActor,"SCENES_Tutorial::SINTI_LOOK3");
+	actor_OrientHead(thisActor,90);
+	 actorWait_Timeout(2);
+	actor_OrientHead(thisActor,270);
+	 actorWait_Timeout(2);
+	actorWait_GoTo(thisActor,"SCENES_Tutorial::SINTI_LOOK4");
+	actor_RestartAction(thisActor);
+
+[Step]
+-Name:Tutorial.BobWorking
+-Prq.IsGlobalEvent:0
+-Protected:2
+-Priority:-1
+-Disable.Person.UI:1
+-Walk.Speed:0.3
+-Script.In:
+	actorWait_GoTo(thisActor,"SCENES_Tutorial::Bob2");
+	actor_AddItem(thisActor,"shvabra");
+	actor_OrientBody(thisActor,180);
+
+[Step]
+-Name:Tutorial.Shekel.WaitingStol
+-Prq.IsGlobalEvent:0
+-Protected:2
+-Think.Speed:1
+-Priority:-1
+-Script.On:
+	actor_AddItem(thisActor,"tutorial_arrow","from_to=ACTOR.SHEKEL,TABLE.AUTHOR1_L");
+-Script.In:
+	while(actor_IsInLocation(thisActor,"SCENES_Tutorial::AUTHORTABLE")==false || humanDragInterval!=0){
+		if (humanDragInterval==0 && (actor_IsInLocation(thisActor,"SCENES_Tutorial::SHEKEL.0")==false && actor_IsInLocation(thisActor,"SCENES_Tutorial::AUTHORTABLE")==false)){
+			actor_SetActorPos(thisActor,"SCENES_Tutorial::SHEKEL.0");
+		}
+		::suspend();
+    }
+	actor_SwitchToAction(thisActor,"Tutorial.Shekel.OnStol");
+-Script.Off:
+	actor_DelItem(thisActor,"tutorial_arrow");
+	
+[Step]
+-Name:Tutorial.Shekel.OnStol
+-Prq.IsGlobalEvent:0
+-Disable.Person.UI:1
+-Protected:2
+-Priority:-1
+
+[Step]
+-Name:Tutorial.Shekel.WaitingProfLook
+-Prq.IsGlobalEvent:0
+-Protected:2
+-Priority:-1
+-Disable.Person.UI:0
+
+[Step]
+-Name:Tutorial.Shekel.WaitingProfChange
+-Prq.IsGlobalEvent:0
+-Protected:2
+-Priority:-1
+-Disable.Person.UI:0
+-Script.In:
+	actorWait_WhileProfNotIn(thisActor,"CREATOR");
+	actor_SwitchToAction(thisActor,"Tutorial.Shekel.OnProfChange");
+
+[Step]
+-Name:Tutorial.Shekel.OnProfChange
+-Prq.IsGlobalEvent:0
+-Protected:2
+-Priority:-1
+-Disable.Person.UI:1
+-Walk.Speed:1.7
+-Script.In:
+	actor_OrientHead(thisActor,90);
+	actorWait_Timeout(1);
+	actor_OrientHead(thisActor,270);
+	actorWait_Timeout(1);
+	actorWait_GoTo(thisActor,"SCENES_Tutorial::SHEKEL.1");
+	actor_OrientHead(thisActor,90);
+	actorWait_Timeout(1);
+	actor_OrientHead(thisActor,270);
+	actorWait_Timeout(1);
+	actorWait_GoTo(thisActor,"SCENES_Tutorial::SHEKEL.2");
+	actor_OrientHead(thisActor,90);
+	actorWait_Timeout(1);
+	actor_OrientBody(thisActor,0);
+	actor_OrientHead(thisActor,270);
+	actorWait_Timeout(2);
+	actorWait_GoTo(thisActor,"SCENES_Tutorial::SHEKEL.0");
+	actor_RestartAction(thisActor);
+	
+[Step]
+-Name:Tutorial.Sinty.WaitingProfChange
+-Prq.IsGlobalEvent:0
+-Protected:2
+-Priority:-1
+-Disable.Person.UI:0
+-Script.On:
+	actor_AddItem(thisActor,"cursor_hint","x[2]&y[4]");
+	gFlag_hIntCloseOnProfchange = false;
+	gFlag_hIntCloseOnMoveout = false;
+	gFlag_hIntRawSetProfession = true;
+-Script.Off:
+	gFlag_hIntCloseOnProfchange = true;
+	gFlag_hIntCloseOnMoveout = true;
+	gFlag_hIntRawSetProfession = false;
+-Script.In:
+	actorWait_InterfaceOpened(thisActor,true);
+	actor_DelItem(thisActor,"cursor_hint");
+	actor_AddItem(thisActor,"cursor_hint_absolute","parnt=_piAUTHORbt&x[2.5]&y[3]&z[-0.5]");
+	while(thisActor.Profession!="AUTHOR"){
+		::suspend();
+	}
+	closePersonInterfaceDialog(false,false);
+	actor_SwitchToAction(thisActor,"Tutorial.Sinty.WaitingProfChange2");
+
+[Step]
+-Name:Tutorial.Sinty.WaitingProfChange2
+-Prq.IsGlobalEvent:0
+-Protected:2
+-Think.Speed:1
+-Priority:-1
+-Script.On:
+	actor_AddItem("TABLE.AUTHOR1_L","cursor_hint_person","x[2.8]&y[-0.8]");
+-Script.Off:
+	actor_DelItem("TABLE.AUTHOR1_L","cursor_hint_person");	
+-Script.In:
+	while(actor_IsInLocation(thisActor,"SCENES_Tutorial::AUTHORTABLE")==false || thisActor.Profession!="AUTHOR" || humanDragInterval!=0){
+		::suspend();
+	}
+	actor_SwitchToAction(thisActor,"Tutorial.SintyWorking");
+	
+[Step]
+-Name:Tutorial.SintyWorking
+-Prq.IsGlobalEvent:0
+-Protected:2
+-Disable.Person.UI:1
+-Priority:-1
+-Script.In:
+	actor_SitOnChair("ACTOR.SINTI","TABLE.AUTHOR1_L",true);
+
+[Step]
+-Name:Tutorial.AgataVsBob
+-Prq.IsGlobalEvent:0
+-Protected:2
+-Priority:-1
+-Disable.Person.UI:1
+-Walk.Speed:0.7
+-Script.In:
+	local dialogFile = core_GetDataPath("text\\tutorial_dialog.lng");
+	actor_AttachCamera(thisActor);
+	actor_OrientHead(thisActor,90);
+	actorWait_Timeout(1);
+	actor_OrientHead(thisActor,180);
+	actorWait_Timeout(1);
+	actorWait_GoTo(thisActor,"SCENES_Tutorial::Agata");
+	while(gui_IsDialogOpen()==true){
+		::suspend();
+	}
+	gui_ShowDialog(dialogFile, { _section="DIALOG8", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
+	actorWait_GoTo(thisActor,"SCENES_Tutorial::Agata2");
+	actorWait_Timeout(1);
+	actor_OrientHead(thisActor,90);
+	actorWait_Timeout(1);
+	actor_OrientHead(thisActor,270);
+	actorWait_Timeout(1);
+	actor_OrientHead(thisActor,180);
+	while(gui_IsDialogOpen()==true){
+		::suspend();
+	}
+	gui_ShowDialog(dialogFile, { _section="DIALOG9", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
+	actorWait_GoTo(thisActor,"SCENES_Tutorial::Agata3");
+	while(gui_IsDialogOpen()==true){
+		::suspend();
+	}
+	actor_OrientBody(thisActor,180);
+	gui_ShowDialog(dialogFile, { _section="DIALOG10", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
+	while(actor_IsInLocation(thisActor,"SCENES_Tutorial::Agata3")==false){
+		::suspend();
+	}
+	while(gui_IsDialogOpen()==true){
+		::suspend();
+	}
+	gui_SetIssueProgressMax(10);
+	gui_SetIssueProgressCur(9);
+	gui_ShowDialog(dialogFile, { _section="DIALOG11", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
+
+	actor_SendToLocation(thisActor,"SCENES_Tutorial::DOT4");
+	while(actor_IsInLocation(thisActor,"SCENES_Tutorial::DOT4")==false){
+		::suspend();
+	}
+	actor_SendToLocation(thisActor,"SCENES_Tutorial::DOT1");
+	while(gui_IsDialogOpen()==true){
+		::suspend();
+	}
+	gui_ShowDialog(dialogFile, { _section="DIALOG12", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
+	while(actor_IsInLocation(thisActor,"SCENES_Tutorial::DOT1")==false){
+		::suspend();
+	}
+	actor_SitOnChair(thisActor,"TABLE.AGATASIDE",true);
+	actorWait_Timeout(2);
+	gui_ShowDialog(dialogFile, { _section="DIALOG122", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
+	actorWait_SwitchToAction(thisActor,"Tutorial.AgataVsBobEnd");
+	
+[Step]
+-Name:Tutorial.AgataVsBobEnd
+-Prq.IsGlobalEvent:0
+-Protected:2
+-Disable.Person.UI:1
+-Priority:-1
+-Script.In:
+
+
+[Step]
+-Name:Tutorial.AgataVsSinty
+-Prq.IsGlobalEvent:0
+-Protected:2
+-Priority:-1
+-Disable.Person.UI:1
+-Walk.Speed:20
+-Script.In:
+actor_SetActorPos(thisActor,"SCENES_Tutorial::SHEKEL.3");
+actor_AddItem(thisActor,"article");
+actorWait_SwitchToAction(thisActor,"Tutorial.AgataVsSinty2");
+
+[Step]
+-Name:Tutorial.AgataVsSinty2
+-Prq.IsGlobalEvent:0
+-Protected:2
+-Disable.Person.UI:1
+-Priority:-1
+-Walk.Speed:2
+-Script.In:
+	local dialogFile = core_GetDataPath("text\\tutorial_dialog.lng");
+	while(gui_IsDialogOpen()==true){
+			::suspend();
+		}
+	actorWait_GoTo(thisActor,"SCENES_Tutorial::SHEKEL.4");
+	gui_ShowDialog(dialogFile, { _section="DIALOG13", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
+		while(gui_IsDialogOpen()==true){
+			::suspend();
+		}
+	gui_SetIssueProgressCur(10);
+	actor_DelItem(thisActor,"article");
+	actorWait_SwitchToAction(thisActor,"Tutorial.AgataVsSintyEnd");
+
+[Step]
+-Name:Tutorial.AgataVsSintyEnd
+-Prq.IsGlobalEvent:0
+-Protected:2
+-Priority:-1
+-Disable.Person.UI:1
+-Walk.Speed:1.2
+-Script.In:
+	actor_SendToLocation(thisActor,"SCENES_Tutorial::SHEKEL.2");
+	
+[Step]
+-Name:Tutorial.AgataVsShekel
+-Prq.IsGlobalEvent:0
+-Protected:2
+-Disable.Person.UI:1
+-Priority:-1
+-Walk.Speed:20
+-Script.In:
+	actor_SetActorPos(thisActor,"SCENES_Tutorial::SHEKEL.2");
+	actorWait_SwitchToAction(thisActor,"Tutorial.AgataVsShekel1");
+	
+[Step]
+-Name:Tutorial.AgataVsShekel1
+-Prq.IsGlobalEvent:0
+-Protected:2
+-Priority:-1
+-Disable.Person.UI:1
+-Walk.Speed:2
+-Script.In:
+	local dialogFile = core_GetDataPath("text\\tutorial_dialog.lng");
+	actorWait_Timeout(3);
+	actorWait_GoTo(thisActor,"SCENES_Tutorial::SHEKEL.4");
+	while(gui_IsDialogOpen()==true){
+			::suspend();
+		}
+	gui_ShowDialog(dialogFile, { _section="DIALOG14", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
+	while(gui_IsDialogOpen()==true){
+		::suspend();
+	}
+	if(actor_GetAttributeN("Office","flag_MagNameAsked")==0){
+		actor_SetAttribute("Office","flag_MagNameAsked",1);
+		game_AskMagazineName();
+	}
+	gui_ShowDialog(dialogFile, { _section="DIALOG15", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
+	actorWait_SwitchToAction(thisActor,"Tutorial.AgataVsShekelEnd");
+	
+[Step]
+-Name:Tutorial.AgataVsShekelEnd
+-Prq.IsGlobalEvent:0
+-Protected:2
+-Disable.Person.UI:1
+-Priority:-1
+-Script.In:
+
+
+[Step]
+-Name:Tutorial.AgataVsShekel2
+-Prq.IsGlobalEvent:0
+-Protected:2
+-Disable.Person.UI:1
+-Priority:-1
+-Walk.Speed:0.7
+-Script.In:
+	actorWait_GoTo(thisActor,"SCENES_Tutorial::DOT4");
+	actorWait_GoTo(thisActor,"SCENES_Tutorial::DOT5");
+	actorWait_GoTo(thisActor,"SCENES_Tutorial::SHEKEL.3");
+	actor_OrientBody(thisActor,180);
+	
+[Step]
+-Name:Tutorial.AgataVsShekel3
+-Prq.IsGlobalEvent:0
+-Protected:2
+-Priority:-1
+-Disable.Person.UI:1
+-Walk.Speed:0.7
+-Script.In:
+	actorWait_GoTo(thisActor,"SCENES_Tutorial::Agata3");
+	actor_OrientBody(thisActor,180);
+	game_StartPuzzle();
+	actorWait_SwitchToAction(thisActor,"Tutorial.End");
+	
+[Step]
+-Name:Tutorial.End
+-Prq.IsGlobalEvent:0
+-Protected:2
+-Disable.Person.UI:1
+-Priority:-1
+-Walk.Speed:0.7
+

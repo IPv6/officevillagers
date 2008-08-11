@@ -1,0 +1,40 @@
+[Dialog]
+-DialogName:comics_page
+-Event.Keyboard.Esc.Pressed:/*none*/
+-BackgroundMusic:comics.ogg
+-CloseOtherDialogs:${all}
+-ModalDialog:1
+
+[Sprite]
+// Текст - тело
+-Name:comics_text_body
+-Texture:${virtualNode}
+-Position: x0 y12 z-0.01
+-Label:TEXT.EMPTY.SPACE
+
+[Sprite]
+-Texture:\gui\cutscene_dialog_next.spr
+-Name:_click2Next2
+-Position: x18.2 y-13 z-0.11
+
+[Sprite]
+-Texture:\gui\comics_interface.png
+-Size: h36.4
+-Position: z-2.01
+
+[Sprite]
+// Парент для диалога
+-Name:level_interface_static
+
+[Sprite]
+// Кнопка "Пропустить диалог"
+-Texture:\gui\menu_button.spr?button=comic_buttons
+-Name:comics_text_button
+-Size: w2.5
+-Position: x12.6 y12 z-2.01
+-Label:GUI.LEVEL.SKIP.BUTTON
+-Event.Mouse.Over.Image:\gui\menu_button_over.spr?button=comic_buttons
+-Event.Mouse.Over.Sound:menu_button_over
+-Event.Mouse.Click.Sound:menu_button_click
+-Event.Mouse.Click.Action:actionCloseComicsBT("comics_page");
+//Animation.ByScriptMethod:effect_SizeDrifting
