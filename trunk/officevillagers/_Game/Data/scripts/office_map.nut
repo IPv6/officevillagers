@@ -9,8 +9,23 @@ floorAttachTargetTime <- 0;
 floorAttachTargetTimeFrom <- 0;
 floorAttachTargetPosFrom <- {_x = 0, _y = 0};
 
-floorClamps <- [{_l=11,_r=-0.6,_u=15.1,_d=-5.7},{_l=0.6,_r=-0.6,_u=12.4,_d=-5.7}];
+floorClamps <- [{_l=11,_r=-0.6,_u=15.1,_d=16.4},{_l=11,_r=-0.6,_u=15.1,_d=-5.7},{_l=0.6,_r=-0.6,_u=12.4,_d=-5.7}];
 floorClampsNum <- 0;
+
+function setMainFloorClamp(bUseMain)
+{
+	if(bUseMain){
+		if(actor_IsActorExist("Heaps.Barricada")){
+			floorClampsNum = 0;
+		}else{
+			floorClampsNum = 1;
+		}
+	}else{
+		floorClampsNum = 2;//Cutscene clamp
+	}
+	setFloorPosition(core_GetNode("officeFloor"));
+}
+
 // Ìועמהû
 function clampPosition(object)
 {
@@ -258,16 +273,9 @@ function location_JumpActor(actor)
 	local locFixed=actor_GetActorPos(actor);
 	setFloorPosition( { _x=-locFixed._x , _y=-locFixed._y } );
 }
-/*
-g_isBarricadaReachableTime <- (-100.0);
-g_isBarricadaReachableCache <- false;
-function isBarricadaReachable()
+
+function gui_CenterCameraOnPers(thisActor)
 {
-	if(g_isBarricadaReachableTime+3>getTime()){
-		return g_isBarricadaReachableCache;
-	}
-	g_isBarricadaReachableCache=nloc_CheckWalkablePath("FurniDrops::BARR_FROM","FurniDrops::BARR_TO");
-	g_isBarricadaReachableTime=getTime();
-	return g_isBarricadaReachableCache;
+	local persPos = actor_GetActorPos(thisActor);
+	setFloorPosition({_x=-persPos._x, _y=-persPos._y});
 }
-*/

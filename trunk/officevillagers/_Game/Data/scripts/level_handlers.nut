@@ -29,6 +29,7 @@ function event_OnLoadGame(gameSafe)
 			setFloorPosition({_x=-officeActor._x, _y=-officeActor._y});
 		}
 	}
+	setMainFloorClamp(true);// Баррикада и т.п.
 }
 
 function setGlobal(name,value)
@@ -73,8 +74,7 @@ function gui_JumpToNextActor()
 		finalI=0;
 	}
 	g_lastActor=actors[finalI].Name;
-	local persPos = actor_GetActorPos(g_lastActor);
-	setFloorPosition({_x=-persPos._x, _y=-persPos._y});
+	gui_CenterCameraOnPers(g_lastActor);
 }
 
 function level_WaitForLoad()
@@ -83,4 +83,10 @@ function level_WaitForLoad()
 		wait(1);
 	}
 	//core_Alert("load done");
+}
+
+function event_BarricadeOff(param)
+{
+	core_Alert("!!!!");
+	setMainFloorClamp(true);
 }

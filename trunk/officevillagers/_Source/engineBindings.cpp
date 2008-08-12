@@ -12,6 +12,8 @@
 static char THIS_FILE[]=__FILE__;
 #endif
 
+int g_maxpathFindingsPerFrm=0;
+int pathFindingsPerFrm=0;
 CGameImplementation* CGameImplementation::inst=0;
 CGameImplementation& CGameImplementation::getInst()
 {
@@ -178,10 +180,24 @@ void CGameImplementation::OnUpdateFrame()
 		}
 	}
 	getGame().setCursor(bClickMode+1,iPlayAnimation?TRUE:FALSE);
+
+	if(pathFindingsPerFrm>g_maxpathFindingsPerFrm){
+		g_maxpathFindingsPerFrm=pathFindingsPerFrm;
+	}
+	pathFindingsPerFrm=0;
 	return;
 }
 
 bool CGameImplementation::HandleEvent(const SEvent& event)
 {
 	return false;
+}
+
+void CGameImplementation::HandleGameStateChange(int iNewState)
+{
+	if(iNewState==GAMESTATE_DYING){
+#ifdef _DEBUG
+		CFlowTimer::AddCustomInfo(">>> MaxPathsearches per frame",toString(g_maxpathFindingsPerFrm));
+#endif
+	}
 }

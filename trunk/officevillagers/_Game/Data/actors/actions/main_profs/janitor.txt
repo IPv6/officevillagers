@@ -177,6 +177,11 @@
 		if(bIsNoItemsLeft){
 			$ifdebug step=7;
 			actor_SetAttribute(thisActor,"PrefferedTrash","");
+			// Надо ли енаблить другую кучу
+			local EnHeap=actor_GetAttributeS(TrashName,"EnableOtherHeap");
+			if(EnHeap.len()>0){
+				actor_SetActorEnabled(EnHeap,true);
+			}
 			actor_DeleteActor(TrashName);
 		}
 		$ifdebug step=8;

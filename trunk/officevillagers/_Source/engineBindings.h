@@ -54,6 +54,7 @@ public:
 	virtual void OnUpdateFrame();
 	
 	virtual bool HandleEvent(const SEvent& event);
+	virtual void HandleGameStateChange(int iNewState);
 	virtual CCharPerturbator* GetFontEffect(const char* cFontCode=0);
 };
 

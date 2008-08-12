@@ -104,11 +104,10 @@ function gui_EnableInterface(isEnable)
 	if(isEnable){
 		core_EnableNode("main_level_interface",true);
 		core_EnableNode("cutscene_interface_static",false);
-		floorClampsNum = 0;
+		setMainFloorClamp(true);
 	}else{
 		core_EnableNode("main_level_interface",false);
 		core_EnableNode("cutscene_interface_static",true);
-		floorClampsNum = 1;
+		setMainFloorClamp(false);
 	}
-	setFloorPosition(core_GetNode("officeFloor"));
 }

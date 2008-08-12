@@ -4,6 +4,7 @@
 	<Position.Location val="FurniDrops::BARRICADA" />
 	<ActorProphession val="FURNITURE" />
 	<Items></Items>
+	<ScriptOnDelete val="event_BarricadeOff" />
 </Actor>
 
 <Actor>

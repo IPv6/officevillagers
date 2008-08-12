@@ -4,6 +4,7 @@
 #define UNDEFINED_2DPOS		_v2(-1000.1f,-1000.2f)
 #define DYNLOCATOR_PREFIX		"DYNAMIC"
 #define FLOORWALL_PREFIX		"WALL"
+#define HARDENTR_PREFIX			"[HARD]"
 
 #define WALKSTATE_NONE	0
 #define WALKSTATE_JUMP	0
@@ -269,12 +270,12 @@ public:
 	_d2 mapCellRealSize;
 	_array_rct naviwalls;
 	int iBasicWallsSize;
-	DWORD map[MAP_SIZEX][MAP_SIZEY];
+	int map[MAP_SIZEX][MAP_SIZEY];
 
 	CLocationManagerNavigatorY();
 	~CLocationManagerNavigatorY();
 	void Clear();
-	void AddWall(const _rctf& wall);
+	void AddWall(const _rctf& wall, int iVal=1);
 	void RecalcConnections();
 	void InitFrom(CLocationManager* mn);
 	BOOL EnsureWalkablePos(_v2& posInQuestion, BOOL bNoSnapToClosest=FALSE, BOOL bDoReperPointValidation=FALSE);

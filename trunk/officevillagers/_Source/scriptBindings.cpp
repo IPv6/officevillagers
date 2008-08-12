@@ -553,7 +553,12 @@ int game_VisualizeNavimap(HSQUIRRELVM v)
 		static CString sReperPoint=getManifest().Settings.getString("NavigationReperPoint");
 		CLocation* addw=CLocationManager::getInstance().getLocationByNameSoft(sReperPoint);
 		_v2 startPosition=addw->getPosition();
-		_v2 targetPosition=checkPosition;
+		_v2 targetPosition;
+		targetPosition=CLocationManager::getInstance().getLocationByNameSoft(sReperPoint+"_END1")->getPosition();
+		getLevel()->levelNavigator->EnsureWalkablePos(targetPosition,FALSE,FALSE);
+		getLevel()->levelNavigator->EnsureWalkablePos(startPosition,FALSE,FALSE);
+		getLevel()->levelNavigator->VisualizePath(startPosition,targetPosition);
+		targetPosition=CLocationManager::getInstance().getLocationByNameSoft(sReperPoint+"_END2")->getPosition();
 		getLevel()->levelNavigator->EnsureWalkablePos(targetPosition,FALSE,FALSE);
 		getLevel()->levelNavigator->EnsureWalkablePos(startPosition,FALSE,FALSE);
 		getLevel()->levelNavigator->VisualizePath(startPosition,targetPosition);

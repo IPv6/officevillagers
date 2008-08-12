@@ -1,0 +1,10 @@
+[Sprite]
+-AsEffect:1
+-Selfdestruction:1000 f500
+
+[Sprite]
+-AsChild:1
+-Size:2
+-Texture:itemtrash_splash.png
+-Animation.Texture:t700 m2x2
+-Selfdestruction:700 f300
