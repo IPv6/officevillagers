@@ -46,9 +46,9 @@ void CLocationManagerNavigatorY::Clear()
 	}
 }
 
-void CLocationManagerNavigatorY::AddWall(const _rctf& wall)
+void CLocationManagerNavigatorY::AddWall(const _rctf& wall,int iValue)
 {
-#define INCPOS(XXX,YYY)	{_p2i point=V2Map(_v2(XXX,YYY));if(point.X>=0 && point.Y>=0 && point.X<MAP_SIZEX && point.Y<MAP_SIZEY){map[point.X][point.Y]++;};};
+#define INCPOS(XXX,YYY)	{_p2i point=V2Map(_v2(XXX,YYY));if(point.X>=0 && point.Y>=0 && point.X<MAP_SIZEX && point.Y<MAP_SIZEY){map[point.X][point.Y]=max(map[point.X][point.Y]+iValue,0);};};
 	f32 stepX=mapCellRealSize.Width*0.41f;//max(wall.getSize().Width/10.0f,mapRealSize.Width/f32(MAP_SIZEX))*0.5f;
 	f32 stepY=mapCellRealSize.Height*0.41f;//max(wall.getSize().Height/10.0f,lastUsedScale.Height/f32(MAP_SIZEY))*0.5f;
 	for(f32 xl=wall.UpperLeftCorner.X+stepX;xl<wall.LowerRightCorner.X;xl+=stepX){
@@ -69,6 +69,7 @@ void CLocationManagerNavigatorY::RecalcConnections()
 	int i=0;
 	// Сбрасываем все что сверх...
 	naviwalls.set_used(iBasicWallsSize);
+	_array_rct navifloors;
 	// Добавляем динамические
 	for(i=0;i<getLevel()->data.actors.GetSize();i++){
 		CActor* actor=getLevel()->data.actors[i];
@@ -89,13 +90,24 @@ void CLocationManagerNavigatorY::RecalcConnections()
 							}
 						}
 					}
+					// Добавляем подводы
+					if(actor->data.p_actorLocationEntrance.GetLength()>0 && actor->data.p_actorLocationEntrance.Find(HARDENTR_PREFIX)!=-1){
+						CLocation* addw=CLocationManager::getInstance().getLocationByNameSoft(actor->data.p_actorLocationEntrance);
+						if(addw){
+							navifloors.push_back(addw->Convert2rect());
+						}
+					}
 				}
 			}
 		}
 	}
 	for(i=0;i<int(naviwalls.size());i++){ 
-		_rctf wall=naviwalls[i];
+		_rctf& wall=naviwalls[i];
 		AddWall(wall);
+	}
+	for(i=0;i<int(navifloors.size());i++){ 
+		_rctf& floor=navifloors[i];
+		AddWall(floor,-1000);
 	}
 	pather->Reset();
 }
@@ -138,15 +150,19 @@ BOOL CLocationManagerNavigatorY::EnsureWalkablePos(_v2& posInQuestion, BOOL bNoS
 		_v2 targetPosition=posInQuestion;
 		EnsureWalkablePos(targetPosition,FALSE,FALSE);// Без учета реперной точки. GetWalkablePath плюс для тестового режима обязан иметь валидный конец
 		CWalkData walkData;
-		walkData.bMarkVisitedFloors=1000;
+		walkData.bMarkVisitedFloors=10000;
 		GetWalkablePath(startPosition,targetPosition, walkData, TRUE);
 		pather->StatesInPool( &stateVec );
 		bUsestateVec=stateVec.size()?TRUE:FALSE;
-		/*for(s32 i=0;i<int(stateVec.size());i++){
-			_p2i dotmap=_unpackCoord(stateVec[i]);
-			_rctf area=Map2Rect(dotmap);
-			VisualizeRCTF(area);
-		}*/
+#ifdef _DEBUG
+		if(getKbState(VK_DIVIDE)<0){
+			for(s32 i=0;i<int(stateVec.size());i++){
+				_p2i dotmap=_unpackCoord(stateVec[i]);
+				_rctf area=Map2Rect(dotmap);
+				VisualizeRCTF(area);
+			}
+		}
+#endif
 	}
 	_p2i closest(-1,-1);
 	{// ближайший
@@ -204,6 +220,8 @@ BOOL CLocationManagerNavigatorY::EnsureWalkablePos(_v2& posInQuestion, BOOL bNoS
 	return WALKSTATE_NONE;
 }
 
+extern int pathFindingsPerFrm;
+extern int g_maxpathFindingsPerFrm;
 BOOL CLocationManagerNavigatorY::GetWalkablePath(_v2& startPosition, _v2& targetPosition, CWalkData& walkData, BOOL bJustTest)
 {
 	MEASURE_THIS;
@@ -216,6 +234,7 @@ BOOL CLocationManagerNavigatorY::GetWalkablePath(_v2& startPosition, _v2& target
 	_p2i mapStop=V2Map(targetPosition);
 	float totalCost=0.0f;
 	irr::core::array<void*> outPath;
+	pathFindingsPerFrm++;
 	int iRes=pather->Solve(_packCoord(mapStart.X,mapStart.Y),_packCoord(mapStop.X,mapStop.Y),&outPath,&totalCost,walkData.bMarkVisitedFloors);
 	if(iRes==micropather::MicroPather::NO_SOLUTION){
 		return FALSE;
@@ -282,14 +301,14 @@ void CLocationManagerNavigatorY::VisualizeFloor(_v2& checkPosition)
 void CLocationManagerNavigatorY::VisualizePath(_v2& startPosition, _v2& targetPosition)
 {
 	CWalkData walkData;
-	walkData.bMarkVisitedFloors=1000;
+	walkData.bMarkVisitedFloors=10000;
 	irr::core::array<void*> stateVec;
 	GetWalkablePath(startPosition,targetPosition, walkData, TRUE);
 	pather->StatesInPool( &stateVec );
 	for(s32 i=0;i<int(stateVec.size());i++){
 		_p2i dotmap=_unpackCoord(stateVec[i]);
 		_rctf area=Map2Rect(dotmap);
-		VisualizeRCTF(area);
+		VisualizeRCTF(area,0,50000);
 	}
 }
 

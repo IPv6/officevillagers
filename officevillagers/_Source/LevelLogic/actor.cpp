@@ -354,21 +354,18 @@ void CActor::RefreshHeadAccordingDirection(float fBodyAddonAngle,int iAngleShift
 	if(!nodeHead){
 		return;
 	}
+	f32 fBodyAngle=f32(getXYRotationFromDirection(_v3(data.p_CurrentBodyDirection.X,data.p_CurrentBodyDirection.Y,0.0f),0.0f))*180.0f/PI;
+	if(!bRelative){
+		fBodyAddonAngle=fBodyAddonAngle-fBodyAngle;
+	}
+	fBodyAddonAngle=max(fBodyAddonAngle,-90.0f);
+	fBodyAddonAngle=min(fBodyAddonAngle,90.0f);
+	data.p_CurrentFaceDirection=fBodyAddonAngle;
+	f32 fAngleNeedle=(fBodyAngle+fBodyAddonAngle)/360.0f;
 	// Двойной размер!!!
 	#define RSIZ_A	14
 	int recalca[RSIZ_A]={0,0,0,0,3,3,3,3,3,2,6,5,4,1};
-	f32 fAngleNeedle=fBodyAddonAngle/360.0f;
-	f32 fBodyAngle=f32(getXYRotationFromDirection(_v3(data.p_CurrentBodyDirection.X,data.p_CurrentBodyDirection.Y,0.0f),0.0f))*180.0f/PI;
-	//Warning(toString("head grad=%02f",fBodyAngle));
-	if(bRelative){
-		fAngleNeedle+=fBodyAngle/360.0f;//В долях единицы от круга
-		data.p_CurrentFaceDirection=fBodyAddonAngle;
-	}else{
-		data.p_CurrentFaceDirection=fBodyAddonAngle-fBodyAngle;
-	}
 	int iHeadNumber=(RSIZ_A*50+iAngleShift+int(fAngleNeedle*f32(RSIZ_A)))%RSIZ_A;
-
-	//TRACE2("== atlasX=%i - %i\n",iHeadNumber,recalca[iHeadNumber]);
 	nodeHead->SetAtlasSprite((f32)recalca[iHeadNumber],(f32)data.p_iHead,nodeHead->atlas_xtotal,nodeHead->atlas_ytotal);
 	_v3 headPos=nodeHead->getPosition();
 	if(data.p_CurrentBodyDirection.X>0){
@@ -595,7 +592,7 @@ void CActor::ThinkMovements(u32 timeMs)
 			lastHeadYawTime=timeMs+rnd(2000,6000);
 			if(data.p_CurrentBodyDirection.Y<0){
 				// Только если идем вниз!
-				RefreshHeadAccordingDirection(0,(rnd(0,100)%3-1));
+				RefreshHeadAccordingDirection(rndf(-90,90));
 			}
 		}
 	}

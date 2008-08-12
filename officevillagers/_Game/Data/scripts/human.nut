@@ -91,9 +91,9 @@ function humanDragLoop(param)
 				core_SetNode(humanDragLastId,spritePos);
 			}
 		}
+		local spritePos = core_GetNode(humanDragLastId);
 		if(humanDragRealDrag==0){
 			// Это клик!!!
-			local spritePos = core_GetNode(humanDragLastId);
 			if(spritePos){
 				local actor=actor_GetActor(humanDragLastId);
 				if(actor_IsSitting(actor)){
@@ -104,7 +104,6 @@ function humanDragLoop(param)
 			}
 		}else{
 			// Это драг-н-дроп!!!
-			local spritePos = core_GetNode(humanDragLastId);
 			local actor=actor_GetActor(humanDragLastId);
 			actor_OnDropActor(actor,spritePos);
 			//core_Alert(format("drop end %f:%f",spritePos._x,spritePos._y));
@@ -115,6 +114,13 @@ function humanDragLoop(param)
 		actor_SetMovementsPause(humanDragLastId,false,"humanDrag");
 		core_CancelInterval(humanDragInterval);
 		humanDragInterval = 0;
+		if(spritePos){
+			// Если был резкий "бросок" при дропе - центрируем камеру на персе
+			local spritePos2 = core_GetNode(humanDragLastId);
+			if(fabs(spritePos2._x-spritePos._x)+fabs(spritePos2._y-spritePos._y) > 3.0){
+				gui_CenterCameraOnPers(actor_GetActor(humanDragLastId));
+			}
+		}
 	}
 }
 

@@ -25,7 +25,11 @@ CSpriteNode* VisualizeRCTF(_rctf dot,const char* szSpr, BOOL bAutoDestroy)
 	}
 	CSpriteNode* bd=addBillboard(spr,s,_v3(cen.X,cen.Y,-0.01f),getNode("officeFloor"));
 	if(bAutoDestroy){
-		attachAnimator(bd,new CSelfdestruction(2000, 500));
+		int iTime=2000;
+		if(bAutoDestroy>iTime){
+			iTime=bAutoDestroy;
+		}
+		attachAnimator(bd,new CSelfdestruction(iTime, 500));
 	}
 	return bd;
 }
