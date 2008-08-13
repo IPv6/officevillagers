@@ -254,7 +254,22 @@
 	<ActorProphession val="FURNITURE" />
 	<Items></Items>
 </Actor>
-
+<Actor>
+	<Name val="EVIL_SHREDER" />
+	<Enabled val="0" />
+	<Sprite val="actors\items\furniture\objects.spr?image=trashheap_shreder.png" />
+	<Position.Location val="OfficeHeaps::DOT42" />
+	<ActorProphession val="FURNITURE" />
+	<Items></Items>
+</Actor>
+<Actor>
+	<Name val="EDITOR_FONTAN" />
+	<Enabled val="0" />
+	<Sprite val="actors\items\furniture\objects.spr?image=trashheap_fontan.png" />
+	<Position.Location val="Furniture::DOT11" />
+	<ActorProphession val="FURNITURE" />
+	<Items></Items>
+</Actor>
 
 
 <!-- Комната финансистов -->
@@ -309,7 +324,22 @@
 	<ActorProphession val="FURNITURE" />
 	<Items></Items>
 </Actor>
-
+<Actor>
+	<Name val="MARKET_AGREGAT" />
+	<Enabled val="0" />
+	<Sprite val="actors\items\furniture\objects.spr?image=trashheap_market_agregat.png&x[47px]&y[-42px]" />
+	<Position.Location val="OfficeHeaps::DOT11" />
+	<ActorProphession val="FURNITURE" />
+	<Items></Items>
+</Actor>
+<Actor>
+	<Name val="KARTOTEKA" />
+	<Enabled val="0" />
+	<Sprite val="actors\items\furniture\objects.spr?image=trashheap_kartoteka.png&x[43px]&y[-6px]" />
+	<Position.Location val="OfficeHeaps::DOT13" />
+	<ActorProphession val="FURNITURE" />
+	<Items></Items>
+</Actor>
 
 <!--Комната креативщиков -->
 
@@ -345,6 +375,31 @@
 	<ActorProphession val="FURNITURE" />
 	<Items></Items>
 </Actor>
+<Actor>
+	<Name val="ROYAL" />
+	<Enabled val="0" />
+	<Sprite val="actors\items\furniture\objects.spr?image=trashheap_royal.png" />
+	<Position.Location val="OfficeHeaps::DOT52" />
+	<ActorProphession val="FURNITURE" />
+	<Items></Items>
+</Actor>
+<Actor>
+	<Name val="VESHALKA" />
+	<Enabled val="0" />
+	<Sprite val="actors\items\furniture\objects.spr?image=trashheap_veshalka_cloman.png" />
+	<Position.Location val="OfficeHeaps::DOT54" />
+	<ActorProphession val="FURNITURE" />
+	<Items></Items>
+</Actor>
+<Actor>
+	<Name val="DARTS" />
+	<Enabled val="0" />
+	<Sprite val="actors\items\furniture\objects.spr?image=trashheap_dartz_mishen.png" />
+	<Position.Location val="FurniTrashMINI::DOT42" />
+	<ActorProphession val="FURNITURE" />
+	<Items></Items>
+</Actor>
+
 
 
 <!-- Коридоры -->
@@ -356,7 +411,6 @@
 	<Items></Items>
 </Actor>
 
-
 <Actor>
 	<Name val="COOLER1" />
 	<Sprite val="actors\items\furniture\objects.spr?image=trashheap_cooler.png" />
@@ -364,3 +418,21 @@
 	<ActorProphession val="FURNITURE" />
 	<Items></Items>
 </Actor>
+
+<Actor>
+	<Name val="BIG_KARTINA" />
+	<Enabled val="0" />
+	<Sprite val="actors\items\furniture\objects.spr?image=trashheap_bolshaya_kartina.png" />
+	<Position.Location val="OfficeHeaps::DOT21" />
+	<ActorProphession val="FURNITURE" />
+	<Items></Items>
+</Actor>
+<Actor>
+	<Name val="KORIDOR_HOLODILNIK" />
+	<Enabled val="0" />
+	<Sprite val="actors\items\furniture\objects.spr?image=trashheap_holodilnik.png" />
+	<Position.Location val="OfficeHeaps::DOT23" />
+	<ActorProphession val="FURNITURE" />
+	<Items></Items>
+</Actor>
+
