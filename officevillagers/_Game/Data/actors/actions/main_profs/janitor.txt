@@ -89,6 +89,7 @@
 -Prq.IsGlobalEvent:0
 -Protected:0
 -Script.On:
+	$ifdebug __DebugActor(thisActor,"ScriptOn");
 	actor_AddItem(thisActor,"shvabra");
 	local TrashName=actor_GetAttributeS(thisActor,"CurrentTrashName");
 	if(actor_IsActorExist(TrashName)==false){
@@ -102,6 +103,7 @@
 		actor_SetAttribute(TrashName,"trashclearing_begintime",getTime());
 	}
 -Script.Off:
+	$ifdebug __DebugActor(thisActor,"ScriptOff");
 	actor_DelItem(thisActor,"shvabra");
 	local TrashName=actor_GetAttributeS(thisActor,"CurrentTrashName");
 	if(TrashName != "" && actor_IsActorExist(TrashName)!=false){
@@ -109,6 +111,7 @@
 		actor_SetAttribute(TrashName,"__BUSY",0);
 	}
 -Script.In:
+	$ifdebug __DebugActor(thisActor,"ScriptIn");
 	// Ивент НЕ ДОЛЖЕН посылать уборщика до точки
 	// так как есть места где уборщик должен убирать указанную кучу откуда сказано
 	//получаем название убираемого мусора из атрибутов перса
@@ -163,6 +166,10 @@
 				{
 					actor_SetAttribute(thisActor,"JANITOR_CARRYTRASH.TARGET",isDragMusor2);
 				}
+			}
+			local EnHeapItem = actor_GetItemAttribute(TrashName,CurrentTrashItem,"EnableOtherHeap");
+			if(EnHeapItem.len()>0){
+				actor_SetActorEnabled(EnHeapItem,true);
 			}
 			//core_Alert(format("trash del=%s",CurrentTrashItem._name));
 			actor_DelItem(TrashName,CurrentTrashItem._name);

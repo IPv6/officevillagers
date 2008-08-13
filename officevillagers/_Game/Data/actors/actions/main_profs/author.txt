@@ -8,13 +8,13 @@
 -Script.In:
 	local thisTable = actor_GetActorsByAttribute("TABLE.AUTHOR*","__BUSY",0);
 	if (!thisTable){
-		$ifdebug core_Warning("no free tables");
+		$ifdebug __DebugActor(thisActor,"no free tables");
 		actor_SwitchToAction(thisActor,"NONE_Script");
 		return;
 	}
 	actor_SetActionLabel(thisActor,"AUTHOR.1");
 	if(nloc_GetWalkableState(thisTable)!=1){
-		$ifdebug core_Warning("no walkable tables "+thisTable.Name);
+		$ifdebug __DebugActor(thisActor,"no walkable tables "+thisTable.Name);
 		actor_SwitchToAction(thisActor,"pre_AUTHOR_Script");
 		return;
 	}
