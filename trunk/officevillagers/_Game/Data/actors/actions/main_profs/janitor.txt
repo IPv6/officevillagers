@@ -6,14 +6,16 @@
 -Prq.IsGlobalEvent:0
 -Protected:0
 -Script.In:
-	$ifdebug local step=1;
 	local trashObjectTable;
 	// Проверяем есть ли у уборщика предпочтительный мусор
-	trashObjectTable=actor_GetAttributeS(thisActor,"PrefferedTrash");
+	local trashObjectName=actor_GetAttributeS(thisActor,"PrefferedTrash");
+	trashObjectTable=trashObjectName;
 	if(trashObjectTable!=""){
+		
 		trashObjectTable=actor_IsActorExist(trashObjectTable);
 		if(trashObjectTable==false){
 			// Исчез уже этот мусор...
+			$ifdebug __DebugActor(thisActor,format("Мусор %s исчез (0)",trashObjectName));
 			trashObjectTable="";
 			actor_SetAttribute(thisActor,"PrefferedTrash","");
 		}
@@ -23,51 +25,50 @@
 		trashObjectTable=actor_GetActorsByProfAttribute("COLLECTIBLE*","__BUSY",0);
 	}
 	
-	$ifdebug step=2;
+	$ifdebug __DebugActor(thisActor,"step 2");
 	//если мусор не найден, отпарвляется страдать фигнёй
 	if (!trashObjectTable || actor_GetAttributeN(trashObjectTable,"__InPocket")!=0){
-		$ifdebug step=3;
+		$ifdebug __DebugActor(thisActor,"Свободных мусоров нет");
 		actor_SwitchToAction(thisActor,"NONE_Script");
 		return;
 	}
 	//core_Alert(trashObjectTable.Name);
 	local trashObjectName = trashObjectTable.Name;
-	$ifdebug step=trashObjectName+" check...";
+	$ifdebug __DebugActor(thisActor,trashObjectName+" check...");
 	{// Проверяем наличие пути к мусору
 		if(nloc_CheckWalkablePath(thisActor,trashObjectTable)==false){
 			// недоступен
-			$ifdebug step=trashObjectName+" check failed...";
+			$ifdebug __DebugActor(thisActor,trashObjectName+" - нет пути!");
 			actor_SwitchToAction(thisActor,"NONE_Script");
 			return;
 		}
 	}
 	actor_SetActionLabel(thisActor,"JANITOR.1");
 	// Отправляем к актеру-мусору
-	$ifdebug step=trashObjectName+" going!!!...";
+	$ifdebug __DebugActor(thisActor,trashObjectName+" going...");
 	if(!actorWait_GoTo(thisActor, trashObjectTable)){
 		// Может не дойти - если мусор внезапно стал перегорожен
-		$ifdebug step=5;
+		$ifdebug __DebugActor(thisActor,trashObjectName+" - до мусора не дойти!");
 		actor_SwitchToAction(thisActor,"NONE_Script");
 		return;
 	}
 
 	if(actor_IsActorExist(trashObjectTable)==false){
 		// Может пропасть - много мусорщиков спокойно могут "своровать" до прихода, некоторый мусор убирается быстро
-		$ifdebug step=5.1;
+		$ifdebug __DebugActor(thisActor,trashObjectName+" - мусор уже умер!");
 		actor_SwitchToAction(thisActor,"NONE_Script");
 		return;
 	};
 	//повторная проверка, на случай, если мусор "заняли", пока уборщик к нему шёл
 	if (actor_GetAttributeN(trashObjectName,"__BUSY")!=1 || actor_GetAttributeN(trashObjectTable,"__InPocket")!=0){
 		//если не заняли, оставляет название мусора себе в атибутахи топает работать с ним
-		$ifdebug step=7;
+		$ifdebug __DebugActor(thisActor,"step 7");
 		actor_SetAttribute(thisActor,"CurrentTrashName",trashObjectName);
 		actor_SwitchToAction(thisActor,"JANITOR_script");
 		return;
 	}
-	
 	//если заняли, то снова ищет свободный мусор
-	$ifdebug step=8;
+	$ifdebug __DebugActor(thisActor,trashObjectName+" - мусор уже заняли!");
 	actor_RestartAction(thisActor);
 
 [Event]
@@ -91,6 +92,7 @@
 	actor_AddItem(thisActor,"shvabra");
 	local TrashName=actor_GetAttributeS(thisActor,"CurrentTrashName");
 	if(actor_IsActorExist(TrashName)==false){
+		$ifdebug __DebugActor(thisActor,TrashName+" - мусор сдох-2!");
 		actor_SwitchToAction(thisActor,"NONE_Script");
 		return;
 	};
@@ -109,10 +111,10 @@
 -Script.In:
 	// Ивент НЕ ДОЛЖЕН посылать уборщика до точки
 	// так как есть места где уборщик должен убирать указанную кучу откуда сказано
-	$ifdebug local step=1;
 	//получаем название убираемого мусора из атрибутов перса
 	local TrashName = actor_GetAttributeS(thisActor,"CurrentTrashName");
 	if(actor_IsActorExist(TrashName)==false){
+		$ifdebug __DebugActor(thisActor,TrashName+" - мусор сдох-3!");
 		actor_SwitchToAction(thisActor,"NONE_Script");
 		return;
 	};
@@ -123,14 +125,13 @@
 	local time = 0;
 	local CurrentTrashItem = actor_GetItemByMask(TrashName,"heap_*");
 	if(CurrentTrashItem!=false){
-		//time = actor_GetAttributeN(TrashName,"exploration_"+CurrentTrashItem._name);
-		$ifdebug step=2;
+		$ifdebug __DebugActor(thisActor,"step 1");
 		time = actor_GetItemAttribute(TrashName,CurrentTrashItem,"time");
 		if(!time){
 			time = 0;
 		}
 	}
-	$ifdebug step=2.1;
+	$ifdebug __DebugActor(thisActor,"step 1.1");
 	if(time==0){
 		time = actor_GetAttributeN(TrashName,"exploration");
 	}
@@ -140,13 +141,13 @@
 	//core_Alert(format("trash time=%i",time));
 	if(getTime()-actor_GetAttributeN(TrashName, "trashclearing_begintime")>time){
 		actor_SetAttribute(TrashName,"trashclearing_begintime",0);
-		$ifdebug step=3;
+		$ifdebug __DebugActor(thisActor,"step 3");
 		//убираем мусор, возвращаем перса на прескрипт искать новый мусор
 		actor_SetAttribute(TrashName,"__BUSY",0);// Если не удалится то должен быть свободен
 		local bIsNoItemsLeft=true;
 		local switchToDragTrash=false;
 		if(CurrentTrashItem!=false){
-			$ifdebug step=4;
+			$ifdebug __DebugActor(thisActor,"step 4");
 			bIsNoItemsLeft=false;
 			local isEtapContinue = actor_GetItemAttribute(TrashName,CurrentTrashItem,"isEtapContinue");
             if(isEtapContinue!=1)
@@ -166,16 +167,16 @@
 			//core_Alert(format("trash del=%s",CurrentTrashItem._name));
 			actor_DelItem(TrashName,CurrentTrashItem._name);
 			// Если ни одного итема не осталось - удаляем и кучу. Фона для финальной уборки нет так как и не нужно это
-			$ifdebug step=5;
+			$ifdebug __DebugActor(thisActor,"step 5");
 			if(actor_GetItemByMask(TrashName,"heap_*")==false)
 			{
-				$ifdebug step=6;
+				$ifdebug __DebugActor(thisActor,"step 6");
 				bIsNoItemsLeft=true;
 			}
 		}
 		actor_SetAttribute(thisActor,"CurrentTrashName","");
 		if(bIsNoItemsLeft){
-			$ifdebug step=7;
+			$ifdebug __DebugActor(thisActor,"step 7");
 			actor_SetAttribute(thisActor,"PrefferedTrash","");
 			// Надо ли енаблить другую кучу
 			local EnHeap=actor_GetAttributeS(TrashName,"EnableOtherHeap");
@@ -184,7 +185,7 @@
 			}
 			actor_DeleteActor(TrashName);
 		}
-		$ifdebug step=8;
+		$ifdebug __DebugActor(thisActor,"step 8");
 		if(switchToDragTrash){
 			actor_SwitchToAction(thisActor,"JANITOR_CARRYTRASH");
 		}else{
@@ -196,13 +197,14 @@
 	//счётчик усталости...1% за 13 секунд
 	if(getTime()-actor_GetAttributeN(thisActor,"time_percent_tire")>getGlobal("janitor_tire_sec")){
 		actor_SetAttribute(thisActor,"tire",actor_GetAttributeN(thisActor,"tire")+1);
-		actor_SetAttribute(thisActor,"time_percent_tire",actor_GetAttributeN(thisActor,"time_percent_tire")-getGlobal("janitor_tire_sec"));
+		actor_SetAttribute(thisActor,"time_percent_tire",getTime());
 		actor_AddIcon(thisActor, "boredom_p1");
 	}
 
-	//если усталость 70 или выше, пускаем актора отдыхать (проверка на готовность статьи прописана выше по тексту, так что если усталость и готовность наступит одновременно, усталый автор всё равно потащит номер и даже может сэкономить единичку усталости)
+	//если усталость 70 или выше, пускаем актора отдыхать (проверка на готовность статьи прописана выше по тексту, так что если усталость
+	// и готовность наступит одновременно, усталый автор всё равно потащит номер и даже может сэкономить единичку усталости)
 	if(actor_GetAttributeN(thisActor,"tire")>(getGlobal("danger_tire")-1)){
-		actor_DelItem(thisActor,"shvabra");
+		$ifdebug __DebugActor(thisActor,TrashName+" - напала усталость");
 		actor_SwitchToAction(thisActor,"NONE_Script");
 		return;
 	}

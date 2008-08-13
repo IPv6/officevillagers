@@ -87,6 +87,12 @@ function level_WaitForLoad()
 
 function event_BarricadeOff(param)
 {
-	core_Alert("!!!!");
 	setMainFloorClamp(true);
+}
+
+function __DebugActor(thisActor,debugLine)
+{
+	actor_SetAttribute(thisActor,"__DEBUG",debugLine);
+	//thisActor._StepInThread.__DEBUG <- debugLine;
+	core_SetStepDebug(debugLine);
 }
