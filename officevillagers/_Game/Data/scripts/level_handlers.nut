@@ -94,5 +94,5 @@ function __DebugActor(thisActor,debugLine)
 {
 	actor_SetAttribute(thisActor,"__DEBUG",debugLine);
 	//thisActor._StepInThread.__DEBUG <- debugLine;
-	core_SetStepDebug(thisActor.Name+" said: "+debugLine);
+	core_SetScriptStepDebugLine(thisActor.Name+" said: "+debugLine);
 }

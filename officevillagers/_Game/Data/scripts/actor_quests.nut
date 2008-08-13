@@ -107,7 +107,7 @@ function quest_GetQuest(questNum)
 function addQuestsHighlight()
 {
 	clearQuestsHighlight(true);
-	core_CreateSprite("gui\\button_hightlight.spr","quests_button",{z=-0.0001, name="quests_highlight"});
+	core_CreateSprite("gui\\buttons\\quest_button_hightlight.spr","quests_button",{z=-0.0001, name="quests_highlight"});
 }
 
 function clearQuestsHighlight(bFast)
@@ -184,7 +184,7 @@ function initQuestDialog(skipItems)
 	if(!egaSlot0){
 		g_Quest_Slots = 0;
 		for(i=0;i<g_QuestsOnPage;i++){
-			core_CreateSprite("gui\\level_quest_slot.spr","level_quests",{x=0, y=7-2.5*i, z=-0.0002, w=1, h=1, name=format("quest_slot%i",g_Quest_Slots++) });
+			core_CreateSprite("gui\\level_quest_slot.spr","level_quests",{x=-0.2, y=7-2.5*i, z=-0.0002, w=1, h=1, name=format("quest_slot%i",g_Quest_Slots++) });
 		}
 	}
 	local attrId=0;
@@ -199,23 +199,37 @@ function initQuestDialog(skipItems)
 	{
 		g_SkipQuest_Slots = 0;
 	}
-	for(i=0; i<g_Quest_Slots; i++)
+	local multiLineOffset=0;
+	local lLineHH=1.4;
+	local slotId=0;
+	for(slotId=0; slotId<g_Quest_Slots; slotId++)
 	{
-		local slotNode=core_GetNode(format("quest_slot%i",i));
+		local slotNode=core_GetNode(format("quest_slot%i",slotId));
 		slotNode._alpha=1.0;
-		local thisQuestNum = g_SkipQuest_Slots+i;
+		local thisQuestNum = g_SkipQuest_Slots+slotId;
+		local nodeText="";
 		if(thisQuestNum >= quests.len()){
 			core_EnableNode(slotNode,false);
 		}else{
 			core_EnableNode(slotNode,true);
-			core_SetNodeText(slotNode,format("<font-size:-1>\n%s",quests[thisQuestNum].locName));
+			local questtitle=quests[thisQuestNum].locName;
+			questtitle=core_JustifyText(questtitle,4.5);
+			slotNode._y=9-multiLineOffset;//ДО вычисления числа строк данного квеста!!!
+			// Определяем число строк
+			local lStrokNum=charsInText(questtitle,"\n");
+			slotNode._h=lLineHH*(lStrokNum+1);
+			multiLineOffset+=lLineHH*(lStrokNum+1);
+			multiLineOffset+=0.3;
+			slotNode._y-=slotNode._h*0.5;
+			local dy=0.5*lStrokNum;
+			nodeText=format("<font-size:-1><dy=%.02f>\n%s",dy.tofloat(),questtitle);
+			core_SetNodeText(slotNode,nodeText);
 			if(quests[thisQuestNum].state==1)
 			{
 				slotNode._alpha=0.5;
-				//core_Alert("addfade!");
 			}
 			//core_SetNodeAction(slotNode,format("editAttrEditDialog(\"%s\",\"%s\");",thisActor.Name,attrByNum.name));
 		}
-		core_SetNode(format("quest_slot%i",i),slotNode);
+		core_SetNode(format("quest_slot%i",slotId),slotNode);
 	}
 }
