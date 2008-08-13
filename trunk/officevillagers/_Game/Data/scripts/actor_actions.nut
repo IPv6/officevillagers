@@ -172,7 +172,7 @@ function actor_GetActorsByProfAttribute(profMask,atrrName,attrVal)
 	if(objectsArrayOut.len()==0){
 		return null;
 	}
-	local rndIndex=core_Rnd()*(objectsArrayOut.len());
+	local rndIndex=core_Rnd()*(objectsArrayOut.len()-1);
 	return objectsArrayOut[rndIndex.tointeger()];
 }
 
@@ -199,7 +199,7 @@ function actor_GetActorsByAttribute(nameMask,atrrName,attrVal)
 	if(objectsArrayOut.len()==0){
 		return null;
 	}
-	local rndIndex=core_Rnd()*(objectsArrayOut.len());
+	local rndIndex=core_Rnd()*(objectsArrayOut.len()-1);
 	return objectsArrayOut[rndIndex.tointeger()];
 }
 
