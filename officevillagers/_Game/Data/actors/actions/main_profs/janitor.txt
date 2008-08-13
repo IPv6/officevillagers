@@ -182,15 +182,20 @@
 			}
 		}
 		actor_SetAttribute(thisActor,"CurrentTrashName","");
-		if(bIsNoItemsLeft){
-			$ifdebug __DebugActor(thisActor,"step 7");
-			actor_SetAttribute(thisActor,"PrefferedTrash","");
-			// Надо ли енаблить другую кучу
-			local EnHeap=actor_GetAttributeS(TrashName,"EnableOtherHeap");
-			if(EnHeapItem.len()>0){
-				actor_SetActorEnabled(EnHeap,true);
-			}
-			actor_DeleteActor(TrashName);
+		  if(bIsNoItemsLeft){
+               $ifdebug __DebugActor(thisActor,"step 7");
+               actor_SetAttribute(thisActor,"PrefferedTrash","");
+               // Надо ли енаблить другую кучу
+               local EnHeap=actor_GetAttributeS(TrashName,"EnableOtherHeap");
+               if(EnHeap.len()>0){
+                    actor_SetActorEnabled(EnHeap,true);
+               }
+               // Надо ли включаться в драг
+               local isDragMusor=actor_GetAttributeS(TrashName,"drag");
+               if(isDragMusor.len()>0){
+                    switchToDragTrash = true;
+               }
+               actor_DeleteActor(TrashName);
 		}
 		$ifdebug __DebugActor(thisActor,"step 8");
 		if(switchToDragTrash){

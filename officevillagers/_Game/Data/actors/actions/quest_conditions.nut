@@ -14,11 +14,14 @@ function quest_conditions(conditions)
 				gui_StartCutscene("Quest5_Cutscene");
 			}
 		}
-	//		if ((conditions._actorTo.Profession=="JANITOR-EXPERT" || conditions._actorTo.Profession=="JANITOR")&&( conditions._actorTo.Name=="")){
-	//		if(gui_QuestClose(5)){
-	//			gui_StartCutscene("Quest5_Cutscene");
-	//		}
-	//	}
+	
+//		if((actor_GetActorProfession(thisActor)=="JANITOR" || actor_GetActorProfession(thisActor)=="JANITOR-EXPERT")
+//		&& locName.Name == "FurniDrops::BARRICADA"
+//		&& nloc_CheckWalkablePath("FurniDrops::BARR_FROM","Heaps.Barricada")!=false){
+//			if(gui_QuestClose(6)){
+//				gui_StartCutscene("Quest7_Cutscene");
+//			}
+//		}
 	}
 
 	if("_fromSetProf" in conditions)

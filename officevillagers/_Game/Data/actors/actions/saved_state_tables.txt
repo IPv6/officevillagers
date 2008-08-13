@@ -1,3 +1,5 @@
+<!-- Комната авторов -->
+
 <!-- Столы авторов -->
 <Actor>
 	<Name val="TABLE.AUTHOR1_L" />
@@ -72,12 +74,58 @@
 	<Items></Items>
 </Actor>
 
+<!-- Другая мебель в комнае авторов -->
+<Actor>
+	<Name val="AUTHOR_DIVAN" />
+	<Enabled val="0" />
+	<Sprite val="actors\items\furniture\objects.spr?image=trashheap_crednyi_divan_ros_cloman.png" />
+	<Position.Location val="OfficeHeaps::DOT1" />
+	<ActorProphession val="FURNITURE" />
+	<Items></Items>
+</Actor>
+
+<Actor>
+	<Name val="AUTHOR_TUMBA" />
+	<Enabled val="0" />
+	<Sprite val="actors\items\furniture\objects.spr?image=trashheap_tumba.png" />
+	<Position.Location val="OfficeHeaps::DOT5" />
+	<ActorProphession val="FURNITURE" />
+	<Items></Items>
+</Actor>
+
+<Actor>
+	<Name val="AUTHOR_UPSIDE_DOWN_TABLE" />
+	<Enabled val="0" />
+	<Sprite val="actors\items\furniture\objects.spr?image=trashheap_perevernutyi_ctol.png" />
+	<Position.Location val="OfficeHeaps::DOT6" />
+	<ActorProphession val="FURNITURE" />
+	<Items></Items>
+</Actor>
+
+<Actor>
+	<Name val="AUTHOR_UPSIDE_DOWN_TABLE2" />
+	<Enabled val="0" />
+	<Sprite val="actors\items\furniture\objects.spr?image=trashheap_perevernutyi_ctol_45grad.png" />
+	<Position.Location val="OfficeHeaps::DOT7" />
+	<ActorProphession val="FURNITURE" />
+	<Items></Items>
+</Actor>
+<Actor>
+	<Name val="ETAZERKA" />
+	<Enabled val="0" />
+	<Sprite val="actors\items\furniture\objects.spr?image=trashheap_etagerka.png" />
+	<Position.Location val="OfficeHeaps::DOT9" />
+	<ActorProphession val="FURNITURE" />
+	<Items></Items>
+</Actor>
+
+<!-- Комната редакторов -->
 <!-- Столы редакторов -->
 
 <Actor>
 	<Name val="ARTICLE_TABLE" />
-	<Sprite val="actors\items\furniture\objects.spr?image=ctolmain_small.png" />
-	<Position.Location val="Furniture::TABLE.EDITOR1_L" />
+	<Sprite val="actors\items\furniture\objects.spr?image=ctol_statei.png" />
+	<Position.Location val="Furniture::DOT1" />
 	<Position.LocationEntr val="Furniture::TABLE.EDITOR1_LCHECK" />
 	<ActorProphession val="FURNITURE" />
 	<Items></Items>
@@ -117,15 +165,6 @@
 	<Sprite val="actors\items\furniture\table.author_r.spr" />
 	<Position.Location val="Furniture::TABLE.EDITOR4_R" />
 	<Position.LocationEntr val="Furniture::TABLE.EDITOR4_RCHECK" />
-	<ActorProphession val="FURNITURE" />
-	<Items></Items>
-</Actor>
-<Actor>
-	<Name val="DOSKA" />
-	<Enabled val="1" />
-	<Sprite val="\actors\items\furniture\doska.spr" />
-	<Position.Location val="Furniture::DOSKA" />
-	<Position.LocationEntr val="Furniture::DOSKACHECK" />
 	<ActorProphession val="FURNITURE" />
 	<Items></Items>
 </Actor>
@@ -183,38 +222,47 @@
 
 
 
+<!-- Другие предметы в комнате редакторов -->
+<Actor>
+	<Name val="DOSKA" />
+	<Enabled val="1" />
+	<Sprite val="\actors\items\furniture\doska.spr" />
+	<Position.Location val="Furniture::DOSKA" />
+	<Position.LocationEntr val="Furniture::DOSKACHECK" />
+	<ActorProphession val="FURNITURE" />
+	<Items></Items>
+</Actor>
+
+<Actor>
+	<Name val="FLOWERS2" />
+	<Sprite val="actors\items\furniture\objects.spr?image=trashheap_cwety.png" />
+	<Position.Location val="Furniture::DOT9" />
+	<ActorProphession val="FURNITURE" />
+	<Items></Items>
+</Actor>
+<Actor>
+	<Name val="COOLER2" />
+	<Sprite val="actors\items\furniture\objects.spr?image=trashheap_cooler.png" />
+	<Position.Location val="Furniture::DOT7" />
+	<ActorProphession val="FURNITURE" />
+	<Items></Items>
+</Actor>
+<Actor>
+	<Name val="STELLAZ" />
+	<Sprite val="actors\items\furniture\objects.spr?image=stellaz.png" />
+	<Position.Location val="Furniture::DOT3" />
+	<ActorProphession val="FURNITURE" />
+	<Items></Items>
+</Actor>
+
+
+
+<!-- Комната финансистов -->
 <Actor>
 	<Name val="TABLE.FINANSIST1_L" />
 	<Enabled val="0" />
 	<Sprite val="actors\items\furniture\table.author_l.spr" />
 	<Position.Location val="Furniture::FINANSISTTABLE1_L" />
-	<ActorProphession val="FURNITURE" />
-	<Items></Items>
-</Actor>
-
-
-<!-- предметы, которые не столы -->
-
-<Actor>
-	<Name val="KUBIKI" />
-	<Sprite val="actors\items\furniture\objects.spr?image=cubics.png" />
-	<Position.Location val="Furniture::DOT2" />
-	<ActorProphession val="FURNITURE" />
-	<Items></Items>
-</Actor>
-
-<Actor>
-	<Name val="AKVARIUM" />
-	<Sprite val="actors\items\furniture\objects.spr?image=aquarium.png" />
-	<Position.Location val="Furniture::DOT4" />
-	<ActorProphession val="FURNITURE" />
-	<Items></Items>
-</Actor>
-
-<Actor>
-	<Name val="CHESS" />
-	<Sprite val="actors\items\furniture\objects.spr?image=check_stol.png" />
-	<Position.Location val="Furniture::DOT5" />
 	<ActorProphession val="FURNITURE" />
 	<Items></Items>
 </Actor>
@@ -248,35 +296,6 @@
 	<Items></Items>
 </Actor>
 <Actor>
-	<Name val="FLOWERS1" />
-	<Sprite val="actors\items\furniture\objects.spr?image=trashheap_cwety.png" />
-	<Position.Location val="Furniture::DOT8" />
-	<ActorProphession val="FURNITURE" />
-	<Items></Items>
-</Actor>
-<Actor>
-	<Name val="FLOWERS2" />
-	<Sprite val="actors\items\furniture\objects.spr?image=trashheap_cwety.png" />
-	<Position.Location val="Furniture::DOT9" />
-	<ActorProphession val="FURNITURE" />
-	<Items></Items>
-</Actor>
-
-<Actor>
-	<Name val="COOLER1" />
-	<Sprite val="actors\items\furniture\objects.spr?image=trashheap_cooler.png" />
-	<Position.Location val="Furniture::DOT6" />
-	<ActorProphession val="FURNITURE" />
-	<Items></Items>
-</Actor>
-<Actor>
-	<Name val="COOLER2" />
-	<Sprite val="actors\items\furniture\objects.spr?image=trashheap_cooler.png" />
-	<Position.Location val="Furniture::DOT7" />
-	<ActorProphession val="FURNITURE" />
-	<Items></Items>
-</Actor>
-<Actor>
 	<Name val="FINANSIST_KRESLO" />
 	<Sprite val="actors\items\furniture\objects.spr?image=trashheap_kreslo_golub.png&x[32px]&y[-8px]" />
 	<Position.Location val="OfficeHeaps::DOT11" />
@@ -290,10 +309,58 @@
 	<ActorProphession val="FURNITURE" />
 	<Items></Items>
 </Actor>
+
+
+<!--Комната креативщиков -->
+
+<Actor>
+	<Name val="KUBIKI" />
+	<Sprite val="actors\items\furniture\objects.spr?image=cubics.png" />
+	<Position.Location val="Furniture::DOT2" />
+	<ActorProphession val="FURNITURE" />
+	<Items></Items>
+</Actor>
+
+<Actor>
+	<Name val="AKVARIUM" />
+	<Sprite val="actors\items\furniture\objects.spr?image=aquarium.png" />
+	<Position.Location val="Furniture::DOT4" />
+	<ActorProphession val="FURNITURE" />
+	<Items></Items>
+</Actor>
+
+<Actor>
+	<Name val="CHESS" />
+	<Sprite val="actors\items\furniture\objects.spr?image=check_stol.png" />
+	<Position.Location val="Furniture::DOT5" />
+	<ActorProphession val="FURNITURE" />
+	<Items></Items>
+</Actor>
+
+
 <Actor>
 	<Name val="STREMYANKA" />
 	<Sprite val="actors\items\furniture\objects.spr?image=trashheap_stremyanka.png" />
 	<Position.Location val="OfficeHeaps::DOT54" />
+	<ActorProphession val="FURNITURE" />
+	<Items></Items>
+</Actor>
+
+
+<!-- Коридоры -->
+<Actor>
+	<Name val="FLOWERS1" />
+	<Sprite val="actors\items\furniture\objects.spr?image=trashheap_cwety.png" />
+	<Position.Location val="Furniture::DOT8" />
+	<ActorProphession val="FURNITURE" />
+	<Items></Items>
+</Actor>
+
+
+<Actor>
+	<Name val="COOLER1" />
+	<Sprite val="actors\items\furniture\objects.spr?image=trashheap_cooler.png" />
+	<Position.Location val="Furniture::DOT6" />
 	<ActorProphession val="FURNITURE" />
 	<Items></Items>
 </Actor>
