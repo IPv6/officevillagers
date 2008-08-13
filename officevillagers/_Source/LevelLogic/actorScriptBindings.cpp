@@ -12,12 +12,15 @@ static char THIS_FILE[]=__FILE__;
 #endif
 
 #ifdef _DEBUG
+#define DEBUG_ASSERT_SCRIPT(X,Y){if(!(X)){static CString s=(toString("Script Assert!\n%s: %i\n\n%s\n\nScriptStep: %s",__FILE__,__LINE__,(Y),getGame().scripter.sLastScriptDebug));Alert(s);};};
 #define CHECK_GET_ACTOR(actor) \
 	if(!actor){ \
 		if(IS_SHIFT_PRESSED()){	SquirrelObject res=SquirrelVM::CreateTable();res.SetValue("Ololo","1");	return sa.Return(res);} \
 		return sa.Return(false);\
 	}
+
 #else
+#define DEBUG_ASSERT_SCRIPT(X,Y)
 #define CHECK_GET_ACTOR(actor) \
 	if(!actor){ \
 		return sa.Return(false);\
@@ -65,7 +68,7 @@ CActor* getActor(StackHandler& sa, int iParaNum,BOOL bSilently=0)
 		}
 		CActor* actor=getLevel()->getActorByName(sByName);
 		if(!bSilently){
-			DEBUG_ASSERT(actor!=0,toString("Actor '%s' does not exist",sByName));
+			DEBUG_ASSERT_SCRIPT(actor!=0,toString("Actor '%s' does not exist",sByName));
 			DEBUG_ASSERT_SCRIPT(!actor || actor->data.p_sName.Find(DELETEDACTOR_MARK)==-1,toString("Actor '%s' already deleted!",actor->data.p_sName));
 		}
 		return actor;
@@ -677,11 +680,11 @@ int actor_GetAttribute(HSQUIRRELVM v)
 int actor_GetAttributeN(HSQUIRRELVM v)
 {
 	StackHandler sa(v);
+	CString sName=sa.GetString(SQ_PARAM2);
 	CActor* actor=getActor(sa,SQ_PARAM1);
 	if(!actor){
 		return SQ_OK;
 	}
-	CString sName=sa.GetString(SQ_PARAM2);
 	CString s;
 	long l=0;
 	f32 f=0;
