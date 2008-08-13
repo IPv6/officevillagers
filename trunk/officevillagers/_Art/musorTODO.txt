@@ -133,3 +133,5 @@ trashheap_shreder.png
 фонтанчик - три этапа - сборка
 trashheap_fontan.png
 (не забыть про рисовку предмета в furniture)
+
+Куда ставить глобус?

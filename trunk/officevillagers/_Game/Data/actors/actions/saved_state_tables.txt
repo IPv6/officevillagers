@@ -74,7 +74,7 @@
 	<Items></Items>
 </Actor>
 
-<!-- Другая мебель в комнае авторов -->
+<!-- Другая мебель в комнате авторов -->
 <Actor>
 	<Name val="AUTHOR_DIVAN" />
 	<Enabled val="0" />
@@ -169,6 +169,13 @@
 	<Items></Items>
 </Actor>
 
+<Actor>
+	<Name val="EDITOR1_L_FAKE" />
+	<Sprite val="\actors\items\furniture\objects.spr?image=ctolmain_small.png&xoffset=0&yoffset=0" />
+	<Position.Location val="Furniture::TABLE.EDITOR1_L" />
+	<ActorProphession val="FURNITURE" />
+	<Items></Items>
+</Actor>
 
 <Actor>
 	<Name val="TABLE.AGATAMAIN" />
@@ -435,4 +442,10 @@
 	<ActorProphession val="FURNITURE" />
 	<Items></Items>
 </Actor>
-
+<Actor>
+	<Name val="PLAKAT" />
+	<Sprite val="actors\items\furniture\objects.spr?image=trashheap_plakat.png" />
+	<Position.Location val="Furniture::DOT15" />
+	<ActorProphession val="FURNITURE" />
+	<Items></Items>
+</Actor>
