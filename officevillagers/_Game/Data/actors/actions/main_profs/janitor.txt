@@ -168,7 +168,7 @@
 				}
 			}
 			local EnHeapItem = actor_GetItemAttribute(TrashName,CurrentTrashItem,"EnableOtherHeap");
-			if(EnHeapItem.len()>0){
+			if(EnHeapItem!=false && EnHeapItem.len()>0){
 				actor_SetActorEnabled(EnHeapItem,true);
 			}
 			//core_Alert(format("trash del=%s",CurrentTrashItem._name));
@@ -187,7 +187,7 @@
 			actor_SetAttribute(thisActor,"PrefferedTrash","");
 			// Надо ли енаблить другую кучу
 			local EnHeap=actor_GetAttributeS(TrashName,"EnableOtherHeap");
-			if(EnHeap.len()>0){
+			if(EnHeapItem.len()>0){
 				actor_SetActorEnabled(EnHeap,true);
 			}
 			actor_DeleteActor(TrashName);

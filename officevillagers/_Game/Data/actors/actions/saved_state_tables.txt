@@ -276,3 +276,24 @@
 	<ActorProphession val="FURNITURE" />
 	<Items></Items>
 </Actor>
+<Actor>
+	<Name val="FINANSIST_KRESLO" />
+	<Sprite val="actors\items\furniture\objects.spr?image=trashheap_kreslo_golub.png&x[32px]&y[-8px]" />
+	<Position.Location val="OfficeHeaps::DOT11" />
+	<ActorProphession val="FURNITURE" />
+	<Items></Items>
+</Actor>
+<Actor>
+	<Name val="SAFE" />
+	<Sprite val="actors\items\furniture\objects.spr?image=trashheap_safe.png" />
+	<Position.Location val="OfficeHeaps::DOT17" />
+	<ActorProphession val="FURNITURE" />
+	<Items></Items>
+</Actor>
+<Actor>
+	<Name val="STREMYANKA" />
+	<Sprite val="actors\items\furniture\objects.spr?image=trashheap_stremyanka.png" />
+	<Position.Location val="OfficeHeaps::DOT54" />
+	<ActorProphession val="FURNITURE" />
+	<Items></Items>
+</Actor>
