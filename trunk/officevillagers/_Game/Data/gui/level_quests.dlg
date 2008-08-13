@@ -10,37 +10,35 @@
 
 [Sprite]
 -Parent:level_quests
--Texture:\gui\menu_button_small.spr
+-Texture:\gui\menu_button.spr?button=level_next_buttons
 -Label:MENU.BUTTON.CLOSE.LABEL
--Size: w2.2
--Position:x0 y-12 z-0.001
+-Size: w10 h3.3
+-Position:x0 y-11.4 z-0.001
 -Event.Mouse.Click.Action:level_CloseQuests();
--Event.Mouse.Click.Image:\gui\menu_button_over_small.spr
+-Event.Mouse.Click.Image:\gui\menu_button.spr?button=level_next_buttons
 -Event.Mouse.Click.Sound:menu_button_click
--Event.Mouse.Over.Image:\gui\menu_button_over_small.spr
+-Event.Mouse.Over.Image:\gui\menu_button_over.spr?button=level_next_buttons
 -Event.Mouse.Over.Sound:menu_button_over
 
 [Sprite]
 -Parent:level_quests
 -Texture:\gui\empty.png
--Label:?}}}
--Size: w4 h2
--Position:x9 y-12 z-0.001
+-Size: w6 h3
+-Position:x9.7 y-11.4 z-0.001
 //Event.Mouse.Click.Action:fillAttrEditDialog(null, g_LastEGA_Mask, g_LastEGA_Skip+10);
 -Event.Mouse.Click.Sound:menu_button_click
--Event.Mouse.Over.Image:\gui\dialog_frame_big.png
+-Event.Mouse.Over.Image:\gui\buttons\level_next_buttons_hl.spr
 -Event.Mouse.Over.Sound:menu_button_over
 -Alpha:0
 
 [Sprite]
 -Parent:level_quests
 -Texture:\gui\empty.png
--Label:?{{{
--Size: w4 h2
--Position:x-9 y-12 z-0.001
+-Size: w6 h3
+-Position:x-10.5 y-11.4 z-0.001
 //Event.Mouse.Click.Action:fillAttrEditDialog(null, g_LastEGA_Mask, g_LastEGA_Skip-10);
 -Event.Mouse.Click.Sound:menu_button_click
--Event.Mouse.Over.Image:\gui\dialog_frame_big.png
+-Event.Mouse.Over.Image:\gui\buttons\level_next_buttons_hl.spr
 -Event.Mouse.Over.Sound:menu_button_over
 -Alpha:0
 

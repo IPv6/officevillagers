@@ -106,14 +106,15 @@
 		core_Alert("!!!");
 	}
 	
-	/*
-	//gui_StartCutscene("Quest4_Cutscene");
-	game_CutsceneBegin({});
-	game_CutsceneEnd({});
-	gui_QuestOpen(5);
-	gui_QuestOpen(1);
-	gui_QuestOpen(2);
-	*/
+	//if(false)
+	{//  весты
+		//gui_StartCutscene("Quest4_Cutscene");
+		//game_CutsceneBegin({});
+		//game_CutsceneEnd({});
+		gui_QuestOpen(5);
+		gui_QuestOpen(1);
+		gui_QuestOpen(2);
+	}
 
 	/*
 	actor_AddIcon(actorBo,"techpoint_p1");

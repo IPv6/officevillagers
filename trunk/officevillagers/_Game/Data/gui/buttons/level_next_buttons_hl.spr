@@ -1,0 +1,4 @@
+[Sprite]
+-Texture:level_next_buttons.png
+-Atlas:x1 y0 w2 h1
+-Position: z-0.001
