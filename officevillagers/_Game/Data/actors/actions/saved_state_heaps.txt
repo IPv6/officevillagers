@@ -397,16 +397,16 @@
 		OptionLong[exploration]=2
 	</Attributes>
 	<Items>
-		<Item><Name val="heap_block_1" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_ctopka_zhurnalov_golub.png&x[95px]&y[-76px]" /><Params val="time[100]" /></Item>
-		<Item><Name val="heap_block_2" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_gazetnaya_pachka_ros_90grad.png&x[81px]&y[0px]" /><Params val="time[100]" /></Item>
-		<Item><Name val="heap_block_3" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_ctopka_zhurnalov_zel.png&x[64px]&y[28px]" /><Params val="time[100]" /></Item>
-		<Item><Name val="heap_block_4" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_ctopka_zhurnalov_zel.png&x[32px]&y[-58px]" /><Params val="time[100]" /></Item>
-		<Item><Name val="heap_block_5" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_gazetnaya_pachka_ros_90grad.png&x[42px]&y[-7px]" /><Params val="time[100]" /></Item>
-		<Item><Name val="heap_block_6" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_gazetnaya_pachka_ros_90grad.png&x[0px]&y[-27px]" /><Params val="time[100]" /></Item>
-		<Item><Name val="heap_block_7" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_korobka_zel.png&x[38px]&y[-32px]" /><Params val="time[10] drag[1]" /></Item>
-		<Item><Name val="heap_block_8" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_korobka_zel.png&x[0px]&y[-66px]" /><Params val="time[10] drag[1]" /></Item>
-		<Item><Name val="heap_block_9" /><ItemSpr val="\actors\items\trash\itm_trashheap_floor.spr?image=trashheap_gazetnyi_list_zholt.png&x[65px]&y[58px]" /><Params val="time[100]" /></Item>
-		<Item><Name val="heap_block_10" /><ItemSpr val="\actors\items\trash\itm_trashheap_floor.spr?image=trashheap_gazetnyi_list_cvernyt.png&x[73px]&y[-74px]" /><Params val="time[100]" /></Item>
+		<Item><Name val="heap_block_1" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_ctopka_zhurnalov_golub.png&x[67px]&y[-18px]" /><Params val="time[100]" /></Item>
+		<Item><Name val="heap_block_2" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_gazetnaya_pachka_ros_90grad.png&x[60px]&y[10px]" /><Params val="time[100]" /></Item>
+		<Item><Name val="heap_block_3" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_ctopka_zhurnalov_zel.png&x[82px]&y[24px]" /><Params val="time[100]" /></Item>
+		<Item><Name val="heap_block_4" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_ctopka_zhurnalov_zel.png&x[36px]&y[-19px]" /><Params val="time[100]" /></Item>
+		<Item><Name val="heap_block_5" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_gazetnaya_pachka_ros_90grad.png&x[41px]&y[23px]" /><Params val="time[100]" /></Item>
+		<Item><Name val="heap_block_6" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_gazetnaya_pachka_ros_90grad.png&x[20px]&y[17px]" /><Params val="time[100]" /></Item>
+		<Item><Name val="heap_block_7" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_korobka_zel.png&x[39px]&y[-6px]" /><Params val="time[10] drag[1]" /></Item>
+		<Item><Name val="heap_block_8" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_korobka_zel.png&x[90px]&y[-3px]" /><Params val="time[10] drag[1]" /></Item>
+		<Item><Name val="heap_block_9" /><ItemSpr val="\actors\items\trash\itm_trashheap_floor.spr?image=trashheap_gazetnyi_list_zholt.png&x[52px]&y[19px]" /><Params val="time[100]" /></Item>
+		<Item><Name val="heap_block_10" /><ItemSpr val="\actors\items\trash\itm_trashheap_floor.spr?image=trashheap_gazetnyi_list_cvernyt.png&x[56px]&y[-37px]" /><Params val="time[100]" /></Item>
 		</Items>
 </Actor>
 
@@ -425,7 +425,7 @@
 		<Item><Name val="heap_block_4" /><ItemSpr val="\actors\items\trash\itm_trashheap_floor.spr?image=trashheap_gazetnyi_list_golub.png&x[147px]&y[-30px]" /><Params val="time[100]" /></Item>
 		<Item><Name val="heap_block_5" /><ItemSpr val="\actors\items\trash\itm_trashheap_floor.spr?image=trashheap_gazetnyi_list_zholt_flip.png&x[124px]&y[-44px]" /><Params val="time[100]" /></Item>
 		<Item><Name val="heap_block_6" /><ItemSpr val="\actors\items\trash\itm_trashheap_floor.spr?image=trashheap_gazetnyi_list_ros_flip.png&x[144px]&y[-54px]" /><Params val="time[100]" /></Item>
-		<Item><Name val="heap_block_7" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_kassa.png&x[166px]&y[-25px]" /><Params val="time[100]" /></Item>
+		<Item><Name val="heap_block_7" /><ItemSpr val="\actors\items\trash\itm_trashheap_floor.spr?image=trashheap_kassa.png&x[180px]&y[-20px]" /><Params val="time[100]" /></Item>
 		<Item><Name val="heap_block_8" /><ItemSpr val="\actors\items\trash\itm_trashheap_floor.spr?image=trashheap_malenkyi_komok_bumagi.png&x[15px]&y[-17px]" /><Params val="time[100]" /></Item>
 		<Item><Name val="heap_block_9" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_korobka_zel.png&x[121px]&y[-4px]" /><Params val="time[10] drag[1]" /></Item>
 		<Item><Name val="heap_block_10" /><ItemSpr val="\actors\items\trash\itm_trashheap_floor.spr?image=trashheap_malenkyi_komok_bumagi.png&x[0px]&y[-30px]" /><Params val="time[100]" /></Item>
@@ -500,32 +500,33 @@
 		OptionLong[exploration]=2
 	</Attributes>
 	<Items>
-		<Item><Name val="heap_block_12" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_korobka_zel.png&x[40px]&y[-0px]" /><Params val="time[100]" /></Item>
-		<Item><Name val="heap_block_1" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_kassa.png&x[0px]&y[-122px]" /><Params val="time[100]" /></Item>
-		<Item><Name val="heap_block_2" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_gazetnaya_pachka_ros_90grad.png&x[176px]&y[-66px]" /><Params val="time[100]" /></Item>
-		<Item><Name val="heap_block_3" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_korobka_zel.png&x[70px]&y[-117px]" /><Params val="time[100]" /></Item>
-		<Item><Name val="heap_block_4" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_gazetnaya_pachka_ros_90grad.png&x[175px]&y[-115px]" /><Params val="time[100]" /></Item>
+		<Item><Name val="heap_block_12" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_korobka_zel.png&x[40px]&y[-20px]" /><Params val="time[100]" /></Item>
+		<Item><Name val="heap_block_1" /><ItemSpr val="\actors\items\trash\itm_trashheap_floor.spr?image=trashheap_kassa.png&x[0px]&y[-132px]" /><Params val="time[100]" /></Item>
+		<Item><Name val="heap_block_2" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_gazetnaya_pachka_ros_90grad.png&x[153px]&y[-66px]" /><Params val="time[100]" /></Item>
+		<Item><Name val="heap_block_3" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_korobka_zel.png&x[90px]&y[-75px]" /><Params val="time[100]" /></Item>
+		<Item><Name val="heap_block_4" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_gazetnaya_pachka_ros_90grad.png&x[155px]&y[-85px]" /><Params val="time[100]" /></Item>
 		<Item><Name val="heap_block_5" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_korobka_zel.png&x[37px]&y[-81px]" /><Params val="time[100]" /></Item>
 		<Item><Name val="heap_block_6" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_korobka_zel.png&x[123px]&y[-74px]" /><Params val="time[100]" /></Item>
 		<Item><Name val="heap_block_7" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_korobka_zel.png&x[89px]&y[-62px]" /><Params val="time[100]" /></Item>
 		<Item><Name val="heap_block_8" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_korobka_zel.png&x[55px]&y[-61px]" /><Params val="time[100]" /></Item>
 		<Item><Name val="heap_block_9" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_korobka_zel.png&x[109px]&y[-54px]" /><Params val="time[100]" /></Item>
-		<Item><Name val="heap_block_10" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_korobka_zel.png&x[69px]&y[-43px]" /><Params val="time[100]" /></Item>
-		<Item><Name val="heap_block_11" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_korobka_zel.png&x[89px]&y[-29px]" /><Params val="time[100]" /></Item>
-		<Item><Name val="heap_block_13" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_gazetnaya_pachka_ros_90grad.png&x[104px]&y[-134px]" /><Params val="time[100]" /></Item>
+		<Item><Name val="heap_block_10" /><ItemSpr val="\actors\items\trash\itm_trashheap_floor.spr?image=trashheap_korobka_zel.png&x[69px]&y[-53px]" /><Params val="time[100]" /></Item>
+		<Item><Name val="heap_block_11" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_korobka_zel.png&x[89px]&y[-39px]" /><Params val="time[100]" /></Item>
+		<Item><Name val="heap_block_13" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_gazetnaya_pachka_ros_90grad.png&x[108px]&y[-100px]" /><Params val="time[100]" /></Item>
 		<Item><Name val="heap_block_14" /><ItemSpr val="\actors\items\trash\itm_trashheap_floor.spr?image=trashheap_papka_red.png&x[112px]&y[-133px]" /><Params val="time[100]" /></Item>
 		<Item><Name val="heap_block_15" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_gazetnaya_pachka_ros_90grad.png&x[40px]&y[-126px]" /><Params val="time[100]" /></Item>
 		<Item><Name val="heap_block_16" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_gazetnaya_pachka_ros_90grad.png&x[73px]&y[-90px]" /><Params val="time[100]" /></Item>
-		<Item><Name val="heap_block_17" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_gazetnaya_pachka_ros_90grad.png&x[98px]&y[-59px]" /><Params val="time[100]" /></Item>
-		<Item><Name val="heap_block_18" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_gazetnaya_pachka_ros_90grad.png&x[63px]&y[-59px]" /><Params val="time[100]" /></Item>
+		<Item><Name val="heap_block_17" /><ItemSpr val="\actors\items\trash\itm_trashheap_floor.spr?image=trashheap_gazetnaya_pachka_ros_90grad.png&x[98px]&y[-59px]" /><Params val="time[100]" /></Item>
+		<Item><Name val="heap_block_18" /><ItemSpr val="\actors\items\trash\itm_trashheap_floor.spr?image=trashheap_gazetnaya_pachka_ros_90grad.png&x[63px]&y[-59px]" /><Params val="time[100]" /></Item>
 		<Item><Name val="heap_block_19" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_gazetnaya_pachka_ros_90grad.png&x[28px]&y[-59px]" /><Params val="time[100]" /></Item>
-		<Item><Name val="heap_block_20" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_gazetnaya_pachka_ros_90grad.png&x[64px]&y[-40px]" /><Params val="time[100]" /></Item>
-		<Item><Name val="heap_block_21" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_gazetnaya_pachka_ros_90grad.png&x[32px]&y[-40px]" /><Params val="time[100]" /></Item>
-		<Item><Name val="heap_block_22" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_gazetnaya_pachka_ros_90grad.png&x[45px]&y[-26px]" /><Params val="time[100]" /></Item>
-		<Item><Name val="heap_block_23" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_ctopka_zhurnalov_golub.png&x[147px]&y[-95px]" /><Params val="time[100]" /></Item>
+		<Item><Name val="heap_block_20" /><ItemSpr val="\actors\items\trash\itm_trashheap_floor.spr?image=trashheap_gazetnaya_pachka_ros_90grad.png&x[50px]&y[-40px]" /><Params val="time[100]" /></Item>
+		<Item><Name val="heap_block_21" /><ItemSpr val="\actors\items\trash\itm_trashheap_floor.spr?image=trashheap_gazetnaya_pachka_ros_90grad.png&x[32px]&y[-40px]" /><Params val="time[100]" /></Item>
+		<Item><Name val="heap_block_22" /><ItemSpr val="\actors\items\trash\itm_trashheap_floor.spr?image=trashheap_gazetnaya_pachka_ros_90grad.png&x[45px]&y[-32px]" /><Params val="time[100]" /></Item>
+		<Item><Name val="heap_block_23" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_ctopka_zhurnalov_golub.png&x[135px]&y[-95px]" /><Params val="time[100]" /></Item>
 		<Item><Name val="heap_block_24" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_ctopka_zhurnalov_golub.png&x[139px]&y[-44px]" /><Params val="time[100]" /></Item>
 		<Item><Name val="heap_block_25" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_ctopka_zhurnalov_golub.png&x[2px]&y[-63px]" /><Params val="time[100]" /></Item>
-		<Item><Name val="heap_block_26" /><ItemSpr val="\actors\items\trash\itm_trashheap_floor.spr?image=trashheap_gazetnyi_list_ros.png&x[52px]&y[-133px]" /><Params val="time[100]" /></Item>
+		<Item><Name val="heap_block_26" /><ItemSpr val="\actors\items\trash\itm_trashheap_floor.spr?image=trashheap_gazetnyi_list_ros.png&x[52px]&y[-153px]" /><Params val="time[100]" /></Item>
+		<Item><Name val="heap_block_26" /><ItemSpr val="\actors\items\trash\itm_trashheap_floor.spr?image=trashheap_gazetnyi_list_ros.png&x[52px]&y[-153px]" /><Params val="time[100]" /></Item>
 		<Item><Name val="heap_block_27" /><ItemSpr val="\actors\items\trash\itm_trashheap_floor.spr?image=trashheap_gazetnyi_list_ros.png&x[2px]&y[-84px]" /><Params val="time[100]" /></Item>
 		<Item><Name val="heap_block_28" /><ItemSpr val="\actors\items\trash\itm_trashheap_floor.spr?image=trashheap_gazetnyi_list_ros.png&x[144px]&y[-89px]" /><Params val="time[100]" /></Item>
 		<Item><Name val="heap_block_29" /><ItemSpr val="\actors\items\trash\itm_trashheap_floor.spr?image=trashheap_gazetnyi_list_ros.png&x[147px]&y[-121px]" /><Params val="time[100]" /></Item>
@@ -586,7 +587,7 @@
 	<Items>
 		<Item><Name val="heap_block_2" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_gazetnaya_pachka_zel.png&x[217px]&y[-161px]" /><Params val="time[100]" /></Item>
 		<Item><Name val="heap_block_3" /><ItemSpr val="\actors\items\trash\itm_trashheap_floor.spr?image=trashheap_gazetnyi_list_cvernyt.png&x[211px]&y[-55px]" /><Params val="time[100]" /></Item>
-		<Item><Name val="heap_block_4" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_korobka_zel.png&x[141px]&y[-154px]" /><Params val="time[100] drag[1]" /></Item>
+		<Item><Name val="heap_block_4" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_korobka_zel.png&x[141px]&y[-160px]" /><Params val="time[100] drag[1]" /></Item>
 		<Item><Name val="heap_block_5" /><ItemSpr val="\actors\items\trash\itm_trashheap_floor.spr?image=trashheap_yaschik_stola.png&x[96px]&y[-164px]" /><Params val="time[100]" /></Item>
 		<Item><Name val="heap_block_6" /><ItemSpr val="\actors\items\trash\itm_trashheap_floor.spr?image=trashheap_gazetnyi_list_zholt.png&x[160px]&y[-7px]" /><Params val="time[100]" /></Item>
 		<Item><Name val="heap_block_7" /><ItemSpr val="\actors\items\trash\itm_trashheap_floor.spr?image=trashheap_gazetnyi_list_zholt.png&x[78px]&y[-3px]" /><Params val="time[100]" /></Item>
@@ -682,15 +683,15 @@
 <Actor>
 	<Name val="Heaps.Musor57" />
 	<Sprite val="\actors\items\trash\trashheap_base.spr?w[41px]&h[32px]" />
-	<Position.Location val="FurniTrashMINI::DOT71" />
+	<Position.Location val="OfficeHeaps::DOT28" />
 	<ActorProphession val="COLLECTIBLE.FURNITURE" />
 	<Attributes>
 		OptionLong[exploration]=2
 	</Attributes>
 	<Items>
-		<Item><Name val="heap_block_1" /><ItemSpr val="\actors\items\trash\itm_trashheap_floor.spr?image=trashheap_utka.png&xoffset=0&yoffset=0" /><Params val="time[100]" /></Item>
-		<Item><Name val="heap_block_2" /><ItemSpr val="\actors\items\trash\itm_trashheap_floor.spr?image=trashheap_utka2.png&xoffset=0&yoffset=0" /><Params val="time[100]" /><HideIf val="heap_block_1" /></Item>
-		<Item><Name val="heap_block_3" /><ItemSpr val="\actors\items\trash\itm_trashheap_floor.spr?image=trashheap_utka3.png&xoffset=0&yoffset=0" /><Params val="time[100] drag[1]" /><HideIf val="heap_block_2" /></Item>
+		<Item><Name val="heap_block_1" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_utka.png&x[-30px]&y[30px]" /><Params val="time[100]" /></Item>
+		<Item><Name val="heap_block_2" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_utka2.png&x[-30px]&y[30px]" /><Params val="time[100]" /><HideIf val="heap_block_1" /></Item>
+		<Item><Name val="heap_block_3" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_utka3.png&x[-30px]&y[30px]" /><Params val="time[100] drag[1]" /><HideIf val="heap_block_2" /></Item>
 	</Items>
 </Actor>
 
@@ -703,9 +704,9 @@
 		OptionLong[exploration]=2
 	</Attributes>
 	<Items>
-		<Item><Name val="heap_block_1" /><ItemSpr val="\actors\items\trash\itm_trashheap_floor.spr?image=trashheap_shreder.png&xoffset=0&yoffset=0" /><Params val="time[100]" /></Item>
-		<Item><Name val="heap_block_2" /><ItemSpr val="\actors\items\trash\itm_trashheap_floor.spr?image=trashheap_shreder2.png&xoffset=0&yoffset=0" /><Params val="time[100]" /><HideIf val="heap_block_1" /></Item>
-		<Item><Name val="heap_block_3" /><ItemSpr val="\actors\items\trash\itm_trashheap_floor.spr?image=trashheap_shreder3.png&xoffset=0&yoffset=0" /><Params val="time[100] EnableOtherHeap[EVIL_SHREDER]" /><HideIf val="heap_block_2" /></Item>
+		<Item><Name val="heap_block_1" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_shreder.png" /><Params val="time[100]" /></Item>
+		<Item><Name val="heap_block_2" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_shreder2.png" /><Params val="time[100]" /><HideIf val="heap_block_1" /></Item>
+		<Item><Name val="heap_block_3" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_shreder3.png" /><Params val="time[100] EnableOtherHeap[EVIL_SHREDER]" /><HideIf val="heap_block_2" /></Item>
 	</Items>
 </Actor>
 <Actor>
@@ -1636,54 +1637,4 @@
 	</Attributes>
 	<Items>
 	</Items>
-</Actor>
-
-<Actor>
-	<Name val="musor.EDITOR1_L" />
-	<Enabled val="0" />
-	<Sprite val="\actors\items\trash\trashheap.spr?image=trashheap_plyazhnyi_ctolik.png&xoffset=0&yoffset=0" />
-	<Position.Location val="Furniture::TABLE.EDITOR1_L" />
-	<ActorProphession val="COLLECTIBLE.FURNITURE" />
-	<Items></Items>
-</Actor>
-<Actor>
-	<Name val="musor.EDITOR1_R" />
-	<Enabled val="0" />
-	<Sprite val="" />
-	<Position.Location val="Furniture::TABLE.EDITOR1_R" />
-	<ActorProphession val="COLLECTIBLE.FURNITURE" />
-	<Items></Items>
-</Actor>
-<Actor>
-	<Name val="musor.EDITOR2_R" />
-	<Enabled val="0" />
-	<Sprite val="" />
-	<Position.Location val="Furniture::TABLE.EDITOR2_R" />
-	<ActorProphession val="COLLECTIBLE.FURNITURE" />
-	<Items></Items>
-</Actor>
-<Actor>
-	<Name val="musor.EDITOR2_R" />
-	<Enabled val="0" />
-	<Sprite val="" />
-	<Position.Location val="Furniture::TABLE.EDITOR2_R" />
-	<ActorProphession val="COLLECTIBLE.FURNITURE" />
-	<Items></Items>
-</Actor>
-
-<Actor>
-	<Name val="musor.EDITOR3_R" />
-	<Enabled val="0" />
-	<Sprite val="" />
-	<Position.Location val="Furniture::TABLE.EDITOR3_R" />
-	<ActorProphession val="COLLECTIBLE.FURNITURE" />
-	<Items></Items>
-</Actor>
-<Actor>
-	<Name val="musor.EDITOR4_R" />
-	<Enabled val="0" />
-	<Sprite val="" />
-	<Position.Location val="Furniture::TABLE.EDITOR4_R" />
-	<ActorProphession val="COLLECTIBLE.FURNITURE" />
-	<Items></Items>
 </Actor>
