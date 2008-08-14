@@ -1,0 +1,7 @@
+[Sprite]
+-Texture:trash_drag.png
+-AsMutable:1
+-Atlas:x${dragtrash} y0 w4 h1
+-Size:2
+-MapY2Z:-100
+

@@ -38,8 +38,8 @@ MENU.BUTTON.RENPLAYER.LABEL=Переименовать
 MENU.DIALOG.PROFILES.LABEL=Игроки
 MENU.LEVELOPTION.DSCTEXT=Игра приостановлена
 LEVEL.TIMEPAUSED=ПАУЗА
-GUI.LEVEL.QUESTS.BUTTON=Квесты
 MENU.DIALOG.QUESTS.LABEL=Квесты
+GUI.LEVEL.QUESTS.BUTTON=Квесты
 GUI.LEVEL.TECH.BUTTON=Открытия
 MENU.DIALOG.TECHS.LABEL=Открытия
 MENU.BUTTON.BUYTECH.LABEL=Купить
@@ -50,7 +50,6 @@ AUTHOR=Автор
 FINANCIER=Финансист
 CREATOR=Креативщик
 JANITOR=Уборщик
-
 
 MONTH_OF1=Января
 MONTH_OF2=Февраля
@@ -71,3 +70,7 @@ PUZZLE.BUTTON.NEXTBG.LABEL=Фон
 PUZZLE.BUTTON.NEXTLOGO.LABEL=Лого
 
 comicspage_text0=Однажды, в одной гигантской корпорации...
+
+MENU.BUTTON.HELP=Помощь
+GUI.QUESTS.HELP1=Окно квестов
+GUI.QUESTS.HELP2=Кнопка закрытия

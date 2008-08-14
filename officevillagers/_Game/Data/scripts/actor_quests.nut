@@ -232,4 +232,13 @@ function initQuestDialog(skipItems)
 		}
 		core_SetNode(format("quest_slot%i",slotId),slotNode);
 	}
+	core_EnableNode("quest_button_left",false);
+	core_EnableNode("quest_button_right",false);
+	
+	// Окно помощи при первом заходе
+	local safe=game_GetSafe();
+	if(!("quest_help_ok" in safe) || !safe.quest_help_ok){
+		safe.quest_help_ok <- true;
+		helpDialog("level_quests_help");
+	}
 }

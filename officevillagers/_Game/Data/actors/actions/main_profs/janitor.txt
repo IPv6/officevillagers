@@ -148,7 +148,7 @@
 		//убираем мусор, возвращаем перса на прескрипт искать новый мусор
 		actor_SetAttribute(TrashName,"__BUSY",0);// Если не удалится то должен быть свободен
 		local bIsNoItemsLeft=true;
-		local switchToDragTrash=false;
+		local switchToDragTrash=0;
 		if(CurrentTrashItem!=false){
 			$ifdebug __DebugActor(thisActor,"step 4");
 			bIsNoItemsLeft=false;
@@ -158,9 +158,9 @@
                     actor_SetAttribute(thisActor,"PrefferedTrash","");
                }
 			local isDragMusor = actor_GetItemAttribute(TrashName,CurrentTrashItem,"drag");
-			if(isDragMusor==1 || CurrentTrashItem._name.find("drag")!=null)
+			if(isDragMusor!=false)
 			{// Конец этапа уборки. забываем про предпочтительный мусор
-				switchToDragTrash = true;
+				switchToDragTrash = isDragMusor.tointeger();
 				local isDragMusor2 = actor_GetItemAttribute(TrashName,CurrentTrashItem,"dragTo");
 				if(isDragMusor2 != false)
 				{
@@ -199,6 +199,7 @@
 		}
 		$ifdebug __DebugActor(thisActor,"step 8");
 		if(switchToDragTrash){
+			actor_SetAttribute(thisActor,"JANITOR_CARRYTRASH.ITEM",switchToDragTrash);
 			actor_SwitchToAction(thisActor,"JANITOR_CARRYTRASH");
 		}else{
 			actor_SwitchToAction(thisActor,"pre_JANITOR_Script");
@@ -231,12 +232,18 @@
 -Protected:0
 -Script.In:
 	actor_SetActionLabel(thisActor,"JANITOR.CARRING_TRASH");
+	local nTrashItemNumber = actor_GetAttributeN(thisActor,"JANITOR_CARRYTRASH.ITEM");
+	if(nTrashItemNumber<1){
+		nTrashItemNumber=1;// Дефолтное значение
+	}
+	local nTrashItemSprParam="dragtrash="+(nTrashItemNumber-1).tostring();
+	actor_SetAttribute(thisActor,"JANITOR_CARRYTRASH.ITEM",0);
 	// Создаем мусор
-	local newTrash=actor_CreateActor("collectible.trash","collectible.trash".toupper());
+	local newTrash=actor_CreateActor("collectible.dragtrash","collectible.trash".toupper(),{_options=nTrashItemSprParam});
 	actor_SetActorEnabled(newTrash, true);
 	// Кладем его уборщику в карман
-	actor_AddItem(thisActor,"collectible_item","collectible_number=7");
-	actor_PutIntoPocket(thisActor,newTrash,"collectible_item");
+	actor_AddItem(thisActor,"collectible_dragtrash",nTrashItemSprParam);
+	actor_PutIntoPocket(thisActor,newTrash,"collectible_dragtrash");
 	// Несем его к двери
 	local sTarget = actor_GetAttributeS(thisActor,"JANITOR_CARRYTRASH.TARGET");
 	if(sTarget == ""){
@@ -246,6 +253,6 @@
 	actorWait_GoTo(thisActor, sTarget);
 	// Удаляем мусор
 	actor_DeleteActor(newTrash);
-	actor_DelItem(thisActor,"collectible_item");
+	actor_DelItem(thisActor,"collectible_dragtrash");
 	// Все, донесли... переходим к обычному поиску дел
 	actor_SwitchToAction(thisActor,"pre_JANITOR_Script");

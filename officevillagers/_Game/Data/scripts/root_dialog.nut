@@ -171,3 +171,8 @@ function levelKeyHandler(key)
 		officeMapScrollBy({_x=0,_y=-0.3});
 	}
 } 
+
+function helpDialog(helpDialogName)
+{
+	core_OpenDialog(helpDialogName);
+}
