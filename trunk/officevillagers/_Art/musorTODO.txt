@@ -10,7 +10,7 @@ trashheap_komod.png
 две стадии - разборка
 
 5
-1 - холодильник
+1 - холодильник 
 trashheap_holodilnik.png
 три стадии - разборка
 
