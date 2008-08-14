@@ -173,7 +173,7 @@
 	actor_AttachCamera(thisActor);
 	actor_OrientHead(thisActor,90);
 	actorWait_Timeout(1);
-	actor_OrientHead(thisActor,180);
+	actor_OrientHead(thisActor,270);
 	actorWait_Timeout(1);
 	actorWait_GoTo(thisActor,"SCENES_Tutorial::Agata");
 	while(gui_IsDialogOpen()==true){
@@ -186,7 +186,7 @@
 	actorWait_Timeout(1);
 	actor_OrientHead(thisActor,270);
 	actorWait_Timeout(1);
-	actor_OrientHead(thisActor,180);
+	actor_OrientHead(thisActor,90);
 	while(gui_IsDialogOpen()==true){
 		::suspend();
 	}
@@ -195,7 +195,7 @@
 	while(gui_IsDialogOpen()==true){
 		::suspend();
 	}
-	actor_OrientBody(thisActor,180);
+	actor_OrientBody(thisActor,ROYAL);
 	gui_ShowDialog(dialogFile, { _section="DIALOG10", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
 	while(actor_IsInLocation(thisActor,"SCENES_Tutorial::Agata3")==false){
 		::suspend();
