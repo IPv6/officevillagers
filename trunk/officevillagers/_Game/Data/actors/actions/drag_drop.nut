@@ -43,7 +43,7 @@ function dropOnPers(thisActor,persActor)
 	//если стажёра кинуть на не стажёра...стажёр начнёт учиться, предвариетльно забрав учителя себе в атрибуты...так же он отмечает, что учительу него есть
 	if(actor_GetActorProfession(thisActor)=="STAGER" && actor_GetActorProfession(persActor)!="STAGER"){
 		actor_SetAttribute(thisActor,"__ScheduledTeacher",persActor.Name);
-		actor_SetAttribute(thisActor,"__BUSY",1);
+		actor_SetAttribute(thisActor,"__MANUALSTUDY",1);
 		actor_SwitchToAction(thisActor,"STAGER_Script");
 		return true;
 	}
@@ -70,7 +70,6 @@ function dropOnTrash(thisActor,trashActor)
 					actor_SetActorPos(thisActor,lAltLocation);
 					// Переводим на уборку
 					actor_SetAttribute(thisActor,"CurrentTrashName",trashActor.Name);
-					actor_SetAttribute(trashActor,"__BUSY",1);
 					actor_SwitchToAction(thisActor,"JANITOR_script");
 					return true;
 				}else{
@@ -81,7 +80,6 @@ function dropOnTrash(thisActor,trashActor)
 		}
 		// Переводим на уборку
 		actor_SetAttribute(thisActor,"CurrentTrashName",trashActor.Name);
-		actor_SetAttribute(trashActor,"__BUSY",1);
 		actor_SwitchToAction(thisActor,"JANITOR_script");
 		return true;
 	}

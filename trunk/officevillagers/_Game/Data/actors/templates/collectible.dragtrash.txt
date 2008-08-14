@@ -1,0 +1,7 @@
+<Actor>
+	<Name val="COLLECTIBLE.TRASH" />
+	<Enabled val="0" />
+	<Sprite val="actors\items\trash\trash_drag.spr?dragtrash=${dragtrash}" />
+	<ActorProphession val="COLLECTIBLE.RANDOM" />
+	<Items></Items>
+</Actor>

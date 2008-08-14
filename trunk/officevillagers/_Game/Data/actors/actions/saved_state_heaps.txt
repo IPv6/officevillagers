@@ -15,7 +15,7 @@
 		OptionLong[exploration]=2
 	</Attributes>
 	<Items>
-	<Item><Name val="heap_block_1" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_korobka_ros.png&x[10px]&y[-55px]" /><Params>time[5] drag[1]</Params></Item>
+	<Item><Name val="heap_block_1" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_korobka_ros.png&x[10px]&y[-55px]" /><Params>time[5] drag[2]</Params></Item>
 	<Item><Name val="heap_block_2" /><ItemSpr val="\actors\items\trash\itm_trashheap_floor.spr?image=trashheap_gazetnyi_list_zholt.png&x[30px]&y[-30px]" /><Params>time[100]</Params></Item>
 	<Item><Name val="heap_block_3" /><ItemSpr val="\actors\items\trash\itm_trashheap_floor.spr?image=trashheap_bolshaya_stopka_bumagi_flip.png&x[100px]&y[-135px]" /><Params val="time[5] etapContinue[1]" /></Item>
 	<Item><Name val="heap_block_3_box" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_korobka_ros.png&x[0px]&y[-5px]" /><Params val="drag[1] dragTo[OfficeHeaps::DOT2!]" /><HideIf val="heap_block_3" /></Item>

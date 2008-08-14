@@ -50,7 +50,6 @@
 		return;
 	}
 	//если всё путём, то сажаем редактора работать
-	actor_SetAttribute(thisTable,"__BUSY",1);
 	actor_SitOnChair(thisActor,thisTable,true);
 	actor_SwitchToAction(thisActor,"AUTHOR-EXPERT_Script");	
 	
@@ -114,7 +113,7 @@
 	//счётчик прогресса редактирования статьи...пускай редактируется стаья чуть быстрее чем автор её пишет - 1% за 40 секунд..
 	if(getTime()-actor_GetAttributeN(thisTable,"time_percent_material")>getGlobal("editing_work_sec")){
 		actor_SetAttribute(thisTable,"material_progress",actor_GetAttributeN(thisTable,"material_progress")+1);
-		actor_SetAttribute(thisTable, "time_percent_material", actor_GetAttributeN(thisTable, "time_percent_material")-getGlobal("editing_work_sec"));
+		actor_SetAttribute(thisTable, "time_percent_material", getTime());
 		actor_AddIcon(thisActor, "article_p1");
 	}
 
@@ -130,7 +129,7 @@
 	//счётчик усталости...1% за 13 секунд - при 70% актор убегает отдыхать...т.е. это раз в 15 минут примерно...
 	if(getTime()-actor_GetAttributeN(thisActor,"time_percent_tire")>getGlobal("editing_tire_sec")){
 		actor_SetAttribute(thisActor,"tire",actor_GetAttributeN(thisActor,"tire")+1);
-		actor_SetAttribute(thisActor, "time_percent_tire",actor_GetAttributeN(thisActor, "time_percent_tire")-getGlobal("editing_tire_sec"));
+		actor_SetAttribute(thisActor, "time_percent_tire", getTime());
 		actor_AddIcon(thisActor, "boredom_p1");
 	}
 
@@ -159,7 +158,6 @@
 	
 	actor_DelItem(thisTable,"progress_baloon","attrName=material_progress");	
 	actor_SitOnChair(thisActor,thisTable,false);
-	actor_SetAttribute(thisTable,"__BUSY",0);
 	gui_SetIssueProgressCur(gui_GetIssueProgressCur()+1);
 	
 	
@@ -167,7 +165,7 @@
 	if (gui_GetIssueProgressCur() == GetIssueProgressMax()){
 		//core_Warning("играет анимация и звук");
 		//отключается высчет качества номера
-		actor_SetAttribute(actor_GetActor(), Opener_QualityCheck, 0);
+		actor_SetAttribute(actor_GetActor(), "Opener_QualityCheck", 0);
 		
 		//проверка, изобрели ли уже загашник
 		//если не изобрели, то агата сообщает, что авторов желательно переправить на другую работу/учёбу, так как пользы от них никакой, разве что опыт набирают и стажёров учат

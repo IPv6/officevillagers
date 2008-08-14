@@ -19,6 +19,10 @@
 		<DefaultSpr val="\actors\items\collectible\itm_collectible.spr" />
 	</ItemDescription>
 	<ItemDescription>
+		<Name val="collectible_dragtrash" />
+		<DefaultSpr val="\actors\items\trash\itm_trash_drag.spr" />
+	</ItemDescription>
+	<ItemDescription>
 		<Name val="article" />
 		<DefaultSpr val="\actors\items\itm_article.spr" />
 	</ItemDescription>

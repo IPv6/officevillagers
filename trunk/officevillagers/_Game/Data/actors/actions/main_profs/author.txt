@@ -27,8 +27,6 @@
 		actor_RestartAction(thisActor);
 		return;
 	}
-	//core_Warning("sending to sit");
-	actor_SetAttribute(thisTable,"__BUSY",1);
 	actor_SitOnChair(thisActor,thisTable,true);
 	actor_SwitchToAction(thisActor,"AUTHOR_Script");
 
@@ -74,7 +72,7 @@
 	if(getTime()-actor_GetAttributeN(thisTable,"time_percent_material")>getGlobal("author_work_sec")){
 		actor_SetAttribute(thisTable,"material_progress",actor_GetAttributeN(thisTable,"material_progress")+1);
 		actor_AddIcon(thisActor, "article_p1");
-		actor_SetAttribute(thisTable, "time_percent_material", actor_GetAttributeN(thisTable, "time_percent_material")-getGlobal("author_work_sec"));
+		actor_SetAttribute(thisTable, "time_percent_material", getTime());
 	}
 
 	//статья готова (если отдых будет пятиминутный, то на неё должно уйти 8 отдыхов и 2 часа 40 минут реального времени)
@@ -88,7 +86,7 @@
 	
 	if(getTime()-actor_GetAttributeN(thisActor,"time_percent_tire")>getGlobal("author_tire_sec")){
 		actor_SetAttribute(thisActor,"tire",actor_GetAttributeN(thisActor,"tire")+1);
-		actor_SetAttribute(thisActor,"time_percent_tire",actor_GetAttributeN(thisActor,"time_percent_tire")-getGlobal("author_tire_sec"));
+		actor_SetAttribute(thisActor,"time_percent_tire", getTime());
 		actor_AddIcon(thisActor, "boredom_p1");
 	}
 
@@ -115,7 +113,6 @@
 	actor_DelItem(thisTable,"progress_baloon","attrName=material_progress");
 	actor_SitOnChair(thisActor,thisTable,false);
 	actor_SetActionLabel(thisActor,"AUTHOR.4");
-	actor_SetAttribute(thisTable,"__BUSY",0);
 	actor_AddItem(thisActor,"article");
 	actorWait_GoTo(thisActor,"Furniture::ArticleTable");
 	actor_DelItem(thisActor,"article");

@@ -23,9 +23,7 @@ function game_initMainMenuDialog()
 	{
 		core_DeleteSprite("StartOverButton");
 	}
-	local sEditorPresent=core_ReadTextFile(core_GetDataPath("gui\\editor\\main_menu_editor.spr"));
-	if(sEditorPresent.len()>0 && core_GetIniParameter("EnableIngameEditor")!="0")
-	{
+	if(core_GetIniParameter("EnableIngameEditor")!="0"){
 		core_CreateSprite("gui\\editor\\main_menu_editor.spr","main_menu");
 	}
 	Profiles_setProfileGreeting();

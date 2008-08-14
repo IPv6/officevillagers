@@ -7,7 +7,7 @@
 -Protected:0
 -Script.In:
 	//если стажёр занят (то есть игрок ему передал учителя) его перекидывает на стажёрский ивент
-	if (actor_GetAttribute(thisActor,"__BUSY")==1){
+	if (actor_GetAttribute(thisActor,"__MANUALSTUDY")==1){
 		actor_SwitchToAction(thisActor,"STAGER_Script");
 		return;
 	}
@@ -30,6 +30,9 @@
 	}
 	core_Warning(format("Stager to teacher [%s]",teacherToSet));
 	actor_SetTeacher(thisActor,teacherToSet,true);
+	// Сброс на будущее
+	actor_SetAttribute(thisActor,"__MANUALSTUDY",0);
+	// Усталость
 	actor_SetAttribute(thisActor,"time_percent_tire",getTime());
 	//опыт
 	actor_SetAttribute(thisActor,"time_percent_exp",getTime());
@@ -42,19 +45,19 @@
 -Protected:0
 -Script.In:
 	actor_SetActionLabel(thisActor,"STAGER.1");
-	//нужно добавить, чтобы при смене профессии или при окончании обучения стажёр сбрасывал обе переменные (__BUSY и teather) на ноль
+	//нужно добавить, чтобы при смене профессии или при окончании обучения стажёр сбрасывал teacher на ноль
 	//счётчик усталости...1% за 13 секунд - при 70% автор убегает отдыхать...т.е. это раз в 15 минут примерно...
 	
 	if(getTime()-actor_GetAttributeN(thisActor,"time_percent_tire")>getGlobal("stager_tire_sec")){
 		actor_SetAttribute(thisActor,"tire",actor_GetAttributeN(thisActor,"tire")+1);
-		actor_SetAttribute(thisActor,"time_percent_tire",actor_GetAttributeN(thisActor,"time_percent_tire")-getGlobal("stager_tire_sec"));
+		actor_SetAttribute(thisActor,"time_percent_tire",getTime());
 		actor_AddIcon(thisActor, "boredom_p1");
 	}
 
 	//счётчик набора опыта
 	if(getTime()-actor_GetAttributeN(thisActor,"time_percent_exp")>getGlobal("StagerExpTime")){
 		addExpa(thisActor,1);
-		actor_SetAttribute(thisActor, "time_percent_exp", actor_GetAttributeN(thisActor, "time_percent_exp")- getGlobal( "StagerExpTime"));
+		actor_SetAttribute(thisActor, "time_percent_exp", getTime());
 		actor_AddIcon(thisActor, "exp_p1");
 	}
 	
