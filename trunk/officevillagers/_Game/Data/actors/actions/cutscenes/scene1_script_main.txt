@@ -108,6 +108,8 @@
 		actor_NewPerson("person_male",true);
 	}
     // устанавливаем профессии и сбрасываем ивенты (мы ведь не знаем в какой момент был пропуск?)
+	if (gui_QuestCheck(2)!=2){ gui_QuestOpen(2) };
+	if (gui_QuestCheck(5)!=2){ gui_QuestOpen(5) };
     local actorSh = actor_GetActor("ACTOR.SHEKEL");
     local actorAg = actor_GetActor("ACTOR.AGATA");
     local actorSi = actor_GetActor("ACTOR.SINTI");

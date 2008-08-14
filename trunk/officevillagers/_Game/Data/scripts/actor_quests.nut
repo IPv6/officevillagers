@@ -157,7 +157,7 @@ function getOpenQuests()
 	}
 	//local str=core_SerializeObj(safe.quests);core_Alert(str);
 	foreach(questSt in safe.quests){
-		if("State" in questSt && (questSt.State==2 || questSt.State==1))
+		if("State" in questSt && (questSt.State==2 ))
 		{
 			local questID=questSt.ID;
 			//core_Alert(questID+" "+questSt.State.tostring());
