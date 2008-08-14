@@ -40,14 +40,8 @@ void CGameImplementation::HandleCommonDescriptionMacros(CString& sContent,_array
 	if(sContent.Find("$if")!=-1){
 		if(isDebugEnabled()){
 			sContent.Replace("$ifdebug","");
-			if(Debug_ShowInfo()){
-				sContent.Replace("$ifdebuginfo","");
-			}else{
-				sContent.Replace("$ifdebuginfo","//");
-			}
 		}else{
 			sContent.Replace("$ifdebug","//");
-			sContent.Replace("$ifdebuginfo","//");
 		}
 	}
 }
