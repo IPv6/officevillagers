@@ -24,14 +24,13 @@ function quest_conditions(conditions)
 //		}
 	}
 
-	if("_fromSetProf" in conditions)
-	{// Проверки квестов, вызывающиеся из смиены профессии
-		if (conditions.who.Name=="ACTOR.AGATA" && conditions.prof.find("FINANSIST") != null ){
+	if("_fromSetProf" in conditions){// Проверки квестов, вызывающиеся из смиены профессии
+		if (conditions.who.Name=="ACTOR.AGATA" && conditions.prof.find("FINANCIER")!= null ){
 			if(gui_QuestClose(2)){
 				gui_QuestOpen(3);
 			}
 		}
-    }
+	}
 	
 	if("Quest4" in conditions)
 	{// четвертый квест

@@ -53,7 +53,17 @@
 	actorWait_SwitchToAction(actor_GetActor("ACTOR.AGATA"),"Cutscene.driver");
 	gui_FadeIn();
 	actorWait_Timeout(1);
-	actor_SetActorEnabled(actor_GetActor("TRASH14"), true);
+	
+	//создаём коллектибл
+	local sTemplateName = "collectible.trash";
+	local sTemplateOptions="";
+	sTemplateName = "collectible";
+	sTemplateOptions=format("collectible_number=%i",core_Rnd(0,3).tointeger());
+	local sTrashLocation = "FurniTRASH::TRASH14";
+	local newTrash=actor_CreateActor(sTemplateName,sTemplateName.toupper(),{_options=sTemplateOptions,_location=sTrashLocation});
+	actor_SetActorEnabled(newTrash, true);
+	actor_SetAttribute(newTrash,"IsCollectible",1);
+	
 	actor_AttachCamera(actorBo);
 	actorWait_Timeout(1);
 	gui_FadeOut();
