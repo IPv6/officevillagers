@@ -15,13 +15,13 @@ function quest_conditions(conditions)
 			}
 		}
 	
-//		if((actor_GetActorProfession(thisActor)=="JANITOR" || actor_GetActorProfession(thisActor)=="JANITOR-EXPERT")
-//		&& locName.Name == "FurniDrops::BARRICADA"
-//		&& nloc_CheckWalkablePath("FurniDrops::BARR_FROM","Heaps.Barricada")!=false){
-//			if(gui_QuestClose(6)){
-//				gui_StartCutscene("Quest7_Cutscene");
-//			}
-//		}
+		if((actor_GetActorProfession(thisActor)=="JANITOR" || actor_GetActorProfession(thisActor)=="JANITOR-EXPERT")
+		&& locName.Name == "FurniDrops::BARRICADA"
+		&& nloc_CheckWalkablePath("FurniDrops::BARR_FROM","Heaps.Barricada")!=false){
+			if(gui_QuestClose(6)){
+				gui_StartCutscene("Quest7_Cutscene");
+			}
+		}
 	}
 
 	if("_fromSetProf" in conditions){// Проверки квестов, вызывающиеся из смиены профессии
