@@ -92,9 +92,9 @@
 					if(isCollectible){
 						// создаем коллектибл
 						sTemplateName = "collectible";
-						sTemplateOptions=format("collectible_number=%i",core_Rnd(0,3).tointeger());
+						sTemplateOptions=format("collectible_number=%i",core_Rnd(0,7+1).tointeger());
 					}
-					local sTrashLocation = format("FurniTRASH::TRASH%i", core_Rnd(1,20).tointeger(),sTemplateOptions);
+					local sTrashLocation = format("FurniTRASH::TRASH%i", core_Rnd(1,20+1).tointeger(),sTemplateOptions);
 					if(nloc_GetWalkableState(sTrashLocation)==1)
 					{// ≈сли выбранна€ проходима
 						local isBusy=actor_GetActors({_byLocation=sTrashLocation});

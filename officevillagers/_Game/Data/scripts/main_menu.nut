@@ -157,6 +157,15 @@ function Profiles_askNameInit()
 	core_SetNodeAttribute("magedit_slot","magedit_text",g_LastProfileName);
 }
 
+function Profiles_checkName(param)
+{
+	local sName=core_GetNodeAttribute("magedit_slot","magedit_text");
+	if(sName && sName.len()>0){
+		return true;
+	}
+	return false;
+}
+
 function Profiles_askNameDeinit()
 {
 	core_SetProfileOption("UserNameAsked",1);
