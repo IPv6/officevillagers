@@ -24,6 +24,20 @@
 	actor_SwitchToAction(actorBo,"Debug_table_Script");
 	actor_SwitchToAction("Office","SleepMode");
 	
+	//if(false)
+	{
+		// Показ хинтов
+		gui_ShowHint("hint 1",3.9);
+		//actorWait_Timeout(1);
+		gui_ShowHint("hint 2",30.9);
+		gui_ShowHint("hint 3",30.9);
+		gui_ShowHint("hint 4",30.9);
+		gui_ShowAlarm("alarm 2:alarm 2:alarm 2 [10]",10);
+		//actorWait_Timeout(10);
+		gui_ShowHint("hint 3:hint 3",4);
+		//actorWait_Timeout(5);
+	}
+	
 	if(false)
 	{// Диалоги
 		local dialogFile = core_GetDataPath("text\\tutorial_dialog.lng");
@@ -106,7 +120,7 @@
 		core_Alert("!!!");
 	}
 	
-	//if(false)
+	if(false)
 	{// Квесты
 		//gui_StartCutscene("Quest4_Cutscene");
 		//game_CutsceneBegin({});
@@ -116,81 +130,61 @@
 		gui_QuestOpen(2);
 	}
 
-	/*
-	actor_AddIcon(actorBo,"techpoint_p1");
-	actor_AddIcon(actorBo,"techpoint_p1");
-	actor_AddIcon(actorBo,"techpoint_p1");
-	actor_AddIcon(actorSi,"techpoint_p1");
-	actor_AddIcon(actorSi,"techpoint_p1");
-	actor_AddIcon(actorSi,"techpoint_p1");
-	*/
+	if(false)
+	{
+		actor_AddIcon(actorBo,"techpoint_p1");
+		actor_AddIcon(actorBo,"techpoint_p1");
+		actor_AddIcon(actorBo,"techpoint_p1");
+		actor_AddIcon(actorSi,"techpoint_p1");
+		actor_AddIcon(actorSi,"techpoint_p1");
+		actor_AddIcon(actorSi,"techpoint_p1");
+	}
 
-	/*// Тест сериализации
-	local aaa = [];
-	aaa.append(1.99);
-	aaa.append("!!!");
-	aaa.append(88);
-	aaa.append({test1=1, test2="test2"});
-	local str=core_SerializeObj(aaa);
-	local aa2=core_DeserializeObj(str);
-	if(aa2[1]!="!!!" || aa2[0]!=1.99 || aa2[2]!=88 || aa2[3].test1!=1 || aa2[3].test2!="test2"){
-		core_Alert(format("ERROR!!! %f - %s - %i",aa2[0],aa2[1],aa2[2]));
-	}else{
-		core_Alert(str);
-		core_Warning("SqSer test passed");
+	if(false)
+	{// Тест сериализации
+		local aaa = [];
+		aaa.append(1.99);
+		aaa.append("!!!");
+		aaa.append(88);
+		aaa.append({test1=1, test2="test2"});
+		local str=core_SerializeObj(aaa);
+		local aa2=core_DeserializeObj(str);
+		if(aa2[1]!="!!!" || aa2[0]!=1.99 || aa2[2]!=88 || aa2[3].test1!=1 || aa2[3].test2!="test2"){
+			core_Alert(format("ERROR!!! %f - %s - %i",aa2[0],aa2[1],aa2[2]));
+		}else{
+			core_Alert(str);
+			core_Warning("SqSer test passed");
+		}
+		local dataSafe=game_GetSafe();
+		dataSafe.test <- "testVar";
+		dataSafe.testMirror <- thisActor;
 	}
-	local dataSafe=game_GetSafe();
-	dataSafe.test <- "testVar";
-	dataSafe.testMirror <- thisActor;
-	*/
 	
-	/*//Выбор имени журнала
-	game_AskMagazineName();
-	game_StartPuzzle();
-	*/
-	
-	/*
-	actor_SwitchToAction(actorSh,"SleepMode");
-	actorWait_GoTo(actorSh,"TutorialSideEvents::SHEKEL.1");
-	*/
-	
-	/*// Вычисление времени до конца номера
-	local timeToNewIsuue=level_GetTimeToNewIssue()*game_GetGameSpeed();
-	local dateNow=core_GetDate();
-	dateNow=core_AddTime2Date(dateNow,timeToNewIsuue);
-	local timeStr=format("%i %i %i %i:%i:%i",dateNow._day,dateNow._month,dateNow._year,dateNow._hour,dateNow._min,dateNow._sec);
-	*/
-	
-	/*// Показ хинтов
-	gui_ShowHint("!!!!!!",3.9);
-	actorWait_Timeout(1);
-	gui_ShowHint("?????",3.9);
-	actorWait_Timeout(10);
-	gui_ShowHint(timeStr,100);
-	actorWait_Timeout(5);
-	*/
-	
-	/*// Получение древнейшей персоны
-	local out=getOldestPersons();
-	if(out.len()>0){
-	//core_Warning(format("oldestfound: %i",out.len()));
-	//for(i=0;i<out.len();i++){core_Warning(out[i].Name);};
+	if(false)
+	{//Выбор имени журнала
+		game_AskMagazineName();
+		game_StartPuzzle();
 	}
-	*/
 	
-	/*
-	local actorBob = actor_GetActor("ACTOR.BOB");
-	local actorSi = actor_GetActor("ACTOR.SINTI");
-	local actorAg = actor_GetActor("ACTOR.AGATA");
-	local actorSh = actor_GetActor("ACTOR.SHEKEL");
-	actor_SwitchToAction(actorBob,"SleepMode");
-	actor_SwitchToAction(actorSi,"SleepMode");
-	actor_SwitchToAction(actorAg,"SleepMode");
-	actorWait_Timeout(50);
-	*/
+	if(false)
+	{// Вычисление времени до конца номера
+		local timeToNewIsuue=level_GetTimeToNewIssue()*game_GetGameSpeed();
+		local dateNow=core_GetDate();
+		dateNow=core_AddTime2Date(dateNow,timeToNewIsuue);
+		local timeStr=format("%i %i %i %i:%i:%i",dateNow._day,dateNow._month,dateNow._year,dateNow._hour,dateNow._min,dateNow._sec);
+	}
 	
-	/*
-	// Тест двоных иконок
+	if(false)
+	{// Получение древнейшей персоны
+		local out=getOldestPersons();
+		if(out.len()>0){
+		//core_Warning(format("oldestfound: %i",out.len()));
+		//for(i=0;i<out.len();i++){core_Warning(out[i].Name);};
+		}
+	}
+	
+	if(false)
+	{// Тест двоных иконок
 	actor_AddIcon(actorSh, "boredom_p1");
 	actor_AddIcon(actorSh, "article_p1");
 	actor_AddIcon(actorSh, "full_rest");
@@ -199,85 +193,30 @@
 	actorWait_Timeout(1);
 	actor_AddIcon(actorAg, "article_p1");
 	actorWait_Timeout(15);
-	*/
-	
-	/*
-	// Тест анимированной швабры
-	actor_AddItem(actorBob,"shvabra");
-	actorWait_Timeout(10);
-	actor_DelItem(actorBob,"shvabra");
-
-	actor_AddItem(actorSi,"article");
-	actor_AddItem(actorBob,"shvabra");
-	actorWait_Timeout(5);
-	actor_DelItem(actorSi,"article");
-	actor_DelItem(actorBob,"shvabra");
-
-	*/
-	
-	/*
-	// Тест поворота головы
-	//actorWait_Timeout(3);core_Warning("2Agata");
-	actor_OrientHead(actorSh,actorAg);
-	//actorWait_Timeout(3);core_Warning("2Bob");
-	actor_OrientBody(actorSh,actorBob);
-	//actorWait_Timeout(3);core_Warning("2Sinti");
-	actor_OrientHead(actorSh,actorSi);
-	actorWait_Timeout(3);
-	*/
-	
-	/*
-	// Тест прогрессбара
-	actor_AddItem(actorBob,"progress_baloon","attrName=material_progress");
-	actor_SetAttribute(actorBob,"material_progress",1);
-	actorWait_Timeout(3);
-	actor_SetAttribute(actorBob,"material_progress",10);
-	actorWait_Timeout(3);
-	actor_SetAttribute(actorBob,"material_progress",30);
-	actorWait_Timeout(3);
-	actor_SetAttribute(actorBob,"material_progress",40);
-	actorWait_Timeout(3);
-	actor_SetAttribute(actorBob,"material_progress",50);
-	actorWait_Timeout(3);
-	actor_SetAttribute(actorBob,"material_progress",70);
-	actorWait_Timeout(3);
-	actor_SetAttribute(actorBob,"material_progress",90);
-	actorWait_Timeout(3);
-	actor_SetAttribute(actorBob,"material_progress",100);
-	actor_DelItem(actorBob,"progress_baloon");
-	*/
-	/*
-	// тест таймера
-	actor_StartTimer(thisActor,"testo");
-	::suspend();
-	::suspend();
-	::suspend();
-	::suspend();
-	//core_Warning(format("timer=%02f",actor_GetTimer(thisActor,"testo")));
-	*/
-	
-	/*
-	// тест отбора по атрибуту - число
-	actor_SetAttribute(actorBob,"testo",1);
-	
-	local res=actor_GetActorsByAttribute("ACTOR*","testo",1);
-	if(!res){
-		//core_Warning(format("rndactor=%s","???"));
-	}else{
-		//core_Warning(format("rndactor=%s",res.Name));
 	}
-	*/
 	
-	/*
-	// тест отбора по атрибуту - строка
-	actor_SetAttribute(actorBob,"testos","!!!");
 	
-	local res=actor_GetActorsByAttribute("ACTOR*","testos","!!!");
-	if(!res){
-		//core_Warning(format("rndactor s=%s","???"));
-	}else{
-		//core_Warning(format("rndactor s=%s",res.Name));
+	if(false)
+	{// Тест прогрессбара
+		actor_AddItem(actorBob,"progress_baloon","attrName=material_progress");
+		actor_SetAttribute(actorBob,"material_progress",1);
+		actorWait_Timeout(3);
+		actor_SetAttribute(actorBob,"material_progress",10);
+		actorWait_Timeout(3);
+		actor_SetAttribute(actorBob,"material_progress",30);
+		actorWait_Timeout(3);
+		actor_SetAttribute(actorBob,"material_progress",40);
+		actorWait_Timeout(3);
+		actor_SetAttribute(actorBob,"material_progress",50);
+		actorWait_Timeout(3);
+		actor_SetAttribute(actorBob,"material_progress",70);
+		actorWait_Timeout(3);
+		actor_SetAttribute(actorBob,"material_progress",90);
+		actorWait_Timeout(3);
+		actor_SetAttribute(actorBob,"material_progress",100);
+		actor_DelItem(actorBob,"progress_baloon");
 	}
-	*/
+	
+	
 	actorWait_Timeout(500000);
 	actor_RestartAction(thisActor);

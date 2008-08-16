@@ -18,6 +18,8 @@
 -Event.Mouse.Click.Image:menu_button_over_small.spr
 -Event.Mouse.Click.Sound:menu_button_click
 -Event.Mouse.Click.KeyShortcut:${VK_RETURN}
+-Event.Mouse.Click.AutodisableIf.Action:Profiles_checkName
+-Event.Mouse.Click.AutodisableIf.Image:menu_button_disabled.spr?button=secondary_buttons
 
 [Sprite]
 -Texture:${virtualNode}

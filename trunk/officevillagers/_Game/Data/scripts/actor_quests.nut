@@ -157,7 +157,7 @@ function getOpenQuests()
 	}
 	//local str=core_SerializeObj(safe.quests);core_Alert(str);
 	foreach(questSt in safe.quests){
-		if("State" in questSt && (questSt.State==2 ))
+		if("State" in questSt && (questSt.State==2))//Берем только открытые, без || questSt.State==1
 		{
 			local questID=questSt.ID;
 			//core_Alert(questID+" "+questSt.State.tostring());
@@ -213,7 +213,7 @@ function initQuestDialog(skipItems)
 		}else{
 			core_EnableNode(slotNode,true);
 			local questtitle=quests[thisQuestNum].locName;
-			questtitle=core_JustifyText(questtitle,4.5);
+			questtitle=core_JustifyText(questtitle,4.4);
 			slotNode._y=9-multiLineOffset;//ДО вычисления числа строк данного квеста!!!
 			// Определяем число строк
 			local lStrokNum=charsInText(questtitle,"\n");
