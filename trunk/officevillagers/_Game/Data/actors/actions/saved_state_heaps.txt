@@ -516,9 +516,9 @@
 		<Item><Name val="heap_block_14" /><ItemSpr val="\actors\items\trash\itm_trashheap_floor.spr?image=trashheap_papka_red.png&x[112px]&y[-133px]" /><Params val="time[100]" /></Item>
 		<Item><Name val="heap_block_15" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_gazetnaya_pachka_ros_90grad.png&x[40px]&y[-126px]" /><Params val="time[100]" /></Item>
 		<Item><Name val="heap_block_16" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_gazetnaya_pachka_ros_90grad.png&x[73px]&y[-90px]" /><Params val="time[100]" /></Item>
-		<Item><Name val="heap_block_17" /><ItemSpr val="\actors\items\trash\itm_trashheap_floor.spr?image=trashheap_gazetnaya_pachka_ros_90grad.png&x[98px]&y[-59px]" /><Params val="time[100]" /></Item>
+		<Item><Name val="heap_block_17" /><ItemSpr val="\actors\items\trash\itm_trashheap_floor.spr?image=trashheap_gazetnaya_pachka_ros_90grad.png&x[98px]&y[-58px]" /><Params val="time[100]" /></Item>
 		<Item><Name val="heap_block_18" /><ItemSpr val="\actors\items\trash\itm_trashheap_floor.spr?image=trashheap_gazetnaya_pachka_ros_90grad.png&x[63px]&y[-59px]" /><Params val="time[100]" /></Item>
-		<Item><Name val="heap_block_19" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_gazetnaya_pachka_ros_90grad.png&x[28px]&y[-59px]" /><Params val="time[100]" /></Item>
+		<Item><Name val="heap_block_19" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_gazetnaya_pachka_ros_90grad.png&x[28px]&y[-57px]" /><Params val="time[100]" /></Item>
 		<Item><Name val="heap_block_20" /><ItemSpr val="\actors\items\trash\itm_trashheap_floor.spr?image=trashheap_gazetnaya_pachka_ros_90grad.png&x[50px]&y[-40px]" /><Params val="time[100]" /></Item>
 		<Item><Name val="heap_block_21" /><ItemSpr val="\actors\items\trash\itm_trashheap_floor.spr?image=trashheap_gazetnaya_pachka_ros_90grad.png&x[32px]&y[-40px]" /><Params val="time[100]" /></Item>
 		<Item><Name val="heap_block_22" /><ItemSpr val="\actors\items\trash\itm_trashheap_floor.spr?image=trashheap_gazetnaya_pachka_ros_90grad.png&x[45px]&y[-32px]" /><Params val="time[100]" /></Item>
