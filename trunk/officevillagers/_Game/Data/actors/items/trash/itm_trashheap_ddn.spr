@@ -1,0 +1,11 @@
+[Sprite]
+-MapY2Z:-100
+
+[Sprite]
+-AsChild:1
+-Texture:${image}
+-SizeFromTexture:1
+-Align: x0.5 y-0.5
+-AlignInParent: x-0.5 y0.5
+-Position:y0.7
+-Animation.OnDestroy:\gui\effects\trashitem_remove.spr
