@@ -183,11 +183,11 @@
 	gui_ShowDialog(dialogFile, { _section="DIALOG8", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
 	actorWait_GoTo(thisActor,"SCENES_Tutorial::Agata2");
 	actorWait_Timeout(1);
-	actor_OrientHead(thisActor,90);
+	actor_OrientHead(thisActor,"Furniture::DOT15");
 	actorWait_Timeout(1);
-	actor_OrientHead(thisActor,270);
+	actor_OrientHead(thisActor,"OfficeHeaps::DOT52");
 	actorWait_Timeout(1);
-	actor_OrientHead(thisActor,90);
+	actor_OrientHead(thisActor,"Furniture::DOT15");
 	while(gui_IsDialogOpen()==true){
 		::suspend();
 	}
