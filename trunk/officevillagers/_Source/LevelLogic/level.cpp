@@ -25,8 +25,6 @@ CLevel::CLevel()
 	fProgressCur=0;
 	isCrunch=0;
 	data.lProgress_TimeMax=120;//2 min
-	fHintTimeTo=0.0f;
-	iHintProirity=0;
 	levelNavigator=new CLocationManagerNavigatorY();
 }
 
@@ -111,25 +109,22 @@ CLevelThinker::CLevelThinker(CLevel* _lvl)
 	attachToTimer(1);
 }
 
-BOOL CLevelThinker::haltAnimator()
+void CLevelThinker::finalize()
 {
-	if(__super::haltAnimator()){
-		if(lvl)
+	if(lvl)
+	{
+		if(getLevel()==lvl)
 		{
-			if(getLevel()==lvl)
-			{
-				getLevel()->OnLevelClose();
-				getLevel()=0;
-			}
-			lvl->drop();
-			lvl=0;
+			getLevel()->OnLevelClose();
+			getLevel()=0;
 		}
-		if(getThinker()==this)
-		{
-			getThinker()=0;
-		}
+		lvl->drop();
+		lvl=0;
 	}
-	return FALSE;
+	if(getThinker()==this)
+	{
+		getThinker()=0;
+	}
 }
 
 u32 CLevelThinker::getGameTimer()
@@ -196,9 +191,14 @@ void CLevel::Think(u32 timeMs,BOOL bFastForward)
 	if(fProgressTime>1.0f){
 		fProgressTime=1.0f;
 	}
-	if(fHintTimeTo>0.0f && getTime()>fHintTimeTo){
-		ShowHint("",0.0f,iHintProirity);
-		fHintTimeTo=0.0f;
+	if(aHints.size()>0){
+		CSingleHint& nht=aHints[0];
+		if(nht.fTimeTo>0.0f && getTime()>nht.fTimeTo){
+			HideHint(FALSE,-1);
+		}
+		if(nht.fTimeTo<0.0001f){
+			ActualizeHint();
+		}
 	}
 	static u32 callCnt=0;
 	UpdateDynLocations();
@@ -616,7 +616,7 @@ void CLevel::UpdateProgress()
 BOOL CLevel::EnableCutscene(BOOL b)
 {
 	if(b){
-		ShowHint("",0,100);
+		HideHint(TRUE,-1);
 	}
 	if(b){
 		bIsCutscene++;
@@ -628,28 +628,83 @@ BOOL CLevel::EnableCutscene(BOOL b)
 	return bIsCutscene;
 }
 
-void CLevel::ShowHint(CString sHudText, f32 fTime, int iPriority, DWORD dwColor)
+void CLevel::HideHint(BOOL bAll, int iPriority)
 {
-	if(getTime()>fHintTimeTo || iPriority>=iHintProirity)
-	{
-		iHintProirity = iPriority;
-		fHintTimeTo = getTime()+fTime;
-
-		CSpriteNode* hudLabels=(CSpriteNode*)getNode("hudWTDMarker");
-		bool b=(sHudText.GetLength()>0?true:false);
-		if(bIsCutscene){
-			b=false;
+	if(!bAll){
+		if(aHints.size()>0){
+			CSingleHint& nht=aHints[0];
+			if(iPriority>=0 && nht.iPriority>iPriority){
+				// Ќе можем мы так сн€ть его... приоритетом не вышли
+				return;
+			}
+			aHints.erase(0);
 		}
-		hudLabels->setVisible(b?true:false);
-		if(b && sHudText.GetLength()){
-			CTextNode* tn=(CTextNode*)getSpriteTextNode("hudWTDMarker");
-			if(tn){
-				if(dwColor!=0){
-					tn->setTextColor(SColor(dwColor));
-				}
-				tn->setText(sHudText);
+	}else{
+		aHints.clear();
+	}
+	ActualizeHint();
+}
+
+void CLevel::AddHint(CString sHudText, f32 fTime, int iPriority, DWORD dwColor)
+{
+	if(sHudText.GetLength()==0){
+		HideHint(FALSE,iPriority);
+		return;
+	}
+	if(iPriority==0){
+		// ƒл€ нулевого приоритета - не стекируем, затираем только если счас тоже с 0ым
+		if(aHints.size()>0){
+			CSingleHint& nht=aHints[0];
+			if(nht.iPriority>0){
+				return;
+			}else{
+				aHints.erase(0);
 			}
 		}
+	}
+	CSingleHint hnt;
+	hnt.fTime=fTime;
+	hnt.iPriority=iPriority;
+	hnt.dwColor=dwColor;
+	strcpy(hnt.szText,sHudText);
+	if(aHints.size()==0 || aHints[0].iPriority>hnt.iPriority){
+		// ƒобавл€ем в конец... хот€ по идее надо вставл€ть по сортировке приоритета
+		aHints.push_back(hnt);
+	}else{
+		// ¬ начало, пришел более важный или такойже
+		aHints.insert(hnt,0);
+	}
+	ActualizeHint();
+}
+
+void CLevel::ActualizeHint()
+{
+	CSpriteNode* hudLabels=(CSpriteNode*)getNode("hudWTDMarker");
+	if(bIsCutscene){
+		hudLabels->setVisible(false);
+		return;
+	}
+	bool b=(aHints.size()>0?true:false);
+	hudLabels->setVisible(b?true:false);
+	if(!b){
+		return;
+	}
+	CSingleHint& nht=aHints[0];
+	if(nht.fTimeTo<0.001f){
+		nht.fTimeTo=getTime()+nht.fTime;
+	}
+	CTextNode* tn=(CTextNode*)getSpriteTextNode("hudWTDMarker");
+	if(tn){
+		if(nht.dwColor!=0){
+			tn->setTextColor(SColor(nht.dwColor));
+		}else{
+			tn->setTextColor(SColor(0xFFFFFFFF));
+		}
+		tn->setText(nht.szText);
+	}
+	CSpriteNode* hudLabelsBt=(CSpriteNode*)getNode("hudWTDMarker_bt");
+	if(hudLabelsBt){
+		hudLabelsBt->setVisible((nht.iPriority!=0)?true:false);
 	}
 	return;
 }

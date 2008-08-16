@@ -142,11 +142,25 @@ public:
 	void OnChangePauseState();
 	void CheckLokReashability();
 	void UpdateDynLocations();
-
-	f32 fHintTimeTo;
-	int iHintProirity;
-	void ShowHint(CString sText="", f32 fTime=0.0f, int iPriority=0, DWORD dwColor=0);
-
+	// Хинты
+	struct CSingleHint
+	{
+		char szText[MAX_PATH];
+		f32 fTime;
+		f32 fTimeTo;
+		int iPriority;
+		DWORD dwColor;
+		CSingleHint()
+		{
+			memset(this,0,sizeof(CSingleHint));
+		}
+	};
+	typedef core::array<CSingleHint> _array_Hints;
+	_array_Hints aHints;
+	void AddHint(CString sText="", f32 fTime=0.0f, int iPriority=0, DWORD dwColor=0);
+	void HideHint(BOOL bLastOnly, int iPriority);
+	void ActualizeHint();
+	// Актеры
 	CArray< CActor*, CActor* > actorsToDelete;
 	CActor* CreateActor(const char* szTemplate,const char* szNameOverload,const char* sOptions,const char* szLoc);
 	CActor* CreateActor(CActor* actor);
@@ -166,8 +180,8 @@ public:
 	int pauseInitOk;
 	CLevelThinker(CLevel* _lvl);
 	~CLevelThinker();
-	virtual void animateNodeX(CNodeBasement* node, f32 delta, u32 timeMs);
-	virtual BOOL haltAnimator();
+	void animateNodeX(CNodeBasement* node, f32 delta, u32 timeMs);
+	void finalize();
 	u32 getGameTimer();
 };
 
