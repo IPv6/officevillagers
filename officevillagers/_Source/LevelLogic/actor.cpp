@@ -1146,7 +1146,7 @@ void CActor::ShowActorLabels(BOOL b, CNodeBasement* onNode)
 			}
 		}
 		BOOL bColor=0;
-		getLevel()->ShowHint(b?sHudText:"",100.0f,0);
+		getLevel()->AddHint(b?sHudText:"",100.0f,0);
 	}
 
 #ifdef _DEBUG

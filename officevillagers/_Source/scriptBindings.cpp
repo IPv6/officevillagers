@@ -475,12 +475,19 @@ int game_SaveGame(HSQUIRRELVM v)
 	return sa.Return(getLevel()->SaveGame(sText)?true:false);
 }
 
+int gui_ClearHint(HSQUIRRELVM v)
+{
+	StackHandler sa(v);
+	getLevel()->HideHint(FALSE,-1);
+	return SQ_OK;
+}
+
 int gui_ShowHint(HSQUIRRELVM v)
 {
 	StackHandler sa(v);
 	CString sText=sa.GetString(SQ_PARAM1);
 	f32 fTime=sa.GetFloat(SQ_PARAM2);
-	getLevel()->ShowHint(sText,fTime,1);
+	getLevel()->AddHint(sText,fTime,1,0xFFFFFFFF);
 	return SQ_OK;
 }
 
@@ -489,7 +496,7 @@ int gui_ShowAlarm(HSQUIRRELVM v)
 	StackHandler sa(v);
 	CString sText=sa.GetString(SQ_PARAM1);
 	f32 fTime=sa.GetFloat(SQ_PARAM2);
-	getLevel()->ShowHint(sText,fTime,2,0xFFFF0000);
+	getLevel()->AddHint(sText,fTime,2,0xFFFF0000);
 	return SQ_OK;
 }
 
@@ -609,6 +616,7 @@ void RegisterGameScriptMethods()
 	SquirrelVM::CreateFunctionGlobal(game_SaveGame,_T("game_SaveGame"),"*");
 	SquirrelVM::CreateFunctionGlobal(gui_ShowHint,_T("gui_ShowHint"),"*");
 	SquirrelVM::CreateFunctionGlobal(gui_ShowAlarm,_T("gui_ShowAlarm"),"*");
+	SquirrelVM::CreateFunctionGlobal(gui_ClearHint,_T("gui_ClearHint"),"*");
 	SquirrelVM::CreateFunctionGlobal(game_SetMagazinName,_T("game_SetMagazinName"),"*");
 	SquirrelVM::CreateFunctionGlobal(game_GetMagazinName,_T("game_GetMagazinName"),"*");
 	SquirrelVM::CreateFunctionGlobal(game_GetSafe,_T("game_GetSafe"),"*");
