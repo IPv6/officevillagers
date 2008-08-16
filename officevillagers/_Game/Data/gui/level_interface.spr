@@ -101,9 +101,21 @@
 
 [Sprite]
 -AsChild:1
-// Маркер того что делает выбранный	 перс
+// Хинты и алармы: Маркер того что делает выбранный перс и место показа алармов
 -Texture:${virtualNode}
 -Name:hudWTDMarker
 -Position:x0 y-13.8 z0.09
 -Label:LEVEL.TIMEPAUSED
 
+[Sprite]
+// Кнопка Скрытия хинта
+-Parent:hudWTDMarker
+-Name:hudWTDMarker_bt
+-Texture:menu_button.spr
+-Size:w2 h2
+-Position:x10.5 z0.000001
+-Event.Mouse.Click.Action:gui_ClearHint(false);
+-Event.Mouse.Click.Image:menu_button_over.spr
+-Event.Mouse.Click.Sound:menu_button_click
+-Event.Mouse.Over.Image:menu_button_over.spr
+-Event.Mouse.Over.Sound:menu_button_over
