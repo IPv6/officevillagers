@@ -111,11 +111,11 @@
 // Кнопка Скрытия хинта
 -Parent:hudWTDMarker
 -Name:hudWTDMarker_bt
--Texture:menu_button.spr
--Size:w2 h2
--Position:x10.5 z0.000001
+-Texture:buttons\hint_button.spr
+-Position:x12 z0.000001
+-Size:0.5
 -Event.Mouse.Click.Action:gui_ClearHint(false);
--Event.Mouse.Click.Image:menu_button_over.spr
+-Event.Mouse.Click.Image:buttons\hint_button_over.spr
 -Event.Mouse.Click.Sound:menu_button_click
--Event.Mouse.Over.Image:menu_button_over.spr
+-Event.Mouse.Over.Image:buttons\hint_button_over.spr
 -Event.Mouse.Over.Sound:menu_button_over

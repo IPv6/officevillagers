@@ -1,0 +1,5 @@
+[Sprite]
+-Atlas:x1 y0 w2 h1
+-Position:z-0.001
+
+${Default:button=main_buttons}

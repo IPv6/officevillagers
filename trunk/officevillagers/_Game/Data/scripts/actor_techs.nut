@@ -82,4 +82,10 @@ function initTechsDialog()
 		core_SetNode(format("quest_slot%i",i),slotNode);
 	}
 */
+	// Окно помощи при первом заходе
+	local safe=game_GetSafe();
+	if(!("techs_help_ok" in safe) || !safe.techs_help_ok){
+		safe.techs_help_ok <- true;
+		helpDialog("level_techs_help");
+	}
 }
