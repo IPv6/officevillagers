@@ -1,6 +1,6 @@
 [Sprite]
--Texture:level_interface.png
--Atlas:x0 y1 w4 h16
+-Texture:buttons\overlay_button.png
+-Atlas:x1 y0 w2 h1
 -Position: z-0.001
 -Size: w8 h2.8
 -Animation.AlphaPulsar:t1000 a0.5

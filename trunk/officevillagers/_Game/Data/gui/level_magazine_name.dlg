@@ -26,11 +26,11 @@
 -Position:x0 y3 z-0.001
 
 [Sprite]
--Texture:level_interface.png
 -Name:magedit_slot
--Atlas:x1 y1 w4 h16
+-Texture:icons_set.png
+-Atlas:x1 y2 w2 h4
 -Label:?.
--Size: w17
+-Size: w15
 -Position:x0 y0 z-0.001
 -Animation.SimpleTextEditor:s15 @magedit_text
 

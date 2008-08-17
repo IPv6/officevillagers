@@ -3,7 +3,7 @@
 
 [Sprite]
 -AsChild:1
--Texture:level_interface.png
--Atlas:x0 y0 w4 h16
+-Texture:icons_set.png
+-Atlas:x4 y3 w8 h4
 -Size: w2 h2
 -Position: x-4

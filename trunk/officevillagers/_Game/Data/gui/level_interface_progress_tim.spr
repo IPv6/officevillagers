@@ -5,8 +5,8 @@
 -Position: z-0.0101
 
 [Sprite]
--Texture:level_interface.png
 -Name:gui_progr_timstopper
--Atlas:x14 y3 w16 h16
+-Texture:icons_set.png
+-Atlas:x6 y3 w8 h4
 -Size: w1
 -Position: z-0.021

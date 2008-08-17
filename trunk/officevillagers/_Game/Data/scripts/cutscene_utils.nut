@@ -30,7 +30,7 @@ function game_CutsceneBegin(skipParams)
 	}else{
 		gui_DisableSkipCurrentCutsceneButton();
 	}
-	game_GetSafe().lastActiveCutSceneNumber++;
+	game_MarkSafe().lastActiveCutSceneNumber++;
 	gui_EnableInterface(false);
 	return;
 }
@@ -72,7 +72,7 @@ function gui_SkipCurrentCutscene(params)
 	if(game_IsCutscene()){
 		game_CutsceneEnd(SkipCurrentCutsceneParams);
 	}
-	game_GetSafe().lastSkippedCutScene <- game_GetSafe().lastActiveCutSceneNumber;
+	game_MarkSafe().lastSkippedCutScene <- game_GetSafe().lastActiveCutSceneNumber;
 	actor_SwitchToAction(SkipCurrentCutsceneParams._who,SkipCurrentCutsceneParams._action);
 }
 
@@ -80,7 +80,7 @@ function gui_isCutSceneWasSkipped()
 {
 	if(!("lastActiveCutSceneNumber" in game_GetSafe())){
 		game_GetSafe().lastActiveCutSceneNumber <- 0;
-		game_GetSafe().lastSkippedCutScene <- (-1);
+		game_MarkSafe().lastSkippedCutScene <- (-1);
 	}
 	if(game_GetSafe().lastSkippedCutScene == game_GetSafe().lastActiveCutSceneNumber){
 		return true;

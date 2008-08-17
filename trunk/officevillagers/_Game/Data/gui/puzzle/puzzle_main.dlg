@@ -37,10 +37,9 @@
 [Sprite]
 // Кнопка Ok
 -Parent:puzzle_buttons_bg
--Texture:\gui\level_interface.png
--Atlas:x4 y0 w8 h16
+-Texture:\gui\menu_button.spr
 -Event.Mouse.Click.Sound:menu_button_click
--Event.Mouse.Over.Image:\gui\level_interface_button_menu.spr
+-Event.Mouse.Over.Image:\gui\menu_button_over.spr
 -Event.Mouse.Over.Sound:menu_button_over
 -Event.Mouse.Click.KeyShortcut:${VK_RETURN}
 -Label:PUZZLE.BUTTON.OK.LABEL
@@ -51,10 +50,9 @@
 [Sprite]
 // Кнопка Next bg
 -Parent:puzzle_buttons_bg
--Texture:\gui\level_interface.png
--Atlas:x4 y0 w8 h16
+-Texture:\gui\menu_button.spr
 -Event.Mouse.Click.Sound:menu_button_click
--Event.Mouse.Over.Image:\gui\level_interface_button_menu.spr
+-Event.Mouse.Over.Image:\gui\menu_button_over.spr
 -Event.Mouse.Over.Sound:menu_button_over
 -Event.Mouse.Click.KeyShortcut:${VK_RETURN}
 -Label:PUZZLE.BUTTON.NEXTBG.LABEL
@@ -65,10 +63,9 @@
 [Sprite]
 // Кнопка Next logo
 -Parent:puzzle_buttons_bg
--Texture:\gui\level_interface.png
--Atlas:x4 y0 w8 h16
+-Texture:\gui\menu_button.spr
 -Event.Mouse.Click.Sound:menu_button_click
--Event.Mouse.Over.Image:\gui\level_interface_button_menu.spr
+-Event.Mouse.Over.Image:\gui\menu_button_over.spr
 -Event.Mouse.Over.Sound:menu_button_over
 -Event.Mouse.Click.KeyShortcut:${VK_RETURN}
 -Label:PUZZLE.BUTTON.NEXTLOGO.LABEL

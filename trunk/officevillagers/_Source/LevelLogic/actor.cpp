@@ -1160,7 +1160,7 @@ void CActor::ShowActorLabels(BOOL b, CNodeBasement* onNode)
 			}
 			if(b>100)
 			{
-				sHudText+="<size=-1><img src=gui\\fade.jpg w=80 h=130 z=0.001 alpha=0.5>\n";
+				sHudText+="<font-size:-1><img src=gui\\fade.jpg w=80 h=130 z=0.001 alpha=0.5>\n";
 				sHudText+=toString("name=%s, prof=%s, ",data.p_sName,data.p_ProfessionName);
 				sHudText+=toString("action=%s\n",data.p_CurrentActionName);
 				sHudText+=toString("tloc[%s] MP[%i] isI[%i] ",activeNavigationDotLocationName,bMovementsIsPaused,isInteractive);
