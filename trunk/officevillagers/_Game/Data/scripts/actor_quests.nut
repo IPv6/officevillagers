@@ -237,10 +237,8 @@ function initQuestDialog(skipItems)
 	core_EnableNode("quest_button_right",false);
 	
 	// Окно помощи при первом заходе
-	local safe=game_GetSafe();
-	if(!("quest_help_ok" in safe) || !safe.quest_help_ok){
-		safe.quest_help_ok <- true;
-		game_MarkSafe();
+	if(core_GetProfileOption("TutorialQuestHelp")!=1){
+		core_SetProfileOption("TutorialQuestHelp",1);
 		helpDialog("level_quests_help");
 	}
 }
