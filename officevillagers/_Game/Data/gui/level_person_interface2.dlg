@@ -10,17 +10,17 @@
 -PauseGame:1
 
 [Sprite]
--Texture:level_interface.png
 -Name:person_interface_name
--Atlas:x3 y2 w4 h16
+-Texture:icons_set.png
+-Atlas:x0 y2 w2 h4
 -Size: w9
 -Position: y6
 -Label:????
 
 [Sprite]
--Texture:level_interface.png
 -Name:_piAUTHORbt
--Atlas:x10 y2 w16 h16
+-Texture:icons_set.png
+-Atlas:x0 y3 w8 h4
 -Size: w2.5
 -Position: x-4 y1 z-0.001
 -Label:AUTHOR
@@ -30,9 +30,9 @@
 -Event.Mouse.Over.Sound:menu_button_over
 
 [Sprite]
--Texture:level_interface.png
 -Name:_piFINANCIERbt
--Atlas:x11 y2 w16 h16
+-Texture:icons_set.png
+-Atlas:x1 y3 w8 h4
 -Size: w2.5
 -Position: x-4 y-1 z-0.002
 -Label:FINANCIER
@@ -42,9 +42,9 @@
 -Event.Mouse.Over.Sound:menu_button_over
 
 [Sprite]
--Texture:level_interface.png
 -Name:_piCREATORbt
--Atlas:x10 y3 w16 h16
+-Texture:icons_set.png
+-Atlas:x2 y3 w8 h4
 -Size: w2.5
 -Position: x-4 y-3 z-0.0021
 -Label:CREATOR
@@ -54,9 +54,9 @@
 -Event.Mouse.Over.Sound:menu_button_over
 
 [Sprite]
--Texture:level_interface.png
 -Name:_piJANITORbt
--Atlas:x11 y3 w16 h16
+-Texture:icons_set.png
+-Atlas:x3 y3 w8 h4
 -Size: w2.5
 -Position: x-4 y-5 z-0.001
 -Label:JANITOR

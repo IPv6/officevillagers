@@ -16,6 +16,7 @@ function gui_QuestCheck(questNum)
 		safe.quests[quest.ID].State <- 1;
 		safe.quests[quest.ID].OpenTime <- 0;
 		safe.quests[quest.ID].CloseTime <- 0;
+		game_MarkSafe();
 	}
 	return safe.quests[quest.ID].State;
 }
@@ -24,7 +25,7 @@ function quest_set(questNum,state)
 {
 	gui_QuestCheck(questNum);// Обновляем все данные
 	local quest=quest_GetQuest(questNum);
-	local safe=game_GetSafe();
+	local safe=game_MarkSafe();
 	safe.quests[quest.ID].State <- state;
 }
 
@@ -239,6 +240,7 @@ function initQuestDialog(skipItems)
 	local safe=game_GetSafe();
 	if(!("quest_help_ok" in safe) || !safe.quest_help_ok){
 		safe.quest_help_ok <- true;
+		game_MarkSafe();
 		helpDialog("level_quests_help");
 	}
 }

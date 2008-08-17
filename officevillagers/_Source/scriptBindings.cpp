@@ -522,6 +522,13 @@ int game_GetSafe(HSQUIRRELVM v)
 	return sa.Return(getLevel()->data.scriptSafe);
 }
 
+int game_MarkSafe(HSQUIRRELVM v)
+{
+	StackHandler sa(v);
+	//getGame().getProfile().Changed();
+	return sa.Return(getLevel()->data.scriptSafe);
+}
+
 int game_VisualizeLocations(HSQUIRRELVM v)
 {
 	StackHandler sa(v);
@@ -620,6 +627,7 @@ void RegisterGameScriptMethods()
 	SquirrelVM::CreateFunctionGlobal(game_SetMagazinName,_T("game_SetMagazinName"),"*");
 	SquirrelVM::CreateFunctionGlobal(game_GetMagazinName,_T("game_GetMagazinName"),"*");
 	SquirrelVM::CreateFunctionGlobal(game_GetSafe,_T("game_GetSafe"),"*");
+	SquirrelVM::CreateFunctionGlobal(game_MarkSafe,_T("game_MarkSafe"),"*");
 
 	RegisterActorScriptMethods();
 }

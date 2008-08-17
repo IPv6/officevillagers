@@ -34,7 +34,7 @@
 [Sprite]
 // Громкость эффектов - текст
 -Label:MENU.OPTION.SOUNDVOL
--Label.Formatting:<right><font-size:-1><face=alt>
+-Label.Formatting:<right><font-size:-1><font-face:alt>
 -Texture:${virtualNode}
 -Position: x-2 y0 z-0.01
 -Size: w12 h6
@@ -42,7 +42,7 @@
 [Sprite]
 // Громкость музыки - текст
 -Label:MENU.OPTION.MUSICVOL
--Label.Formatting:<right><font-size:-1><face=alt>
+-Label.Formatting:<right><font-size:-1><font-face:alt>
 -Texture:${virtualNode}
 -Position: x-2 y3 z-0.01
 -Size: w12 h6
@@ -76,7 +76,7 @@
 [Sprite]
 // просто текст
 -Label:MENU.LEVELOPTION.DSCTEXT
--Label.Formatting:<face=alt>
+-Label.Formatting:<font-face:alt>
 -Texture:${virtualNode}
 -Position: x0 y6 z-0.01
 

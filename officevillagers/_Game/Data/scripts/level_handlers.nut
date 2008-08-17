@@ -6,7 +6,7 @@ function event_OnStartGame(param)
 _saveCameraOverwrite <- {overwrite=false, cameraX=0.0, cameraY=0.0};
 function event_OnSaveGame(gameSafe)
 {
-	local safe=game_GetSafe();
+	local safe=game_MarkSafe();
 	local officePos = core_GetNode("officeFloor");
 	safe.cameraX <- officePos._x;
 	safe.cameraY <- officePos._y;

@@ -12,7 +12,7 @@
 -Texture:\gui\menu_button_small.spr
 -Label:MENU.BUTTON.CLOSE.LABEL
 -Size: w2.2
--Position:x0 y-12 z-0.001
+-Position:x0 y-11.6 z-0.001
 -Event.Mouse.Click.Action:level_CloseTechs();
 -Event.Mouse.Click.Image:\gui\menu_button_over_small.spr
 -Event.Mouse.Click.Sound:menu_button_click
@@ -20,20 +20,22 @@
 -Event.Mouse.Over.Sound:menu_button_over
 
 [Sprite]
--Texture:\gui\menu_button_small.spr
+// Кнопка Помощи
+-Texture:\gui\buttons\hint_button.spr?button=overlay_buttons
 -Label:MENU.BUTTON.HELP
--Size: w2.2
--Position:x8 y-12 z-0.001
+-Size:w6 h2.5
+-Position:x9.6 y-11.6 z-0.001
 -Event.Mouse.Click.Action:helpDialog("level_techs_help");
--Event.Mouse.Click.Image:\gui\menu_button_over_small.spr
+-Event.Mouse.Click.Image:\gui\buttons\hint_button_over.spr?button=overlay_buttons
 -Event.Mouse.Click.Sound:menu_button_click
--Event.Mouse.Over.Image:\gui\menu_button_over_small.spr
+-Event.Mouse.Over.Image:\gui\buttons\hint_button_over.spr?button=overlay_buttons
 -Event.Mouse.Over.Sound:menu_button_over
+
 
 [Sprite]
 // Приглашение
 -Texture:dialog_frame_top.png
--Position: x0 y11.3 z-0.011
+-Position: x0 y12 z-0.011
 -Label:MENU.DIALOG.TECHS.LABEL
 -Label.Formatting:<dx=-0.2>
 -Size: w6 h3

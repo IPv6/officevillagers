@@ -23,7 +23,7 @@
 -Texture:${virtualNode}
 -Name:authors_text_body
 -Label:#authors.lng
--Label.Formatting:<face=alt>
+-Label.Formatting:<font-face:alt>
 -Position: x0 y6.5 z-0.01
 
 [Sprite]

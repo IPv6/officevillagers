@@ -37,7 +37,7 @@
 // ‘он
 -Texture:dialog_frame_small.png
 -Label:MENU_DOYOUREALLY.WHANTTOEXIT
--Label.Formatting:<dy=1.8><face=alt>
+-Label.Formatting:<dy=1.8><font-face:alt>
 -Position:z0.01
 -Size: w20 h10
 

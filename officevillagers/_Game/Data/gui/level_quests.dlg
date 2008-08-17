@@ -46,14 +46,14 @@
 [Sprite]
 // Кнопка Помощи
 -Parent:level_quests
--Texture:\gui\menu_button.spr
+-Texture:\gui\buttons\hint_button.spr?button=overlay_buttons
 -Label:MENU.BUTTON.HELP
--Size:2
--Position:x13 y12 z-0.001
+-Size:w6 h2.5
+-Position:x9.6 y-11.4 z-0.001
 -Event.Mouse.Click.Action:helpDialog("level_quests_help");
--Event.Mouse.Click.Image:\gui\menu_button_over.spr
+-Event.Mouse.Click.Image:\gui\buttons\hint_button_over.spr?button=overlay_buttons
 -Event.Mouse.Click.Sound:menu_button_click
--Event.Mouse.Over.Image:\gui\menu_button_over.spr
+-Event.Mouse.Over.Image:\gui\buttons\hint_button_over.spr?button=overlay_buttons
 -Event.Mouse.Over.Sound:menu_button_over
 
 [Sprite]

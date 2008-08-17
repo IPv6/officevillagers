@@ -86,6 +86,7 @@ function initTechsDialog()
 	local safe=game_GetSafe();
 	if(!("techs_help_ok" in safe) || !safe.techs_help_ok){
 		safe.techs_help_ok <- true;
+		game_MarkSafe();
 		helpDialog("level_techs_help");
 	}
 }
