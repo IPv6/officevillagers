@@ -1,5 +1,5 @@
 [Sprite]
--Texture:buttons\overlay_button.png
+-Texture:buttons\overlay_buttons.png
 -Atlas:x1 y0 w2 h1
 -Position: z-0.001
 -Size: w8 h2.8

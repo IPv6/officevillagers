@@ -1,0 +1,11 @@
+[Sprite]
+-Texture:trashheap_fontan.png
+-SizeFromTexture:1
+-MapY2Z:-100
+
+[Sprite]
+-AsChild:1
+-Texture:trashheap_fontan_anim.png
+-Animation.Texture:t500 m3x1
+-Position:y0.3 s1
+-Size:3.5

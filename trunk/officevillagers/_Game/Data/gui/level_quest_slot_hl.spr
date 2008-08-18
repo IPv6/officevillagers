@@ -1,0 +1,6 @@
+[Sprite]
+-Texture:icons_set.png
+-Atlas:x4 y3 w8 h4
+-Position: x-12 z-0.001
+-Size: 3
+-Animation.AlphaPulsar:t1000 a0.5

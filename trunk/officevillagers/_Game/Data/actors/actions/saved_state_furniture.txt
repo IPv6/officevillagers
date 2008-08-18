@@ -1,0 +1,48 @@
+<!-- Другие предметы в комнате редакторов -->
+<Actor>
+	<Name val="DOSKA" />
+	<Enabled val="1" />
+	<Sprite val="\actors\items\furniture\doska.spr" />
+	<Position.Location val="Furniture::DOSKA" />
+	<Position.LocationEntr val="Furniture::DOSKACHECK" />
+	<ActorProphession val="FURNITURE" />
+	<Items></Items>
+</Actor>
+
+<Actor>
+	<Name val="FLOWERS2" />
+	<Sprite val="actors\items\furniture\objects.spr?image=trashheap_cwety.png" />
+	<Position.Location val="Furniture::DOT9" />
+	<ActorProphession val="FURNITURE" />
+	<Items></Items>
+</Actor>
+<Actor>
+	<Name val="COOLER2" />
+	<Sprite val="actors\items\furniture\objects.spr?image=trashheap_cooler.png" />
+	<Position.Location val="Furniture::DOT7" />
+	<ActorProphession val="FURNITURE" />
+	<Items></Items>
+</Actor>
+<Actor>
+	<Name val="STELLAZ" />
+	<Sprite val="actors\items\furniture\objects.spr?image=stellaz.png" />
+	<Position.Location val="Furniture::DOT3" />
+	<ActorProphession val="FURNITURE" />
+	<Items></Items>
+</Actor>
+<Actor>
+	<Name val="EVIL_SHREDER" />
+	<Enabled val="0" />
+	<Sprite val="actors\items\furniture\objects.spr?image=trashheap_shreder.png" />
+	<Position.Location val="OfficeHeaps::DOT42" />
+	<ActorProphession val="FURNITURE" />
+	<Items></Items>
+</Actor>
+<Actor>
+	<Name val="EDITOR_FONTAN" />
+	<Enabled val="0" />
+	<Sprite val="actors\items\furniture\fontan.spr" />
+	<Position.Location val="Furniture::DOT11" />
+	<ActorProphession val="FURNITURE" />
+	<Items></Items>
+</Actor>

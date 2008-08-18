@@ -20,6 +20,7 @@
 		${include(saved_state_heaps.txt)}
 		${include(saved_state_walls.txt)}
 		${include(saved_state_tables.txt)}
+		${include(saved_state_furniture.txt)}
 		<Actor>
 			<Name val="ACTOR.SHEKEL" />
 			<Sprite val="actors\persons\human.spr?hsex=s" />

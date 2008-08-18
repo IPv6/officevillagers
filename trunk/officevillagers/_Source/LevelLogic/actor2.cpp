@@ -105,10 +105,13 @@ BOOL CActor::DelItem(CActorItem* p)
 			break;
 		}
 	}
-	// Обновляем данные отдельно, иначе часть может не обновится
-	for(i=0;i<data.p_items.size();i++){
-		CActorItem* item=data.p_items[i];
-		item->bCheckHideIf=TRUE;// Пересчитываем видимости
+	if(bRes){
+		// Обновляем данные отдельно, иначе часть может не обновится
+		for(i=0;i<data.p_items.size();i++){
+			CActorItem* item=data.p_items[i];
+			item->bCheckHideIf=TRUE;// Пересчитываем видимости
+		}
+		ThinkItems();// Чтобы связанные скрития отработали в этомже кадре
 	}
 	return bRes;
 }
