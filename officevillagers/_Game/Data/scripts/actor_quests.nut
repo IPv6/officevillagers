@@ -16,6 +16,7 @@ function gui_QuestCheck(questNum)
 		safe.quests[quest.ID].State <- 1;
 		safe.quests[quest.ID].OpenTime <- 0;
 		safe.quests[quest.ID].CloseTime <- 0;
+		safe.quests[quest.ID].highlighted <- false;
 		game_MarkSafe();
 	}
 	return safe.quests[quest.ID].State;
@@ -70,6 +71,15 @@ function gui_QuestClose(questNum)
 	local safe=game_GetSafe();
 	safe.quests[quest.ID].CloseTime <- level_TimeAbs();
 	return true;
+}
+
+function gui_QuestHighlight(questNum)
+{
+	addQuestsHighlight();
+	gui_QuestCheck(questNum);// Обновляем все данные
+	local safe=game_GetSafe();
+	local quest=quest_GetQuest(questNum);
+	safe.quests[quest.ID].highlighted = true;
 }
 
 g_QuestCache <- {};
@@ -168,6 +178,7 @@ function getOpenQuests()
 			questItem.locName <- quest.Name;
 			questItem.state <- safe.quests[questID].State;
 			questItem.openTime <- safe.quests[questID].OpenTime;
+			questItem.highlighted <- safe.quests[questID].highlighted;
 			quests.append(questItem);
 		}
 	}
@@ -180,6 +191,7 @@ g_SkipQuest_Slots <- 0;
 g_QuestsOnPage <- 5;
 function initQuestDialog(skipItems)
 {
+	local safe=game_GetSafe();
 	local egaSlot0=core_GetNode("quest_slot0");
 	local i=0;
 	if(!egaSlot0){
@@ -205,7 +217,8 @@ function initQuestDialog(skipItems)
 	local slotId=0;
 	for(slotId=0; slotId<g_Quest_Slots; slotId++)
 	{
-		local slotNode=core_GetNode(format("quest_slot%i",slotId));
+		local slotName=format("quest_slot%i",slotId);
+		local slotNode=core_GetNode(slotName);
 		slotNode._alpha=1.0;
 		local thisQuestNum = g_SkipQuest_Slots+slotId;
 		local nodeText="";
@@ -225,13 +238,14 @@ function initQuestDialog(skipItems)
 			local dy=0.5*lStrokNum;
 			nodeText=format("<font-size:-1><dy=%.02f>\n%s",dy.tofloat(),questtitle);
 			core_SetNodeText(slotNode,nodeText);
-			if(quests[thisQuestNum].state==1)
+			if(quests[thisQuestNum].highlighted)
 			{
-				slotNode._alpha=0.5;
+				safe.quests[quests[thisQuestNum].questNum].highlighted = false;
+				core_CreateSprite("gui\\level_quest_slot_hl.spr",slotName,{x=0, y=0, z=-0.1, w=1, h=1});
 			}
 			//core_SetNodeAction(slotNode,format("editAttrEditDialog(\"%s\",\"%s\");",thisActor.Name,attrByNum.name));
 		}
-		core_SetNode(format("quest_slot%i",slotId),slotNode);
+		core_SetNode(slotName,slotNode);
 	}
 	core_EnableNode("quest_button_left",false);
 	core_EnableNode("quest_button_right",false);

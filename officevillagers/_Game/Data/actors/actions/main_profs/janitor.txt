@@ -193,12 +193,12 @@
                // Надо ли включаться в драг
                local isDragMusor=actor_GetAttributeS(TrashName,"drag");
                if(isDragMusor.len()>0){
-                    switchToDragTrash = true;
+                    switchToDragTrash = isDragMusor.tointeger();
                }
                actor_DeleteActor(TrashName);
 		}
 		$ifdebug __DebugActor(thisActor,"step 8");
-		if(switchToDragTrash){
+		if(switchToDragTrash>0){
 			actor_SetAttribute(thisActor,"JANITOR_CARRYTRASH.ITEM",switchToDragTrash);
 			actor_SwitchToAction(thisActor,"JANITOR_CARRYTRASH");
 		}else{
