@@ -171,7 +171,7 @@
 	actor_SwitchToAction(thisActor,"Office_script");
 	
 	
-	[Event]
+[Event]
 -Name:Quest7
 -Prq.IsGlobalEvent:0
 -Protected:2
@@ -181,7 +181,7 @@
 -Script.On:
 	game_CutsceneBegin({});
 -Script.Off:
-	gui_QuestOpen(7);
+	gui_QuestOpen(8);
 	game_CutsceneEnd({});
 -Script.In:
 	local actorSh = actor_GetActor("ACTOR.SHEKEL");
