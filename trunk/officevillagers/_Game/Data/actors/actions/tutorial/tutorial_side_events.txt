@@ -298,7 +298,7 @@ actorWait_SwitchToAction(thisActor,"Tutorial.AgataVsSinty2");
 -Walk.Speed:2
 -Script.In:
 	local dialogFile = core_GetDataPath("text\\tutorial_dialog.lng");
-	actorWait_Timeout(3);
+	actorWait_Timeout(1);
 	actorWait_GoTo(thisActor,"SCENES_Tutorial::SHEKEL.4");
 	while(gui_IsDialogOpen()==true){
 			::suspend();
@@ -333,7 +333,7 @@ actorWait_SwitchToAction(thisActor,"Tutorial.AgataVsSinty2");
 -Script.In:
 	actorWait_GoTo(thisActor,"SCENES_Tutorial::DOT4");
 	actorWait_GoTo(thisActor,"SCENES_Tutorial::DOT5");
-	actorWait_GoTo(thisActor,"SCENES_Tutorial::SHEKEL.3");
+	actorWait_GoTo(thisActor,"SSCENES_Tutorial::DOT8");
 	actor_OrientBody(thisActor,180);
 	
 [Step]
@@ -344,7 +344,7 @@ actorWait_SwitchToAction(thisActor,"Tutorial.AgataVsSinty2");
 -Disable.Person.UI:1
 -Walk.Speed:0.7
 -Script.In:
-	actorWait_GoTo(thisActor,"SCENES_Tutorial::Agata3");
+	actorWait_GoTo(thisActor,"SCENES_Tutorial::DOT8");
 	actor_OrientBody(thisActor,180);
 	game_StartPuzzle();
 	actorWait_SwitchToAction(thisActor,"Tutorial.End");

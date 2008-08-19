@@ -48,16 +48,14 @@
 	actor_SwitchToAction(actor6,"");
 	actor_SwitchToAction(actor7,"");
 	actor_SwitchToAction(actor8,"");
-	
-	actor_SwitchToAction(actorSi1,"");
-	actor_SwitchToAction(actorSi2,"");
+
 	
 [Event]
 -Name:Debug_table_Script
 -Priority:-1
 -Prq.IsGlobalEvent:0
 -Protected:0
--Script.In:
+-Script.In:		
 	actorWait_Timeout(999);
 	actorWait_Timeout(999);
 	actorWait_Timeout(999);

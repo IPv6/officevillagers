@@ -237,7 +237,7 @@ function initQuestDialog(skipItems)
 			multiLineOffset+=0.3;
 			slotNode._y-=slotNode._h*0.5;
 			local dy=0.5*lStrokNum;
-			nodeText=format("<font-size:-1><dy=%.02f>\n%s",dy.tofloat(),questtitle);
+			nodeText=format("<font-size:-1><dy=%.02f><dx=-12.5><left>\n%s",dy.tofloat(),questtitle);
 			core_SetNodeText(slotNode,nodeText);
 			if(quests[thisQuestNum].highlighted)
 			{
