@@ -680,12 +680,15 @@ void CLevel::AddHint(CString sHudText, f32 fTime, int iPriority, DWORD dwColor)
 void CLevel::ActualizeHint()
 {
 	CSpriteNode* hudLabels=(CSpriteNode*)getNode("hudWTDMarker");
+	CSpriteNode* hudLabels2=(CSpriteNode*)getNode("hudHelpMarker_bt");
 	if(bIsCutscene){
 		hudLabels->setVisible(false);
+		hudLabels2->setVisible(false);
 		return;
 	}
 	bool b=(aHints.size()>0?true:false);
 	hudLabels->setVisible(b?true:false);
+	hudLabels2->setVisible(b?false:true);
 	if(!b){
 		return;
 	}

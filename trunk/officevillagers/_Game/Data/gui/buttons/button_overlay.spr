@@ -1,0 +1,6 @@
+[Sprite]
+-Texture:button_overlays.png
+-Atlas:x${button} y0 w2 h1
+-Position:z-0.001
+
+${Default:button=0}

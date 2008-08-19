@@ -202,7 +202,7 @@ void CAction::UpdateScriptMirror()
 
 BOOL CAction::OnAttach(CActor* who)
 {
-	DEBUG_ASSERT(!getLevel()->getCurrentAction(),"Action cross-sync error!");
+	DEBUG_ASSERT(!getLevel()->getCurrentAction(),toString("Action cross-sync error attach! actor=%s, action=%s",who->data.p_sName,p_sActionName));
 
 	DEBUG_LASTACTION(toString("Actor '%s' Script.On method, action=%s",who->data.p_sName,this->p_sActionName));
 	getLevel()->getCurrentAction()=this;
@@ -219,7 +219,7 @@ BOOL CAction::OnAttach(CActor* who)
 
 BOOL CAction::OnDuring(CActor* who)
 {
-	DEBUG_ASSERT(!getLevel()->getCurrentAction(),"Action cross-sync error!");
+	DEBUG_ASSERT(!getLevel()->getCurrentAction(),toString("Action cross-sync error during! actor=%s, action=%s",who->data.p_sName,p_sActionName));
 
 	getLevel()->getCurrentAction()=this;
 	lastActivationTime=CLevelThinker::getThinker()->getGameTimer();//game_GetTickCount
@@ -242,7 +242,8 @@ BOOL CAction::OnDuring(CActor* who)
 
 BOOL CAction::OnDetach(CActor* who)
 {
-	DEBUG_ASSERT(!getLevel()->getCurrentAction(),"Action cross-sync error!");
+	DEBUG_ASSERT(!getLevel()->getCurrentAction(),toString("Action cross-sync error detach! actor=%s, action=%s",who->data.p_sName,p_sActionName));
+
 	getLevel()->getCurrentAction()=this;
 	iActionUsageCount--;
 	DEBUG_LASTACTION(toString("Actor '%s' Script.Off method, action=%s",who->data.p_sName,this->p_sActionName));

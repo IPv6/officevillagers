@@ -24,6 +24,19 @@
 	actor_SwitchToAction(actorBo,"Debug_table_Script");
 	//actor_SwitchToAction("Office","SleepMode");
 	
+	//if(false)
+	{
+		// Показ хинтов
+		gui_ShowHint("hint 1",3.9);
+		//actorWait_Timeout(1);
+		gui_ShowHint("hint 2",30.9);
+		gui_ShowHint("hint 3",30.9);
+		gui_ShowHint("hint 4",30.9);
+		gui_ShowAlarm("alarm 2:alarm 2:alarm 2 [10]",10);
+		//actorWait_Timeout(10);
+		gui_ShowHint("hint 3:hint 3",4);
+		//actorWait_Timeout(5);
+	}
 	
 	//if(false)
 	{// Квесты
@@ -37,19 +50,6 @@
 		gui_QuestHighlight(1);
 	}
 	
-	if(false)
-	{
-		// Показ хинтов
-		gui_ShowHint("hint 1",3.9);
-		//actorWait_Timeout(1);
-		gui_ShowHint("hint 2",30.9);
-		gui_ShowHint("hint 3",30.9);
-		gui_ShowHint("hint 4",30.9);
-		gui_ShowAlarm("alarm 2:alarm 2:alarm 2 [10]",10);
-		//actorWait_Timeout(10);
-		gui_ShowHint("hint 3:hint 3",4);
-		//actorWait_Timeout(5);
-	}
 	
 	if(false)
 	{// Диалоги

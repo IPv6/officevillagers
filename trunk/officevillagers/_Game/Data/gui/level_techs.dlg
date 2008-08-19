@@ -9,26 +9,24 @@
 -PauseGame:1
 
 [Sprite]
--Texture:\gui\menu_button_small.spr
 -Label:MENU.BUTTON.CLOSE.LABEL
 -Size: w2.2
 -Position:x0 y-11.6 z-0.001
 -Event.Mouse.Click.Action:level_CloseTechs();
--Event.Mouse.Click.Image:\gui\menu_button_over_small.spr
+-Event.Mouse.Over.Image:buttons\button_overlay.spr?button=0
 -Event.Mouse.Click.Sound:menu_button_click
--Event.Mouse.Over.Image:\gui\menu_button_over_small.spr
+-Event.Mouse.Over.Image:buttons\button_overlay.spr?button=0
 -Event.Mouse.Over.Sound:menu_button_over
 
 [Sprite]
 // Кнопка Помощи
--Texture:\gui\buttons\hint_button.spr?button=overlay_buttons
 -Label:MENU.BUTTON.HELP
 -Size:w6 h2.5
 -Position:x9.6 y-11.6 z-0.001
 -Event.Mouse.Click.Action:helpDialog("level_techs_help");
--Event.Mouse.Click.Image:\gui\buttons\hint_button_over.spr?button=overlay_buttons
+-Event.Mouse.Click.Image:\gui\buttons\button_overlay.spr?button=0
 -Event.Mouse.Click.Sound:menu_button_click
--Event.Mouse.Over.Image:\gui\buttons\hint_button_over.spr?button=overlay_buttons
+-Event.Mouse.Over.Image:\gui\buttons\button_overlay.spr?button=0
 -Event.Mouse.Over.Sound:menu_button_over
 
 

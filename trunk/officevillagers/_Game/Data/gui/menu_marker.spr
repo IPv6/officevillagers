@@ -4,6 +4,6 @@
 [Sprite]
 -AsChild:1
 -Texture:icons_set.png
--Atlas:x4 y3 w8 h4
+-Atlas:x0 y1 w8 h4
 -Size: w2 h2
 -Position: x-4

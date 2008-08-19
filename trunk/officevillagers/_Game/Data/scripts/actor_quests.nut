@@ -50,10 +50,11 @@ function gui_QuestOpen(questNum)
 		return false;
 	}
 	//core_Alert(format("quest %i state %i",questNum,questState));
-	addQuestsHighlight();
 	quest_set(questNum,2);
 	local safe=game_GetSafe();
 	safe.quests[quest.ID].OpenTime <- level_TimeAbs();
+	addQuestsHighlight();
+	gui_QuestHighlight(questNum);
 	return true;
 }
 
@@ -255,4 +256,9 @@ function initQuestDialog(skipItems)
 		core_SetProfileOption("TutorialQuestHelp",1);
 		helpDialog("level_quests_help");
 	}
+}
+
+function gui_GenerateHint()
+{
+	gui_ShowHint("Помощь недоступна. Позвоните позже",10);
 }

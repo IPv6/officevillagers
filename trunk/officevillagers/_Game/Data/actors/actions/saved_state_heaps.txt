@@ -711,7 +711,7 @@
 </Actor>
 <Actor>
 	<Name val="Heaps.Musor59" />
-	<Sprite val="\actors\items\trash\trashheap_base.spr?w[28px]&h[31px]" />
+	<Sprite val="\actors\items\trash\trashheap_base.spr?w[56px]&h[63px]" />
 	<Position.Location val="Furniture::DOT11" />
 	<ActorProphession val="COLLECTIBLE.FURNITURE" />
 	<Attributes>
