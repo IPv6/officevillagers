@@ -184,16 +184,41 @@
 	gui_QuestOpen(8);
 	game_CutsceneEnd({});
 -Script.In:
-	local actorSh = actor_GetActor("ACTOR.SHEKEL");
-	actorWait_SwitchToAction(actorSh,"Cutscene.driver");
+
+
+//диалог
+//включение
+//выход из катсцены
+//аларм
+	local actorAg = actor_GetActor("ACTOR.AGATA");
+	local actorBo = actor_GetActor("ACTOR.BOB");
+	actorWait_SwitchToAction(actorAg,"Cutscene.driver");
+	actorWait_SwitchToAction(actorBo,"Cutscene.driver");
 	gui_FadeIn();
 	actorWait_Timeout(1);
-	actor_AttachCamera(ActorSh);
-	actor_SetActorPos(actorSh,"CREATOR::IDEASTABLESHEKEL");
+	actor_AttachCamera(ActorAg);
+	
+	if(actor_IsActorExist("Musor68.cwalk.allowDown")!=false){
+		actor_DeleteActor("Musor68.cwalk.allowDown");
+		}
+	if(actor_IsActorExist("Musor66.cwalk.allowDown")!=false){		
+		actor_DeleteActor("Musor66.cwalk.allowDown");
+		}
+	if(actor_IsActorExist("Musor70.cwalk.allowDown")!=false){		
+		actor_DeleteActor("Musor70.cwalk.allowDown");
+		}
+	if(actor_IsActorExist("Musor65.cwalk.allowDown")!=false){		
+		actor_DeleteActor("Musor65.cwalk.allowDown");
+		}
+	
+	actor_SetActorPos(actorAg,"SCENES_CutScene1::DOT1");
+	actor_SetActorPos(actorBo,"SCENES_CutScene1::DOT2");	
 	actorWait_Timeout(1);
 	gui_FadeOut();
 	actorWait_Timeout(3);
 	local dialogFile = core_GetDataPath("text\\quest_cutscenes_dialog.lng");
+	
+	
 	actor_AddItem(actorSh,"collectible_item","collectible_number=0");
 	gui_ShowDialog(dialogFile, { _section="DIALOG4", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
 	actor_DelItem(actorSh,"collectible_item","collectible_number=0");
@@ -219,3 +244,5 @@
 	actorWait_Timeout(1);
 	gui_FadeOut();	
 	actor_SwitchToAction(thisActor,"Office_script");
+	
+	
