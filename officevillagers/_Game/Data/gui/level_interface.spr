@@ -49,23 +49,11 @@
 // Кнопка Menu
 -Name:levelMenuButton
 -Size: w6 h3
--Position:x-15 y12.5 z-0.212
+-Position:x-15 y12.7 z-0.212
 -Label:GUI.LEVEL.MENU.BUTTON
 -Event.Mouse.Click.Action:level_OpenMenu
 -Event.Mouse.Click.Sound:menu_button_click
--Event.Mouse.Over.Image:menu_button_over.spr?button=level_buttons
--Event.Mouse.Over.Sound:menu_button_over
-
-[Sprite]
--AsChild:1
-// Кнопка Квесты
--Name:quests_button
--Size: w6 h3
--Position:x-15 y-13.7 z-0.212
--Label:GUI.LEVEL.QUESTS.BUTTON
--Event.Mouse.Click.Action:level_OpenQuests
--Event.Mouse.Click.Sound:menu_button_click
--Event.Mouse.Over.Image:menu_button_over.spr?button=level_buttons
+-Event.Mouse.Over.Image:buttons\button_overlay.spr?button=0
 -Event.Mouse.Over.Sound:menu_button_over
 
 [Sprite]
@@ -73,30 +61,85 @@
 // Кнопка Открытия
 -Name:techs_button
 -Size: w6 h3
--Position:x-15 y-6.8 z-0.212
+-Position:x-15 y-7.3 z-0.212
 -Label:GUI.LEVEL.TECH.BUTTON
 -Event.Mouse.Click.Action:level_OpenTechs
 -Event.Mouse.Click.Sound:menu_button_click
--Event.Mouse.Over.Image:menu_button_over.spr?button=level_buttons
+-Event.Mouse.Over.Image:buttons\button_overlay.spr?button=0
 -Event.Mouse.Over.Sound:menu_button_over
+
+[Sprite]
+-AsChild:1
+// Кнопка Квесты
+-Name:quests_button
+-Size: w6 h3
+-Position:x-15 y-9.3 z-0.212
+-Label:GUI.LEVEL.QUESTS.BUTTON
+-Event.Mouse.Click.Action:level_OpenQuests
+-Event.Mouse.Click.Sound:menu_button_click
+-Event.Mouse.Over.Image:buttons\button_overlay.spr?button=0
+-Event.Mouse.Over.Sound:menu_button_over
+
+[Sprite]
+-AsChild:1
+-Position:x-15 y-14.2 z0.09
+-Label:LEVEL.ACTIONS.LABEL
+
+[Sprite]
+-AsChild:1
+-Position:x-15 y10.2 z0.09
+-Label:LEVEL.PEOPLES.LABEL
+
+[Sprite]
+-AsChild:1
+-Name:hudPeoplesCount
+-Position:x-15 y8.3 z0.09
+-Label:?...
+
+[Sprite]
+-AsChild:1
+-Position:x-15 y5.8 z0.09
+-Label:LEVEL.IDEAS.LABEL
+
+[Sprite]
+-AsChild:1
+-Name:hudIdeasCount
+-Position:x-15 y3.9 z0.09
+-Label:?...
 
 [Sprite]
 -AsChild:1
 // Хинты и алармы: Маркер того что делает выбранный перс и место показа алармов
 -Texture:${virtualNode}
 -Name:hudWTDMarker
--Position:x0 y-13.8 z0.09
+-Position:x4 y-14.2 z0.09
 -Label:LEVEL.TIMEPAUSED
 
 [Sprite]
 // Кнопка Скрытия хинта
 -Parent:hudWTDMarker
 -Name:hudWTDMarker_bt
--Texture:buttons\hint_button.spr
--Position:x15 z0.000001
+-Texture:icons_set.png
+-Atlas:x1 y1 w8 h4
+-Position:x15.2 y0.1 z0.000001
 -Size:2
 -Event.Mouse.Click.Action:gui_ClearHint(false);
--Event.Mouse.Click.Image:buttons\hint_button_over.spr
+-Event.Mouse.Click.Image:buttons\button_overlay.spr?button=1
 -Event.Mouse.Click.Sound:menu_button_click
--Event.Mouse.Over.Image:buttons\hint_button_over.spr
+-Event.Mouse.Over.Image:buttons\button_overlay.spr?button=1
+-Event.Mouse.Over.Sound:menu_button_over
+
+
+[Sprite]
+// Кнопка Показа помощи
+-AsChild:1
+-Name:hudHelpMarker_bt
+-Texture:icons_set.png
+-Atlas:x2 y1 w8 h4
+-Position:x19.2 y-14.2 z0.091
+-Size:2
+-Event.Mouse.Click.Action:gui_GenerateHint();
+-Event.Mouse.Click.Image:buttons\button_overlay.spr?button=1
+-Event.Mouse.Click.Sound:menu_button_click
+-Event.Mouse.Over.Image:buttons\button_overlay.spr?button=1
 -Event.Mouse.Over.Sound:menu_button_over

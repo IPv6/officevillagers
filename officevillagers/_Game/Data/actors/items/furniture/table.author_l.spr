@@ -27,7 +27,7 @@
 -Visible:1
 -Texture:${virtualNode}
 -LocalID:${SUBID_ITEMATTACH}
--Position: x-2 y2
+-Position: x0 y2
 
 [Sprite]
 -AsChild:1

@@ -2,6 +2,8 @@
 -Texture:trashheap_fontan.png
 -SizeFromTexture:1
 -MapY2Z:-100
+-Position: x-0.05 y0
+
 
 [Sprite]
 -AsChild:1

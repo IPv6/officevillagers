@@ -642,6 +642,10 @@ void CActor::SetEnable(BOOL bEnable,BOOL bForceScriptUpdate)
 			}
 		}
 	}
+	if(!node && data.p_Enabled && !bPrevEnable){
+		// Чтобы небыло блинка когда енаблящийся актер еще небыл создан - спауним его
+		SpawnPersUI();
+	}
 	if(node && (bPrevEnable!=bEnable)){
 		// Меняем видимость только если сменился енабле статус... иногда мы скриваем сами енабленных персов тоже - при посадке к примеру
 		node->setVisible(data.p_Enabled?true:false);
@@ -753,7 +757,12 @@ int CActor::AI_PauseMovements(BOOL bPauseAI)
 
 	if(bWasPaused && !bMovementsIsPaused)
 	{// При возвращении из паузы оживляем путь
-		ThinkActions();// Подбор нового действия!
+		{// Так как это может вызываться в контексте другого экшна обнуляем контекст
+			CAction* nowAction=getLevel()->getCurrentAction();
+			getLevel()->getCurrentAction()=0;
+			ThinkActions();// Подбор нового действия!
+			getLevel()->getCurrentAction()=nowAction;
+		}
 		if(activeNavigationDotLocationName.GetLength())
 		{// Перестраиваемся...
 			AI_SetMove2TargetPos(activeNavigationDotLocationName);

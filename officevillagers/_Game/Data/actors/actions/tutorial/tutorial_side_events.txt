@@ -144,7 +144,7 @@
 -Think.Speed:1
 -Priority:-1
 -Script.On:
-	actor_AddItem("TABLE.AUTHOR1_L","cursor_hint_person","x[2.8]&y[-0.8]");
+	actor_AddItem("TABLE.AUTHOR1_L","cursor_hint_person","x[1]&y[-0.8]");
 -Script.Off:
 	actor_DelItem("TABLE.AUTHOR1_L","cursor_hint_person");	
 -Script.In:

@@ -1,6 +1,7 @@
 function event_OnStartGame(param)
 {
 	core_SetKeyHandlerMode(1);
+	core_SetTimeoutLocal("main_level_interface",1000,"gui_UpdateHud();");
 }
 
 _saveCameraOverwrite <- {overwrite=false, cameraX=0.0, cameraY=0.0};
@@ -95,4 +96,11 @@ function __DebugActor(thisActor,debugLine)
 	actor_SetAttribute(thisActor,"__DEBUG",debugLine);
 	//thisActor._StepInThread.__DEBUG <- debugLine;
 	core_SetScriptStepDebugLine(thisActor.Name+" said: "+debugLine);
+}
+
+function gui_UpdateHud()
+{
+	local persons=actor_GetActors({_byType=1});
+	core_SetNodeText("hudPeoplesCount",format("%i",persons.len()));
+	core_SetNodeText("hudIdeasCount",format("%i",actor_GetAttributeN("Office","ideas")));
 }
