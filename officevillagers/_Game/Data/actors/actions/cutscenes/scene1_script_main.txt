@@ -40,10 +40,14 @@
 	actorWait_Timeout(1);
 	gui_FadeOut();
 	actorWait_Timeout(3);
+	actor_OrientHead(actorSh,actorAg);
+	actor_OrientHead(actorSi,actorAg);
 	gui_ShowDialog(dialogFile, { _section="DIALOG2", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
 	actor_SwitchToAction(actorBo,"CutScene1.BobWalking");
 	gui_ShowDialog(dialogFile, { _section="DIALOG2-2", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
 	actorWait_Timeout(2);
+	actor_OrientHead(actorSh,actorBo);
+	actor_OrientHead(actorAg,actorBo);
 	gui_ShowDialog(dialogFile, { _section="DIALOG3", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
 	while(gui_IsDialogOpen()==true){
 		::suspend();
@@ -58,7 +62,8 @@
 	addVars.append({name="month", value=core_Translate(format("MONTH_OF%i",dateNow._month))});
 	addVars.append({name="hour", value=format("%i",dateNow._hour)});
 	addVars.append({name="min", value=format("%i",dateNow._min)});
-
+	actor_OrientHead(actorSh,actorAg);
+	actor_OrientHead(actorAg,actorSi);
 	gui_ShowDialog(dialogFile, { _section="DIALOG4", _close=true, _vars=addVars, _dialogBg="\\gui\\comics_interface_dialog.png"});
 	actorWait_Timeout(1);
 	gui_ShowDialog(dialogFile, { _section="DIALOG5", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});

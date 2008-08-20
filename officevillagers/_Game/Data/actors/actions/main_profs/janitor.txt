@@ -5,6 +5,7 @@
 -Prq.InCutscene:0
 -Prq.IsGlobalEvent:0
 -Protected:0
+-Disable.Person.UI:0
 -Script.In:
 	local trashObjectTable;
 	// Проверяем есть ли у уборщика предпочтительный мусор
@@ -230,6 +231,7 @@
 -Priority:-1
 -Prq.IsGlobalEvent:0
 -Protected:0
+-Disable.Person.UI:1
 -Script.In:
 	actor_SetActionLabel(thisActor,"JANITOR.CARRING_TRASH");
 	local nTrashItemNumber = actor_GetAttributeN(thisActor,"JANITOR_CARRYTRASH.ITEM");
