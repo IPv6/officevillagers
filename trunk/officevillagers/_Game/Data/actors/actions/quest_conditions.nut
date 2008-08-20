@@ -19,7 +19,7 @@ function quest_conditions(conditions)
 	if("_fromDropLocation" in conditions)
 	{// »з дропа на локацию
 		if((actor_GetActorProfession(conditions._actorFrom)=="JANITOR" || actor_GetActorProfession(conditions._actorFrom)=="JANITOR-EXPERT")
-		&& conditions._locName.Name == "FurniDrops::BARRICADA"
+		&& conditions._locName == "FurniDrops::BARRICADA"
 		&& nloc_CheckWalkablePath("FurniDrops::BARR_FROM","Heaps.Barricada")!=false){
 			if(gui_QuestClose(6)){
 				gui_StartCutscene("Quest7_Cutscene");
