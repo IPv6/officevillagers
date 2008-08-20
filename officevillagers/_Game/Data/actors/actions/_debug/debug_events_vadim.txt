@@ -48,7 +48,9 @@
 	actor_SwitchToAction(actor6,"");
 	actor_SwitchToAction(actor7,"");
 	actor_SwitchToAction(actor8,"");
-
+	game_StartPuzzle();
+	actor_WaitActor(100);
+	actorWait_SwitchToAction(thisActor,"Tutorial.End");
 	
 [Event]
 -Name:Debug_table_Script

@@ -64,7 +64,6 @@
 	}else{
 		// »наче - фейд в саму игру
 		gui_FadeIn();
-		
 	}
 	
 -Script.In:
