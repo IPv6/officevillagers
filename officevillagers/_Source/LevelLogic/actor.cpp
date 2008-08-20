@@ -1033,6 +1033,26 @@ BOOL CActor::ThinkPocket(BOOL bForceUpdate)
 			}
 			if(node){
 				node->setVisible(true);
+				if(data.p_iActorType>0){
+					// Позиция!
+					// 1) SUBID_DEFDROP
+					if(sLastInPocketActor.GetLength()>0){
+						CActor* pocketActorLast=getLevel()->getActorByName(sLastInPocketActor);
+						if(pocketActorLast && pocketActorLast->node){
+							ISceneNode* dropNode=getNode(SUBID_DEFDROP,pocketActorLast->node);
+							if(dropNode){
+								_v3 newPosition=pocketActorLast->node->getPosition()+dropNode->getPosition();
+								newPosition.Z=DEF_ACTOR_Z;
+								node->setPosition(newPosition);
+							}
+						}
+					}
+					AI_SyncPosition(0);
+					// 2) Валидация позиции
+					// Проверяем позицию с учетом доступности оной из реперной точки!!!
+					getLevel()->levelNavigator->EnsureWalkablePos(data.p_pos,FALSE,TRUE);
+					AI_SyncPosition(1);
+				}
 			}
 		}
 	}
@@ -1059,6 +1079,7 @@ void CActor::ThinkItems()
 BOOL CActor::PutInPocket(const char* szToActor,const char* szToItem)
 {
 	if(szToActor && szToActor[0] && szToItem && szToItem[0]){
+		sLastInPocketActor="";
 		if(GetAttributeLong("__InPocket")!=0 && (data.p_sInPocket_Actor!=szToActor || data.p_sInPocket_Item!=szToItem)){
 			data.p_sInPocket_Actor=DEF_NONEXISTABLEACTOR;
 			ThinkPocket();// Сбрасываем
@@ -1066,6 +1087,7 @@ BOOL CActor::PutInPocket(const char* szToActor,const char* szToItem)
 		data.p_sInPocket_Actor=szToActor;
 		data.p_sInPocket_Item=szToItem;
 	}else{
+		sLastInPocketActor=data.p_sInPocket_Actor;
 		data.p_sInPocket_Actor=DEF_NONEXISTABLEACTOR;
 	}
 	BOOL bRes=ThinkPocket();

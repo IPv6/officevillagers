@@ -139,7 +139,8 @@ BOOL CFontEffectTyper::DoCharPerturbation()
 		}
 		if(isAllOver){
 			// Сбрасываем резерв инпута
-			CSimpleAnykeyManager::Instance().ReserveInputTarget(1,0);
+			//CSimpleAnykeyManager::Instance().ReserveInputTarget(1,0);
+			((CSpriteNode*)callerNode->getParent())->setAttrib("stopEffect",(long)1);
 		}
 		return 1;// Строки не трогаем...
 	}
@@ -160,15 +161,26 @@ BOOL CFontEffectTyper::DoCharPerturbation()
 		if(showLen>=iMaxChar-1){
 			// Показали последнюю строчку!
 			isAllOver=1;
+			DoCharPerturbation();// Обновим
 		}
 		return 1;
 	}
 	if(iCurPos>charsLen-CHARS_TRAIL*0.7f){
 		isAllOver=1;
+		DoCharPerturbation();// Обновим
+		return 1;
 	}
+	/*
 	CSimpleAnykeyManager::Instance().ReserveInputTarget(1,getTick()+1);
 	if(CSimpleAnykeyManager::Instance().IsInputOccured(0,1)){
 		isAllOver=1;
+		DoCharPerturbation();// Обновим
+		return 1;
+	}
+	*/
+	if(((CSpriteNode*)callerNode->getParent())->getAttribL("stopEffect")>0){
+		isAllOver=1;
+		DoCharPerturbation();// Обновим
 		return 1;
 	}
 	// Вычисляем альфу

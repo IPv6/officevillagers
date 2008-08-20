@@ -18,52 +18,21 @@
 -Label:????
 
 [Sprite]
--Name:_piAUTHORbt
--Texture:icons_set.png
--Atlas:x0 y3 w8 h4
--Size: w2.5
--Position: x-4 y1 z-0.001
--Label:AUTHOR
--Label.Formatting:<dx=2><left>
--Event.Mouse.Click.Action:personChooseProfessionStager("AUTHOR");
--Event.Mouse.Click.Sound:menu_button_click
--Event.Mouse.Over.Sound:menu_button_over
+-Position: y0
+-Label:MENU.DIALOG.NEWPERSON.DSC.LABEL
 
 [Sprite]
--Name:_piFINANCIERbt
--Texture:icons_set.png
--Atlas:x1 y3 w8 h4
--Size: w2.5
--Position: x-4 y-1 z-0.002
--Label:FINANCIER
--Label.Formatting:<dx=2><left>
--Event.Mouse.Click.Action:personChooseProfessionStager("FINANCIER");
--Event.Mouse.Click.Sound:menu_button_click
+// Кнопка Ok
+-Texture:menu_button_small.spr
+-Label:MENU.BUTTON.OK.LABEL
+-Size: w3
+-Position: x0 y-7.5 z-0.01
+-Event.Mouse.Click.Action:closePersonStagerInterfaceDialog();
+-Event.Mouse.Over.Image:menu_button_over_small.spr
 -Event.Mouse.Over.Sound:menu_button_over
-
-[Sprite]
--Name:_piCREATORbt
--Texture:icons_set.png
--Atlas:x2 y3 w8 h4
--Size: w2.5
--Position: x-4 y-3 z-0.0021
--Label:CREATOR
--Label.Formatting:<dx=2><left>
--Event.Mouse.Click.Action:personChooseProfessionStager("CREATOR");
+-Event.Mouse.Click.Image:menu_button_over_small.spr
 -Event.Mouse.Click.Sound:menu_button_click
--Event.Mouse.Over.Sound:menu_button_over
-
-[Sprite]
--Name:_piJANITORbt
--Texture:icons_set.png
--Atlas:x3 y3 w8 h4
--Size: w2.5
--Position: x-4 y-5 z-0.001
--Label:JANITOR
--Label.Formatting:<dx=2><left>
--Event.Mouse.Click.Action:personChooseProfessionStager("JANITOR");
--Event.Mouse.Click.Sound:menu_button_click
--Event.Mouse.Over.Sound:menu_button_over
+-Event.Mouse.Click.KeyShortcut:${VK_RETURN}
 
 [Sprite]
 // Приглашение

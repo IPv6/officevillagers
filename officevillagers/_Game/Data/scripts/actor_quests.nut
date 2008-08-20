@@ -258,7 +258,8 @@ function initQuestDialog(skipItems)
 	}
 }
 
+g_cnt <- 0;
 function gui_GenerateHint()
 {
-	gui_ShowHint("Помощь недоступна. Позвоните позже",10);
+	gui_ShowHint(format("%i. Помощь недоступна. Позвоните позже",g_cnt++),10,0);
 }

@@ -1,3 +1,5 @@
+g_TechInterfaceOpened <- false;
+
 /*
 1)настрйоки
 а)сменить время дедлайна
@@ -37,6 +39,11 @@ function level_OpenTechs(param)
 function level_CloseTechs()
 {
 	core_CloseDialog("level_techs");
+}
+
+function deinitTechsDialog()
+{
+	g_TechInterfaceOpened = false;
 }
 
 function initTechsDialog()
@@ -82,6 +89,9 @@ function initTechsDialog()
 		core_SetNode(format("quest_slot%i",i),slotNode);
 	}
 */
+	// Число идей
+	g_TechInterfaceOpened = true;
+	gui_UpdateHud();
 	// Окно помощи при первом заходе
 	if(core_GetProfileOption("TutorialTechsHelp")!=1){
 		core_SetProfileOption("TutorialTechsHelp",1);

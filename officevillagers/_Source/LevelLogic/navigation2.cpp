@@ -214,6 +214,10 @@ BOOL CLocationManagerNavigatorY::EnsureWalkablePos(_v2& posInQuestion, BOOL bNoS
 			return WALKSTATE_PROXI;
 		}
 	}
+	if(bNoSnapToClosest==999){
+		map[mpos.X][mpos.Y]=0;
+		pather->Reset();
+	}
 	if(map[mpos.X][mpos.Y]==0){
 		return WALKSTATE_IN;
 	}

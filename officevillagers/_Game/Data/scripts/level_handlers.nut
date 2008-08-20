@@ -1,7 +1,7 @@
 function event_OnStartGame(param)
 {
 	core_SetKeyHandlerMode(1);
-	core_SetTimeoutLocal("main_level_interface",1000,"gui_UpdateHud();");
+	core_SetIntervalLocal("main_level_interface",1000,"gui_UpdateHud();");
 }
 
 _saveCameraOverwrite <- {overwrite=false, cameraX=0.0, cameraY=0.0};
@@ -102,5 +102,9 @@ function gui_UpdateHud()
 {
 	local persons=actor_GetActors({_byType=1});
 	core_SetNodeText("hudPeoplesCount",format("%i",persons.len()));
-	core_SetNodeText("hudIdeasCount",format("%i",actor_GetAttributeN("Office","ideas")));
+	local idaes=format("%i",actor_GetAttributeN("Office","ideas"));
+	core_SetNodeText("hudIdeasCount",idaes);
+	if(g_TechInterfaceOpened){
+		core_SetNodeText("hudIdeasCount2",idaes);
+	}
 }

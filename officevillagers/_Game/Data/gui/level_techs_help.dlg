@@ -54,8 +54,8 @@
 -Texture:dialog_frame_slot.png
 -Position:x-11 y-11.3 z-0.001
 -Label:GUI.TECHS.HELP5
--Label.Formatting:<justify:10><y:0.5>
--Size:w12 h3
+-Label.Formatting:<justify:10><y:1.0><font-size:-1>
+-Size:w11 h4
 
 [Sprite]
 -Texture:arrow.png

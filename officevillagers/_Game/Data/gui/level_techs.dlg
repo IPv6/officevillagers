@@ -3,6 +3,7 @@
 -DialogName:level_techs
 -Event.Keyboard.Esc.Pressed:level_CloseTechs();
 -Event.OnCreate.Action:initTechsDialog();
+-Event.OnDestroy.Action:deinitTechsDialog();
 -Position: z-2
 -ModalDialog:1
 -FadeInEffect:1
@@ -29,6 +30,12 @@
 -Event.Mouse.Over.Image:\gui\buttons\button_overlay.spr?button=0
 -Event.Mouse.Over.Sound:menu_button_over
 
+[Sprite]
+-Name:hudIdeasCount2
+-Texture:dialog_frame_top.png
+-Position:x13 y11 z-0.0009
+-Size: w6 h3
+-Label:?...
 
 [Sprite]
 // Приглашение

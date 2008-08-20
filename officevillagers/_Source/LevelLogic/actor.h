@@ -271,9 +271,11 @@ public:
 	CActorItem* GetItemByName(const char* szName);
 	CActorItem* GetItemByIndex(int iIndex);
 	CActorItem* GetItemByMask(const char* szName);
+	int AutoClearItems(const char* szName);
 	
 
 	BOOL PutInPocket(const char* szToActor,const char* szToItem);
 	BOOL MakePocketEmpty();
+	CString sLastInPocketActor;
 };
 #endif

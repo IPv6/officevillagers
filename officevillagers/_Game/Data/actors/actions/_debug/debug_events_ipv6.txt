@@ -25,6 +25,14 @@
 	//actor_SwitchToAction("Office","SleepMode");
 	
 	if(false)
+	{//Удаление/создание актеров
+		actor_NewPerson("person_male",true);
+		local newActor=actor_CreateActor("person_male","ACTORTEST");
+		local newCollectible=actor_CreateActor("collectible","TESTCOLLECTIBLE");
+		actor_DeleteActor(newCollectible);
+	}
+	
+	//if(false)
 	{
 		//actor_SitOnChairX(actorAg,"TABLE.AGATAMAIN",2,true);
 		//actor_SitOnChair(actorAg,"TABLE.AGATASIDE",true);
@@ -51,7 +59,7 @@
 		//actor_SwitchToAction(actorSi,"NONE_Script");
 	}
 	
-	if(false)
+	//if(false)
 	{// Квесты
 		//gui_StartCutscene("Quest4_Cutscene");
 		//game_CutsceneBegin({});
@@ -106,14 +114,6 @@
 		actor_SetProfessionRaw(actorBo,"JANITOR");
 		actor_SwitchToAction(actorBo,"");
 		actor_SwitchToAction("Office","Office_script");
-	}
-	
-	
-	if(false)
-	{//Удаление/создание актеров
-		local newActor=actor_CreateActor("person_male","ACTORTEST");
-		local newCollectible=actor_CreateActor("collectible","TESTCOLLECTIBLE");
-		actor_DeleteActor(newCollectible);
 	}
 	
 	if(false)

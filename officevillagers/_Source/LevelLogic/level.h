@@ -150,6 +150,7 @@ public:
 		f32 fTimeTo;
 		int iPriority;
 		DWORD dwColor;
+		BOOL bCloseBaton;
 		CSingleHint()
 		{
 			memset(this,0,sizeof(CSingleHint));
@@ -157,7 +158,7 @@ public:
 	};
 	typedef core::array<CSingleHint> _array_Hints;
 	_array_Hints aHints;
-	void AddHint(CString sText="", f32 fTime=0.0f, int iPriority=0, DWORD dwColor=0);
+	void AddHint(CString sText="", f32 fTime=0.0f, int iPriority=0, DWORD dwColor=0, BOOL bCloseBaton=FALSE);
 	void HideHint(BOOL bLastOnly, int iPriority);
 	void ActualizeHint();
 	// Актеры
