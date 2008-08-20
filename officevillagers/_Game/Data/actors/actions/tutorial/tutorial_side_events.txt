@@ -197,7 +197,7 @@
 		::suspend();
 	}
 	actor_OrientBody(thisActor,"OfficeHeaps::DOT52");
-	actor_OrientHead(thisActor,"OfficeHeaps::DOT52");
+	actor_OrientHead(thisActor,0);
 	gui_ShowDialog(dialogFile, { _section="DIALOG10", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
 	while(actor_IsInLocation(thisActor,"SCENES_Tutorial::Agata3")==false){
 		::suspend();
@@ -222,7 +222,7 @@
 		::suspend();
 	}
 	actor_SitOnChair(thisActor,"TABLE.AGATASIDE",true);
-	actorWait_Timeout(2);
+//	actorWait_Timeout(2);
 	gui_ShowDialog(dialogFile, { _section="DIALOG122", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
 	actorWait_SwitchToAction(thisActor,"Tutorial.AgataVsBobEnd");
 	
@@ -333,7 +333,7 @@ actorWait_SwitchToAction(thisActor,"Tutorial.AgataVsSinty2");
 -Script.In:
 	actorWait_GoTo(thisActor,"SCENES_Tutorial::DOT4");
 	actorWait_GoTo(thisActor,"SCENES_Tutorial::DOT5");
-	actorWait_GoTo(thisActor,"SSCENES_Tutorial::DOT8");
+	actorWait_GoTo(thisActor,"SCENES_Tutorial::DOT8");
 	actor_OrientBody(thisActor,180);
 	
 [Step]
