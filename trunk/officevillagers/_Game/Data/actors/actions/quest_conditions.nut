@@ -14,16 +14,19 @@ function quest_conditions(conditions)
 				gui_StartCutscene("Quest5_Cutscene");
 			}
 		}
+	}
 	
-		if((actor_GetActorProfession(thisActor)=="JANITOR" || actor_GetActorProfession(thisActor)=="JANITOR-EXPERT")
-		&& locName.Name == "FurniDrops::BARRICADA"
+	if("_fromDropLocation" in conditions)
+	{// Из дропа на локацию
+		if((actor_GetActorProfession(conditions._actorFrom)=="JANITOR" || actor_GetActorProfession(conditions._actorFrom)=="JANITOR-EXPERT")
+		&& conditions._locName.Name == "FurniDrops::BARRICADA"
 		&& nloc_CheckWalkablePath("FurniDrops::BARR_FROM","Heaps.Barricada")!=false){
-			if(gui_QuestClose(7)){
-				gui_StartCutscene("Quest8_Cutscene");
+			if(gui_QuestClose(6)){
+				gui_StartCutscene("Quest7_Cutscene");
 			}
 		}
 	}
-
+	
 	if("_fromSetProf" in conditions){// Проверки квестов, вызывающиеся из смиены профессии
 		if (conditions.who.Name=="ACTOR.AGATA" && conditions.prof.find("FINANCIER")!= null ){
 			if(gui_QuestClose(2)){

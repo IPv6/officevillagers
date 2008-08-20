@@ -719,8 +719,7 @@
 	</Attributes>
 	<Items>
 		<Item><Name val="heap_block_1" /><ItemSpr val="\actors\items\trash\itm_trashheap_floor.spr?image=trashheap_fontan.png&xoffset=0&yoffset=0" /><Params val="time[100]" /></Item>
-		<Item><Name val="heap_block_2" /><ItemSpr val="\actors\items\trash\itm_trashheap_floor.spr?image=trashheap_fontan2.png&xoffset=0&yoffset=0" /><Params val="time[100]" /><HideIf val="heap_block_1" /></Item>
-		<Item><Name val="heap_block_3" /><ItemSpr val="\actors\items\trash\itm_trashheap_floor.spr?image=trashheap_fontan3.png&xoffset=0&yoffset=0" /><Params val="time[100] EnableOtherHeap[EDITOR_FONTAN]" /><HideIf val="heap_block_2" /></Item>
+		<Item><Name val="heap_block_2" /><ItemSpr val="\actors\items\trash\itm_trashheap_floor.spr?image=trashheap_fontan2.png&xoffset=0&yoffset=0" /><Params val="time[100] EnableOtherHeap[EDITOR_FONTAN]" /><HideIf val="heap_block_1" /></Item>
 	</Items>
 </Actor>
 <!-- дальше обычный мусор -->

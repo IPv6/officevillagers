@@ -71,17 +71,17 @@ function dropOnTrash(thisActor,trashActor)
 					// Переводим на уборку
 					actor_SetAttribute(thisActor,"CurrentTrashName",trashActor.Name);
 					actor_SwitchToAction(thisActor,"JANITOR_script");
-					return true;
+					return 1;
 				}else{
 					$ifdebug core_Warning("Drop on trash skipped: no path to alt "+lAltLocation);
 				}
 			}
-			return false;
+			return 0;
 		}
 		// Переводим на уборку
 		actor_SetAttribute(thisActor,"CurrentTrashName",trashActor.Name);
 		actor_SwitchToAction(thisActor,"JANITOR_script");
-		return true;
+		return 1;
 	}
 
 	//кидаем персов в коллектиблы
@@ -93,11 +93,11 @@ function dropOnTrash(thisActor,trashActor)
 		actor_AddItem(thisActor,"collectible_item","collectible_number=0");
 		actor_PutIntoPocket(thisActor,trashActor,"collectible_item");
 		actor_SwitchToAction(thisActor,"Collectibles_event");
-		return true;
+		return 1;
 	}
 	
-	actor_SwitchToAction(thisActor,"NONE_Script");
-	return false;
+	//actor_SwitchToAction(thisActor,"NONE_Script");//Это на уровень выше тепер
+	return -1;
 }
 
 function dropOnLocation(thisActor,locName)
@@ -114,7 +114,7 @@ function actor_OnDropActor(thisActor, targetPosition)
 	if(game_IsCutscene()){
 		return;
 	}	
-	
+	local bSwitchToNoneAction = false;
 	thisActor=actor_GetActor(thisActor);
 	// вьешательство игрока сбрасывает персу ивент!!! Всегда!
 	// важно для сброса разговоров, итемов и т.п.
@@ -174,8 +174,12 @@ function actor_OnDropActor(thisActor, targetPosition)
 	objectsArray=actor_GetActors( {_byPosition=targetPosition, _byProfession="COLLECTIBLE*"});
 	for(i=0;i<objectsArray.len();i++){
 		local actorName=objectsArray[i];
-		if(dropOnTrash(thisActor,actor_GetActor(actorName))){
+		local trashResult=dropOnTrash(thisActor,actor_GetActor(actorName));
+		if(trashResult>0){
 			return;
+		}
+		if(trashResult<0){
+			bSwitchToNoneAction = true;
 		}
 	}
 	// Checking locations
@@ -184,5 +188,8 @@ function actor_OnDropActor(thisActor, targetPosition)
 		if(dropOnLocation(thisActor,locName)){
 			return;
 		}
+	}
+	if(bSwitchToNoneAction){
+		actor_SwitchToAction(thisActor,"NONE_Script");
 	}
 }
