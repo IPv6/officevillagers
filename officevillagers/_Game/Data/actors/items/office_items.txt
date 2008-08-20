@@ -61,5 +61,10 @@
 		<DefaultSpr val="\gui\effects\cursor_hint_person.spr" />
 		<SaveInSaves val="0" />
 	</ItemDescription>
+     <ItemDescription>
+          <Name val="tutorial_arrow_single" />
+          <DefaultSpr val="\actors\items\itm_tutorial_arrow_single.spr" />
+          <SaveInSaves val="0" />
+     </ItemDescription>
 	</Items>
 </LevelItems>

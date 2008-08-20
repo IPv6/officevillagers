@@ -1,0 +1,5 @@
+[Sprite]
+-Texture:\gui\cursor_punktir_cirk.png
+-Size:3
+-Position: x0 y0 z-0.00012
+-Animation.AlphaPulsar:t1000 a1.0

@@ -6,16 +6,20 @@
 -Disable.Person.UI:0
 -Think.Speed:1
 -Script.On:
-	game_CutsceneBegin({});
+	game_CutsceneBegin({_who="Office", _action="CutScene4_finish"});
 -Script.Off:
 	game_CutsceneEnd({});
+	if(gui_isCutSceneWasSkipped()){
+		gui_FadeIn();
+	}
+	
 -Script.In:
-	gui_FadeOut();
+	gui_FadeIn();
 	actorWait_Timeout(3);
 	local Stager = actor_GetFollower(actor_GetActor("ACTOR.AGATA"));
 	actorWait_SwitchToAction(Stager,"Cutscene.driver");
 	Stager = actor_GetActor(Stager);
-	gui_FadeIn();
+	gui_FadeOut();
 	actorWait_Timeout(1);
 	actor_AttachCamera(Stager);
 	actorWait_Timeout(1);
@@ -36,6 +40,23 @@
 	actor_SwitchToAction(thisActor,"Office_script");
 	
 [Event]
+-Name:CutScene4_finish
+-Prq.IsGlobalEvent:0
+-Protected:2
+-Priority:-1
+-Disable.Person.UI:0
+-Think.Speed:1
+-Script.In:
+	actor_SendToLocation(actorAg,"CutScene1::Agata");
+	actor_SetProfessionRaw(actorAg,"AUTHOR-EXPERT");
+	gui_FadeIn();
+	actorWait_Timeout(1);
+	actor_DetachCamera();
+	actorWait_Timeout(1);
+	gui_FadeOut();	
+	actor_SwitchToAction(thisActor,"Office_script");
+
+[Event]
 -Name:Quest5_Cutscene
 -Prq.IsGlobalEvent:0
 -Protected:2
@@ -43,10 +64,12 @@
 -Disable.Person.UI:0
 -Think.Speed:1
 -Script.On:
-	game_CutsceneBegin({});
+	game_CutsceneBegin({_who="Office", _action="CutScene5_finish"});
 -Script.Off:
-	gui_QuestOpen(6);
-	game_CutsceneEnd({});
+     gui_FadeIn();
+     gui_QuestOpen(6);
+     game_CutsceneEnd({});
+
 -Script.In:
 	local actorBo = actor_GetActor("ACTOR.BOB");
 	actorWait_SwitchToAction(actorBo,"Cutscene.driver");
@@ -62,6 +85,7 @@
 	local sTrashLocation = "FurniTRASH::TRASH14";
 	local newTrash=actor_CreateActor(sTemplateName,sTemplateName.toupper(),{_options=sTemplateOptions,_location=sTrashLocation});
 	actor_SetActorEnabled(newTrash, true);
+	actor_AddItem(newTrash,"tutorial_arrow_single");
 	actor_SetAttribute(newTrash,"IsCollectible",1);
 	
 	actor_AttachCamera(actorBo);
@@ -73,17 +97,23 @@
 	while(gui_IsDialogOpen()==true){
 		::suspend();
 	}
-	gui_ShowDialog(dialogFile, { _section="DIALOG2-2", _close=false, _dialogBg="\\gui\\comics_interface_dialog.png"});
+	gui_ShowDialog(dialogFile, { _section="DIALOG2-2", _close=false, _noMoreIcon=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
 	location_AttachCamera({_name="FurniTRASH::TRASH14", _time=7});
 	actorWait_Timeout(10);
 	gui_ShowDialog(null,null);
-	gui_FadeIn();
-	actorWait_Timeout(1);
-	actor_AttachCamera(actorBo);
-	actorWait_Timeout(1);
-	actor_DetachCamera();
+	actor_SwitchToAction(thisActor,"CutScene5_finish")
+
+
+[Event]
+-Name:CutScene5_finish
+-Prq.IsGlobalEvent:0
+-Protected:2
+-Priority:-1
+-Disable.Person.UI:0
+-Think.Speed:1
+-Script.In:
 	gui_FadeOut();	
-	actor_SwitchToAction(thisActor,"Office_script");
+	actor_SwitchToAction(thisActor,"CutScene5_finish");
 	
 [Event]
 -Name:Quest6_Cutscene1
@@ -101,7 +131,16 @@
 	actorWait_SwitchToAction(actorSh,"Cutscene.driver");
 	gui_FadeIn();
 	actorWait_Timeout(1);
-	actor_SetActorEnabled(getRandomCollectibleName(), true);
+	
+	local sTemplateName = "collectible.trash";
+    local sTemplateOptions="";
+    sTemplateName = "collectible";
+    sTemplateOptions=format("collectible_number=%i",core_Rnd(0,3).tointeger());
+    local sTrashLocation = format("FurniTRASH::TRASH%i", core_Rnd(1,20+1).tointeger(),sTemplateOptions);
+    local newTrash=actor_CreateActor(sTemplateName,sTemplateName.toupper(),{_options=sTemplateOptions,_location=sTrashLocation});
+    actor_SetActorEnabled(newTrash, true);
+    actor_SetAttribute(newTrash,"IsCollectible",1);
+	
 	actor_AttachCamera(ActorSh);
 	actor_SetActorPos(actorSh,"CREATOR::IDEASTABLESHEKEL");
 	actorWait_Timeout(1);
@@ -109,6 +148,13 @@
 	actorWait_Timeout(3);
 	local dialogFile = core_GetDataPath("text\\quest_cutscenes_dialog.lng");
 	actor_AddItem(actorSh,"collectible_item","collectible_number=0");
+	gui_ShowDialog(dialogFile, { _section="DIALOG3", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
+	while(gui_IsDialogOpen()==true){
+		::suspend();
+	}
+	if (actor_GetAttributeN("Office","QuestName")=="ACTOR.AGATA"){
+		gui_ShowDialog(dialogFile, { _section="DIALOG", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
+		}
 	while(gui_IsDialogOpen()==true){
 		::suspend();
 	}
@@ -171,78 +217,6 @@
 	actor_SwitchToAction(thisActor,"Office_script");
 	
 	
-[Event]
--Name:Quest7
--Prq.IsGlobalEvent:0
--Protected:2
--Priority:-1
--Disable.Person.UI:0
--Think.Speed:1
--Script.On:
-	game_CutsceneBegin({});
--Script.Off:
-	gui_QuestOpen(8);
-	game_CutsceneEnd({});
--Script.In:
-
-
-//диалог
-//включение
-//выход из катсцены
-//аларм
-	local actorAg = actor_GetActor("ACTOR.AGATA");
-	local actorBo = actor_GetActor("ACTOR.BOB");
-	actorWait_SwitchToAction(actorAg,"Cutscene.driver");
-	actorWait_SwitchToAction(actorBo,"Cutscene.driver");
-	gui_FadeIn();
-	actorWait_Timeout(1);
-	actor_AttachCamera(ActorAg);
-	
-	if(actor_IsActorExist("Musor68.cwalk.allowDown")!=false){
-		actor_DeleteActor("Musor68.cwalk.allowDown");
-		}
-	if(actor_IsActorExist("Musor66.cwalk.allowDown")!=false){		
-		actor_DeleteActor("Musor66.cwalk.allowDown");
-		}
-	if(actor_IsActorExist("Musor70.cwalk.allowDown")!=false){		
-		actor_DeleteActor("Musor70.cwalk.allowDown");
-		}
-	if(actor_IsActorExist("Musor65.cwalk.allowDown")!=false){		
-		actor_DeleteActor("Musor65.cwalk.allowDown");
-		}
-	
-	actor_SetActorPos(actorAg,"SCENES_CutScene1::DOT1");
-	actor_SetActorPos(actorBo,"SCENES_CutScene1::DOT2");	
-	actorWait_Timeout(1);
-	gui_FadeOut();
-	actorWait_Timeout(3);
-	local dialogFile = core_GetDataPath("text\\quest_cutscenes_dialog.lng");
-	
-	
-	actor_AddItem(actorSh,"collectible_item","collectible_number=0");
-	gui_ShowDialog(dialogFile, { _section="DIALOG4", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
-	actor_DelItem(actorSh,"collectible_item","collectible_number=0");
-	gui_FadeIn();
-	actorWait_Timeout(1);
-	actor_AttachCamera(ActorSh);
-	actor_SetActorPos(actorSh,"CutScene1::Shekel");
-	actor_SetActorPos(actorAg,"CutScene1::Agata");
-	actorWait_SwitchToAction(actorAg,"Cutscene.driver");
-	actor_SitOnChair(actorAg,"TABLE.AGATASIDE",true);
-	actor_SitOnChairX(actorSh,"TABLE.AGATAMAIN",1,true);
-	actorWait_Timeout(1);
-	gui_FadeOut();
-	actorWait_Timeout(3);
-	gui_ShowDialog(dialogFile, { _section="DIALOG5", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
-	while(gui_IsDialogOpen()==true){
-		::suspend();
-	}
-
-	gui_FadeIn();
-	actorWait_Timeout(1);
-	actor_DetachCamera();
-	actorWait_Timeout(1);
-	gui_FadeOut();	
-	actor_SwitchToAction(thisActor,"Office_script");
+;
 	
 	

@@ -14,7 +14,6 @@
 	if(gui_isCutSceneWasSkipped()){
 		// »наче - фейд в саму игру
 		gui_FadeIn();
-		actorWait_Timeout(2);
 	}
 
 -Script.In:
