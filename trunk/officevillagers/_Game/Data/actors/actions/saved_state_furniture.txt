@@ -140,7 +140,7 @@
 <Actor>
 	<Name val="SAFE" />
 	<Sprite val="actors\items\furniture\objects.spr?image=trashheap_safe.png" />
-	<Position.Location val="OfficeHeaps::DOT17" />
+	<Position.Location val="OfficeHeaps::DOT10" />
 	<ActorProphession val="FURNITURE" />
 	<Items></Items>
 </Actor>

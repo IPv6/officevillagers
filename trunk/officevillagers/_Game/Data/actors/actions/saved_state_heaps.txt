@@ -366,9 +366,8 @@
 		<Item><Name val="heap_block_5" /><ItemSpr val="\actors\items\trash\itm_trashheap_floor.spr?image=trashheap_telefon.png&x[7px]&y[-101px]" /><Params val="time[100]" /></Item>
 		<Item><Name val="heap_block_6" /><ItemSpr val="\actors\items\trash\itm_trashheap_floor.spr?image=trashheap_bolshaya_stopka_bumagi.png&x[27px]&y[-57px]" /><Params val="time[100]" /></Item>
 		<Item><Name val="heap_block_7" /><ItemSpr val="\actors\items\trash\itm_trashheap_floor.spr?image=trashheap_calculyator.png&x[7px]&y[-62px]" /><Params val="time[100]" /></Item>
-		<Item><Name val="heap_block_8" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_ryad_papok.png&x[28px]&y[-14px]" /><Params val="time[100]" /></Item>
+		<Item><Name val="heap_block_8" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_ryad_papok.png&x[58px]&y[-30px]" /><Params val="time[100]" /></Item>
 		<Item><Name val="heap_block_11" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_meshok_c_euro.png&x[66px]&y[-64px]" /><Params val="time[100]" /></Item>
-		<Item><Name val="heap_block_9" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_kassa.png&x[4px]&y[-24px]" /><Params val="time[100]" /></Item>
 	</Items>
 </Actor>
 
