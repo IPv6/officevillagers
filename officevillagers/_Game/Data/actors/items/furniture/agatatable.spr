@@ -126,3 +126,10 @@
 -MapY2Z:-100
 -Position: x3 y-3.0 s8
 -Custom.Attributes: OnSeatY[0.1]
+
+[Sprite]
+-AsChild:1
+-Visible:0
+-Texture:${virtualNode}
+-LocalID:${SUBID_DEFDROP}
+-Position: x-1 y2

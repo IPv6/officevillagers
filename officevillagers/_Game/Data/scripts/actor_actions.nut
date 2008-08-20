@@ -34,7 +34,7 @@ function actor_NewPerson(templateName,showInterface)
 	local newOne=actor_CreateActor(templateName);
 	location_JumpActor(newOne);
 	if(showInterface){
-		openPseudoInterfaceOnPerson(newOne);
+		openStagerInterfaceOnPerson(newOne);
 	}
 }
 
@@ -113,7 +113,7 @@ function actor_SetActorVisible(thisActor, isVisible)
 	core_EnableNode(actorNode,isVisible);
 }
 
-function actor_SetProfessionPseudo(thisActor,profName)
+function actor_SetProfessionStager(thisActor,profName)
 {
 	actor_SetProfession_i(thisActor,profName,true);
 }

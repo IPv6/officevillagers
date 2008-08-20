@@ -26,3 +26,10 @@
 -MapY2Z:-100
 -Size:h4
 -Position: x2.7 y0 s2
+
+[Sprite]
+-AsChild:1
+-Visible:0
+-Texture:${virtualNode}
+-LocalID:${SUBID_DEFDROP}
+-Position: x1 y2

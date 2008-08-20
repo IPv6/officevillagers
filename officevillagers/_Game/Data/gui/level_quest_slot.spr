@@ -1,6 +1,5 @@
 [Sprite]
--Texture:slots.png
--Atlas:x0 y0 w2 h1
+-Texture:dialog_frame_slot.png
 -Position: z-0.011
 -Label:?...
 -Size: w26 h3

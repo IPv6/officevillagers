@@ -5,12 +5,11 @@
 -Event.Keyboard.Esc.Pressed:core_CloseDialog("level_quests_help");
 
 [Sprite]
--Texture:slots.png
--Atlas:x0 y0 w2 h1
+-Texture:dialog_frame_slot.png
 -Position:x10 y8 z-0.001
 -Label:GUI.QUESTS.HELP2
--Label.Formatting:<justify:14><y:2>
--Size:w15 h6
+-Label.Formatting:<justify:14><y:2.5>
+-Size:w15 h7
 
 [Sprite]
 -Texture:arrow.png
@@ -19,16 +18,14 @@
 -Size:3
 
 [Sprite]
--Texture:slots.png
--Atlas:x0 y0 w2 h1
+-Texture:dialog_frame_slot.png
 -Position:x0 y0 z-0.001
 -Label:GUI.QUESTS.HELP1
 -Label.Formatting:<justify:14><y:2.5>
 -Size:w14 h8
 
 [Sprite]
--Texture:slots.png
--Atlas:x0 y0 w2 h1
+-Texture:dialog_frame_slot.png
 -Position:x-8.6 y-6.8 z-0.001
 -Label:GUI.QUESTS.HELP3
 -Label.Formatting:<justify:10><y:0.5>

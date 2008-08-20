@@ -5,8 +5,7 @@
 -Event.Keyboard.Esc.Pressed:core_CloseDialog("level_techs_help");
 
 [Sprite]
--Texture:slots.png
--Atlas:x0 y0 w2 h1
+-Texture:dialog_frame_slot.png
 -Position:x12 y6 z-0.001
 -Label:GUI.TECHS.HELP2
 -Label.Formatting:<justify:14><y:1.42><font-size:-1>
@@ -19,8 +18,7 @@
 -Size:3
 
 [Sprite]
--Texture:slots.png
--Atlas:x0 y0 w2 h1
+-Texture:dialog_frame_slot.png
 -Position:x-7 y4.3 z-0.001
 -Label:GUI.TECHS.HELP4
 -Label.Formatting:<justify:14><y:0.42><font-size:-1>
@@ -33,16 +31,14 @@
 -Size:3
 
 [Sprite]
--Texture:slots.png
--Atlas:x0 y0 w2 h1
+-Texture:dialog_frame_slot.png
 -Position:x-10 y-5 z-0.001
 -Label:GUI.TECHS.HELP1
 -Label.Formatting:<justify:14><y:3.2><font-size:-1>
 -Size:w14 h8
 
 [Sprite]
--Texture:slots.png
--Atlas:x0 y0 w2 h1
+-Texture:dialog_frame_slot.png
 -Position:x8 y-3 z-0.001
 -Label:GUI.TECHS.HELP3
 -Label.Formatting:<justify:16><y:4.7><font-size:-1>
@@ -55,8 +51,7 @@
 -Size:3
 
 [Sprite]
--Texture:slots.png
--Atlas:x0 y0 w2 h1
+-Texture:dialog_frame_slot.png
 -Position:x-11 y-11.3 z-0.001
 -Label:GUI.TECHS.HELP5
 -Label.Formatting:<justify:10><y:0.5>

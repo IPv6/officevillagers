@@ -1,10 +1,10 @@
 [Dialog]
--DialogName:person_interface_pseudo
+-DialogName:person_interface_stager
 -ModalDialog:1
 // Позиция - НАД фейдером
 -Position: z-2.1
--Event.OnCreate.Action:initPersonPseudoInterfaceDialog();
--Event.OnDestroy.Action:deinitPersonPseudoInterfaceDialog();
+-Event.OnCreate.Action:initPersonStagerInterfaceDialog();
+-Event.OnDestroy.Action:deinitPersonStagerInterfaceDialog();
 -Event.Keyboard.Esc.Pressed:/*закрыть нельзя*/
 -FadeInEffect:1
 -PauseGame:1
@@ -25,7 +25,7 @@
 -Position: x-4 y1 z-0.001
 -Label:AUTHOR
 -Label.Formatting:<dx=2><left>
--Event.Mouse.Click.Action:personChooseProfessionPseudo("AUTHOR");
+-Event.Mouse.Click.Action:personChooseProfessionStager("AUTHOR");
 -Event.Mouse.Click.Sound:menu_button_click
 -Event.Mouse.Over.Sound:menu_button_over
 
@@ -37,7 +37,7 @@
 -Position: x-4 y-1 z-0.002
 -Label:FINANCIER
 -Label.Formatting:<dx=2><left>
--Event.Mouse.Click.Action:personChooseProfessionPseudo("FINANCIER");
+-Event.Mouse.Click.Action:personChooseProfessionStager("FINANCIER");
 -Event.Mouse.Click.Sound:menu_button_click
 -Event.Mouse.Over.Sound:menu_button_over
 
@@ -49,7 +49,7 @@
 -Position: x-4 y-3 z-0.0021
 -Label:CREATOR
 -Label.Formatting:<dx=2><left>
--Event.Mouse.Click.Action:personChooseProfessionPseudo("CREATOR");
+-Event.Mouse.Click.Action:personChooseProfessionStager("CREATOR");
 -Event.Mouse.Click.Sound:menu_button_click
 -Event.Mouse.Over.Sound:menu_button_over
 
@@ -61,7 +61,7 @@
 -Position: x-4 y-5 z-0.001
 -Label:JANITOR
 -Label.Formatting:<dx=2><left>
--Event.Mouse.Click.Action:personChooseProfessionPseudo("JANITOR");
+-Event.Mouse.Click.Action:personChooseProfessionStager("JANITOR");
 -Event.Mouse.Click.Sound:menu_button_click
 -Event.Mouse.Over.Sound:menu_button_over
 

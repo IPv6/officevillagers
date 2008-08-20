@@ -48,8 +48,8 @@
 -AsChild:1
 //  нопка Menu
 -Name:levelMenuButton
--Size: w6 h3
--Position:x-15 y12.7 z-0.212
+-Size: w9 h1.8
+-Position: x-14.82 y12.7 z-0.212
 -Label:GUI.LEVEL.MENU.BUTTON
 -Event.Mouse.Click.Action:level_OpenMenu
 -Event.Mouse.Click.Sound:menu_button_click
@@ -60,8 +60,8 @@
 -AsChild:1
 //  нопка ќткрыти€
 -Name:techs_button
--Size: w6 h3
--Position:x-15 y-7.3 z-0.212
+-Size: w9 h1.8
+-Position: x-14.82 y-7.29 z-0.212
 -Label:GUI.LEVEL.TECH.BUTTON
 -Event.Mouse.Click.Action:level_OpenTechs
 -Event.Mouse.Click.Sound:menu_button_click
@@ -72,8 +72,8 @@
 -AsChild:1
 //  нопка  весты
 -Name:quests_button
--Size: w6 h3
--Position:x-15 y-9.3 z-0.212
+-Size: w9 h1.8
+-Position: x-14.82 y-9.23 z-0.212
 -Label:GUI.LEVEL.QUESTS.BUTTON
 -Event.Mouse.Click.Action:level_OpenQuests
 -Event.Mouse.Click.Sound:menu_button_click

@@ -166,6 +166,7 @@ function onDragActor(node)
 		humanDragLastRealId = node._parentid;
 		humanDragRealDrag = 2;
 		tryUnsitFirst = true;
+		actor_AutoClearItems(humanDragLastId,"drag");
 		actor_SetMovementsPause(humanDragLastId,true,"humanDrag");
 		if(gFlag_hDragAllowCameraSlide){
 			// Ограничение на движение - только если разрешен слайд. Для туториала он запрещен и  клиареа там не имеет смысла!

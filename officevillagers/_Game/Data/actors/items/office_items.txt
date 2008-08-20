@@ -43,6 +43,7 @@
 		<Name val="talk_baloon" />
 		<DefaultSpr val="\actors\items\talks\itm_baloon.spr" />
 		<SaveInSaves val="0" />
+		<DeleteOnEvent val="drag" />
 		<ScriptOnSpawn val="initTalkBaloonSprite" />
 	</ItemDescription>
 	<ItemDescription>
