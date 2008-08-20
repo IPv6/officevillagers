@@ -14,6 +14,7 @@
 	if(gui_isCutSceneWasSkipped()){
 		// Иначе - фейд в саму игру
 		gui_FadeIn();
+		actorWait_Timeout(2);
 	}
 
 -Script.In:
@@ -67,20 +68,7 @@
 	gui_ShowDialog(dialogFile, { _section="DIALOG4", _close=true, _vars=addVars, _dialogBg="\\gui\\comics_interface_dialog.png"});
 	actorWait_Timeout(1);
 	gui_ShowDialog(dialogFile, { _section="DIALOG5", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
-	actorWait_SwitchToAction(actorSh,"");
-	actorWait_SwitchToAction(actorAg,"");
-	actorWait_SwitchToAction(actorSi,"");
-	actorWait_SwitchToAction(actorBo,"");
-	actor_SendToLocation(actorAg,"SCENES_CutScene1::iniDOT1");
-	actor_SetProfessionRaw(actorSh,"CREATOR");
-	actor_SetProfessionRaw(actorAg,"AUTHOR-EXPERT");
-	actor_SetProfessionRaw(actorSi,"AUTHOR");
-	actor_SetProfessionRaw(actorBo,"JANITOR");
 	actor_DetachCamera();
-	if(actor_GetAttributeN("Office","flag_Person1Added")==0){
-		actor_SetAttribute("Office","flag_Person1Added",1);
-		actor_NewPerson("person_male",true);
-	}
 	actor_SwitchToAction("Office","CutScene1_finish");
 	
 	//3) добавить нового перса и выставить ему пофессию - финансист...нужен скрипт добавления перса
@@ -99,19 +87,22 @@
 -Think.Speed:1
 -Script.In:
 	// Предварительные действия
+	gui_FadeIn(); 
 	actorWait_Timeout(2);
 	game_CutsceneEnd({});
-	gui_FadeIn(); 
 	// Если не спрашивали имя журнала - спрашиваем
 	if(actor_GetAttributeN("Office","flag_MagNameAsked")==0){
 		actor_SetAttribute("Office","flag_MagNameAsked",1);
 		game_AskMagazineName();
 	}
-	// Если не создавали допперсону - создаем
+    // Если не создавали допперсону - создаем
+	local wiatForPerson = false;
 	if(actor_GetAttributeN("Office","flag_Person1Added")==0){
+		wiatForPerson = true;
 		actor_SetAttribute("Office","flag_Person1Added",1);
 		actor_NewPerson("person_male",true);
 	}
+	
 	// Обязательные квесты
 	if (gui_QuestCheck(2)!=2){ gui_QuestOpen(2); };
 	if (gui_QuestCheck(5)!=2){ gui_QuestOpen(5); };
@@ -132,5 +123,10 @@
 	actor_SetActorPos(actorAg,"SCENES_CutScene1::Agata");
 	actor_SetActorPos(actorSi,"SCENES_CutScene1::Sinty");
 	actor_SetActorPos(actorBo,"SCENES_CutScene1::Bob");
+	if(wiatForPerson){
+		while(core_GetNode("person_interface_stager")){
+			::suspend();
+			}
+		}
 	gui_FadeOut();
 	actor_SwitchToAction("Office","Office_script");
