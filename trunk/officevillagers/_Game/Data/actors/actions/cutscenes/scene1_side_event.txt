@@ -13,7 +13,9 @@
 -Walk.Speed:0.5
 -Script.In:
 	actor_SendToLocation(thisActor,"SCENES_CutScene1::Bob2");
-
+	actor_OrientBody(thisActor,"Furniture::TABLE.EDITOR5_SIDE");
+	actor_OrientHead(thisActor,0);
+	
 [Step]
 -Name:CutScene1.BobWalkingBack
 -Prq.IsGlobalEvent:0

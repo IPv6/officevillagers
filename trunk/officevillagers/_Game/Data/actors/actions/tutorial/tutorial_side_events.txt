@@ -309,9 +309,11 @@ actorWait_SwitchToAction(thisActor,"Tutorial.AgataVsSinty2");
 	while(gui_IsDialogOpen()==true){
 		::suspend();
 	}
+	
 	if(actor_GetAttributeN("Office","flag_MagNameAsked")==0){
 		actor_SetAttribute("Office","flag_MagNameAsked",1);
 		game_AskMagazineName();
+		
 	}
 	gui_ShowDialog(dialogFile, { _section="DIALOG15", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
 	actorWait_SwitchToAction(thisActor,"Tutorial.AgataVsShekelEnd");
