@@ -96,7 +96,7 @@
 	// ѕредварительные действи€
 	actorWait_Timeout(2);
 	game_CutsceneEnd({});
-	//gui_FadeIn();  - после того, как интерфейс сделают видным при фейде - откоментить это
+	gui_FadeIn(); 
 	// ≈сли не спрашивали им€ журнала - спрашиваем
 	if(actor_GetAttributeN("Office","flag_MagNameAsked")==0){
 		actor_SetAttribute("Office","flag_MagNameAsked",1);

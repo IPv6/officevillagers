@@ -22,4 +22,4 @@
 -Disable.Person.UI:1
 -Walk.Speed:1.3
 -Script.In:
-	actor_SendToLocation(thisActor,"SCENES_Tutorial::SINTI_LOOK3");
+	actor_SendToLocation(thisActor,"SCENES_CutScene1::Bob");
