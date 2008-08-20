@@ -2,7 +2,7 @@ gFlag_hIntCloseOnProfchange <- true;
 gFlag_hIntCloseOnMoveout <- true;
 gFlag_hIntRawSetProfession <- false;
 gFlag_hIntNoPauseOnOpen <- false;
-gFlag_hIntPseudoFocusActor <- false;
+gFlag_hIntStagerFocusActor <- false;
 gFlag_hIntCenterCameraOnPers <- false;
 function actorWait_InterfaceOpened(thisActor, whatWait)
 {
@@ -181,37 +181,35 @@ function onPUIMouseOver(param)
 	core_SetNodeText("_pistatus",core_GetTranslation(param));
 }
 
-function openPseudoInterfaceOnPerson(thisActor)
+function openStagerInterfaceOnPerson(thisActor)
 {
-	gFlag_hIntPseudoFocusActor = thisActor;
-	core_OpenDialog("person_interface_pseudo");
+	gFlag_hIntStagerFocusActor = thisActor;
+	core_OpenDialog("person_interface_stager");
 }
 
-function closePersonPseudoInterfaceDialog()
+function closePersonStagerInterfaceDialog()
 {
-	core_CloseDialog("person_interface_pseudo");
+	core_CloseDialog("person_interface_stager");
 }
 
-function initPersonPseudoInterfaceDialog()
+function initPersonStagerInterfaceDialog()
 {
-	if(gFlag_hIntPseudoFocusActor == false){
-		core_Alert("PseudoFocus actor not found!");
+	if(gFlag_hIntStagerFocusActor == false){
+		core_Alert("StagerFocus actor not found!");
 		return;
 	}
-	local actorTitle=gFlag_hIntPseudoFocusActor.NameLocalized;
+	local actorTitle=gFlag_hIntStagerFocusActor.NameLocalized;
 	core_SetNodeText("person_interface_name",actorTitle);
 }
 
-function deinitPersonPseudoInterfaceDialog()
+function deinitPersonStagerInterfaceDialog()
 {
-	gFlag_hIntPseudoFocusActor = false;
+	gFlag_hIntStagerFocusActor = false;
 }
 
-function personChooseProfessionPseudo(profName)
+function personChooseProfessionStager(profName)
 {
-	//ѕсевдо профессию - any! 
-	//if(strstr(gFlag_hIntPseudoFocusActor.ValidProfessions,profName)==false){return;}
-	actor_SetProfessionPseudo(gFlag_hIntPseudoFocusActor,profName);
-	actor_AddAttribute(actor_GetActor(gFlag_hIntPseudoFocusActor),"STAGER_PROF",profName);
-	closePersonPseudoInterfaceDialog();
+	actor_SetProfessionStager(gFlag_hIntStagerFocusActor,profName);
+	actor_AddAttribute(actor_GetActor(gFlag_hIntStagerFocusActor),"STAGER_PROF",profName);
+	closePersonStagerInterfaceDialog();
 }

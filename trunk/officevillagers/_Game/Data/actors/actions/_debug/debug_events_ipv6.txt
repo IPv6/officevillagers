@@ -24,8 +24,12 @@
 	actor_SwitchToAction(actorBo,"Debug_table_Script");
 	//actor_SwitchToAction("Office","SleepMode");
 	
-	//if(false)
+	if(false)
 	{
+		//actor_SitOnChairX(actorAg,"TABLE.AGATAMAIN",2,true);
+		//actor_SitOnChair(actorAg,"TABLE.AGATASIDE",true);
+		actorWait_Timeout(10);
+		actor_MakePocketEmpty(actorAg);
 		// Показ хинтов
 		gui_ShowHint("hint 1",3.9);
 		//actorWait_Timeout(1);
@@ -39,6 +43,15 @@
 	}
 	
 	//if(false)
+	{// Разговоры
+		actor_SwitchToAction("Office","Office_script");
+		actor_SwitchToAction(actorBo,"NONE_Script");
+		actor_SwitchToAction(actorSh,"NONE_Script");
+		//actor_SwitchToAction(actorBo,"NONE_Script");
+		//actor_SwitchToAction(actorSi,"NONE_Script");
+	}
+	
+	if(false)
 	{// Квесты
 		//gui_StartCutscene("Quest4_Cutscene");
 		//game_CutsceneBegin({});
@@ -64,14 +77,6 @@
 		gui_ShowDialog(null,null);// Закрываем диалог
 	}
 	
-	if(false)
-	{// Разговоры
-		actor_SwitchToAction("Office","Office_script");
-		actor_SwitchToAction(actorAg,"NONE_Script");
-		actor_SwitchToAction(actorSh,"NONE_Script");
-		//actor_SwitchToAction(actorBo,"NONE_Script");
-		//actor_SwitchToAction(actorSi,"NONE_Script");
-	}
 	if(false)
 	{// Тест посадки за агатовский стол
 		//actor_SitOnChair(actorSi,"TABLE.AGATASIDE",true);

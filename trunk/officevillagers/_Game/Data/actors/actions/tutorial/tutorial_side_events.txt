@@ -130,7 +130,9 @@
 -Script.In:
 	actorWait_InterfaceOpened(thisActor,true);
 	actor_DelItem(thisActor,"cursor_hint");
-	actor_AddItem(thisActor,"cursor_hint_absolute","parnt=_piAUTHORbt&x[2.5]&y[3]&z[-0.5]");
+	if(core_GetNode("_piAUTHORbt")){
+		actor_AddItem(thisActor,"cursor_hint_absolute","parnt=_piAUTHORbt&x[2.5]&y[3]&z[-0.5]");
+	}
 	while(thisActor.Profession!="AUTHOR"){
 		::suspend();
 	}

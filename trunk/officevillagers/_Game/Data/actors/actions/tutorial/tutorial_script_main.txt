@@ -122,7 +122,9 @@
 			gui_ShowDialog(null,null);
 			gui_ShowDialog(dialogFile, { _section="DIALOG4b-1", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
 			// Идем дальше
-			actor_AddItem(actorSh,"cursor_hint_absolute","parnt=_piCREATORbt&x[2.5]&y[3]&z[-0.5]");
+			if(core_GetNode("_piCREATORbt")){
+				actor_AddItem(actorSh,"cursor_hint_absolute","parnt=_piCREATORbt&x[2.5]&y[3]&z[-0.5]");
+			}
 			actor_SetProfessionRaw(actorSh,"NONE");// Чтобы игрок намеренно кликнул куда показыявают
 			gui_ShowDialog(dialogFile, { _section="DIALOG4b-2", _close=false, _dialogBg="\\gui\\comics_interface_dialog.png", _noMoreIcon=true});
 			actor_SwitchToAction(actorSh,"Tutorial.Shekel.WaitingProfChange");
