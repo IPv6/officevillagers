@@ -482,12 +482,17 @@ int gui_ClearHint(HSQUIRRELVM v)
 	return SQ_OK;
 }
 
+
 int gui_ShowHint(HSQUIRRELVM v)
 {
 	StackHandler sa(v);
 	CString sText=sa.GetString(SQ_PARAM1);
 	f32 fTime=sa.GetFloat(SQ_PARAM2);
-	getLevel()->AddHint(sText,fTime,1,0xFFFFFFFF);
+	int iPriority=1;
+	if(sa.GetType(SQ_PARAM3)!=OT_NULL){
+		iPriority=sa.GetInt(SQ_PARAM3);
+	}
+	getLevel()->AddHint(sText,fTime,iPriority,0xFFFFFFFF,0);
 	return SQ_OK;
 }
 
@@ -496,7 +501,7 @@ int gui_ShowAlarm(HSQUIRRELVM v)
 	StackHandler sa(v);
 	CString sText=sa.GetString(SQ_PARAM1);
 	f32 fTime=sa.GetFloat(SQ_PARAM2);
-	getLevel()->AddHint(sText,fTime,2,0xFFFF0000);
+	getLevel()->AddHint(sText,fTime,2,0xFFFF0000,1);
 	return SQ_OK;
 }
 
@@ -569,11 +574,11 @@ int game_VisualizeNavimap(HSQUIRRELVM v)
 		_v2 startPosition=addw->getPosition();
 		_v2 targetPosition;
 		targetPosition=CLocationManager::getInstance().getLocationByNameSoft(sReperPoint+"_END1")->getPosition();
-		getLevel()->levelNavigator->EnsureWalkablePos(targetPosition,FALSE,FALSE);
+		getLevel()->levelNavigator->EnsureWalkablePos(targetPosition,999,FALSE);
 		getLevel()->levelNavigator->EnsureWalkablePos(startPosition,FALSE,FALSE);
 		getLevel()->levelNavigator->VisualizePath(startPosition,targetPosition);
 		targetPosition=CLocationManager::getInstance().getLocationByNameSoft(sReperPoint+"_END2")->getPosition();
-		getLevel()->levelNavigator->EnsureWalkablePos(targetPosition,FALSE,FALSE);
+		getLevel()->levelNavigator->EnsureWalkablePos(targetPosition,999,FALSE);
 		getLevel()->levelNavigator->EnsureWalkablePos(startPosition,FALSE,FALSE);
 		getLevel()->levelNavigator->VisualizePath(startPosition,targetPosition);
 	}

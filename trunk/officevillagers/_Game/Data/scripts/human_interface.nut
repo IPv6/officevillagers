@@ -200,6 +200,8 @@ function initPersonStagerInterfaceDialog()
 	}
 	local actorTitle=gFlag_hIntStagerFocusActor.NameLocalized;
 	core_SetNodeText("person_interface_name",actorTitle);
+	local professions=["AUTHOR","FINANCIER","CREATOR","JANITOR"];
+	personChooseProfessionStagerNC(professions[core_Rnd(0,professions.len())]);
 }
 
 function deinitPersonStagerInterfaceDialog()
@@ -207,9 +209,14 @@ function deinitPersonStagerInterfaceDialog()
 	gFlag_hIntStagerFocusActor = false;
 }
 
-function personChooseProfessionStager(profName)
+function personChooseProfessionStagerNC(profName)
 {
 	actor_SetProfessionStager(gFlag_hIntStagerFocusActor,profName);
 	actor_AddAttribute(actor_GetActor(gFlag_hIntStagerFocusActor),"STAGER_PROF",profName);
+}
+
+function personChooseProfessionStager(profName)
+{
+	personChooseProfessionStagerNC(profName);
 	closePersonStagerInterfaceDialog();
 }

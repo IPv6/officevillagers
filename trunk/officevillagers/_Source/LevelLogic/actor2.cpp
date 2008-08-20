@@ -156,3 +156,18 @@ CActorItem* CActor::GetItemByMask(const char* szName)
 	}	
 	return NULL;
 }
+
+int CActor::AutoClearItems(const char* szName)
+{
+	int iRes=0;
+	CStringArray aListToDelete;
+	for(u32 i=0;i<data.p_items.size();i++){
+		if(data.p_items[i]->itemDsc && data.p_items[i]->itemDsc->sAutoClearTypes.Find(szName)!=-1){
+			aListToDelete.Add(data.p_items[i]->sName);
+		}
+	}
+	for(s32 j=0;j<aListToDelete.GetSize();j++){
+		DelItem(aListToDelete[j]);
+	}
+	return iRes;
+}

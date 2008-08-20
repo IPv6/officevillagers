@@ -20,6 +20,7 @@ public:
 	CString sScriptOnAttach;
 	CString sScriptOnSpawn;
 	CString sScriptOnDetach;
+	CString sAutoClearTypes;
 	MAP2XML_BEGIN("ItemDescription")
 		MAP2XML (&sName, "Name")
 		
@@ -30,6 +31,7 @@ public:
 		MAP2XML_DEF (&bAsPocket, "AsPocket",0)
 		MAP2XML_DEF (&sHideWhileItem, "HideIf", "")
 		MAP2XML_DEF (&bSaveItemInSaves, "SaveInSaves", 1)
+		MAP2XML_DEF (&sAutoClearTypes, "DeleteOnEvent", "")
 		MAP2XML_DEF (&sScriptOnAttach, "ScriptOnAttach", "")
 		MAP2XML_DEF (&sScriptOnSpawn, "ScriptOnSpawn", "")
 		MAP2XML_DEF (&sScriptOnDetach, "ScriptOnDetach", "")

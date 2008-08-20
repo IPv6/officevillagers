@@ -830,6 +830,15 @@ int actor_GetItem(HSQUIRRELVM v)
 	return sa.Return(item->sqoItem);
 }
 
+int actor_AutoClearItems(HSQUIRRELVM v)
+{
+	StackHandler sa(v);
+	CString sType=sa.GetString(SQ_PARAM2);
+	CActor* actor=getActor(sa,SQ_PARAM1);
+	CHECK_GET_ACTOR(actor);
+	return sa.Return(actor->AutoClearItems(sType));
+}
+
 int actor_GetItemAttribute(HSQUIRRELVM v)
 {
 	StackHandler sa(v);
@@ -1024,6 +1033,7 @@ void RegisterActorScriptMethods()
 	SquirrelVM::CreateFunctionGlobal(actor_DelItem,_T("actor_DelItem"),"*");
 	SquirrelVM::CreateFunctionGlobal(actor_HasItem,_T("actor_HasItem"),"*");
 	SquirrelVM::CreateFunctionGlobal(actor_GetItem,_T("actor_GetItem"),"*");
+	SquirrelVM::CreateFunctionGlobal(actor_AutoClearItems,_T("actor_AutoClearItems"),"*");
 	SquirrelVM::CreateFunctionGlobal(actor_GetItemAttribute,_T("actor_GetItemAttribute"),"*");
 	SquirrelVM::CreateFunctionGlobal(actor_SetItemAttribute,_T("actor_SetItemAttribute"),"*");
 	SquirrelVM::CreateFunctionGlobal(actor_GetItemByMask,_T("actor_GetItemByMask"),"*");

@@ -49,6 +49,7 @@ function show_DialogPage(text, icon, dialogData)
 		}
 	}
 	core_SetNodeText(dialogSpr._name,sFormat+"\n"+text);
+	core_SetNodeAttribute(dialogSpr._name,"stopEffect",0);
 	core_DeleteSprite("cutscene_dialog_ico");
 	core_CreateSprite(format("gui\\cutscene_dialog_ico.spr?iconame=%s",icon),dialogSpr._name, {x=-16.8, y=-0.27, z=-0.1, w=1, h=1} );
 }
@@ -157,6 +158,10 @@ function gui_ShowDialog(dialogFile,dialogData)
 			}
 			if(bWaitAnyKey){
 				gui_WaitAnyKey();
+				if(core_GetNodeAttribute(dialogSpr._name,"stopEffect")!=1){
+					core_SetNodeAttribute(dialogSpr._name,"stopEffect",1);
+					gui_WaitAnyKey();
+				}
 			}
 			if(waitType>0){
 				local lTimeCheck=core_GetTick()+waitType;

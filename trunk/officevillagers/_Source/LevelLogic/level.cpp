@@ -645,7 +645,7 @@ void CLevel::HideHint(BOOL bAll, int iPriority)
 	ActualizeHint();
 }
 
-void CLevel::AddHint(CString sHudText, f32 fTime, int iPriority, DWORD dwColor)
+void CLevel::AddHint(CString sHudText, f32 fTime, int iPriority, DWORD dwColor, BOOL bCloseBaton)
 {
 	if(sHudText.GetLength()==0){
 		HideHint(FALSE,iPriority);
@@ -666,6 +666,7 @@ void CLevel::AddHint(CString sHudText, f32 fTime, int iPriority, DWORD dwColor)
 	hnt.fTime=fTime;
 	hnt.iPriority=iPriority;
 	hnt.dwColor=dwColor;
+	hnt.bCloseBaton=bCloseBaton;
 	strcpy(hnt.szText,sHudText);
 	if(aHints.size()==0 || aHints[0].iPriority>hnt.iPriority){
 		// Добавляем в конец... хотя по идее надо вставлять по сортировке приоритета
@@ -693,6 +694,7 @@ void CLevel::ActualizeHint()
 		return;
 	}
 	CSingleHint& nht=aHints[0];
+	hudLabels2->setVisible(nht.bCloseBaton?false:true);
 	if(nht.fTimeTo<0.001f){
 		nht.fTimeTo=getTime()+nht.fTime;
 	}
@@ -707,7 +709,7 @@ void CLevel::ActualizeHint()
 	}
 	CSpriteNode* hudLabelsBt=(CSpriteNode*)getNode("hudWTDMarker_bt");
 	if(hudLabelsBt){
-		hudLabelsBt->setVisible((nht.iPriority!=0)?true:false);
+		hudLabelsBt->setVisible(nht.bCloseBaton?true:false);
 	}
 	return;
 }
