@@ -105,7 +105,7 @@
 
 
 [Event]
--Name:CutScene5_finish
+-Name:j
 -Prq.IsGlobalEvent:0
 -Protected:2
 -Priority:-1
