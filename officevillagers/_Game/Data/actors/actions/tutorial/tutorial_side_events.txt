@@ -246,9 +246,11 @@
 -Disable.Person.UI:1
 -Walk.Speed:20
 -Script.In:
-actor_SetActorPos(thisActor,"SCENES_Tutorial::SHEKEL.3");
-actor_AddItem(thisActor,"article");
-actorWait_SwitchToAction(thisActor,"Tutorial.AgataVsSinty2");
+	actor_Unsit(thisActor);
+	actor_SetActorPos(thisActor,"SCENES_Tutorial::SHEKEL.3");
+	actor_AddItem(thisActor,"article");
+	actorWait_SwitchToAction(thisActor,"Tutorial.AgataVsSinty2");
+
 
 [Step]
 -Name:Tutorial.AgataVsSinty2

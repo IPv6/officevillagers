@@ -32,4 +32,4 @@
 -Visible:0
 -Texture:${virtualNode}
 -LocalID:${SUBID_DEFDROP}
--Position: x1 y2
+-Position: x1 y-2
