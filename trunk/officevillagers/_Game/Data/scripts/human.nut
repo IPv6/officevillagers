@@ -146,6 +146,7 @@ function human2actor(nodeID)
 
 function onDragActor(node)
 {
+	gui_StopSoftActorWatch();
 	local actor=human2actor(node._parentid);
 	if(!actor){
 		return;

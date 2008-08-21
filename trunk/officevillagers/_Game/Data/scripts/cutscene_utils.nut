@@ -61,6 +61,7 @@ function game_CutsceneEnd(params)
 
 function gui_StartCutscene(cutSceneEvent)
 {
+	gui_StopSoftActorWatch();
 	local office = actor_GetActor();
 	actor_SwitchToAction(office,cutSceneEvent);
 }

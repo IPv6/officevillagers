@@ -128,6 +128,7 @@ function gui_JumpToNextActor()
 	}
 	g_lastActor=actors[finalI].Name;
 	gui_CenterCameraOnPers(g_lastActor);
+	gui_SoftActorWatch(g_lastActor);
 }
 
 function level_WaitForLoad()
