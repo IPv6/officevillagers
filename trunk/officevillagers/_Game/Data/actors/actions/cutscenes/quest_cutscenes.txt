@@ -12,7 +12,6 @@
 	if(gui_isCutSceneWasSkipped()){
 		gui_FadeIn();
 	}
-	
 -Script.In:
 	gui_FadeIn();
 	actorWait_Timeout(3);
@@ -84,7 +83,7 @@
 	actor_AttachCamera(actorBo);
 	actorWait_Timeout(1);
 	gui_FadeOut();
-	actorWait_Timeout(3);
+	actorWait_Timeout(2);
 	local dialogFile = core_GetDataPath("text\\quest_cutscenes_dialog.lng");
 	gui_ShowDialog(dialogFile, { _section="DIALOG2", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
 	while(gui_IsDialogOpen()==true){
@@ -106,6 +105,8 @@
     gui_FadeIn();
 	gui_ShowDialog(null,null);
 	actorWait_Timeout(2);
+	actorWait_SwitchToAction(actor_GetActor("ACTOR.AGATA"),"");
+	actorWait_SwitchToAction(actor_GetActor("ACTOR.BOB"),"");
     gui_QuestOpen(6);
     game_CutsceneEnd({});
     actor_DetachCamera();
@@ -121,24 +122,23 @@
 -Disable.Person.UI:0
 -Think.Speed:1
 -Script.On:
-	game_CutsceneBegin({});
--Script.Off:
-	game_CutsceneEnd({});
+	game_CutsceneBegin({_who="Office", _action="Quest6__Cutscene1_finish", _changeUI=false});
 -Script.In:
 	local actorSh = actor_GetActor("ACTOR.SHEKEL");
 	actorWait_SwitchToAction(actorSh,"Cutscene.driver");
 	gui_FadeIn();
-	actorWait_Timeout(1);
+	actorWait_Timeout(2);
 	local sTemplateName = "collectible.trash";
     local sTemplateOptions="";
     sTemplateName = "collectible";
     sTemplateOptions=format("collectible_number=%i",core_Rnd(0,3).tointeger());
     local sTrashLocation = format("FurniTRASH::TRASH%i", core_Rnd(1,20+1).tointeger(),sTemplateOptions);
     local newTrash=actor_CreateActor(sTemplateName,sTemplateName.toupper(),{_options=sTemplateOptions,_location=sTrashLocation});
+	
     actor_SetActorEnabled(newTrash, true);
     actor_SetAttribute(newTrash,"IsCollectible",1);
 	
-	actor_AttachCamera(ActorSh);
+	actor_AttachCamera(actorSh);
 	actor_SetActorPos(actorSh,"CREATOR::IDEASTABLESHEKEL");
 	actorWait_Timeout(1);
 	gui_FadeOut();
@@ -149,20 +149,35 @@
 	while(gui_IsDialogOpen()==true){
 		::suspend();
 	}
-	if (actor_GetAttributeN("Office","QuestName")=="ACTOR.AGATA"){
+	if (actor_GetAttributeS("Office","QuestName")=="ACTOR.AGATA"){
 		gui_ShowDialog(dialogFile, { _section="DIALOG", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
 		}
 	while(gui_IsDialogOpen()==true){
 		::suspend();
 	}
 	actor_DelItem(actorSh,"collectible_item","collectible_number=0");
-	gui_FadeIn();
-	actorWait_Timeout(1);
-	actor_DetachCamera();
-	actorWait_Timeout(1);
-	gui_FadeOut();	
-	actor_SwitchToAction(thisActor,"Office_script");
+	actor_SwitchToAction(thisActor,"Quest6_Cutscene1_finish");
 
+[Event]
+-Name:Quest6_Cutscene1_finish
+-Prq.IsGlobalEvent:0
+-Protected:2
+-Priority:-1
+-Disable.Person.UI:0
+-Think.Speed:1
+-Script.In:
+    gui_FadeIn();
+	gui_ShowDialog(null,null);
+	actorWait_Timeout(2);
+	actorWait_SwitchToAction(actor_GetActor("ACTOR.AGATA"),"");
+	actorWait_SwitchToAction(actor_GetActor("ACTOR.SHEKEL"),"");
+	actorWait_SwitchToAction(actor_GetActor("ACTOR.BOB"),"");
+    gui_QuestOpen(6);
+    game_CutsceneEnd({});
+    actor_DetachCamera();
+    actor_SwitchToAction(thisActor,"Office_script");
+    gui_FadeOut();
+	
 	
 [Event]
 -Name:Quest6_Cutscene2
