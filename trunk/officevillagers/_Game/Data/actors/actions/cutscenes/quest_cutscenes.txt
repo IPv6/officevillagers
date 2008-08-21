@@ -63,20 +63,13 @@
 -Priority:-1
 -Disable.Person.UI:0
 -Think.Speed:1
--Script.On:
-	game_CutsceneBegin({_who="Office", _action="CutScene5_finish"});
--Script.Off:
-     gui_FadeIn();
-     gui_QuestOpen(6);
-     game_CutsceneEnd({});
-
 -Script.In:
 	local actorBo = actor_GetActor("ACTOR.BOB");
 	actorWait_SwitchToAction(actorBo,"Cutscene.driver");
 	actorWait_SwitchToAction(actor_GetActor("ACTOR.AGATA"),"Cutscene.driver");
 	gui_FadeIn();
-	actorWait_Timeout(1);
-	
+	actorWait_Timeout(2);
+	game_CutsceneBegin({_who="Office", _action="CutScene5_finish", _changeUI=false});
 	//создаём коллектибл
 	local sTemplateName = "collectible.trash";
 	local sTemplateOptions="";
@@ -99,22 +92,27 @@
 	}
 	gui_ShowDialog(dialogFile, { _section="DIALOG2-2", _close=false, _noMoreIcon=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
 	location_AttachCamera({_name="FurniTRASH::TRASH14", _time=7});
-	actorWait_Timeout(10);
-	gui_ShowDialog(null,null);
-	actor_SwitchToAction(thisActor,"CutScene5_finish")
-
+	actorWait_Timeout(8);
+	actor_SwitchToAction(thisActor,"CutScene5_finish");
 
 [Event]
--Name:j
+-Name:CutScene5_finish
 -Prq.IsGlobalEvent:0
 -Protected:2
 -Priority:-1
 -Disable.Person.UI:0
 -Think.Speed:1
 -Script.In:
-	gui_FadeOut();	
-	actor_SwitchToAction(thisActor,"CutScene5_finish");
-	
+    gui_FadeIn();
+	gui_ShowDialog(null,null);
+	actorWait_Timeout(2);
+    gui_QuestOpen(6);
+    game_CutsceneEnd({});
+    actor_DetachCamera();
+    actor_SwitchToAction(thisActor,"Office_script");
+    gui_FadeOut();
+
+	 
 [Event]
 -Name:Quest6_Cutscene1
 -Prq.IsGlobalEvent:0
@@ -131,7 +129,6 @@
 	actorWait_SwitchToAction(actorSh,"Cutscene.driver");
 	gui_FadeIn();
 	actorWait_Timeout(1);
-	
 	local sTemplateName = "collectible.trash";
     local sTemplateOptions="";
     sTemplateName = "collectible";
