@@ -32,6 +32,7 @@ public:
 	int p_PrqIncutscene;
 	CString sScriptBegin;
 	CString sScriptIn;
+	CString sScriptIn2;
 	CString sScriptEnd;
 	CAction* m_parentAction;
 	BOOL p_bProtected;

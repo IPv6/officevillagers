@@ -8,27 +8,27 @@
 
 [Sprite]
 // Кнопка Ok
--Texture:menu_button_small.spr
+-Texture:menu_button.spr?button=secondary_buttons
 -Label:MENU.BUTTON.OK.LABEL
 -Size: w3
 -Position: x4 y-6.7 z-0.01
 -Event.Mouse.Click.Action:core_CloseDialog("level_menu_dialog");
--Event.Mouse.Over.Image:menu_button_over_small.spr
+-Event.Mouse.Over.Image:menu_button_over.spr?button=secondary_buttons
 -Event.Mouse.Over.Sound:menu_button_over
--Event.Mouse.Click.Image:menu_button_over_small.spr
+-Event.Mouse.Click.Image:menu_button_over.spr?button=secondary_buttons
 -Event.Mouse.Click.Sound:menu_button_click
 -Event.Mouse.Click.KeyShortcut:${VK_RETURN}
 
 [Sprite]
 // Кнопка В меню
--Texture:menu_button_small.spr
+-Texture:menu_button.spr?button=secondary_buttons
 -Label:MENU.BUTTON.TOMENU.LABEL
 -Size: w3
 -Position: x-4 y-6.7 z-0.01
 -Event.Mouse.Click.Action:TransitionOpenDialog("main_menu","fade");
--Event.Mouse.Over.Image:menu_button_over_small.spr
+-Event.Mouse.Over.Image:menu_button_over.spr?button=secondary_buttons
 -Event.Mouse.Over.Sound:menu_button_over
--Event.Mouse.Click.Image:menu_button_over_small.spr
+-Event.Mouse.Click.Image:menu_button_over.spr?button=secondary_buttons
 -Event.Mouse.Click.Sound:menu_button_click
 
 [Sprite]

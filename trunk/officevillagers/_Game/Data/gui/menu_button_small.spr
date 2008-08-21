@@ -1,4 +1,5 @@
 [Sprite]
--Texture:buttons\secondary_buttons.png
+-Texture:buttons\${button}.png
 -Atlas:x0 y0 w2 h1
--Size: h1
+
+${Default:button=main_buttons}

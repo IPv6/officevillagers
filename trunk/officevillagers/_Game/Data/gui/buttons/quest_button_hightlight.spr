@@ -1,5 +1,5 @@
 [Sprite]
 -Texture:button_overlay.spr?button=1
 -Position: z-0.001
--Size: w8 h2.8
+-Size: w9 h1.8
 -Animation.AlphaPulsar:t1000 a1.0

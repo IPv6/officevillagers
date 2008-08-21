@@ -10,8 +10,19 @@
 -Script.On:
 	core_Warning("IPv6-Debug!");
 	//game_CutsceneBegin({});
+-Script.In.Alt:
+	local actorAg = actor_GetActor("ACTOR.AGATA");
+	core_Alert("Good!!");
+	actorWait_Timeout(3);
+	actor_SitOnChair(actorAg,"TABLE.AGATASIDE",true);
+	actorWait_Timeout(3);
+	actor_Unsit(actorAg);
+	actorWait_Timeout(3);
+	actor_SitOnChair(actorAg,"TABLE.AGATASIDE",true);
+	actorWait_Timeout(3);
+	actor_Unsit(actorAg);
+	core_Alert("Good-end!!");
 -Script.In:
-	
 	local i=0;
 	local actorSh = actor_GetActor("ACTOR.SHEKEL");
 	local actorAg = actor_GetActor("ACTOR.AGATA");
@@ -35,9 +46,13 @@
 	//if(false)
 	{
 		//actor_SitOnChairX(actorAg,"TABLE.AGATAMAIN",2,true);
-		//actor_SitOnChair(actorAg,"TABLE.AGATASIDE",true);
+		actor_SitOnChair(actorAg,"TABLE.AGATASIDE",true);
 		actorWait_Timeout(10);
-		actor_MakePocketEmpty(actorAg);
+		//actor_Unsit(actorAg);
+		actor_SendToLocation(actorAg,"SCENES_Tutorial::DOT1");
+		actor_SwitchActionAlt(thisActor);
+		core_Alert("Bad!!");
+		//actor_MakePocketEmpty(actorAg);
 		// Показ хинтов
 		gui_ShowHint("hint 1",3.9);
 		//actorWait_Timeout(1);

@@ -1,3 +1,55 @@
+function actorGetValidMethod(thisActor)
+{
+	if(thisActor._StepInThreadType>0){
+		if(thisActor._StepInThreadMethodAlt.len()>0){
+			return thisActor._StepInThreadMethodAlt;
+		}
+		thisActor._StepInThreadType=0;
+	}
+	return thisActor._StepInThreadMethod;
+}
+
+function runActorStepInThread(thisActor)
+{
+	if(thisActor._StepInThread==0){
+		//core_Alert(StepIn[thisActor._StepInThreadMethod]);
+		$ifdebug __DebugActor(thisActor,thisActor.Name+": calling "+actorGetValidMethod(thisActor));
+		thisActor._StepInThread=::newthread(StepIn[actorGetValidMethod(thisActor)]);
+		thisActor._StepInThread.call(thisActor);
+		return;
+	}
+	if(thisActor._StepInThread.getstatus()=="suspended"){
+		//core_Warning(thisActor._StepInThread);
+		$ifdebug __DebugActor(thisActor,thisActor.Name+": waking up "+actorGetValidMethod(thisActor));
+		thisActor._StepInThread.wakeup();
+		return;
+	}
+	// Если экшн сделает ретюрн, то у потока будет статус idle
+	// getstatus -> ("idle","running","suspended")
+	// соответсвенно в этих статусах ничего не делаем, просто возвращаемся обратно
+	return;
+}
+
+function actor_RestartAction(thisActor)
+{// Перезапускает текущий ивент с начала. Script.On/off НЕ вызываются
+	thisActor._StepInThread=0;
+}
+
+function actor_SwitchActionAlt(thisActor)
+{// запускает текущий ивент с Script.In.Alt
+	thisActor=actor_GetActor(thisActor);
+	if(thisActor._StepInThreadType==0){
+		if(thisActor._StepInThreadMethodAlt.len()>0){
+			thisActor._StepInThreadType=1;
+			thisActor._StepInThread=0;
+			::suspend();
+			return true;
+		}
+		$ifdebug core_Alert("Error! '"+thisActor.Name+"'/"+thisActor.Action+" does not have Script.In.Alt");
+	}
+	return false;
+}
+
 function event_OnStartGame(param)
 {
 	core_SetKeyHandlerMode(1);

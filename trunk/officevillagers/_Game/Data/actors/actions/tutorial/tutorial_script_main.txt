@@ -62,7 +62,6 @@
 		gui_StartCutscene("CutScene1");
 		
 	}else{
-		// »наче - фейд в саму игру
 		gui_FadeIn();
 	}
 	

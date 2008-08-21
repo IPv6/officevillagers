@@ -579,10 +579,14 @@ int actor_OrientHead(HSQUIRRELVM v)
 	StackHandler sa(v);
 	CActor* actor=getActor(sa,SQ_PARAM1);
 	CHECK_GET_ACTOR(actor);
+	BOOL bTrim=TRUE;
+	if(sa.GetType(SQ_PARAM3)==OT_BOOL){
+		bTrim=sa.GetBool(SQ_PARAM3);
+	}
 	int iType=sa.GetType(SQ_PARAM2);
 	if(iType!=OT_TABLE && iType!=OT_STRING){
 		f32 angl=sa.GetFloat(SQ_PARAM2);
-		actor->RefreshHeadAccordingDirection(angl,FALSE,TRUE);
+		actor->RefreshHeadAccordingDirection(angl,FALSE,TRUE,bTrim);
 		return sa.Return(true);
 	}
 	CLocation* loc=getLocation(sa,SQ_PARAM2);
@@ -591,7 +595,7 @@ int actor_OrientHead(HSQUIRRELVM v)
 	}
 	_v2 dir=loc->getPosition()-actor->getPosition();
 	f32 headRotation=getXYRotationFromDirection(_v3(dir.X,dir.Y,0.0f));
-	actor->RefreshHeadAccordingDirection(headRotation/PI*180.0f,0,FALSE);
+	actor->RefreshHeadAccordingDirection(headRotation/PI*180.0f,0,FALSE,bTrim);
 	return sa.Return(true);
 }
 

@@ -1,24 +1,3 @@
-function runActorStepInThread(thisActor)
-{
-	if(thisActor._StepInThread==0){
-		//core_Alert(StepIn[thisActor._StepInThreadMethod]);
-		$ifdebug __DebugActor(thisActor,thisActor.Name+": calling "+thisActor._StepInThreadMethod);
-		thisActor._StepInThread=::newthread(StepIn[thisActor._StepInThreadMethod]);
-		thisActor._StepInThread.call(thisActor);
-		return;
-	}
-	if(thisActor._StepInThread.getstatus()=="suspended"){
-		//core_Warning(thisActor._StepInThread);
-		$ifdebug __DebugActor(thisActor,thisActor.Name+": waking up "+thisActor._StepInThreadMethod);
-		thisActor._StepInThread.wakeup();
-		return;
-	}
-	// Если экшн сделает ретюрн, то у потока будет статус idle
-	// getstatus -> ("idle","running","suspended")
-	// соответсвенно в этих статусах ничего не делаем, просто возвращаемся обратно
-	return;
-}
-
 function actorWait_GoTo(thisActor,locationName)
 {
 	if(actor_SendToLocation(thisActor,locationName)!=true){

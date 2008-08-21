@@ -1,84 +1,84 @@
 [Sprite]
 -Parent:main_menu
--Texture:\gui\menu_button_small.spr
+-Texture:\gui\menu_button.spr?button=secondary_buttons
 -Label:?Пути проходимости
 -Size:5
 -Position:x-10 y-12 z-0.001
 -Event.Mouse.Click.Action:chooseWalkGroupToEdit();
--Event.Mouse.Click.Image:\gui\menu_button_over_small.spr
+-Event.Mouse.Click.Image:\gui\menu_button_over.spr?button=secondary_buttons
 -Event.Mouse.Click.Sound:menu_button_click
--Event.Mouse.Over.Image:\gui\menu_button_over_small.spr
+-Event.Mouse.Over.Image:\gui\menu_button_over.spr?button=secondary_buttons
 -Event.Mouse.Over.Sound:menu_button_over
 
 [Sprite]
 -Parent:main_menu
--Texture:\gui\menu_button_small.spr
+-Texture:\gui\menu_button.spr?button=secondary_buttons
 -Label:?Named locations
 -Size:5
 -Position:x0 y-9 z-0.001
 -Event.Mouse.Click.Action:chooseLocGroupToEdit();
--Event.Mouse.Click.Image:\gui\menu_button_over_small.spr
+-Event.Mouse.Click.Image:\gui\menu_button_over.spr?button=secondary_buttons
 -Event.Mouse.Click.Sound:menu_button_click
--Event.Mouse.Over.Image:\gui\menu_button_over_small.spr
+-Event.Mouse.Over.Image:\gui\menu_button_over.spr?button=secondary_buttons
 -Event.Mouse.Over.Sound:menu_button_over
 
 [Sprite]
 -Parent:main_menu
--Texture:\gui\menu_button_small.spr
+-Texture:\gui\menu_button.spr?button=secondary_buttons
 -Label:?Funcs
 -Size:5
 -Position:x10 y-12 z-0.001
 -Event.Mouse.Click.Action:core_OpenDialog("editor_funcs");
--Event.Mouse.Click.Image:\gui\menu_button_over_small.spr
+-Event.Mouse.Click.Image:\gui\menu_button_over.spr?button=secondary_buttons
 -Event.Mouse.Click.Sound:menu_button_click
--Event.Mouse.Over.Image:\gui\menu_button_over_small.spr
+-Event.Mouse.Over.Image:\gui\menu_button_over.spr?button=secondary_buttons
 -Event.Mouse.Over.Sound:menu_button_over
 
 [Sprite]
 -Parent:main_menu
--Texture:\gui\menu_button_small.spr
+-Texture:\gui\menu_button.spr?button=secondary_buttons
 -Label:?DBG-Вадим
 -Size:2
 -Position:x-13 y0 z-0.001
 -Event.Mouse.Click.Action:core_SetProfileOption("SaveFile","\\actors\\actions\\_debug\\saved_state_vadim.txt");startGameButton(false);
--Event.Mouse.Click.Image:\gui\menu_button_over_small.spr
+-Event.Mouse.Click.Image:\gui\menu_button_over.spr?button=secondary_buttons
 -Event.Mouse.Click.Sound:menu_button_click
--Event.Mouse.Over.Image:\gui\menu_button_over_small.spr
+-Event.Mouse.Over.Image:\gui\menu_button_over.spr?button=secondary_buttons
 -Event.Mouse.Over.Sound:menu_button_over
 
 [Sprite]
 -Parent:main_menu
--Texture:\gui\menu_button_small.spr
+-Texture:\gui\menu_button.spr?button=secondary_buttons
 -Label:?DBG-Илья
 -Size:2
 -Position:x-13 y-2 z-0.001
 -Event.Mouse.Click.Action:core_SetProfileOption("SaveFile","\\actors\\actions\\_debug\\saved_state_ipv6.txt");startGameButton(false);
--Event.Mouse.Click.Image:\gui\menu_button_over_small.spr
+-Event.Mouse.Click.Image:\gui\menu_button_over.spr?button=secondary_buttons
 -Event.Mouse.Click.Sound:menu_button_click
--Event.Mouse.Over.Image:\gui\menu_button_over_small.spr
+-Event.Mouse.Over.Image:\gui\menu_button_over.spr?button=secondary_buttons
 -Event.Mouse.Over.Sound:menu_button_over
 
 [Sprite]
 -Parent:main_menu
--Texture:\gui\menu_button_small.spr
+-Texture:\gui\menu_button.spr?button=secondary_buttons
 -Label:?Начальный
 -Size:2
 -Position:x-13 y-4 z-0.001
 -Event.Mouse.Click.Action:core_SetProfileOption("SaveFile","\\actors\\actions\\saved_state.txt");startGameButton(false);
--Event.Mouse.Click.Image:\gui\menu_button_over_small.spr
+-Event.Mouse.Click.Image:\gui\menu_button_over.spr?button=secondary_buttons
 -Event.Mouse.Click.Sound:menu_button_click
--Event.Mouse.Over.Image:\gui\menu_button_over_small.spr
+-Event.Mouse.Over.Image:\gui\menu_button_over.spr?button=secondary_buttons
 -Event.Mouse.Over.Sound:menu_button_over
 
 
 [Sprite]
 -Parent:main_menu
--Texture:\gui\menu_button_small.spr
+-Texture:\gui\menu_button.spr?button=secondary_buttons
 -Label:?Другие сейвы
 -Size:2
 -Position:x-13 y-6 z-0.001
 -Event.Mouse.Click.Action:LoadGameAttrEditDialog();
--Event.Mouse.Click.Image:\gui\menu_button_over_small.spr
+-Event.Mouse.Click.Image:\gui\menu_button_over.spr?button=secondary_buttons
 -Event.Mouse.Click.Sound:menu_button_click
--Event.Mouse.Over.Image:\gui\menu_button_over_small.spr
+-Event.Mouse.Over.Image:\gui\menu_button_over.spr?button=secondary_buttons
 -Event.Mouse.Over.Sound:menu_button_over
