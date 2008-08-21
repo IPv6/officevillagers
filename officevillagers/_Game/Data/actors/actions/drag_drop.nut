@@ -116,6 +116,7 @@ function actor_OnDropActor(thisActor, targetPosition)
 	}	
 	local bSwitchToNoneAction = false;
 	thisActor=actor_GetActor(thisActor);
+	gui_SoftActorWatch(thisActor);
 	// вьешательство игрока сбрасывает персу ивент!!! Всегда!
 	// важно для сброса разговоров, итемов и т.п.
 	// если надо другой ивент то он установится в проверках ниже

@@ -123,6 +123,7 @@ function deinitPersonInterfaceDialog()
 	if(actor_SetMovementsPause(humanInterfaceFocusActor,false,"humanInterface")){
 		actor_PauseInteractivity(humanInterfaceFocusActor,false);
 	}
+	gui_SoftActorWatch(humanInterfaceFocusActor);
 	humanInterfaceFocusActor = false;
 }
 

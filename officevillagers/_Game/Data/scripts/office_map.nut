@@ -9,6 +9,8 @@ floorAttachTargetTime <- 0;
 floorAttachTargetTimeFrom <- 0;
 floorAttachTargetPosFrom <- {_x = 0, _y = 0};
 
+floorSoftAttachInterval <- 0;
+
 floorClamps <- [{_l=11,_r=-0.6,_u=15.1,_d=16.4},{_l=11,_r=-0.6,_u=15.1,_d=-5.7},{_l=0.6,_r=-0.6,_u=12.4,_d=-5.7}];
 floorClampsNum <- 0;
 
@@ -91,6 +93,7 @@ function floorDragLoop(param)
 
 function officeMapLClick(param)
 {
+	gui_StopSoftActorWatch();
 	if(core_IsDebug() && core_KeyPressed(0x11))//VK_CONTROL
 	{
 		local spritePos = core_GetNode("officeFloor");
@@ -152,6 +155,7 @@ function officeMapScrollBy(offset)
 	{
 		return;
 	}
+	gui_StopSoftActorWatch();
 	floorAutoDragInterval = core_SetIntervalLocal("main_office_level",20,"floorOffsetLoop",offset);
 }
 
@@ -212,7 +216,7 @@ function floorAttachLoop(param)
 			}
 		}
 		clampPosition(floor);
-		core_SetNode("officeFloor",floor);		
+		core_SetNode("officeFloor",floor);
 	}else{
 		floorAttachTarget = "";
 	}
@@ -230,6 +234,7 @@ function location_DetachCamera()
 
 function actor_AttachCamera(Actor)
 {
+	gui_StopSoftActorWatch();
 	floorAttachTargetType=0;
 	floorAttachTarget=Actor.Name;
 	if(floorAttachInterval != 0)
@@ -246,6 +251,7 @@ function actor_AttachCamera(Actor)
 
 function location_AttachCamera(Location)
 {
+	gui_StopSoftActorWatch();
 	floorAttachTargetType=1;
 	floorAttachTarget=Location;
 	if(floorAttachInterval != 0)
@@ -262,20 +268,47 @@ function location_AttachCamera(Location)
 	floorAttachInterval = core_SetIntervalLocal("main_office_level",20,"floorAttachLoop",floorAttachTarget);
 }
 
+function gui_StopSoftActorWatch()
+{
+	if(floorSoftAttachInterval!=0){
+		core_CancelInterval(floorSoftAttachInterval);
+		floorSoftAttachInterval=0;
+	}
+}
+
+function gui_SoftActorWatch(thisActor)
+{
+	gui_StopSoftActorWatch();
+	if(game_IsCutscene()){
+		// Тут не работает
+		return;
+	}
+	local actor=actor_IsActorExist(thisActor);
+	if(actor==false){
+		return;
+	}
+	floorAttachTarget=actor.Name;
+	floorAttachTargetType=0;
+	floorSoftAttachInterval = core_SetIntervalLocal("main_office_level",20,"floorAttachLoop",floorAttachTarget);
+}
+
 function location_JumpCamera(Location)
 {
+	gui_StopSoftActorWatch();
 	local locFixed=nloc_GetLocation(Location);
 	setFloorPosition( { _x=-locFixed._x , _y=-locFixed._y } );
 }
 
 function location_JumpActor(actor)
 {
+	gui_StopSoftActorWatch();
 	local locFixed=actor_GetActorPos(actor);
 	setFloorPosition( { _x=-locFixed._x , _y=-locFixed._y } );
 }
 
 function gui_CenterCameraOnPers(thisActor)
 {
+	gui_StopSoftActorWatch();
 	local persPos = actor_GetActorPos(thisActor);
 	setFloorPosition({_x=-persPos._x, _y=-persPos._y});
 }
