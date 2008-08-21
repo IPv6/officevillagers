@@ -150,7 +150,7 @@
 		::suspend();
 	}
 	if (actor_GetAttributeS("Office","QuestName")=="ACTOR.AGATA"){
-		gui_ShowDialog(dialogFile, { _section="DIALOG", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
+		gui_ShowDialog(dialogFile, { _section="DIALOG6", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
 		}
 	while(gui_IsDialogOpen()==true){
 		::suspend();

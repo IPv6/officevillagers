@@ -90,6 +90,7 @@ function dropOnTrash(thisActor,trashActor)
 		&& actor_GetAttributeN(trashActor,"IsCollectible")==1)
 	{
 		// Добавить перетекание в итем
+		actor_SetAttribute(thisActor,"CurrentCollectible",trashActor.Name);
 		actor_AddItem(thisActor,"collectible_item","collectible_number=0");
 		actor_PutIntoPocket(thisActor,trashActor,"collectible_item");
 		actor_SwitchToAction(thisActor,"Collectibles_event");
