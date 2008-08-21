@@ -172,7 +172,6 @@
 	actorWait_SwitchToAction(actor_GetActor("ACTOR.AGATA"),"");
 	actorWait_SwitchToAction(actor_GetActor("ACTOR.SHEKEL"),"");
 	actorWait_SwitchToAction(actor_GetActor("ACTOR.BOB"),"");
-    gui_QuestOpen(6);
     game_CutsceneEnd({});
     actor_DetachCamera();
     actor_SwitchToAction(thisActor,"Office_script");
@@ -187,48 +186,54 @@
 -Disable.Person.UI:0
 -Think.Speed:1
 -Script.On:
-	game_CutsceneBegin({});
--Script.Off:
-	gui_QuestOpen(7);
-	game_CutsceneEnd({});
+	game_CutsceneBegin({_who="Office", _action="Quest6__Cutscene2_finish", _changeUI=false});
 -Script.In:
 	local actorSh = actor_GetActor("ACTOR.SHEKEL");
 	actorWait_SwitchToAction(actorSh,"Cutscene.driver");
 	gui_FadeIn();
-	actorWait_Timeout(1);
+	actorWait_Timeout(2);
 	actor_AttachCamera(ActorSh);
 	actor_SetActorPos(actorSh,"CREATOR::IDEASTABLESHEKEL");
-	actorWait_Timeout(1);
 	gui_FadeOut();
-	actorWait_Timeout(3);
+	actorWait_Timeout(2);
 	local dialogFile = core_GetDataPath("text\\quest_cutscenes_dialog.lng");
 	actor_AddItem(actorSh,"collectible_item","collectible_number=0");
 	gui_ShowDialog(dialogFile, { _section="DIALOG4", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
-	actor_DelItem(actorSh,"collectible_item","collectible_number=0");
 	gui_FadeIn();
-	actorWait_Timeout(1);
-	actor_AttachCamera(ActorSh);
+	actorWait_Timeout(2);
+	actor_DelItem(actorSh,"collectible_item","collectible_number=0");
 	actor_SetActorPos(actorSh,"CutScene1::Shekel");
 	actor_SetActorPos(actorAg,"CutScene1::Agata");
 	actorWait_SwitchToAction(actorAg,"Cutscene.driver");
 	actor_SitOnChair(actorAg,"TABLE.AGATASIDE",true);
 	actor_SitOnChairX(actorSh,"TABLE.AGATAMAIN",1,true);
-	actorWait_Timeout(1);
 	gui_FadeOut();
-	actorWait_Timeout(3);
+	actorWait_Timeout(2);
 	gui_ShowDialog(dialogFile, { _section="DIALOG5", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
 	while(gui_IsDialogOpen()==true){
 		::suspend();
 	}
-
-	gui_FadeIn();
-	actorWait_Timeout(1);
-	actor_DetachCamera();
-	actorWait_Timeout(1);
-	gui_FadeOut();	
-	actor_SwitchToAction(thisActor,"Office_script");
+	actor_SwitchToAction(thisActor,"Quest6_Cutscene2_finish");
 	
+[Event]
+-Name:Quest6_Cutscene2_finish
+-Prq.IsGlobalEvent:0
+-Protected:2
+-Priority:-1
+-Disable.Person.UI:0
+-Think.Speed:1
+-Script.In:
+    gui_FadeIn();
+	gui_ShowDialog(null,null);
+	actorWait_Timeout(2);
+	gui_QuestOpen(7);
+	actorWait_SwitchToAction(actor_GetActor("ACTOR.AGATA"),"");
+	actorWait_SwitchToAction(actor_GetActor("ACTOR.SHEKEL"),"");
+	actorWait_SwitchToAction(actor_GetActor("ACTOR.BOB"),"");
+    game_CutsceneEnd({});
+    actor_DetachCamera();
+    actor_SwitchToAction(thisActor,"Office_script");
+    gui_FadeOut();
 	
-;
 	
 	
