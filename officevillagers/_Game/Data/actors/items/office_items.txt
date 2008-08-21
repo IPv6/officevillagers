@@ -3,6 +3,7 @@
 	<ItemDescription>
 		<Name val="sitting" />
 		<InSprParent val="99999" />
+		<AsPocket val="1" />
 		<ScriptOnAttach val="event_OnSit" />
 		<ScriptOnSpawn val="event_OnSitSpawn" />
 		<ScriptOnDetach val="event_OnUnSit" />

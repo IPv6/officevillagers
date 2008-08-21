@@ -96,9 +96,15 @@ BOOL CActor::DelItem(CActorItem* p)
 {
 	BOOL bRes=FALSE;
 	u32 i;
+	BOOL bDoPocketRecals=FALSE;
+	CString sDeletedItemName;
 	for(i=0;i<data.p_items.size();i++){
 		CActorItem* item=data.p_items[i];
 		if(item==p){
+			sDeletedItemName=item->sName;
+			if(item->itemDsc && item->itemDsc->bAsPocket){
+				bDoPocketRecals=TRUE;
+			}
 			item->OnDetach(this);
 			data.p_items.erase(i);
 			bRes=TRUE;
@@ -106,6 +112,20 @@ BOOL CActor::DelItem(CActorItem* p)
 		}
 	}
 	if(bRes){
+		if(sDeletedItemName.GetLength() && bDoPocketRecals){
+			// Если итем был ключем для кармана, очищаем карман
+			// почему важно сразу:
+			// при выдергивании перса из стола посылом в локацию
+			// расчет пути начинается с неверной точки (верная точка после вылазанья из-за стола вычисляется при ThinkPocket!)
+			for(int i=0;i<getLevel()->data.actors.GetSize();i++){
+				CActor* actorOther=getLevel()->data.actors[i];
+				if(actorOther && actorOther!=this){
+					if(actorOther->data.p_sInPocket_Actor==this->data.p_sName && actorOther->data.p_sInPocket_Item==sDeletedItemName){
+						actorOther->ThinkPocket(TRUE);
+					}
+				}
+			}
+		}
 		// Обновляем данные отдельно, иначе часть может не обновится
 		for(i=0;i<data.p_items.size();i++){
 			CActorItem* item=data.p_items[i];

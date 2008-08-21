@@ -54,6 +54,7 @@ void CAction::CopyFrom(CAction& other,BOOL bNonUniqOnly)
 	p_PrqCanAffectBusyActors=other.p_PrqCanAffectBusyActors;
 	sScriptBegin=other.sScriptBegin;
 	sScriptIn=other.sScriptIn;
+	sScriptIn2=other.sScriptIn2;
 	sScriptEnd=other.sScriptEnd;
 	m_parentAction=other.m_parentAction;
 	p_bProtected=other.p_bProtected;
@@ -173,6 +174,9 @@ CAction* CAction::Add2LevelFromDescriptionSingleSet(const CString &sDsc, const c
 	if(isParam(sDscInit,"-Script.In:",s)){
 		newOne->sScriptIn=getGame().scripter.TurnCodeIntoFunction(s,sFN,STEPIN_CLASS,"thisActor");
 	}
+	if(isParam(sDscInit,"-Script.In.Alt:",s)){
+		newOne->sScriptIn2=getGame().scripter.TurnCodeIntoFunction(s,sFN+"_Alt",STEPIN_CLASS,"thisActor");
+	}
 	if(isParam(sDscInit,"-Script.Off:",s)){
 		newOne->sScriptEnd=getGame().scripter.TurnCodeIntoFunction(s,sFN,STEPOFF_CLASS,"thisActor");
 	}
@@ -209,6 +213,8 @@ BOOL CAction::OnAttach(CActor* who)
 	iActionUsageCount++;
 	who->actionAttachDone=0;
 	who->scriptMirror.SetValue("_StepInThreadMethod",sScriptIn.GetBuffer(0));
+	who->scriptMirror.SetValue("_StepInThreadMethodAlt",sScriptIn2.GetBuffer(0));
+	who->scriptMirror.SetValue("_StepInThreadType",0);
 	who->scriptMirror.SetValue("_StepInThread",0);
 	who->scriptMirror.SetValue("Action",p_sActionName.GetBuffer(0));
 	who->data.p_CurrentActionName=p_sActionName;
@@ -232,7 +238,6 @@ BOOL CAction::OnDuring(CActor* who)
 	}
 	DEBUG_LASTACTION(toString("Actor '%s' Script.In method, action=%s",who->data.p_sName,this->p_sActionName));
 	if(sScriptIn.GetLength()){
-		//getGame().scripter.CallPrecompiledMethod(sScriptIn,who->scriptMirror,STEPIN_CLASS);
 		getGame().scripter.CallPrecompiledMethod("runActorStepInThread",who->scriptMirror);
 	}
 	getLevel()->getCurrentAction()=0;

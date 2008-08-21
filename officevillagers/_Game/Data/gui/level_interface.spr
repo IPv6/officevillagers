@@ -9,8 +9,8 @@
 -Name:progress_slider
 -Texture:\gui\level_interface.png
 -Atlas:x0 y31 w1 h32
--Size: w30.3
--Position:x5 y14.5 z0.09
+-Size: w30.4
+-Position:x4.92 y14.54 z0.09
 
 [Sprite]
 // Маркер паузы
@@ -24,7 +24,7 @@
 [Sprite]
 -AsChild:1
 -Texture:level_interface.png
--Size: w40.2
+-Size: w40.3
 -Position:x0 y0 z0.1 s1
 
 [Sprite]
@@ -47,37 +47,40 @@
 [Sprite]
 -AsChild:1
 // Кнопка Menu
+-Texture:menu_button_small.spr?button=level_buttons
 -Name:levelMenuButton
 -Size: w9 h1.8
--Position: x-14.82 y12.7 z-0.212
+-Position: x-14.9 y12.8 z-0.212
 -Label:GUI.LEVEL.MENU.BUTTON
 -Event.Mouse.Click.Action:level_OpenMenu
 -Event.Mouse.Click.Sound:menu_button_click
--Event.Mouse.Over.Image:buttons\button_overlay.spr?button=0
+-Event.Mouse.Over.Image:menu_button_over_small.spr?button=level_buttons
 -Event.Mouse.Over.Sound:menu_button_over
 
 [Sprite]
 -AsChild:1
 // Кнопка Открытия
+-Texture:menu_button_small.spr?button=level_buttons
 -Name:techs_button
 -Size: w9 h1.8
--Position: x-14.82 y-7.29 z-0.212
+-Position: x-14.9 y-7.29 z-0.212
 -Label:GUI.LEVEL.TECH.BUTTON
 -Event.Mouse.Click.Action:level_OpenTechs
 -Event.Mouse.Click.Sound:menu_button_click
--Event.Mouse.Over.Image:buttons\button_overlay.spr?button=0
+-Event.Mouse.Over.Image:menu_button_over_small.spr?button=level_buttons
 -Event.Mouse.Over.Sound:menu_button_over
 
 [Sprite]
 -AsChild:1
 // Кнопка Квесты
+-Texture:menu_button_small.spr?button=level_buttons
 -Name:quests_button
 -Size: w9 h1.8
--Position: x-14.82 y-9.23 z-0.212
+-Position: x-14.9 y-9.23 z-0.212
 -Label:GUI.LEVEL.QUESTS.BUTTON
 -Event.Mouse.Click.Action:level_OpenQuests
 -Event.Mouse.Click.Sound:menu_button_click
--Event.Mouse.Over.Image:buttons\button_overlay.spr?button=0
+-Event.Mouse.Over.Image:menu_button_over_small.spr?button=level_buttons
 -Event.Mouse.Over.Sound:menu_button_over
 
 [Sprite]

@@ -64,7 +64,8 @@
 			<Tool
 				Name="VCLinkerTool"
 				LinkIncremental="2"
-				GenerateManifest="false"
+				GenerateManifest="true"
+				EnableUAC="false"
 				IgnoreDefaultLibraryNames="libcmt,libcmtd,libcmtd,LIBC,LIBCD"
 				GenerateDebugInformation="true"
 				ProgramDatabaseFile="$(OutDir)\$(TargetName).pdb"
@@ -139,7 +140,8 @@
 			<Tool
 				Name="VCLinkerTool"
 				LinkIncremental="2"
-				GenerateManifest="false"
+				GenerateManifest="true"
+				EnableUAC="false"
 				IgnoreDefaultLibraryNames="LIBC,LIBCD,libcmt"
 				GenerateDebugInformation="false"
 				SubSystem="2"

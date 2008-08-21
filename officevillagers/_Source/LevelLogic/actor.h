@@ -220,7 +220,7 @@ public:
 	void SpawnPersUI();
 	void SetBodyZeroSprite();
 	void RefreshBodyAccordingDirection(_v2 direction,BOOL bWalking);
-	void RefreshHeadAccordingDirection(float fBodyAddonAngle,int iAngleShift=0, BOOL bRelative=1);
+	void RefreshHeadAccordingDirection(float fBodyAddonAngle,int iAngleShift=0, BOOL bRelative=1, BOOL bTrim=1);
 	void ReattachItems();
 
 	void Think(u32 timeMs,BOOL bFastForward=0);

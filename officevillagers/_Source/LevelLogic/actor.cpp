@@ -344,7 +344,7 @@ void CActor::StopBodyMotion(BOOL bLevelEnd)
 	walkData.activeNavigationMapZones.clear();
 }
 
-void CActor::RefreshHeadAccordingDirection(float fBodyAddonAngle,int iAngleShift, BOOL bRelative)
+void CActor::RefreshHeadAccordingDirection(float fBodyAddonAngle,int iAngleShift, BOOL bRelative, BOOL bTrim)
 {
 	if(!bHasBodyAndCanMove){
 		return;
@@ -358,8 +358,10 @@ void CActor::RefreshHeadAccordingDirection(float fBodyAddonAngle,int iAngleShift
 	if(!bRelative){
 		fBodyAddonAngle=fBodyAddonAngle-fBodyAngle;
 	}
-	fBodyAddonAngle=max(fBodyAddonAngle,-90.0f);
-	fBodyAddonAngle=min(fBodyAddonAngle,90.0f);
+	if(bTrim){
+		fBodyAddonAngle=max(fBodyAddonAngle,-90.0f);
+		fBodyAddonAngle=min(fBodyAddonAngle,90.0f);
+	}
 	data.p_CurrentFaceDirection=fBodyAddonAngle;
 	f32 fAngleNeedle=(fBodyAngle+fBodyAddonAngle)/360.0f;
 	// Двойной размер!!!
@@ -457,6 +459,10 @@ float CActor::GetWalkSpeed()
 void CActor::ThinkFollower()
 {
 	activeNavigationDotLocationName="";// Не можем бегать по целям...
+	// Во время катсцены стоим столбом и не бегаем за учителем
+	if(getLevel()->bIsCutscene){
+		return;
+	}
 	CActor* targetActor=getLevel()->getActorByName(data.p_FollowToActor);
 	if(!targetActor){
 		data.p_FollowToActor="";
@@ -987,10 +993,12 @@ BOOL CActor::ThinkPocket(BOOL bForceUpdate)
 			pocketActor=getLevel()->getActorByName(data.p_sInPocket_Actor);
 		}
 		if(!pocketActor){
+			sLastInPocketActor=data.p_sInPocket_Actor;
 			bInPocket=0;
 		}else{
 			CActorItem* pocketItem=pocketActor->GetItemByName(data.p_sInPocket_Item);
 			if(!pocketItem){
+				sLastInPocketActor=data.p_sInPocket_Actor;
 				bInPocket=0;
 			}else{
 				bInPocket=1;

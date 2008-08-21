@@ -1,8 +1,3 @@
-function actor_RestartAction(thisActor)
-{// Перезапускает текущий ивент с начала. Script.On/off НЕ вызываются
-	thisActor._StepInThread=0;
-}
-
 function actor_SetMovementsPause(thisActor,isPause,checkSlot)
 {
 	thisActor = actor_GetActor(thisActor);
