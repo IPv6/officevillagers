@@ -236,4 +236,77 @@
     gui_FadeOut();
 	
 	
+[Event]
+-Name:Quest7_Cutscene
+-Prq.IsGlobalEvent:0
+-Protected:2
+-Priority:-1
+-Disable.Person.UI:0
+-Think.Speed:1
+-Script.On:
+	game_CutsceneBegin({_who="Office", _action="Quest7__Cutscenefinish", _changeUI=false});
+-Script.In:
+	local actorSh = actor_GetActor("ACTOR.SHEKEL");
+	local actorAg = actor_GetActor("ACTOR.AGATA");
+	local actorBo = actor_GetActor("ACTOR.BOB");
+	actorWait_SwitchToAction(actorSh,"Cutscene.driver");
+	actorWait_SwitchToAction(actorAg,"Cutscene.driver");
+	actorWait_SwitchToAction(actorBo,"Cutscene.driver");
+	gui_FadeIn();
+	actorWait_Timeout(2);
+	actor_AttachCamera(ActorAg);
+	actor_DeleteActor();
+	if(actor_IsActorExist("Musor68.cwalk.allowDown")!=false){
+		actor_DeleteActor("Musor68.cwalk.allowDown");
+	}
+	if(actor_IsActorExist("Musor66.cwalk.allowDown")!=false){		
+		actor_DeleteActor("Musor66.cwalk.allowDown");
+	}
+	if(actor_IsActorExist("Musor70.cwalk.allowDown")!=false){		
+		actor_DeleteActor("Musor70.cwalk.allowDown");
+	}
+	if(actor_IsActorExist("Musor65.cwalk.allowDown")!=false){		
+		actor_DeleteActor("Musor65.cwalk.allowDown");
+	}
+		
+	actor_SetActorPos(actorSh,"CREATOR::IDEASTABLESHEKEL");
+	gui_FadeOut();
+	actorWait_Timeout(2);
+	local dialogFile = core_GetDataPath("text\\quest_cutscenes_dialog.lng");
+	actor_AddItem(actorSh,"collectible_item","collectible_number=0");
+	gui_ShowDialog(dialogFile, { _section="DIALOG4", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
+	gui_FadeIn();
+	actorWait_Timeout(2);
+	actor_DelItem(actorSh,"collectible_item","collectible_number=0");
+	actor_SetActorPos(actorSh,"CutScene1::Shekel");
+	actor_SetActorPos(actorAg,"CutScene1::Agata");
+	actorWait_SwitchToAction(actorAg,"Cutscene.driver");
+	actor_SitOnChair(actorAg,"TABLE.AGATASIDE",true);
+	actor_SitOnChairX(actorSh,"TABLE.AGATAMAIN",1,true);
+	gui_FadeOut();
+	actorWait_Timeout(2);
+	gui_ShowDialog(dialogFile, { _section="DIALOG5", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
+	while(gui_IsDialogOpen()==true){
+		::suspend();
+	}
+	actor_SwitchToAction(thisActor,"Quest6_Cutscene2_finish");
 	
+[Event]
+-Name:Quest7_Cutscenefinish
+-Prq.IsGlobalEvent:0
+-Protected:2
+-Priority:-1
+-Disable.Person.UI:0
+-Think.Speed:1
+-Script.In:
+    gui_FadeIn();
+	gui_ShowDialog(null,null);
+	actorWait_Timeout(2);
+	gui_QuestOpen(7);
+	actorWait_SwitchToAction(actor_GetActor("ACTOR.AGATA"),"");
+	actorWait_SwitchToAction(actor_GetActor("ACTOR.SHEKEL"),"");
+	actorWait_SwitchToAction(actor_GetActor("ACTOR.BOB"),"");
+    game_CutsceneEnd({});
+    actor_DetachCamera();
+    actor_SwitchToAction(thisActor,"Office_script");
+    gui_FadeOut();

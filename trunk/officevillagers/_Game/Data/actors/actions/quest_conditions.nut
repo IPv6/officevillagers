@@ -21,7 +21,7 @@ function quest_conditions(conditions)
 		if((actor_GetActorProfession(conditions._actorFrom)=="JANITOR" || actor_GetActorProfession(conditions._actorFrom)=="JANITOR-EXPERT")
 		&& conditions._locName == "FurniDrops::BARRICADA"
 		&& nloc_CheckWalkablePath("FurniDrops::BARR_FROM","Heaps.Barricada")!=false){
-			if(gui_QuestClose(6)){
+			if(gui_QuestClose(7)){
 				gui_StartCutscene("Quest7_Cutscene");
 			}
 		}
