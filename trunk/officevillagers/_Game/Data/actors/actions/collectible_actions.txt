@@ -15,10 +15,11 @@
 			return;
 		}
 	}
-	if (gui_QuestCheck(4)==3){
-			gui_QuestClose(6);
+	if (actor_GetAttributeN("Office","Quest7Collectibles")==1){
+		if(gui_QuestClose(6)){
 			actor_SwitchToAction("Office","Quest6_Cutscene2");
-		return;
+			return;
+		}
 	}
 	actor_SetAttribute("Office","ideas",actor_GetAttributeN("Office", "ideas")+1);
 	actor_AddIcon(thisActor, "techpoint_p1");

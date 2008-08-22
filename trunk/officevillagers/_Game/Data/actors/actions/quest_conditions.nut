@@ -41,4 +41,12 @@ function quest_conditions(conditions)
 			gui_StartCutscene("Quest4_Cutscene");
 		}
     }
+	if("_fromTech" in conditions)
+	{
+	if(conditions.newTech=="MUSCLES"){
+		if(gui_QuestClose(8)){
+			gui_StartCutscene("Quest8_Cutscene");
+			}		
+		}
+	}
 }
