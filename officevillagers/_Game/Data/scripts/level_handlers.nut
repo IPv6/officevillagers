@@ -54,6 +54,9 @@ function event_OnStartGame(param)
 {
 	core_SetKeyHandlerMode(1);
 	core_SetIntervalLocal("main_level_interface",1000,"gui_UpdateHud();");
+	     if(gui_QuestCheck(8)<2){
+          core_EnableNode("techs_button",false);
+     }
 }
 
 _saveCameraOverwrite <- {overwrite=false, cameraX=0.0, cameraY=0.0};
@@ -86,10 +89,6 @@ function event_OnLoadGame(gameSafe)
 	local lTechs=core_ReadTextFile(core_GetDataPath("\\actors\\quests\\techtree.txt"));
 	g_techTree <- core_DeserializeObj(lTechs,true);
 	//core_Alert(dumpVariable(g_techTree));
-	setMainFloorClamp(true);// Баррикада и т.п.
-	if(gui_QuestCheck(8)!=2){// Что тут сам допиши
-		core_EnableNode("techs_button",false);
-	}
 }
 
 function setGlobal(name,value)
