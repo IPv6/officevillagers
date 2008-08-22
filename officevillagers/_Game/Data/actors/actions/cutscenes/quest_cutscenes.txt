@@ -249,7 +249,7 @@
 	local actorSh = actor_GetActor("ACTOR.SHEKEL");
 	local actorAg = actor_GetActor("ACTOR.AGATA");
 	local actorBo = actor_GetActor("ACTOR.BOB");
-	actorWait_SwitchToAction(actorSh,"Cutscene.driver");
+	actorWait_SwitchToAction(actorSh,"Cutscene.driver.Speed2");
 	actorWait_SwitchToAction(actorAg,"Cutscene.driver");
 	actorWait_SwitchToAction(actorBo,"Cutscene.driver");
 	gui_FadeIn();
@@ -268,28 +268,35 @@
 	if(actor_IsActorExist("Musor65.cwalk.allowDown")!=false){		
 		actor_DeleteActor("Musor65.cwalk.allowDown");
 	}
-		
-	actor_SetActorPos(actorSh,"CREATOR::IDEASTABLESHEKEL");
+	actor_SetActorPos(actorSh,"SCENES_QuestCutscenes::DOT3");
+	actor_SetActorPos(actorAg,"SCENES_QuestCutscenes::DOT1");
+	actor_SetActorPos(actorBo,"SCENES_QuestCutscenes::DOT2");
+	actor_OrientBody(actorBo,actorAg);
+	actor_OrientBody(actorAg,actorBo);
 	gui_FadeOut();
 	actorWait_Timeout(2);
 	local dialogFile = core_GetDataPath("text\\quest_cutscenes_dialog.lng");
-	actor_AddItem(actorSh,"collectible_item","collectible_number=0");
-	gui_ShowDialog(dialogFile, { _section="DIALOG4", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
-	gui_FadeIn();
-	actorWait_Timeout(2);
-	actor_DelItem(actorSh,"collectible_item","collectible_number=0");
-	actor_SetActorPos(actorSh,"CutScene1::Shekel");
-	actor_SetActorPos(actorAg,"CutScene1::Agata");
-	actorWait_SwitchToAction(actorAg,"Cutscene.driver");
-	actor_SitOnChair(actorAg,"TABLE.AGATASIDE",true);
-	actor_SitOnChairX(actorSh,"TABLE.AGATAMAIN",1,true);
-	gui_FadeOut();
-	actorWait_Timeout(2);
-	gui_ShowDialog(dialogFile, { _section="DIALOG5", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
+	gui_ShowDialog(dialogFile, { _section="DIALOG7", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
 	while(gui_IsDialogOpen()==true){
 		::suspend();
 	}
-	actor_SwitchToAction(thisActor,"Quest6_Cutscene2_finish");
+	actorWait_Timeout(0.5);
+	actor_OrientBody(actorBo,"Furniture::DOT15");
+	actorWait_Timeout(1);
+	actor_DeleteActor("PLAKAT");
+	gui_ShowDialog(dialogFile, { _section="DIALOG7-1", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
+	while(gui_IsDialogOpen()==true){
+		::suspend();
+	}
+	actor_OrientBody(actorBo,actorAg);
+	actorWait_GoTo(actorSh,"SCENES_QuestCutscenes::DOT4");
+	actor_OrientBody(actorSh,actorAg);
+	actor_OrientBody(actorAg,actorSh);
+	gui_ShowDialog(dialogFile, { _section="DIALOG7-2", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
+	while(gui_IsDialogOpen()==true){
+		::suspend();
+	}
+	actor_SwitchToAction(thisActor,"Quest6_Cutscene7_finish");
 	
 [Event]
 -Name:Quest7_Cutscenefinish
@@ -302,7 +309,7 @@
     gui_FadeIn();
 	gui_ShowDialog(null,null);
 	actorWait_Timeout(2);
-	gui_QuestOpen(7);
+	gui_QuestOpen(8);
 	actorWait_SwitchToAction(actor_GetActor("ACTOR.AGATA"),"");
 	actorWait_SwitchToAction(actor_GetActor("ACTOR.SHEKEL"),"");
 	actorWait_SwitchToAction(actor_GetActor("ACTOR.BOB"),"");
