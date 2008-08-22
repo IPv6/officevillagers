@@ -160,6 +160,21 @@
 Решайте.
 #PAGEEND
 
+[DIALOG6-1]
+#PAGEBEGIN:(game.png)
+Найдите еще @quest7colleclibles таких листков, чтобы собрать достаточно информации.
+#PAGEEND
+
+[DIALOG6-2]
+#PAGEBEGIN:(game.png)
+Найдите еще @quest7colleclibles таких листка, чтобы собрать достаточно информации.
+#PAGEEND
+
+[DIALOG6-3]
+#PAGEBEGIN:(game.png)
+Вам осталось найти еще один такой листок, чтобы собрать достаточно информации.
+#PAGEEND
+
 [DIALOG7-1]
 #PAGEBEGIN:(bob.png)
 Cмотрите.
