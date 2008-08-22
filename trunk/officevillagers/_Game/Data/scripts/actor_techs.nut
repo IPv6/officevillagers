@@ -86,6 +86,7 @@ function level_BuyTechs(techNumber)
 			return;
 		}
 		// Покупаем!!!
+		quest_conditions({_fromTech=true, newTech=techNumber});
 		$ifdebug core_Warning(techNumber+" куплен!");
 		actor_SetAttribute("Office","ideas",points-singletech.Points2Buy);
 		foreach(result in singletech.Result){
