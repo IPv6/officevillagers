@@ -156,6 +156,21 @@
 	while(gui_IsDialogOpen()==true){
 		::suspend();
 	}
+	local number = actor_GetAttributeN(thisActor,"Quest7Collectibles")-1;
+	local addVars=[];
+	addVars.append({name="quest7colleclibles", value=format("%i",number)});
+	if(number > 4){
+		gui_ShowDialog(dialogFile, { _section="DIALOG6-1", _vars=addVars, _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
+		number = 0
+	}
+	if(number > 1){
+		gui_ShowDialog(dialogFile, { _section="DIALOG6-2", _vars=addVars, _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
+		number = 0
+	}
+		if(number > 0){
+		gui_ShowDialog(dialogFile, { _section="DIALOG6-3", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
+		number = 0
+	}
 	actor_DelItem(actorSh,"collectible_item","collectible_number=0");
 	actor_SwitchToAction(thisActor,"Quest6_Cutscene1_finish");
 
