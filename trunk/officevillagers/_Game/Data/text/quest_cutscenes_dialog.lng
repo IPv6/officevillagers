@@ -145,4 +145,83 @@
 #PAGEBEGIN:(agata.angry.png)
 Нет!
 #PAGEEND
+
+[DIALOG7]
+#PAGEBEGIN:(agata.png)
+Зачем вы меня просили подойти?
+#PAGEEND
+
+#PAGEBEGIN:(bob.png)
+Возникли технические проблемы.
+#PAGEEND
+
+#PAGEBEGIN:(agata.png)
+Да неужели.
+Решайте.
+#PAGEEND
+
+[DIALOG7-1]
+#PAGEBEGIN:(bob.png)
+Cмотрите.
+У меня сил не хватит разобрать такой завал.
+#PAGEEND
+
+#PAGEBEGIN:(agata.png)
+...
+И от чего они так отгораживались?
+#PAGEEND
+
+#PAGEBEGIN:(bob.scary.png)
+От окон.
+#PAGEEND
+
+#PAGEBEGIN:(agata.png)
+Но зачем?
+#PAGEEND
+
+#PAGEBEGIN:(bob.scary.png)
+Там всё простреливается.
+#PAGEEND
+
+#PAGEBEGIN:(agata.png)
+Коллега, наша корпорация ведёт только холодоные войны
+#PAGEEND
+
+#PAGEBEGIN:(bob.scary.png)
+Значит и оружием били - холодным.
+Или... биологическим.
+#PAGEEND
+
+#PAGEBEGIN:(agata.wtf.png)
+...
+#PAGEEND
+
+#PAGEBEGIN:(agata.png)
+Не имеет значения.
+Нужно как-то это всё разгрести.
+#PAGEEND
+
+[DIALOG7-2]
+#PAGEBEGIN:(shekel.idea.png)
+Нужна помощь?
+#PAGEEND
+
+#PAGEBEGIN:(agata.png)
+Возможно.
+(И как услышал?)
+#PAGEEND
+
+#PAGEBEGIN:(shekel.idea.png)
+У меня как раз идей накопилось! Вагон!!!
+Сейчас вмиг придумаем что-нибудь полезное!
+#PAGEEND
+
+#PAGEBEGIN:(agata.wtf.png)
+...
+#PAGEEND
+
+#PAGEBEGIN:(agata.png)
+(С кем я работаю?)
+... гхм... приступайте.
+#PAGEEND
 [END]<-Обязательный тег, указывающий на окончание файла диалогов

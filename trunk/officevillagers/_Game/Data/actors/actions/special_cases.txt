@@ -18,6 +18,14 @@
 -Disable.Person.UI:1
 
 [Event]
+-Name:Cutscene.driver.Speed2
+-Prq.IsGlobalEvent:0
+-Protected:2
+-Priority:-1
+-Walk.Speed:2
+-Disable.Person.UI:1
+
+[Event]
 -Name:Talking
 -Prq.IsGlobalEvent:0
 // Чтобы пока перс делает это действие, никакое другое действие не могло бы его отвлечь (2 - это значит если он делает и любое из подчиненных действий тоже)
