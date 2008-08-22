@@ -1,29 +1,6 @@
+g_techTree <- {};
+g_TechsOnPage <- 4;
 g_TechInterfaceOpened <- false;
-
-/*
-1)настрйоки
-а)сменить время дедлайна
-б)сменить усталость при которой работник уходит на перекур
-в)сменить время кранча
-
-2)новые комнаты
-а)комната отдыха
-б)кухня
-в)игровые автоматы
-
-3)уборщики
-а)уборщкии разгребают завалы
-б)ставят новую технику и муболь в комнаты
-в)открывают главнюу дверь
-
-4)авторы
-а)появление аутсорсеров
-б)возможность пистаь в соавторстве
-в) ...тут ещё думаю
-*/
-function level_BuyTechs(techNumber)
-{
-}
 
 function level_OpenTechs(param)
 {
@@ -48,47 +25,43 @@ function deinitTechsDialog()
 
 function initTechsDialog()
 {
-/*
-	local egaSlot0=core_GetNode("quest_slot0");
 	local i=0;
-	if(!egaSlot0){
-		g_Quest_Slots = 0;
-		for(i=0;i<g_QuestsOnPage;i++){
-			core_CreateSprite("gui\\level_quest_slot.spr","level_quests",{x=0, y=7-2.5*i, z=-0.0002, w=1, h=1, name=format("quest_slot%i",g_Quest_Slots++) });
+	for(i=0;i<g_TechsOnPage;i++){
+		local slotNodeName=format("tech_slot%i",i);
+		core_DeleteNode(slotNodeName);
+		core_CreateSprite("\\gui\\level_quest_slot.spr","level_techs",{x=0, y=8-4*i, z=-0.0002, w=1, h=1, name=slotNodeName });
+		core_SetNodeText(core_GetNode(slotNodeName),"");
+	}
+	local iSlotNum=0;
+	// Пробегаемся по технологиям и добавляем те что доступны к покупке
+	local points=actor_GetAttributeN("Office","ideas");
+	foreach(singletech in g_techTree.techs.tech)
+	{
+		if(iSlotNum>=g_TechsOnPage){
+			break;
 		}
-	}
-	local attrId=0;
-	local attrByNum="";
-	g_SkipQuest_Slots = skipItems;
-	local quests = getOpenQuests();
-	if(g_SkipQuest_Slots>quests.len())
-	{
-		g_SkipQuest_Slots = quests.len()-g_QuestsOnPage;
-	}
-	if(g_SkipQuest_Slots<0)
-	{
-		g_SkipQuest_Slots = 0;
-	}
-	for(i=0; i<g_Quest_Slots; i++)
-	{
-		local slotNode=core_GetNode(format("quest_slot%i",i));
-		slotNode._alpha=1.0;
-		local thisQuestNum = g_SkipQuest_Slots+i;
-		if(thisQuestNum >= quests.len()){
-			core_EnableNode(slotNode,false);
-		}else{
-			core_EnableNode(slotNode,true);
-			core_SetNodeText(slotNode,format("%s",quests[thisQuestNum].locName));
-			if(quests[thisQuestNum].state==1)
-			{
-				slotNode._alpha=0.5;
-				//core_Alert("addfade!");
+		//core_Alert(dumpVariable(singletech));
+		// Проверяем доcтупна ли технология
+		if(singletech.Points2View>points){
+			continue;
+		}
+		local bPrereqFailed=false;
+		foreach(prereq in singletech.Prerequisite){
+			core_Warning(format("prereq %s==%i",prereq.OfficeAttribute,actor_GetAttributeN("Office",prereq.OfficeAttribute)));
+			if(actor_GetAttributeN("Office",prereq.OfficeAttribute)!=prereq.ValueN){
+				bPrereqFailed=true;
 			}
-			//core_SetNodeAction(slotNode,format("editAttrEditDialog(\"%s\",\"%s\");",thisActor.Name,attrByNum.name));
 		}
-		core_SetNode(format("quest_slot%i",i),slotNode);
+		if(bPrereqFailed){
+			continue;
+		}
+		// Добавляем
+		local slotNodeName=format("tech_slot%i",iSlotNum);
+		core_CreateSprite(singletech.Sprite,slotNodeName,{x=0, y=0, z=-0.0002, w=9, h=3});
+		core_SetNodeAction(core_GetNode(slotNodeName),format("level_BuyTechs(\"%s\");",singletech.Name));
+		iSlotNum++;
 	}
-*/
+
 	// Число идей
 	g_TechInterfaceOpened = true;
 	gui_UpdateHud();
@@ -96,5 +69,30 @@ function initTechsDialog()
 	if(core_GetProfileOption("TutorialTechsHelp")!=1){
 		core_SetProfileOption("TutorialTechsHelp",1);
 		helpDialog("level_techs_help");
+	}
+}
+
+function level_BuyTechs(techNumber)
+{
+	local points=actor_GetAttributeN("Office","ideas");
+	$ifdebug core_Warning(techNumber+" test:");
+	foreach(singletech in g_techTree.techs.tech)
+	{
+		if(singletech.Name!=techNumber){
+			continue;
+		}
+		if(singletech.Points2Buy>points){
+			$ifdebug core_Warning("not enoughp points for "+techNumber);
+			return;
+		}
+		// Покупаем!!!
+		$ifdebug core_Warning(techNumber+" куплен!");
+		actor_SetAttribute("Office","ideas",points-singletech.Points2Buy);
+		foreach(result in singletech.Result){
+			actor_SetAttribute("Office",result.OfficeAttribute,result.ValueN);
+		}
+		// Все заново!!!
+		initTechsDialog();
+		return;
 	}
 }

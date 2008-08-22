@@ -147,28 +147,55 @@ function levelKeyHandler(key)
 			}
 		}
 	}
-	// Основное
-	if(key._key==2 && key._pressed)//Правая кнопка мыши
-	{
-		if(!game_IsCutscene()){
-			gui_JumpToNextActor();
+	if(key._pressed){
+		// Основное
+		if(key._key==2)//Правая кнопка мыши
+		{
+			if(!game_IsCutscene() && !humanInterfaceFocusActor){
+				gui_JumpToNextActor();
+			}
 		}
-	}
-	if(key._key==39)//Right
-	{
-		officeMapScrollBy({_x=-0.3,_y=0});
-	}
-	if(key._key==37)//Left
-	{
-		officeMapScrollBy({_x=0.3,_y=0});
-	}
-	if(key._key==40)//Down
-	{
-		officeMapScrollBy({_x=0,_y=0.3});
-	}
-	if(key._key==38)//Up
-	{
-		officeMapScrollBy({_x=0,_y=-0.3});
+		if(key._key==39)//Right,D
+		{
+			officeMapScrollBy({_x=-0.3,_y=0});
+		}
+		if(key._key==68)//Right,D
+		{
+			officeMapScrollBy({_x=-0.9,_y=0});
+		}
+		if(key._key==37)//Left
+		{
+			officeMapScrollBy({_x=0.3,_y=0});
+		}
+		if(key._key==65)//Left
+		{
+			officeMapScrollBy({_x=0.9,_y=0});
+		}
+		if(key._key==40)//Down
+		{
+			officeMapScrollBy({_x=0,_y=0.3});
+		}
+		if(key._key==83)//Down
+		{
+			officeMapScrollBy({_x=0,_y=0.9});
+		}
+		if(key._key==38)//Up
+		{
+			officeMapScrollBy({_x=0,_y=-0.3});
+		}
+		if(key._key==87)//Up
+		{
+			officeMapScrollBy({_x=0,_y=-0.9});
+		}
+		if(key._key==32)// Space
+		{
+			if(game_GetGameSpeed()>0){
+				game_SetGameSpeed(0);
+			}else{
+				game_SetGameSpeed(1.0);
+			}
+			//core_Warning(format("Current game speed: %f",game_GetGameSpeed()));
+		}
 	}
 } 
 

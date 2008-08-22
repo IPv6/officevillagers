@@ -1021,7 +1021,7 @@ void RegisterActorScriptMethods()
 	SquirrelVM::CreateFunctionGlobal(actor_PackAttributes,_T("actor_PackAttributes"),"*");
 
 	SquirrelVM::CreateFunctionGlobal(actor_GetActorPos,_T("actor_GetActorPos"),"*");
-	SquirrelVM::CreateFunctionGlobal(actor_SetActorPos,_T("actor_SetActorPos"),"*");
+	SquirrelVM::CreateFunctionGlobal(actor_SetActorPos,_T("actor_SetActorPos_i"),"*");
 	SquirrelVM::CreateFunctionGlobal(actor_RandomizePos,_T("actor_RandomizePos"),"*");
 	SquirrelVM::CreateFunctionGlobal(actor_CreateActor,_T("actor_CreateActor"),"*");
 	SquirrelVM::CreateFunctionGlobal(actor_CloneActor,_T("actor_CloneActor"),"*");

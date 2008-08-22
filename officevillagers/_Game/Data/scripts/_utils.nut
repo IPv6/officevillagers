@@ -135,3 +135,28 @@ function charsInText(text,charsingl)
 	}
 	return res;
 }
+
+function dumpVariable(var)
+{
+	local res="";
+	local type=typeof(var);
+	if(type=="array" || type=="table"){
+		res+=type+"{";
+		foreach(name,val in var){
+			res+="\n";
+			res+=name+"="+dumpVariable(val);
+		}
+		res+="\n};";
+		return res;
+	}
+	res+="'"+var.tostring()+"';";
+	return res;
+}
+
+/*
+Tokenize!!!
+        foreach( i,val in ::split(str,",;."))
+        {
+                ::print(val + "\n");
+        }
+*/

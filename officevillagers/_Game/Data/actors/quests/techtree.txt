@@ -1,11 +1,10 @@
 <techs>
-<tech>
-	<Sprite val="\asdasd\" />
-	<Points val="10" \>
-	<VisibleFromPoints val="0" \>
-	<Prerequisites>
-		<Attr::array val="ASDASD" \>
-		<Attr::array val="ASDASD2" \>
-	</Prerequisites>
-</tech>
+<tech::array>
+	<Name							val="MUSCLES" />
+	<Sprite							val="\actors\quests\tech_icons\janitor_muscles.spr" />
+	<Points2Buy					val="10" />
+	<Points2View				val="0" />
+	<Prerequisite::array	OfficeAttribute="TECH_MUSCLES" ValueN="0" />
+	<Result::array				OfficeAttribute="TECH_MUSCLES" ValueN="1" />
+</tech::array>
 </techs>

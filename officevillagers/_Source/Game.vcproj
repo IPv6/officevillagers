@@ -64,7 +64,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				LinkIncremental="2"
-				GenerateManifest="true"
+				GenerateManifest="false"
 				EnableUAC="false"
 				IgnoreDefaultLibraryNames="libcmt,libcmtd,libcmtd,LIBC,LIBCD"
 				GenerateDebugInformation="true"
@@ -140,7 +140,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				LinkIncremental="2"
-				GenerateManifest="true"
+				GenerateManifest="false"
 				EnableUAC="false"
 				IgnoreDefaultLibraryNames="LIBC,LIBCD,libcmt"
 				GenerateDebugInformation="false"
