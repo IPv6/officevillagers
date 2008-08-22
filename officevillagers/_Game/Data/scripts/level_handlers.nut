@@ -87,6 +87,9 @@ function event_OnLoadGame(gameSafe)
 	g_techTree <- core_DeserializeObj(lTechs,true);
 	//core_Alert(dumpVariable(g_techTree));
 	setMainFloorClamp(true);// Баррикада и т.п.
+	if(gui_QuestCheck(8)!=2){// Что тут сам допиши
+		core_EnableNode("techs_button",false);
+	}
 }
 
 function setGlobal(name,value)
