@@ -164,6 +164,7 @@
 -Disable.Person.UI:0
 -Think.Speed:1
 -Script.In:
+	local actorSh = actor_GetActor("ACTOR.SHEKEL");
     gui_FadeIn();
 	gui_ShowDialog(null,null);
 	actorWait_Timeout(2);
@@ -376,7 +377,7 @@
 	gui_ShowDialog(null,null);
 	actorWait_Timeout(2);
 	gui_QuestOpen(9);
-	actor_DelItem(actorBo,"shvabra");
+	actor_DelItem(actor_GetActor("ACTOR.BOB"),"shvabra");
 	actorWait_SwitchToAction(actor_GetActor("ACTOR.SHEKEL"),"");
 	actorWait_SwitchToAction(actor_GetActor("ACTOR.BOB"),"");
     game_CutsceneEnd({});

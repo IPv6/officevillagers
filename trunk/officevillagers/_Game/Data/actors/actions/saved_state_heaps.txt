@@ -27,9 +27,9 @@
 	<Item><Name val="heap_block_10" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_bolshaya_stopka_bumagi.png&x[90px]&y[-181px]" /><Params val="etapContinue[1] time[100]" /></Item>
 	<Item><Name val="heap_block_10_box" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_korobka_ros.png&x[0px]&y[-5px]" /><Params val="drag[1]" /><HideIf val="heap_block_10" /></Item>
 	<Item><Name val="heap_block_11" /><ItemSpr val="\actors\items\trash\itm_trashheap_floor.spr?image=trashheap_telefon_flip.png&x[84px]&y[-188px]" /><Params val="time[100]" /></Item>
-	<Item><Name val="heap_block_0" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_crednyi_divan_ros_cloman.png&x[17px]&y[-54px]&r[35]" /><Params val="time[100]" /></Item>
-	<Item><Name val="heap_block_0-2" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_crednyi_divan_ros_cloman2.png&x[17px]&y[-54px]&r[35]" /><Params val="time[100]" /><HideIf val="heap_block_0" /></Item>
-	<Item><Name val="heap_block_0-3" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_crednyi_divan_ros_cloman3.png&x[17px]&y[-54px]&r[35]" /><Params val="time[100] EnableOtherHeap[AUTHOR_DIVAN]" /><HideIf val="heap_block_0-2" /></Item>
+	<Item><Name val="heap_block_0" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_crednyi_divan_ros_cloman.png&x[17px]&y[-54px]" /><Params val="time[100]" /></Item>
+	<Item><Name val="heap_block_0-2" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_crednyi_divan_ros_cloman2.png&x[17px]&y[-54px]" /><Params val="time[100]" /><HideIf val="heap_block_0" /></Item>
+	<Item><Name val="heap_block_0-3" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_crednyi_divan_ros_cloman3.png&x[17px]&y[-54px]" /><Params val="time[100] EnableOtherHeap[AUTHOR_DIVAN]" /><HideIf val="heap_block_0-2" /></Item>
 	</Items>
 </Actor>
 
