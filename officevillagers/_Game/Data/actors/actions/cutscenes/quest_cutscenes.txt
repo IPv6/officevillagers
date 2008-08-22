@@ -108,6 +108,7 @@
 	actorWait_SwitchToAction(actor_GetActor("ACTOR.AGATA"),"");
 	actorWait_SwitchToAction(actor_GetActor("ACTOR.BOB"),"");
     gui_QuestOpen(6);
+	actor_SetAttribute(thisActor,"Quest7Collectibles",10);
     game_CutsceneEnd({});
     actor_DetachCamera();
     actor_SwitchToAction(thisActor,"Office_script");
@@ -169,6 +170,7 @@
     gui_FadeIn();
 	gui_ShowDialog(null,null);
 	actorWait_Timeout(2);
+	actor_SetAttribute(thisActor,"Quest7Collectibles",actor_GetAttributeN(thisActor,"Quest7Collectibles")-1);
 	actorWait_SwitchToAction(actor_GetActor("ACTOR.AGATA"),"");
 	actorWait_SwitchToAction(actor_GetActor("ACTOR.SHEKEL"),"");
 	actorWait_SwitchToAction(actor_GetActor("ACTOR.BOB"),"");
