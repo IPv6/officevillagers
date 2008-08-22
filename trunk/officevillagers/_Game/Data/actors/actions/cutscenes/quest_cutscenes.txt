@@ -310,6 +310,7 @@
 	gui_ShowDialog(null,null);
 	actorWait_Timeout(2);
 	gui_QuestOpen(8);
+	core_EnableNode("techs_button",true);
 	actorWait_SwitchToAction(actor_GetActor("ACTOR.AGATA"),"");
 	actorWait_SwitchToAction(actor_GetActor("ACTOR.SHEKEL"),"");
 	actorWait_SwitchToAction(actor_GetActor("ACTOR.BOB"),"");
