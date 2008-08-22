@@ -1,0 +1,4 @@
+[Sprite]
+-Texture:janitor_muscles.png
+//Event.Mouse.Over.Tooltip:TECH.MUSCLES.DSC
+//Event.Mouse.Over.Tooltip.Formatting:<justify:13><y:-5><font-size:-1>\n<img src="\gui\dialog_frame_small.png" w="14" h="5" relative="1" y="-0.5" z="-0.001">
