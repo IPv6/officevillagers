@@ -1,0 +1,11 @@
+<techs>
+<tech>
+	<Sprite val="\asdasd\" />
+	<Points val="10" \>
+	<VisibleFromPoints val="0" \>
+	<Prerequisites>
+		<Attr::array val="ASDASD" \>
+		<Attr::array val="ASDASD2" \>
+	</Prerequisites>
+</tech>
+</techs>
