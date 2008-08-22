@@ -5,22 +5,32 @@
 -Protected:0
 -Script.In:
 	actorWait_GoTo(thisActor, "CREATOR::IDEASTABLE");
-	local collectiobl = actor_GetAttributeS(thisActor,"CurrentCollectible");
-	actor_DeleteActor(collectiobl);
-	actor_DelItem(thisActor,"collectible_item","collectible_number=0");
+	if (actor_GetAttributeN("Office","Quest7Collectibles")==1){
+		if(gui_QuestClose(6)){
+			gui_FadeIn();
+			actorWait_Timeout(2);
+			local collectiobl = actor_GetAttributeS(thisActor,"CurrentCollectible");
+			actor_DelItem(thisActor,"collectible_item","collectible_number=0");
+			actor_DeleteActor(collectiobl);
+			actor_SwitchToAction("Office","Quest6_Cutscene2");
+			return;
+		}
+	}
 	if (gui_QuestCheck(6)!=3){
 		if (gui_QuestCheck(4)!=3){
+			gui_FadeIn();
+			actorWait_Timeout(2);
+			local collectiobl = actor_GetAttributeS(thisActor,"CurrentCollectible");
+			actor_DelItem(thisActor,"collectible_item","collectible_number=0");
+			actor_DeleteActor(collectiobl);
 			actor_SetAttribute("Office","QuestName", thisActor.Name);
 			actor_SwitchToAction("Office","Quest6_Cutscene1");
 			return;
 		}
 	}
-	if (actor_GetAttributeN("Office","Quest7Collectibles")==1){
-		if(gui_QuestClose(6)){
-			actor_SwitchToAction("Office","Quest6_Cutscene2");
-			return;
-		}
-	}
+	local collectiobl = actor_GetAttributeS(thisActor,"CurrentCollectible");
+	actor_DelItem(thisActor,"collectible_item","collectible_number=0");
+	actor_DeleteActor(collectiobl);
 	actor_SetAttribute("Office","ideas",actor_GetAttributeN("Office", "ideas")+1);
 	actor_AddIcon(thisActor, "techpoint_p1");
 	actor_SwitchToAction(thisActor,"");

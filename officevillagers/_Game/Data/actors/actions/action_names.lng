@@ -124,3 +124,6 @@ ACTIONLABEL.Quest6_Cutscene2_finish=ACTIONLABEL.Quest6_Cutscene2_finish
 ACTIONLABEL.Quest7_Cutscene=ACTIONLABEL.Quest7_Cutscene
 ACTIONLABEL.Quest7_Cutscenefinish=ACTIONLABEL.Quest7_Cutscenefinish
 ACTIONLABEL.Cutscene.driver.Speed2=ACTIONLABEL.Cutscene.driver.Speed2
+ACTIONLABEL.Quest8_Cutscene=ACTIONLABEL.Quest8_Cutscene
+ACTIONLABEL.Quest8_Cutscenefinish=ACTIONLABEL.Quest8_Cutscenefinish
+ACTIONLABEL.Cutscene.driver.Speed4=ACTIONLABEL.Cutscene.driver.Speed4

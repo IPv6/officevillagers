@@ -239,4 +239,59 @@ Cмотрите.
 (С кем я работаю?)
 ... гхм... приступайте.
 #PAGEEND
+
+[DIALOG8]
+#PAGEBEGIN:(shekel.idea.png)
+Боб.
+#PAGEEND
+
+#PAGEBEGIN:(bob.png)
+Что скажешь, парень?
+#PAGEEND
+
+#PAGEBEGIN:(shekel.idea.png)
+Каквы относитесь к уколам?
+#PAGEEND
+
+#PAGEBEGIN:(bob.smile.png)
+Эх-хе. Лучше бы тебе этого не знать.
+#PAGEEND
+
+#PAGEBEGIN:(shekel.idea.png)
+А к таблеткам?
+Сладким таким?
+#PAGEEND
+
+#PAGEBEGIN:(bob.png)
+Ну, не знаю.
+#PAGEEND
+
+#PAGEBEGIN:(shekel.idea.png)
+Даже к во-он той?
+#PAGEEND
+
+[DIALOG8-1]
+#PAGEBEGIN:(bob.png)
+Ты про какую?
+#PAGEEND
+
+[DIALOG8-2]
+#PAGEBEGIN:(shekel.png)
+Хоп!
+Ну вот и всё.
+#PAGEEND
+
+#PAGEBEGIN:(bob.wow.png)
+!!!
+#PAGEEND
+
+#PAGEBEGIN:(shekel.png)
+Видите? Совсем не больно.
+Зато теперь вы легко уберёте баррикаду.
+#PAGEEND
+
+#PAGEBEGIN:(bob.smile.png)
+А ты ничего, парень.
+Далеко пойдёшь.
+#PAGEEND
 [END]<-Обязательный тег, указывающий на окончание файла диалогов
