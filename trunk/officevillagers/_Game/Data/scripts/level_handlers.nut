@@ -82,6 +82,10 @@ function event_OnLoadGame(gameSafe)
 			setFloorPosition({_x=-officeActor._x, _y=-officeActor._y});
 		}
 	}
+	// Грузим дерево технологий
+	local lTechs=core_ReadTextFile(core_GetDataPath("\\actors\\quests\\techtree.txt"));
+	g_techTree <- core_DeserializeObj(lTechs,true);
+	//core_Alert(dumpVariable(g_techTree));
 	setMainFloorClamp(true);// Баррикада и т.п.
 }
 

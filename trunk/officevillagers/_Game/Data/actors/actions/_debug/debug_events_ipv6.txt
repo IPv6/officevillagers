@@ -12,7 +12,7 @@
 	//game_CutsceneBegin({});
 -Script.In.Alt:
 	local actorAg = actor_GetActor("ACTOR.AGATA");
-	core_Alert("Good!!");
+	//core_Alert("Good!!");
 	actorWait_Timeout(3);
 	actor_SitOnChair(actorAg,"TABLE.AGATASIDE",true);
 	actorWait_Timeout(3);
@@ -21,7 +21,7 @@
 	actor_SitOnChair(actorAg,"TABLE.AGATASIDE",true);
 	actorWait_Timeout(3);
 	actor_Unsit(actorAg);
-	core_Alert("Good-end!!");
+	//core_Alert("Good-end!!");
 -Script.In:
 	local i=0;
 	local actorSh = actor_GetActor("ACTOR.SHEKEL");

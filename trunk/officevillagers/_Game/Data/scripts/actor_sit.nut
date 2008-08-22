@@ -14,6 +14,15 @@ function actor_SendToLocation(thisActor,locname)
 	return actor_SendToLocation_i(thisActor,locname);
 }
 
+function actor_SetActorPos(thisActor,locname)
+{
+	thisActor = actor_GetActor(thisActor);
+	// Проверяем, если перс сидит - его надо поднять
+	actor_Unsit(thisActor);
+	// посылаем перса по адресу...
+	return actor_SetActorPos_i(thisActor,locname);
+}
+
 function getPersSitSprite(thisActor,forTable)
 {
 	local res="";
