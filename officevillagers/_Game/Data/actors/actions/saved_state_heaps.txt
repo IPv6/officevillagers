@@ -464,15 +464,15 @@
 		OptionLong[exploration]=2
 	</Attributes>
 	<Items>
-		<Item><Name val="heap_block_1" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_gazetnaya_pachka_ros.png&x[108px]&y[-101px]" /><Params val="time[100]" /></Item>
+		<Item><Name val="heap_block_1" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_gazetnaya_pachka_ros.png&x[98px]&y[-71px]" /><Params val="time[100]" /></Item>
 		<Item><Name val="heap_block_2" /><ItemSpr val="\actors\items\trash\itm_trashheap_floor.spr?image=trashheap_yaschik_stola.png&x[64px]&y[104px]&r[55]" /><Params val="time[100]" /></Item>
-		<Item><Name val="heap_block_3" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_ctopka_zhurnalov_zel.png&x[50px]&y[-69px]&r[15]" /><Params val="time[100]" /></Item>
-		<Item><Name val="heap_block_4" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_ctopka_zhurnalov_zel.png&x[8px]&y[56px]&r[5]" /><Params val="time[100]" /></Item>
-		<Item><Name val="heap_block_5" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_ctopka_zhurnalov_zel.png&x[23px]&y[-77px]&r[25]" /><Params val="time[100]" /></Item>
+		<Item><Name val="heap_block_3" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_ctopka_zhurnalov_zel.png&x[50px]&y[-79px]&r[15]" /><Params val="time[100]" /></Item>
+		<Item><Name val="heap_block_4" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_ctopka_zhurnalov_zel.png&x[8px]&y[-46px]&r[5]" /><Params val="time[100]" /></Item>
+		<Item><Name val="heap_block_5" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_ctopka_zhurnalov_zel.png&x[23px]&y[-57px]&r[25]" /><Params val="time[100]" /></Item>
 		<Item><Name val="heap_block_6" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_ctopka_zhurnalov_zel.png&x[25px]&y[-34px]" /><Params val="time[100]" /></Item>
-		<Item><Name val="heap_block_7" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_holodilnik3.png&x[84px]&y[-16px]" /><Params val="time[100]" /></Item>
-		<Item><Name val="heap_block_7-2" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_holodilnik2.png&x[84px]&y[-16px]" /><Params val="time[100]" /><HideIf val="heap_block_7" /></Item>
-		<Item><Name val="heap_block_7-3" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_holodilnik.png&x[84px]&y[-16px]" /><Params val="time[100] EnableOtherHeap[KORIDOR_HOLODILNIK]" /><HideIf val="heap_block_7-2" /></Item>
+		<Item><Name val="heap_block_7" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_holodilnik3.png&x[64px]&y[-16px]" /><Params val="time[100]" /></Item>
+		<Item><Name val="heap_block_7-2" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_holodilnik2.png&x[64px]&y[-16px]" /><Params val="time[100]" /><HideIf val="heap_block_7" /></Item>
+		<Item><Name val="heap_block_7-3" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_holodilnik.png&x[64px]&y[-16px]" /><Params val="time[100] EnableOtherHeap[KORIDOR_HOLODILNIK]" /><HideIf val="heap_block_7-2" /></Item>
 	</Items>
 </Actor>
 
@@ -593,9 +593,9 @@
 		<Item><Name val="heap_block_8" /><ItemSpr val="\actors\items\trash\itm_trashheap_floor.spr?image=trashheap_gazetnyi_list_ros.png&x[184px]&y[-21px]&r[85]" /><Params val="time[100]" /></Item>
 		<Item><Name val="heap_block_9" /><ItemSpr val="\actors\items\trash\itm_trashheap_floor.spr?image=trashheap_gazetnyi_list_ros.png&x[101px]&y[-16px]&r[125]" /><Params val="time[100]" /></Item>
 		<Item><Name val="heap_block_10" /><ItemSpr val="\actors\items\trash\itm_trashheap_floor.spr?image=trashheap_kruzhka.png&x[2px]&y[-5px]" /><Params val="time[100]" /></Item>
-		<Item><Name val="heap_block_1" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_royal.png&x[96px]&y[-47px]" /><Params val="time[100]" /></Item>
-		<Item><Name val="heap_block_1-2" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_royal2.png&x[96px]&y[-47px]" /><Params val="time[100]" /><HideIf val="heap_block_1" /></Item>
-		<Item><Name val="heap_block_1-3" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_royal3.png&x[96px]&y[-47px]" /><Params val="time[100] EnableOtherHeap[ROYAL]" /><HideIf val="heap_block_1-2" /></Item>
+		<Item><Name val="heap_block_1" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_royal.png&x[70px]&y[-47px]" /><Params val="time[100]" /></Item>
+		<Item><Name val="heap_block_1-2" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_royal2.png&x[70px]&y[-47px]" /><Params val="time[100]" /><HideIf val="heap_block_1" /></Item>
+		<Item><Name val="heap_block_1-3" /><ItemSpr val="\actors\items\trash\itm_trashheap.spr?image=trashheap_royal3.png&x[70px]&y[-47px]" /><Params val="time[100] EnableOtherHeap[ROYAL]" /><HideIf val="heap_block_1-2" /></Item>
 	</Items>
 </Actor>
 
