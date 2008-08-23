@@ -29,7 +29,7 @@ function initTechsDialog()
 	for(i=0;i<g_TechsOnPage;i++){
 		local slotNodeName=format("tech_slot%i",i);
 		core_DeleteNode(slotNodeName);
-		core_CreateSprite("\\gui\\level_quest_slot.spr","level_techs",{x=0, y=8-4*i, z=-0.0002, w=1, h=1, name=slotNodeName });
+		core_CreateSprite("\\gui\\level_quest_slot.spr","level_techs",{x=-4.5, y=8.6-5.2*i, z=-0.0002, w=0.97, h=1.5, name=slotNodeName });
 		core_SetNodeText(core_GetNode(slotNodeName),"");
 	}
 	local iSlotNum=0;
@@ -57,7 +57,7 @@ function initTechsDialog()
 		}
 		// Добавляем
 		local slotNodeName=format("tech_slot%i",iSlotNum);
-		core_CreateSprite(singletech.Sprite,slotNodeName,{x=0, y=0, z=-0.0002, w=9, h=3});
+		core_CreateSprite(singletech.Sprite,slotNodeName,{x=0, y=0, z=-0.0002, w=12, h=4});
 		core_SetNodeAction(core_GetNode(slotNodeName),format("level_BuyTechs(\"%s\");",singletech.Name));
 		iSlotNum++;
 	}
@@ -82,6 +82,7 @@ function level_BuyTechs(techNumber)
 			continue;
 		}
 		if(singletech.Points2Buy>points){
+			core_CreateSprite("gui\\buttons\\tech_points_hightlight.spr","hudIdeasCount2",{y=0.3, w=8.5, h=1.8});
 			$ifdebug core_Warning("not enoughp points for "+techNumber);
 			return;
 		}

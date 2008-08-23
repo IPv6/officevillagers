@@ -127,9 +127,9 @@
 -Position:x15.2 y0.1 z0.000001
 -Size:2
 -Event.Mouse.Click.Action:gui_ClearHint(false);
--Event.Mouse.Click.Image:buttons\button_overlay.spr?button=1
+-Event.Mouse.Click.Image:buttons\button_overlay.spr?button=0
 -Event.Mouse.Click.Sound:menu_button_click
--Event.Mouse.Over.Image:buttons\button_overlay.spr?button=1
+-Event.Mouse.Over.Image:buttons\button_overlay.spr?button=0
 -Event.Mouse.Over.Sound:menu_button_over
 
 
@@ -142,7 +142,7 @@
 -Position:x19.2 y-14.2 z0.091
 -Size:2
 -Event.Mouse.Click.Action:gui_GenerateHint();
--Event.Mouse.Click.Image:buttons\button_overlay.spr?button=1
+-Event.Mouse.Click.Image:buttons\button_overlay.spr?button=0
 -Event.Mouse.Click.Sound:menu_button_click
--Event.Mouse.Over.Image:buttons\button_overlay.spr?button=1
+-Event.Mouse.Over.Image:buttons\button_overlay.spr?button=0
 -Event.Mouse.Over.Sound:menu_button_over

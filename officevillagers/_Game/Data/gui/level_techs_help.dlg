@@ -5,61 +5,70 @@
 -Event.Keyboard.Esc.Pressed:core_CloseDialog("level_techs_help");
 
 [Sprite]
+// Идеи
 -Texture:dialog_frame_slot.png
--Position:x12 y6 z-0.001
+-Position:x2 y10.5 z-0.001
 -Label:GUI.TECHS.HELP2
 -Label.Formatting:<justify:14><y:1.42><font-size:-1>
 -Size:w12 h5
 
 [Sprite]
+// Идеи
 -Texture:arrow.png
--Position:x10 y9.4 z-0.0011
--Rotation:-90
+-Position:x9 y9 z-0.0011
+-Rotation:-135
 -Size:3
 
 [Sprite]
+// слот 1
 -Texture:dialog_frame_slot.png
--Position:x-7 y4.3 z-0.001
+-Position:x-10 y4.3 z-0.001
 -Label:GUI.TECHS.HELP4
 -Label.Formatting:<justify:14><y:0.42><font-size:-1>
 -Size:w12 h3
 
 [Sprite]
+// слот 1
 -Texture:arrow.png
 -Position:x-7 y7 z-0.0011
 -Rotation:-45
 -Size:3
 
 [Sprite]
+//Общее описание
 -Texture:dialog_frame_slot.png
--Position:x-10 y-5 z-0.001
+-Position:x7 y-9 z-0.001
 -Label:GUI.TECHS.HELP1
 -Label.Formatting:<justify:14><y:3.2><font-size:-1>
 -Size:w14 h8
 
 [Sprite]
+// Основной хелп
 -Texture:dialog_frame_slot.png
--Position:x8 y-3 z-0.001
+-Position:x-10 y-7 z-0.001
 -Label:GUI.TECHS.HELP3
 -Label.Formatting:<justify:16><y:4.7><font-size:-1>
 -Size:w15 h12
 
 [Sprite]
+// Основной хелп
 -Texture:arrow.png
--Position:x2 y4.3 z-0.0011
+-Position:x-4 y0.2 z-0.0011
 -Rotation:-45
 -Size:3
 
 [Sprite]
+// Закрыть
 -Texture:dialog_frame_slot.png
--Position:x-11 y-11.3 z-0.001
+-Position:x3 y4 z-0.001
 -Label:GUI.TECHS.HELP5
 -Label.Formatting:<justify:10><y:1.0><font-size:-1>
 -Size:w11 h4
 
 [Sprite]
+// Закрыть
 -Texture:arrow.png
--Position:x-4 y-11.3 z-0.0011
+-Position:x9 y4 z-0.0011
 -Rotation:225
 -Size:3
 

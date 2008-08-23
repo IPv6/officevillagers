@@ -1,0 +1,5 @@
+[Sprite]
+-Texture:button_overlay.spr?button=1
+-Position: z-0.001
+-Animation.AlphaPulsar:t500 a1.0
+-Selfdestruction:2000 f500

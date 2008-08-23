@@ -1,10 +1,10 @@
 <techs>
-<tech::array>
-	<Name							val="MUSCLES" />
-	<Sprite							val="\actors\quests\tech_icons\janitor_muscles.spr" />
-	<Points2Buy					val="10" />
-	<Points2View				val="0" />
-	<Prerequisite::array	OfficeAttribute="TECH_MUSCLES" ValueN="0" />
-	<Result::array				OfficeAttribute="TECH_MUSCLES" ValueN="1" />
-</tech::array>
+<array:tech>
+	<Name val="MUSCLES" />
+	<Sprite val="\actors\quests\tech_icons\janitor_muscles.spr" />
+	<Points2Buy val="10" />
+	<Points2View val="0" />
+	<array:Prerequisite OfficeAttribute="TECH_MUSCLES" ValueN="0" />
+	<array:Result OfficeAttribute="TECH_MUSCLES" ValueN="1" />
+</array:tech>
 </techs>
