@@ -2,7 +2,7 @@
 	<Name val="Heaps.Barricada" />
 	<Sprite val="actors\items\trash\barricada.spr" />
 	<Position.Location val="FurniDrops::BARRICADA" />
-	<ActorProphession val="FURNITURE" />
+	<ActorProphession val="COLLECTIBLE.FURNITURE" />
 	<Items></Items>
 </Actor>
 

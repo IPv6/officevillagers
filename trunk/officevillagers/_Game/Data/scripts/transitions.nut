@@ -56,8 +56,10 @@ function gui_FadeIn()
 
 function gui_FadeInX(time)
 {
-	if(core_GetNode("_fader")!=null){
-		return;
+	core_Warning("gui_FadeInX - begin");
+    if(core_GetNode("_fader")!=null){
+		core_Warning("gui_FadeInX - fail!!!");
+         return;
 	}
 	core_CreateSprite("gui\\fade.spr","pole");
 	local fader=core_GetNode("_fader");
@@ -73,10 +75,12 @@ function gui_FadeOut()
 
 function gui_FadeOutX(time)
 {
-	if(core_GetNode("_fader")==null){
-		// ≈ще не
-		return;
-	}
+	core_Warning("gui_FadeOutX - begin");
+    if(core_GetNode("_fader")==null){
+        // ≈ще не
+		core_Warning("gui_FadeOutX - fail!!!");
+        return;
+    }
 	core_FadeSprite("_fader",-1.0,0.0,time,1);
 }
 

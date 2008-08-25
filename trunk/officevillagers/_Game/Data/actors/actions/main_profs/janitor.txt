@@ -157,6 +157,7 @@
             if(isEtapContinue!=1)
                {// Конец этапа уборки. забываем про предпочтительный мусор
                     actor_SetAttribute(thisActor,"PrefferedTrash","");
+					
                }
 			local isDragMusor = actor_GetItemAttribute(TrashName,CurrentTrashItem,"drag");
 			if(isDragMusor!=false)
@@ -196,7 +197,10 @@
                if(isDragMusor.len()>0){
                     switchToDragTrash = isDragMusor.tointeger();
                }
+			   quest_conditions({_fromDelHeap=true, heapName=TrashName, actor=thisActor.Name});
+			   core_Warning(TrashName);
                actor_DeleteActor(TrashName);
+			   
 		}
 		$ifdebug __DebugActor(thisActor,"step 8");
 		if(switchToDragTrash>0){

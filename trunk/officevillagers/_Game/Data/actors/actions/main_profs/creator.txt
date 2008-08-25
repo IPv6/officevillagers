@@ -31,13 +31,13 @@
 	//счётчик прогресса рождения идеи...пускай идея в 66 секунд..
 	if(getTime()-actor_GetAttributeN(thisActor,"time_percent_material")>getGlobal("creator_work_sec")){
 		actor_SetAttribute("Office","ideas",actor_GetAttributeN("Office", "ideas")+1);
-		actor_SetAttribute(thisActor, "time_percent_material", actor_GetAttributeN(thisActor, "time_percent_material")-getGlobal("creator_work_sec"));
+		actor_SetAttribute(thisActor, "time_percent_material", getTime());
 		actor_AddIcon(thisActor, "techpoint_p1");
 	}
 	//счётчик усталости...1% за 13 секунд
 	if(getTime()-actor_GetAttributeN(thisActor,"time_percent_tire")>getGlobal("creator_tire_sec")){
 		actor_SetAttribute(thisActor,"tire",actor_GetAttributeN(thisActor,"tire")+1);
-		actor_SetAttribute(thisActor,"time_percent_tire",actor_GetAttributeN(thisActor,"time_percent_tire")-getGlobal("creator_tire_sec"));
+		actor_SetAttribute(thisActor,"time_percent_tire",getTime());
 		actor_AddIcon(thisActor, "boredom_p1");
 	}
 
