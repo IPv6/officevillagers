@@ -20,7 +20,7 @@ function quest_conditions(conditions)
 	{// Из дропа на локацию
 		if((actor_GetActorProfession(conditions._actorFrom)=="JANITOR" || actor_GetActorProfession(conditions._actorFrom)=="JANITOR-EXPERT")
 		&& conditions._locName == "FurniDrops::BARRICADA"
-		&& nloc_CheckWalkablePath("FurniDrops::BARR_FROM","Heaps.Barricada")!=false){
+		&& nloc_CheckWalkablePath("FurniDrops::BARR_FROM","FurniDrops::BARRICADA")!=false){
 			if(gui_QuestClose(7)){
 				gui_StartCutscene("Quest7_Cutscene");
 			}
@@ -41,7 +41,7 @@ function quest_conditions(conditions)
 			gui_StartCutscene("Quest4_Cutscene");
 		}
     }
-	if("_fromTech" in conditions)
+	if("_fromTech" in conditions)//проверка квестов, вызываемых из экрана технологий
 	{
 	if(conditions.newTech=="MUSCLES"){
 		if(gui_QuestClose(8)){
@@ -49,4 +49,26 @@ function quest_conditions(conditions)
 			}		
 		}
 	}
+
+	if("_fromDelHeap" in conditions)//проверка квестов, вызвваемых при удалении кучи мусора
+	 {
+		if (conditions.heapName=="Heaps.Barricada" && gui_QuestClose(9)){
+			gui_StartCutscene("Alpha_Last_Cutscene");
+			}
+	 }
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

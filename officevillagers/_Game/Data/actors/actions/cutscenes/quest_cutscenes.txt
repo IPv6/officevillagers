@@ -124,6 +124,7 @@
 	
 	actor_AttachCamera(actorSh);
 	actor_SetActorPos(actorSh,"CREATOR::IDEASTABLESHEKEL");
+	actor_OrientBody(actorSh,"CREATOR::IDEASTABLE");
 	game_CutsceneBegin({_who="Office", _action="Quest6_Cutscene1_finish", _changeUI=false});
 	actor_AddItem(actorSh,"collectible_item","collectible_number=0");
 	gui_FadeOut();
@@ -135,6 +136,7 @@
 	}
 	if (actor_GetAttributeS("Office","QuestName")=="ACTOR.AGATA"){
 		gui_ShowDialog(dialogFile, { _section="DIALOG6", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
+		actor_SetAttribute("Office","Quest6Agata",1);
 		}
 	while(gui_IsDialogOpen()==true){
 		::suspend();
@@ -188,6 +190,7 @@
 -Think.Speed:1
 -Script.In:
 	local actorSh = actor_GetActor("ACTOR.SHEKEL");
+	local actorAg = actor_GetActor("ACTOR.AGATA");
 	actorWait_SwitchToAction(actorSh,"Cutscene.driver");
 	actor_AttachCamera(actorSh);
 	actor_SetActorPos(actorSh,"CREATOR::IDEASTABLESHEKEL");
@@ -310,6 +313,7 @@
 	actorWait_SwitchToAction(actor_GetActor("ACTOR.AGATA"),"");
 	actorWait_SwitchToAction(actor_GetActor("ACTOR.SHEKEL"),"");
 	actorWait_SwitchToAction(actor_GetActor("ACTOR.BOB"),"");
+	actor_MakePocketEmpty(actor_GetActor("ACTOR.SHEKEL"));
     game_CutsceneEnd({});
     actor_DetachCamera();
     actor_SwitchToAction(thisActor,"Office_script");
@@ -367,6 +371,80 @@
 	
 [Event]
 -Name:Quest8_Cutscenefinish
+-Prq.IsGlobalEvent:0
+-Protected:2
+-Priority:-1
+-Disable.Person.UI:0
+-Think.Speed:1
+-Script.In:
+    gui_FadeIn();
+	gui_ShowDialog(null,null);
+	actorWait_Timeout(2);
+	gui_QuestOpen(9);
+	actor_DelItem(actor_GetActor("ACTOR.BOB"),"shvabra");
+	actorWait_SwitchToAction(actor_GetActor("ACTOR.SHEKEL"),"");
+	actorWait_SwitchToAction(actor_GetActor("ACTOR.BOB"),"");
+    game_CutsceneEnd({});
+    actor_DetachCamera();
+    actor_SwitchToAction(thisActor,"Office_script");
+    gui_FadeOut();
+	
+[Event]
+-Name:Alpha_Last_Cutscene
+-Prq.IsGlobalEvent:0
+-Protected:2
+-Priority:-1
+-Disable.Person.UI:0
+-Think.Speed:1
+-Script.In:
+	local actorSh = actor_GetActor("ACTOR.SHEKEL");
+	local actorAg = actor_GetActor("ACTOR.AGATA");
+	local actorSi = actor_GetActor("ACTOR.SINTI");
+	local actorBo = actor_GetActor("ACTOR.BOB");
+	
+	actorWait_SwitchToAction(actorSh,"Cutscene.driver");
+	actorWait_SwitchToAction(actorAg,"Cutscene.driver");
+	actorWait_SwitchToAction(actorBo,"Cutscene.driver");
+	actorWait_SwitchToAction(actorSi,"Cutscene.driver");
+	gui_FadeIn();
+	actorWait_Timeout(2);
+	actor_AttachCamera(ActorBo);
+	actor_SetActorPos(actorSh,"SCENES_QuestCutscenes::DOT6");
+	actor_SetActorPos(actorBo,"SCENES_QuestCutscenes::DOT5");
+	actor_OrientBody(actorBo,180);
+	actor_OrientBody(actorSh,actorBo);
+	actor_AddItem(actorBo,"shvabra");
+	game_CutsceneBegin({_who="Office", _action="Quest8_Cutscenefinish", _changeUI=false});
+	gui_FadeOut();
+	actorWait_Timeout(2);
+	local dialogFile = core_GetDataPath("text\\quest_cutscenes_dialog.lng");
+	actorWait_GoTo(actorSh,"SCENES_QuestCutscenes::DOT7");
+	gui_ShowDialog(dialogFile, { _section="DIALOG8", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
+	while(gui_IsDialogOpen()==true){
+		::suspend();
+	}
+	actorWait_Timeout(0.5);
+	actor_OrientHead(actorBo,90);
+	actorWait_Timeout(1);
+	gui_ShowDialog(dialogFile, { _section="DIALOG8-1", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
+	while(gui_IsDialogOpen()==true){
+		::suspend();
+	}
+	actorWait_SwitchToAction(actorSh,"Cutscene.driver.Speed4");
+	actor_OrientBody(actorBo,actorAg);
+	actorWait_GoTo(actorSh,"SCENES_QuestCutscenes::DOT5");
+	actorWait_GoTo(actorSh,"SCENES_QuestCutscenes::DOT7");
+	actor_OrientBody(actorSh,actorBo);
+	actor_OrientBody(actorBo,actorSh);
+	actor_OrientHead(actorBo,actorSh);
+	gui_ShowDialog(dialogFile, { _section="DIALOG8-2", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
+	while(gui_IsDialogOpen()==true){
+		::suspend();
+	}
+	actor_SwitchToAction(thisActor,"Quest8_Cutscenefinish");
+	
+[Event]
+-Name:Alpha_Last_Cutscenefinish
 -Prq.IsGlobalEvent:0
 -Protected:2
 -Priority:-1
