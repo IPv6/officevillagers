@@ -62,3 +62,56 @@
 	actorWait_Timeout(999);
 	
 	
+[Event]
+-Name:DEBUGCutscene
+-Prq.IsGlobalEvent:0
+-Protected:2
+-Priority:-1
+-Disable.Person.UI:0
+-Think.Speed:1
+-Script.In:
+	local actorSh = actor_GetActor("ACTOR.SHEKEL");
+	local actorAg = actor_GetActor("ACTOR.AGATA");
+	local actorSi = actor_GetActor("ACTOR.SINTI");
+	local actor2 = actor_GetActor("ACTOR2");
+	actorWait_SwitchToAction(actorSh,"Cutscene.driver");
+	actorWait_SwitchToAction(actorAg,"Cutscene.driver");
+	actorWait_SwitchToAction(actorSi,"Cutscene.driver");
+	actorWait_SwitchToAction(actor2,"Cutscene.driver");
+	gui_FadeIn();
+	actorWait_Timeout(2);
+	actor_AttachCamera(actor_GetActor("ACTOR.AGATA"));
+	actor_SetActorPos(actorSh,"SCENES_QuestCutscenes::DOT8");
+	actor_SetActorPos(actorAg,"SCENES_QuestCutscenes::DOT10");
+	actor_SetActorPos(actorSi,"SCENES_QuestCutscenes::DOT11");
+	actor_SetActorPos(actor2,"SCENES_QuestCutscenes::DOT9");
+	game_CutsceneBegin({_who="Office", _action="DEBUGCutscenefinish", _changeUI=false});
+	gui_FadeOut();
+	actorWait_Timeout(2);
+	local dialogFile = core_GetDataPath("text\\quest_cutscenes_dialog.lng");
+	gui_ShowDialog(dialogFile, { _section="DIALOG222", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
+	while(gui_IsDialogOpen()==true){
+		::suspend();
+	}
+	actor_SwitchToAction(thisActor,"DEBUGCutscenefinish");
+	
+[Event]
+-Name:DEBUGCutscenefinish
+-Prq.IsGlobalEvent:0
+-Protected:2
+-Priority:-1
+-Disable.Person.UI:0
+-Think.Speed:1
+-Script.In:
+    gui_FadeIn();
+	gui_ShowDialog(null,null);
+	actorWait_Timeout(2);
+	actorWait_SwitchToAction(actor_GetActor("ACTOR.SHEKEL"),"");
+	actorWait_SwitchToAction(actor_GetActor("ACTOR.AGATA"),"");
+	actorWait_SwitchToAction(actor_GetActor("ACTOR.SINTI"),"");
+	actorWait_SwitchToAction(actor_GetActor("ACTOR2"),"");
+    game_CutsceneEnd({});
+    actor_DetachCamera();
+    actor_SwitchToAction(thisActor,"Office_script");
+    gui_FadeOut();
+	

@@ -27,7 +27,7 @@
 	}
 	
 	$ifdebug __DebugActor(thisActor,"step 2");
-	//если мусор не найден, отпарвляется страдать фигнёй
+	//если мусор не найден, отпарвляется страдать фигней
 	if (!trashObjectTable || actor_GetAttributeN(trashObjectTable,"__InPocket")!=0){
 		$ifdebug __DebugActor(thisActor,"Свободных мусоров нет");
 		actor_SwitchToAction(thisActor,"NONE_Script");
@@ -60,7 +60,7 @@
 		actor_SwitchToAction(thisActor,"NONE_Script");
 		return;
 	};
-	//повторная проверка, на случай, если мусор "заняли", пока уборщик к нему шёл
+	//повторная проверка, на случай, если мусор "заняли", пока уборщик к нему шел
 	if (actor_GetAttributeN(trashObjectName,"__BUSY")!=1 || actor_GetAttributeN(trashObjectTable,"__InPocket")!=0){
 		//если не заняли, оставляет название мусора себе в атибутахи топает работать с ним
 		$ifdebug __DebugActor(thisActor,"step 7");
@@ -212,7 +212,7 @@
 		return;
 	}
 	
-	//счётчик усталости...1% за 13 секунд
+	//счетчик усталости...1% за 13 секунд
 	if(getTime()-actor_GetAttributeN(thisActor,"time_percent_tire")>getGlobal("janitor_tire_sec")){
 		actor_SetAttribute(thisActor,"tire",actor_GetAttributeN(thisActor,"tire")+1);
 		actor_SetAttribute(thisActor,"time_percent_tire",getTime());
@@ -220,7 +220,7 @@
 	}
 
 	//если усталость 70 или выше, пускаем актора отдыхать (проверка на готовность статьи прописана выше по тексту, так что если усталость
-	// и готовность наступит одновременно, усталый автор всё равно потащит номер и даже может сэкономить единичку усталости)
+	// и готовность наступит одновременно, усталый автор все равно потащит номер и даже может сэкономить единичку усталости)
 	if(actor_GetAttributeN(thisActor,"tire")>(getGlobal("danger_tire")-1)){
 		$ifdebug __DebugActor(thisActor,TrashName+" - напала усталость");
 		actor_SwitchToAction(thisActor,"NONE_Script");

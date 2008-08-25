@@ -108,3 +108,5 @@ ACTIONLABEL.Talking=ACTIONLABEL.Talking
 ACTOR.1=ACTOR.1
 ACTIONLABEL.Alpha_Last_Cutscene=ACTIONLABEL.Alpha_Last_Cutscene
 ACTIONLABEL.Alpha_Last_Cutscenefinish=ACTIONLABEL.Alpha_Last_Cutscenefinish
+ACTIONLABEL.DEBUGCutscene=ACTIONLABEL.DEBUGCutscene
+ACTIONLABEL.DEBUGCutscenefinish=ACTIONLABEL.DEBUGCutscenefinish

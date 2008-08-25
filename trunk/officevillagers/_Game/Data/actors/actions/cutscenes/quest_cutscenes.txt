@@ -56,7 +56,7 @@
 	gui_FadeIn();
 	actorWait_Timeout(2);
 	game_CutsceneBegin({_who="Office", _action="CutScene5_finish", _changeUI=false});
-	//создаём коллектибл
+	//создаем коллектибл
 	local sTemplateName = "collectible.trash";
 	local sTemplateOptions="";
 	sTemplateName = "collectible";

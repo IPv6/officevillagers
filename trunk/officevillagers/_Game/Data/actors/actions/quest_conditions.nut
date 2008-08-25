@@ -57,7 +57,8 @@ function quest_conditions(conditions)
 			}
 	 }
 	
-}
+
+	}
 
 
 

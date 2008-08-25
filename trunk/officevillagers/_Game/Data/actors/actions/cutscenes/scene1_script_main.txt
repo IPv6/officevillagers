@@ -127,5 +127,6 @@
 			::suspend();
 			}
 		}
+	gui_ShowDialog(null,null);
 	gui_FadeOut();
 	actor_SwitchToAction("Office","Office_script");
