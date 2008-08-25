@@ -30,6 +30,13 @@ function dropOnTable(thisActor,tableActor)
 
 function dropOnPers(thisActor,persActor)
 {
+	
+	//дебажная катсцена
+	if (thisActor.Name=="ACTOR2"){
+		actor_SwitchToAction("Office","DEBUGCutscene");
+		return;
+	}
+	
 	core_Warning(format("Drop on pers! %s on %s ",thisActor.Name,persActor.Name));
 	actor_MakePocketEmpty(thisActor);
 	actor_MakePocketEmpty(persActor);
@@ -40,7 +47,7 @@ function dropOnPers(thisActor,persActor)
 	actor_OrientBody(persActor,thisActor);
 	quest_conditions({ _fromDrop=1, _actorFrom=thisActor, _actorTo=persActor });
 
-	//если стажёра кинуть на не стажёра...стажёр начнёт учиться, предвариетльно забрав учителя себе в атрибуты...так же он отмечает, что учительу него есть
+	//если стажера кинуть на не стажера...стажер начнет учиться, предвариетльно забрав учителя себе в атрибуты...так же он отмечает, что учительу него есть
 	if(actor_GetActorProfession(thisActor)=="STAGER" && actor_GetActorProfession(persActor)!="STAGER"){
 		actor_SetAttribute(thisActor,"__ScheduledTeacher",persActor.Name);
 		actor_SetAttribute(thisActor,"__MANUALSTUDY",1);
@@ -59,7 +66,10 @@ function dropOnTrash(thisActor,trashActor)
 	if(actor_GetAttributeN(trashActor,"__BUSY")==0 
 		&& (actor_GetActorProfession(thisActor)=="JANITOR" || actor_GetActorProfession(thisActor)=="JANITOR-EXPERT"))
 	{
-		// Проверяем что до этого мусора есть путь от середины корридора
+		//если это баррикада, проверяем открыта ли технология
+		//if(trashActor.Name=="Heaps.Barricada" && 
+		
+		// Проверяем что до этого мусора есть путь от середины корридора	
 		if(nloc_CheckWalkablePath("FurniDrops::BARR_FROM",trashActor)==false){
 			$ifdebug core_Warning("Drop on trash skipped: no path to "+trashActor.Name);
 			// Если пути нет - это еще не конец. Отдельные мусора имеют альтернативные подходы для дропа, проверяем может путь есть к ним?
