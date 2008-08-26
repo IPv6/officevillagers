@@ -65,7 +65,6 @@ function levelKeyHandler(key)
 			}
 			if(key._key==189)//  '-'
 			{
-				//game_SaveGame();
 				SaveGameAttrEditDialog();
 			}
 			if(key._key==187)//  '='
@@ -148,6 +147,33 @@ function levelKeyHandler(key)
 		}
 	}
 	if(key._pressed){
+		if(core_IsDebug()){
+			if(key._key==49)//1
+			{
+				game_SetGameSpeed(1.0);
+				core_Warning(format("Current game speed: %f",game_GetGameSpeed()));
+			}
+			if(key._key==50)//2
+			{
+				game_SetGameSpeed(3.0);
+				core_Warning(format("Current game speed: %f",game_GetGameSpeed()));
+			}
+			if(key._key==51)//3
+			{
+				game_SetGameSpeed(5.0);
+				core_Warning(format("Current game speed: %f",game_GetGameSpeed()));
+			}
+			if(key._key==52)//4
+			{
+				game_SetGameSpeed(7.0);
+				core_Warning(format("Current game speed: %f",game_GetGameSpeed()));
+			}
+			if(key._key==53)//5
+			{
+				game_SetGameSpeed(9.0);
+				core_Warning(format("Current game speed: %f",game_GetGameSpeed()));
+			}
+		}
 		// Основное
 		if(key._key==2)//Правая кнопка мыши
 		{

@@ -449,6 +449,11 @@ void CLevel::CLevelSaveData::ApplySerialization()
 
 BOOL CLevel::SaveGame(const char* szPostfix)
 {
+	static BOOL bDisableSave=atol(getGame().getOptions().GetIniParam("DisableSave"));
+	if(bDisableSave && szPostfix[0]==0){
+		AddDebugScreenLine("Warning: Cutscene Skipped game save!!!",1000);
+		return FALSE;
+	}
 	if(bIsCutscene){
 		// Во время катсцены сохранцки не пашут... по идее сохранка должна быть в момент включения катсцены
 		return FALSE;
@@ -475,11 +480,7 @@ BOOL CLevel::SaveGame(const char* szPostfix)
 
 BOOL CLevel::OnLevelClose()
 {
-#ifndef _DEBUG
-	SaveGame();
-#else
-	getGame().addLogLine("Warning: Cutscene Skipped game save!!!",ELL_WARNING);
-#endif
+	SaveGame("");
 	return TRUE;
 }
 

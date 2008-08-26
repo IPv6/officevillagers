@@ -24,6 +24,7 @@
 	//core_Alert("Good-end!!");
 -Script.In:
 	local i=0;
+	actor_SetAttribute("Office","AAA","MegaTest asdasd");
 	local actorSh = actor_GetActor("ACTOR.SHEKEL");
 	local actorAg = actor_GetActor("ACTOR.AGATA");
 	local actorSi = actor_GetActor("ACTOR.SINTI");
@@ -37,6 +38,12 @@
 	
 	//Antiquest8
 	core_EnableNode("techs_button",true);
+	
+	//if(false)
+	{//Выбор имени журнала
+		//game_AskMagazineName();
+		game_StartPuzzle();
+	}
 	
 	if(false)
 	{//Удаление/создание актеров
@@ -67,7 +74,7 @@
 		//actorWait_Timeout(5);
 	}
 	
-	//if(false)
+	if(false)
 	{// Разговоры
 		actor_SwitchToAction("Office","Office_script");
 		actor_SwitchToAction(actorBo,"NONE_Script");
@@ -81,10 +88,15 @@
 		//gui_StartCutscene("Quest4_Cutscene");
 		//game_CutsceneBegin({});
 		//game_CutsceneEnd({});
-		gui_QuestOpen(5);
 		gui_QuestOpen(1);
+		//actorWait_Timeout(1);
 		gui_QuestOpen(2);
-		actorWait_Timeout(10);
+		gui_QuestOpen(3);
+		gui_QuestOpen(4);
+		gui_QuestOpen(5);
+		gui_QuestOpen(6);
+		gui_QuestOpen(7);
+		gui_QuestOpen(8);
 		gui_QuestHighlight(1);
 	}
 	
@@ -186,11 +198,6 @@
 		dataSafe.testMirror <- thisActor;
 	}
 	
-	if(false)
-	{//Выбор имени журнала
-		game_AskMagazineName();
-		game_StartPuzzle();
-	}
 	
 	if(false)
 	{// Вычисление времени до конца номера

@@ -32,7 +32,7 @@ function actor_IsProfOk(thisActor,profName)
 function openInterfaceOnPerson(thisActor, parentNode)
 {
 	humanInterfaceFocusActor = actor_GetActor(thisActor);
-	if("_ProfChangeAccess" in humanInterfaceFocusActor && humanInterfaceFocusActor._ProfChangeAccess==false){
+	if(actor_GetAttributeN(humanInterfaceFocusActor,"NoChangeProf")==1){
 		// Нельзя
 		return
 	}

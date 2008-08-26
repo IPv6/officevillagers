@@ -1,7 +1,7 @@
 [Sprite]
 -Texture:level_interface.png
 -Atlas:x0 y29 w1 h32
--Size: w29
+-Size: w39
 -Position: z-0.0101
 
 [Sprite]

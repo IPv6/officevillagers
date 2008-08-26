@@ -34,7 +34,9 @@
 			<ActorProphession val="NONE" />
 			<ActorValidProphession val="CREATOR" />
 			<CurrentAction val="Cutscene.driver" />
-			<Attributes />
+			<Attributes>
+				OptionLong[NoChangeProf]=1
+			</Attributes>
 			<Items></Items>
 		</Actor>
 		<Actor>
@@ -50,7 +52,9 @@
 			<ActorProphession val="NONE" />
 			<ActorValidProphession val="AUTHOR,FINANCIER" />
 			<CurrentAction val="Cutscene.driver" />
-			<Attributes />
+			<Attributes>
+				OptionLong[NoChangeProf]=0
+			</Attributes>
 			<Items></Items>
 		</Actor>
 		<Actor>
@@ -66,7 +70,9 @@
 			<ActorProphession val="NONE" />
 			<ActorValidProphession val="AUTHOR" />
 			<CurrentAction val="Cutscene.driver" />
-			<Attributes />
+			<Attributes>
+				OptionLong[NoChangeProf]=1
+			</Attributes>
 			<Items></Items>
 		</Actor>
 		<Actor>
@@ -82,7 +88,9 @@
 			<ActorProphession val="NONE" />
 			<ActorValidProphession val="JANITOR" />
 			<CurrentAction val="Cutscene.driver" />
-			<Attributes />
+			<Attributes>
+				OptionLong[NoChangeProf]=1
+			</Attributes>
 			<Items></Items>
 		</Actor>
 	</Actors>

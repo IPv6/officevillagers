@@ -104,14 +104,23 @@ function game_initPuzzleDialog()
 	core_SetNodeText("puzzle_magname","<font-size:+2>\n"+game_GetMagazinName());
 }
 
+function game_deinitPuzzleDialog()
+{
+}
+
 function game_closePuzzleDialog()
 {
-	core_CloseDialog("puzzle_main");
+	gui_FadeIn();
+	core_SetTimeout(2000,"core_CloseDialog(\"puzzle_main\");");
+	core_SetTimeout(4000,"gui_FadeOut();");
 }
 
 function game_StartPuzzle()
 {
 	core_OpenDialog("puzzle_main");
+	while(core_IsDialogOpened("puzzle_main")){
+		::suspend();
+	}
 }
 
 g_puzzlebg_num <- 0;

@@ -39,6 +39,7 @@ function actorWait_WaitToActionStart(thisActor,actionName)
 
 function actorWait_SwitchToAction(thisActor,actionName)
 {
+	actor_CancelWalking(thisActor);
 	actor_SwitchToAction(thisActor,actionName);
 	actorWait_WaitToActionStart(thisActor,actionName);
 }
@@ -50,4 +51,13 @@ function actorWait_Timeout(timeout)
 	while(curTime+timeout*1000 > game_GetTickCount()){
 		::suspend();
 	}
+}
+
+function ReplaceOfficeAttrs(str,attrs)
+{
+	local i;
+	for(i=0;i<attrs.len();i++){
+		str = core_StrReplace(str,"@"+attrs[i],actor_GetAttributeS("Office",attrs[i]));
+	}
+	return str;
 }
