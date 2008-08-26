@@ -57,10 +57,12 @@
   </AtlasLists>
   <ParticleGroups>
   </ParticleGroups>
-  <CustomOptions>
-  </CustomOptions>
+  <AdditionalIniOptions>
+  </AdditionalIniOptions>
   <CustomSettings>
   Option[NavigationReperPoint]=FurniDrops::BARR_FROM
   OptionLong[PersonBodyZeroSprite]=1
   </CustomSettings>
+  <Macros>
+  </Macros>
 </Manifest>

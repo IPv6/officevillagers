@@ -282,10 +282,20 @@ void CLocationManagerNavigatorY::VisualizeWall(_v2& checkPosition)
 	_array_rct& locs=naviwalls;
 	for(u32 i=0;i<locs.size();i++)
 	{
-		if(!isPointInside(locs[i],checkPosition)){
+		_rctf& rc=locs[i];
+		if(!isPointInside(rc,checkPosition)){
 			continue;
 		}
 		CSpriteNode* nd=VisualizeRCTF(locs[i],getDataPath("\\gui\\editor\\square.png"));
+		// »щем локейшн совпадающий с этим
+		for(UINT i=0;i<CLocationManager::getInstance().locations.size();i++){
+			_rctf rc2=CLocationManager::getInstance().locations[i]->Convert2rect();
+			if(rc.LowerRightCorner.X==rc2.LowerRightCorner.X && rc.LowerRightCorner.Y==rc2.LowerRightCorner.Y){
+				if(rc.UpperLeftCorner.X==rc2.UpperLeftCorner.X && rc.UpperLeftCorner.Y==rc2.UpperLeftCorner.Y){
+					AddDebugScreenLine(CLocationManager::getInstance().locations[i]->szName,5000);
+				}
+			}
+		}
 	}
 	_p2i pos=V2Map(checkPosition);
 	if(map[pos.X][pos.Y]>0){

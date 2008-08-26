@@ -81,7 +81,7 @@ function humanDragLoop(param)
 		}
 	}
 	humanDragLastPos = curCurPos;
-	if(!core_GetIsLeftButtonDown())
+	if(!core_GetIsLeftButtonDown() && !gui_IsFade())
 	{
 		core_SetCurrentCursorClipArea();// Сбрасываем ограничение на курсор
 		{//  Возвращаем в свой z
@@ -151,7 +151,7 @@ function onDragActor(node)
 	if(!actor){
 		return;
 	}
-	if(!actor_IsInteractive(actor)){
+	if(!actor_IsInteractive(actor) || gui_IsFade()){
 		return false;
 	}
 	if(floorDragInterval==0 && humanDragInterval==0)

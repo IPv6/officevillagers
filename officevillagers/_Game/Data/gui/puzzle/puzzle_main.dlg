@@ -3,6 +3,7 @@
 -ModalDialog:1
 -Position:z-2.5
 -Event.OnCreate.Action:game_initPuzzleDialog();
+-Event.OnCreate.Action:game_deinitPuzzleDialog();
 -Event.Keyboard.Esc.Pressed:/*NOPE!*/
 -PauseGame:1
 
@@ -43,9 +44,9 @@
 -Event.Mouse.Over.Sound:menu_button_over
 -Event.Mouse.Click.KeyShortcut:${VK_RETURN}
 -Label:PUZZLE.BUTTON.OK.LABEL
--Size: w6
 -Position: x2.5 y-1.8 z-0.01
 -Event.Mouse.Click.Action:game_closePuzzleDialog();
+-Size:2
 
 [Sprite]
 // Кнопка Next bg
@@ -56,9 +57,9 @@
 -Event.Mouse.Over.Sound:menu_button_over
 -Event.Mouse.Click.KeyShortcut:${VK_RETURN}
 -Label:PUZZLE.BUTTON.NEXTBG.LABEL
--Size: w6
 -Position: x2.5 y1 z-0.01
 -Event.Mouse.Click.Action:game_PuzzleDialogNextBG();
+-Size:2
 
 [Sprite]
 // Кнопка Next logo
@@ -69,6 +70,6 @@
 -Event.Mouse.Over.Sound:menu_button_over
 -Event.Mouse.Click.KeyShortcut:${VK_RETURN}
 -Label:PUZZLE.BUTTON.NEXTLOGO.LABEL
--Size: w6
 -Position: x2.5 y4.2 z-0.01
 -Event.Mouse.Click.Action:game_PuzzleDialogNextLogo();
+-Size:2

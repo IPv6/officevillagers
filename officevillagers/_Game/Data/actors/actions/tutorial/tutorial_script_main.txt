@@ -21,10 +21,10 @@
 	local actorBo = actor_GetActor("ACTOR.BOB");
 
 	// Задаем умолчания
-	actorSh._ProfChangeAccess <- false;
-	actorAg._ProfChangeAccess <- false;
-	actorSi._ProfChangeAccess <- false;
-	actorBo._ProfChangeAccess <- false;
+	actor_SetAttribute(actorSh,"NoChangeProf",1);
+	actor_SetAttribute(actorAg,"NoChangeProf",1);
+	actor_SetAttribute(actorSi,"NoChangeProf",1);
+	actor_SetAttribute(actorBo,"NoChangeProf",1);
 	gFlag_hDragAllowCameraSlide=false;// Чтобы при драгах камера не велась за персом
 	//gFlag_hIntCenterCameraOnPers=false;// Чтобы интерфейс не центрировал камеру
 	
@@ -45,10 +45,10 @@
 	actor_DelItem(actorBo,"shvabra");
 
 	// Восстанавливаем умолчания
-	actorSh._ProfChangeAccess = true;
-	actorAg._ProfChangeAccess = true;
-	actorSi._ProfChangeAccess = true;
-	actorBo._ProfChangeAccess = true;
+	actor_SetAttribute(actorAg,"NoChangeProf",0);// Только агата может менять профессию до поры до времени
+	actor_SetAttribute(actorSh,"NoChangeProf",1);
+	actor_SetAttribute(actorSi,"NoChangeProf",1);
+	actor_SetAttribute(actorBo,"NoChangeProf",1);
 	gFlag_hIntCloseOnProfchange = true;// Для ручного закрытия диалога
 	gFlag_hIntCloseOnMoveout = true;
 	gFlag_hIntRawSetProfession = false;
@@ -114,7 +114,7 @@
 			gFlag_hIntCloseOnProfchange = false;
 			gFlag_hIntCloseOnMoveout = false;
 			gFlag_hIntRawSetProfession = true;
-			actorSh._ProfChangeAccess = true;
+			actor_SetAttribute(actorSh,"NoChangeProf",0);
 			actorWait_InterfaceOpened(actorSh,true);
 			actor_DelItem(actorSh,"cursor_hint");
 			gui_ShowDialog(null,null);
@@ -143,7 +143,7 @@
 		actorWait_GoTo(actorSi,"SCENES_Tutorial::SINTI_LOOK4");
 		actor_OrientBody(actorSi,0);
 		gui_ShowDialog(dialogFile, { _section="DIALOG6-1", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
-		actorSi._ProfChangeAccess = true;
+		actor_SetAttribute(actorSi,"NoChangeProf",0);
 		gui_ShowDialog(dialogFile, { _section="DIALOG6-2", _close=false, _dialogBg="\\gui\\comics_interface_dialog.png", _noMoreIcon=true});
 		actorWait_SwitchToAction(actorSi,"Tutorial.Sinty.WaitingProfChange");
 		actorWait_WaitToActionStart(actorSi,"Tutorial.SintyWorking");

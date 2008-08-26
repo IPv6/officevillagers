@@ -196,13 +196,13 @@
 	}
 	gui_ShowDialog(dialogFile, { _section="DIALOG9", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
 	actorWait_GoTo(thisActor,"SCENES_Tutorial::Agata3");
+	actor_CancelWalking(thisActor);
 	actor_OrientBody(thisActor,"SCENES_Tutorial::DOT10");
-	actor_OrientHead(thisActor,0);
 	while(gui_IsDialogOpen()==true){
 		::suspend();
 	}
+	actor_CancelWalking(thisActor);
 	actor_OrientBody(thisActor,"SCENES_Tutorial::DOT10");
-	actor_OrientHead(thisActor,0);
 	gui_ShowDialog(dialogFile, { _section="DIALOG10", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
 	while(actor_IsInLocation(thisActor,"SCENES_Tutorial::Agata3")==false){
 		::suspend();

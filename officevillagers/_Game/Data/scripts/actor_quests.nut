@@ -113,6 +113,7 @@ function quest_GetQuest(questNum)
 	g_QuestCache[questName].Name <- core_Translate(Name,g_questNames);
 	//core_Alert(Name+";l "+g_questNames+"\n"+g_QuestCache[questName].Name);
 	g_QuestCache[questName].AllowReopen <- core_GetSprIniParameter("Reopen",lQuestContent).tointeger();
+	g_QuestCache[questName].UsedAttributes <- ::split(core_GetSprIniParameter("UsedAttributes",lQuestContent),",; ");
 	return g_QuestCache[questName];
 }
 
@@ -158,7 +159,6 @@ function quest_timecompare(a,b)
 	return 0;
 }
 
-
 function getOpenQuests()
 {
 	local i=0;
@@ -177,8 +177,10 @@ function getOpenQuests()
 			local questItem = {};
 			questItem.questNum <- questID;
 			questItem.locName <- quest.Name;
+			questItem.locName = ReplaceOfficeAttrs(questItem.locName,quest.UsedAttributes);
 			questItem.state <- safe.quests[questID].State;
 			questItem.openTime <- safe.quests[questID].OpenTime;
+			//questItem.locName+=" "+questItem.openTime.tostring();
 			questItem.highlighted <- safe.quests[questID].highlighted;
 			quests.append(questItem);
 		}
@@ -189,33 +191,37 @@ function getOpenQuests()
 
 g_Quest_Slots <- 0;
 g_SkipQuest_Slots <- 0;
+g_SkipQuest_Slots_This <- 0;
+g_SkipQuest_Slots_Prev <- [0];
 g_QuestsOnPage <- 5;
 function initQuestDialog(skipItems)
 {
 	local safe=game_GetSafe();
-	local egaSlot0=core_GetNode("quest_slot0");
 	local i=0;
-	if(!egaSlot0){
-		g_Quest_Slots = 0;
-		for(i=0;i<g_QuestsOnPage;i++){
-			core_CreateSprite("gui\\level_quest_slot.spr","level_quests",{x=-0.2, y=7-2.5*i, z=-0.0002, w=1, h=1, name=format("quest_slot%i",g_Quest_Slots++) });
-		}
+	g_Quest_Slots = 0;
+	for(i=0;i<g_QuestsOnPage;i++){
+		local slotNodeName=format("quest_slot%i",g_Quest_Slots);
+		core_DeleteNode(slotNodeName);
+		core_CreateSprite("gui\\level_quest_slot.spr","level_quests",{x=-0.2, y=7-2.5*i, z=-0.0002, w=1, h=1, name=slotNodeName });
+		g_Quest_Slots++;
 	}
 	local attrId=0;
 	local attrByNum="";
-	g_SkipQuest_Slots = skipItems;
-	local quests = getOpenQuests();
-	if(g_SkipQuest_Slots>quests.len())
-	{
-		g_SkipQuest_Slots = quests.len()-g_QuestsOnPage;
+	if(skipItems!=g_SkipQuest_Slots_Prev[g_SkipQuest_Slots_Prev.len()-1]){
+		g_SkipQuest_Slots_Prev.append(skipItems);
 	}
-	if(g_SkipQuest_Slots<0)
+	g_SkipQuest_Slots = skipItems;
+	g_SkipQuest_Slots_This = skipItems;
+	local quests = getOpenQuests();
+	if(g_SkipQuest_Slots<0 || g_SkipQuest_Slots>quests.len())
 	{
 		g_SkipQuest_Slots = 0;
 	}
 	local multiLineOffset=0;
 	local lLineHH=1.4;
 	local slotId=0;
+	local bt_next=false;
+	local bt_prev=skipItems>0?true:false;
 	for(slotId=0; slotId<g_Quest_Slots; slotId++)
 	{
 		local slotName=format("quest_slot%i",slotId);
@@ -235,6 +241,13 @@ function initQuestDialog(skipItems)
 			slotNode._h=lLineHH*(lStrokNum+1);
 			multiLineOffset+=lLineHH*(lStrokNum+1);
 			multiLineOffset+=0.3;
+			if(multiLineOffset>17.0){
+				// Кончилось
+				bt_next = true;
+				core_EnableNode(slotNode,false);
+				g_SkipQuest_Slots = thisQuestNum;
+				break;
+			}
 			slotNode._y-=slotNode._h*0.5;
 			local dy=0.5*lStrokNum;
 			nodeText=format("<font-size:-1><dy=%.02f><dx=-12.5><left>\n%s",dy.tofloat(),questtitle);
@@ -248,14 +261,40 @@ function initQuestDialog(skipItems)
 		}
 		core_SetNode(slotName,slotNode);
 	}
-	core_EnableNode("quest_button_left",false);
-	core_EnableNode("quest_button_right",false);
+	core_EnableNode("quest_button_left",bt_prev);
+	core_EnableNode("quest_button_right",bt_next);
 	
 	// Окно помощи при первом заходе
 	if(core_GetProfileOption("TutorialQuestHelp")!=1){
 		core_SetProfileOption("TutorialQuestHelp",1);
 		helpDialog("level_quests_help");
 	}
+}
+
+function openQuestsUI()
+{
+	g_SkipQuest_Slots <- 0;
+	g_SkipQuest_Slots_This <- 0;
+	g_SkipQuest_Slots_Prev <- [0];
+	initQuestDialog(0);
+}
+
+function quest_left()
+{
+	local prev = 0,i=0;
+	for(i=0;i<g_SkipQuest_Slots_Prev.len();i++)
+	{
+		if(g_SkipQuest_Slots_Prev[i]<g_SkipQuest_Slots_This){
+			prev=g_SkipQuest_Slots_Prev[i];
+		}
+	}
+	//core_Alert(g_SkipQuest_Slots.tostring());//dumpVariable(g_SkipQuest_Slots_Prev));
+	initQuestDialog(prev);
+}
+
+function quest_right()
+{
+	initQuestDialog(g_SkipQuest_Slots);
 }
 
 g_cnt <- 0;

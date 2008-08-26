@@ -9,8 +9,8 @@
 -Name:progress_slider
 -Texture:\gui\level_interface.png
 -Atlas:x0 y31 w1 h32
--Size: w30.4
--Position:x4.92 y14.54 z0.09
+-Size: w39.4 h1.1
+-Position:x-0.06 y14.6 z0.09
 
 [Sprite]
 // Маркер паузы
@@ -84,9 +84,9 @@
 -Event.Mouse.Over.Sound:menu_button_over
 
 //[Sprite]
-//-AsChild:1
-//-Position:x-15 y-14.2 z0.09
-//-Label:LEVEL.ACTIONS.LABEL
+//AsChild:1
+//Position:x-15 y-14.2 z0.09
+//Label:LEVEL.ACTIONS.LABEL
 
 [Sprite]
 -AsChild:1
@@ -115,7 +115,7 @@
 // Хинты и алармы: Маркер того что делает выбранный перс и место показа алармов
 -Texture:${virtualNode}
 -Name:hudWTDMarker
--Position:x4 y-14.2 z0.09
+-Position:x-1.0 y-14.2 z0.09
 -Label:LEVEL.TIMEPAUSED
 
 [Sprite]

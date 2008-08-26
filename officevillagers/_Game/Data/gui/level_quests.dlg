@@ -2,7 +2,7 @@
 // Меню вместе с фоном и всей анимацией
 -DialogName:level_quests
 -Event.Keyboard.Esc.Pressed:core_CloseDialog("level_quests");
--Event.OnCreate.Action:initQuestDialog(0);
+-Event.OnCreate.Action:openQuestsUI();
 -Position: z-2
 -ModalDialog:1
 -FadeInEffect:1
@@ -34,10 +34,10 @@
 -Name:quest_button_right
 -Texture:\gui\menu_button.spr?button=level_next_buttons
 -Size: 3
--Position:x1.6 y-11.1 z-0.001
-//Event.Mouse.Click.Action:fillAttrEditDialog(null, g_LastEGA_Mask, g_LastEGA_Skip+10);
+-Position:x-2.6 y-11.1 z-0.001
+-Event.Mouse.Click.Action:quest_right();
 -Event.Mouse.Click.Sound:menu_button_click
--Event.Mouse.Over.Image:menu_button_over_small.spr?button=level_buttons
+-Event.Mouse.Over.Image:buttons\button_overlay.spr?button=0
 -Event.Mouse.Over.Sound:menu_button_over
 -Visible:1
 
@@ -47,9 +47,9 @@
 -Texture:\gui\menu_button.spr?button=level_next_buttons
 -Size: -3
 -Position:x-10.5 y-11.1 z-0.001
-//Event.Mouse.Click.Action:fillAttrEditDialog(null, g_LastEGA_Mask, g_LastEGA_Skip-10);
+-Event.Mouse.Click.Action:quest_left();
 -Event.Mouse.Click.Sound:menu_button_click
--Event.Mouse.Over.Image:menu_button_over_small.spr?button=level_buttons
+-Event.Mouse.Over.Image:buttons\button_overlay.spr?button=0
 -Event.Mouse.Over.Sound:menu_button_over
 -Visible:1
 
