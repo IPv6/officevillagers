@@ -158,7 +158,9 @@
 	
 	actor_DelItem(thisTable,"progress_baloon","attrName=material_progress");	
 	actor_SitOnChair(thisActor,thisTable,false);
-	gui_SetIssueProgressCur(gui_GetIssueProgressCur()+1);
+	local ProgrCur=gui_GetIssueProgressCur()+1;
+	gui_SetIssueProgressCur(ProgrCur);
+	actor_SetAttribute("Office","IssueProgressCur", ProgrCur);
 	
 	
 	//если текуща€ статьс€ - последн€€ необходима€ дл€ сдачи номера

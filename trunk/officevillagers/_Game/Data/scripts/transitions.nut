@@ -141,16 +141,17 @@ function runFadenThread()
 
 function FadeLoop()
 {
-	$ifdebug if(runFadenThread_transitionInterval==-1) {core_Alert("th1=" + runFadenThread_tseqThread.tostring())}
-	if(::runFadenThread_tseqThread.getstatus()=="suspended"){
-		::runFadenThread_tseqThread.wakeup();
-		return;
-	}
-	core_CancelInterval(runFadenThread_transitionInterval);
-	core_DeleteNode("_fader");// Повторно
-	runFadenThread_stopFader = false;
-	::runFadenThread_tseqThread=0;
-	runFadenThread_transitionInterval=0;
+    try{
+     if("runFadenThread_tseqThread" in this && (::runFadenThread_tseqThread).getstatus()=="suspended"){
+          (::runFadenThread_tseqThread).wakeup();
+          return;
+      }
+    }catch(e){};
+     core_CancelInterval(runFadenThread_transitionInterval);
+     core_DeleteNode("_fader");// Повторно
+     runFadenThread_stopFader = false;
+     ::runFadenThread_tseqThread=0;
+     runFadenThread_transitionInterval=0;
 }
 
 
