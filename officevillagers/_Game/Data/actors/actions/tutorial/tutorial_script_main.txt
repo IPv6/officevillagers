@@ -60,7 +60,6 @@
 	game_CutsceneEnd({_changeUI=false});// Мы переходим или в  другую катсцену или в спецметод, выключать интерфейс не надо
 	if(!gui_isCutSceneWasSkipped()){
 		gui_StartCutscene("CutScene1");
-		
 	}else{
 		gui_FadeIn();
 	}
@@ -96,8 +95,7 @@
 		actorWait_SwitchToAction(actorSh,"Tutorial.Shekel.WaitingStol");
 		actorWait_WaitToActionStart(actorSh,"Tutorial.Shekel.OnStol");
 	
-		actor_SetActorPos(actorSh,"SCENES_Tutorial::DOT2");
-		location_AttachCamera({_name="SCENES_Tutorial::Camera3", _time=3});
+		location_AttachCamera({_name="INIT::ACTOR_AGATA", _time=3});
 		gui_ShowDialog(null,null);// Закрываем диалог
 	}
 	{// Блок ожидания от игрока выбора профессии у Шeкеля

@@ -32,6 +32,7 @@
 -Disable.Person.UI:0
 -Think.Speed:1
 -Script.In:
+	gui_DisableSkipCurrentCutsceneButton();
 	game_CutsceneEnd({});
 	actor_SendToLocation(actorAg,"CutScene1::Agata");
 	actor_SetProfessionRaw(actorAg,"AUTHOR-EXPERT");
@@ -89,6 +90,7 @@
 -Disable.Person.UI:0
 -Think.Speed:1
 -Script.In:
+	gui_DisableSkipCurrentCutsceneButton();
     gui_FadeIn();
 	gui_ShowDialog(null,null);
 	actorWait_Timeout(2);
@@ -166,6 +168,7 @@
 -Disable.Person.UI:0
 -Think.Speed:1
 -Script.In:
+	gui_DisableSkipCurrentCutsceneButton();
 	local actorSh = actor_GetActor("ACTOR.SHEKEL");
     gui_FadeIn();
 	gui_ShowDialog(null,null);
@@ -224,6 +227,7 @@
 -Disable.Person.UI:0
 -Think.Speed:1
 -Script.In:
+	gui_DisableSkipCurrentCutsceneButton();
     gui_FadeIn();
 	gui_ShowDialog(null,null);
 	actorWait_Timeout(2);
@@ -305,6 +309,7 @@
 -Disable.Person.UI:0
 -Think.Speed:1
 -Script.In:
+	gui_DisableSkipCurrentCutsceneButton();
     gui_FadeIn();
 	gui_ShowDialog(null,null);
 	actorWait_Timeout(2);
@@ -377,6 +382,7 @@
 -Disable.Person.UI:0
 -Think.Speed:1
 -Script.In:
+	gui_DisableSkipCurrentCutsceneButton();
     gui_FadeIn();
 	gui_ShowDialog(null,null);
 	actorWait_Timeout(2);
@@ -408,40 +414,32 @@
 	actorWait_SwitchToAction(actorSi,"Cutscene.driver");
 	gui_FadeIn();
 	actorWait_Timeout(2);
-	actor_AttachCamera(ActorBo);
-	actor_SetActorPos(actorSh,"SCENES_QuestCutscenes::DOT6");
-	actor_SetActorPos(actorBo,"SCENES_QuestCutscenes::DOT5");
-	actor_OrientBody(actorBo,180);
-	actor_OrientBody(actorSh,actorBo);
-	actor_AddItem(actorBo,"shvabra");
-	game_CutsceneBegin({_who="Office", _action="Quest8_Cutscenefinish", _changeUI=false});
+	actor_AttachCamera("SCENES_QuestCutscenes::DOT2");
+	actor_SetActorPos(actorSh,"SCENES_QuestCutscenes::DOT1");
+	actor_SetActorPos(actorBo,"SCENES_QuestCutscenes::DOT3");
+	actor_SetActorPos(actorSi,"SCENES_QuestCutscenes::DOT2");
+	actor_SetActorPos(actorAg,"SCENES_QuestCutscenes::DOT4");	
+	actor_OrientBody(actorSh,SCENES_QuestCutscenes::DOT12);
+	actor_OrientBody(actorSi,SCENES_QuestCutscenes::DOT12);
+	actor_OrientBody(actorAg,SCENES_QuestCutscenes::DOT12);
+	game_CutsceneBegin({_who="Office", _action="Alpha_Last_Cutscenefinish", _changeUI=false});
 	gui_FadeOut();
 	actorWait_Timeout(2);
 	local dialogFile = core_GetDataPath("text\\quest_cutscenes_dialog.lng");
-	actorWait_GoTo(actorSh,"SCENES_QuestCutscenes::DOT7");
-	gui_ShowDialog(dialogFile, { _section="DIALOG8", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
+	gui_ShowDialog(dialogFile, { _section="DIALOG9", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
 	while(gui_IsDialogOpen()==true){
 		::suspend();
 	}
 	actorWait_Timeout(0.5);
-	actor_OrientHead(actorBo,90);
-	actorWait_Timeout(1);
-	gui_ShowDialog(dialogFile, { _section="DIALOG8-1", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
+	actor_SendToLocation(actorAg,"SCENES_QuestCutscenes::DOT12");
+	actor_SendToLocation(actorSh,"SCENES_QuestCutscenes::DOT12");
+	actor_SendToLocation(actorSi,"SCENES_QuestCutscenes::DOT12");
+	actorWait_Timeout(15);
+	gui_ShowDialog(dialogFile, { _section="DIALOG9-1", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
 	while(gui_IsDialogOpen()==true){
 		::suspend();
 	}
-	actorWait_SwitchToAction(actorSh,"Cutscene.driver.Speed4");
-	actor_OrientBody(actorBo,actorAg);
-	actorWait_GoTo(actorSh,"SCENES_QuestCutscenes::DOT5");
-	actorWait_GoTo(actorSh,"SCENES_QuestCutscenes::DOT7");
-	actor_OrientBody(actorSh,actorBo);
-	actor_OrientBody(actorBo,actorSh);
-	actor_OrientHead(actorBo,actorSh);
-	gui_ShowDialog(dialogFile, { _section="DIALOG8-2", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
-	while(gui_IsDialogOpen()==true){
-		::suspend();
-	}
-	actor_SwitchToAction(thisActor,"Quest8_Cutscenefinish");
+	actor_SwitchToAction(thisActor,"Alpha_Last_Cutscenefinish");
 	
 [Event]
 -Name:Alpha_Last_Cutscenefinish
@@ -451,14 +449,12 @@
 -Disable.Person.UI:0
 -Think.Speed:1
 -Script.In:
+	gui_DisableSkipCurrentCutsceneButton();
     gui_FadeIn();
 	gui_ShowDialog(null,null);
 	actorWait_Timeout(2);
-	gui_QuestOpen(9);
-	actor_DelItem(actor_GetActor("ACTOR.BOB"),"shvabra");
-	actorWait_SwitchToAction(actor_GetActor("ACTOR.SHEKEL"),"");
-	actorWait_SwitchToAction(actor_GetActor("ACTOR.BOB"),"");
     game_CutsceneEnd({});
     actor_DetachCamera();
     actor_SwitchToAction(thisActor,"Office_script");
+	TransitionOpenDialog("main_menu","fade");
     gui_FadeOut();

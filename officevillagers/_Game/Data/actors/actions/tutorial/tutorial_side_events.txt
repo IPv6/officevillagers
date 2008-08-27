@@ -53,7 +53,6 @@
 -Script.In:
 	while(actor_IsInLocation(thisActor,"SCENES_Tutorial::AUTHORTABLE")==false || humanDragInterval!=0){
 		if (humanDragInterval==0 && (actor_IsInLocation(thisActor,"SCENES_Tutorial::SHEKEL.0")==false && actor_IsInLocation(thisActor,"SCENES_Tutorial::AUTHORTABLE")==false)){
-			actor_SetActorPos(thisActor,"SCENES_Tutorial::SHEKEL.0");
 		}
 		::suspend();
     }
@@ -82,7 +81,6 @@
 -Priority:-1
 -Disable.Person.UI:0
 -Script.In:
-
 	actorWait_WhileProfNotIn(thisActor,"CREATOR");
 	actor_SwitchToAction(thisActor,"Tutorial.Shekel.OnProfChange");
 
@@ -186,11 +184,10 @@
 	gui_ShowDialog(dialogFile, { _section="DIALOG8", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
 	actorWait_GoTo(thisActor,"SCENES_Tutorial::Agata2");
 	actorWait_Timeout(1);
-	actor_OrientHead(thisActor,"Furniture::DOT15");
+	actor_OrientBody(thisActor,"Furniture::TABLE.EDITOR1_R");
 	actorWait_Timeout(1);
-	actor_OrientHead(thisActor,"OfficeHeaps::DOT52");
+	actor_OrientHead(thisActor,"Furniture::TABLE.EDITOR1_L");
 	actorWait_Timeout(1);
-	actor_OrientHead(thisActor,"Furniture::DOT15");
 	while(gui_IsDialogOpen()==true){
 		::suspend();
 	}
@@ -204,9 +201,6 @@
 	actor_CancelWalking(thisActor);
 	actor_OrientBody(thisActor,"SCENES_Tutorial::DOT10");
 	gui_ShowDialog(dialogFile, { _section="DIALOG10", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
-	while(actor_IsInLocation(thisActor,"SCENES_Tutorial::Agata3")==false){
-		::suspend();
-	}
 	while(gui_IsDialogOpen()==true){
 		::suspend();
 	}
@@ -226,6 +220,8 @@
 	while(actor_IsInLocation(thisActor,"SCENES_Tutorial::DOT1")==false){
 		::suspend();
 	}
+	
+	location_AttachCamera({_name="SCENES_Tutorial::DOT1"});
 	actor_SitOnChair(thisActor,"TABLE.AGATASIDE",true);
 //	actorWait_Timeout(2);
 	gui_ShowDialog(dialogFile, { _section="DIALOG122", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
@@ -342,6 +338,7 @@
 -Priority:-1
 -Walk.Speed:0.7
 -Script.In:
+	actor_AttachCamera(thisActor);
 	actorWait_GoTo(thisActor,"SCENES_Tutorial::DOT4");
 	actorWait_GoTo(thisActor,"SCENES_Tutorial::DOT5");
 	actorWait_GoTo(thisActor,"SCENES_Tutorial::DOT8");
@@ -357,7 +354,6 @@
 -Script.In:
 	actorWait_GoTo(thisActor,"SCENES_Tutorial::DOT8");
 	actor_OrientBody(thisActor,180);
-	game_StartPuzzle();
 	actorWait_SwitchToAction(thisActor,"Tutorial.End");
 	
 [Step]

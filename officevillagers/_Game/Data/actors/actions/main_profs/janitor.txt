@@ -7,6 +7,7 @@
 -Protected:0
 -Disable.Person.UI:0
 -Script.In:
+
 	local trashObjectTable;
 	// Проверяем есть ли у уборщика предпочтительный мусор
 	local trashObjectName=actor_GetAttributeS(thisActor,"PrefferedTrash");
