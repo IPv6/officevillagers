@@ -70,7 +70,7 @@ function dropOnTrash(thisActor,trashActor)
 		if(trashActor.Name=="Heaps.Barricada" && actor_GetAttribute(trashActor,"__BUSY")==1){
 			//если не открыта, то выводим лейбел и не позволяем её убирать
 			actor_SetActionLabel(thisActor,"NONE_TECH");
-			actor_SwitchToAction(thisActor,"fiftiingsecondsscript");
+			actor_SwitchToAction(thisActor,"");
 			return;
 		}
 		
