@@ -102,7 +102,9 @@ void CSpriteHeadSync::externInit(CNodeBasement* node)
 	parentActor=getLevel()->getActorByID(iActorID);
 	if(parentActor && parentActor->bNodeSpawned){
 		actorHead=(CSpriteNode*)getNode(SUBID_HEAD,parentActor->node);
-		fPrevAtlasX=actorHead->atlas_x;
+		if(actorHead){
+			fPrevAtlasX=actorHead->atlas_x;
+		}
 	}
 }
 

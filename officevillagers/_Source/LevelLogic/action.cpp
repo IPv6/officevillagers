@@ -114,7 +114,7 @@ CAction* CAction::Add2LevelFromDescriptionSingleSet(const CString &sDsc, const c
 			newOne->p_sNameForHUD=CString("ACTIONLABEL.")+newOne->p_sActionName;
 		}
 		if(newOne->p_sNameForHUD.GetLength()){
-			newOne->p_sNameForHUD=_ll(newOne->p_sNameForHUD,newOne->p_sNameForHUD,"actors\\actions\\action_names.lng");//_l(newOne->p_sNameForHUD);
+			newOne->p_sNameForHUD=_ll(newOne->p_sNameForHUD,newOne->p_sNameForHUD,"text\\action_names.lng");//_l(newOne->p_sNameForHUD);
 		}
 	}
 	if(isParam(sDscInit,"-Prq.Prophessions:",s)){
@@ -233,11 +233,13 @@ BOOL CAction::OnDuring(CActor* who)
 	if(who->actionAttachDone==0){
 		who->actionAttachDone=1;
 		if(sScriptBegin.GetLength()){
+			who->scriptMirror.SetValue("__action_step",1);
 			getGame().scripter.CallPrecompiledMethod(sScriptBegin,who->scriptMirror,STEPON_CLASS);
 		}
 	}
 	DEBUG_LASTACTION(toString("Actor '%s' Script.In method, action=%s",who->data.p_sName,this->p_sActionName));
 	if(sScriptIn.GetLength()){
+		who->scriptMirror.SetValue("__action_step",2);
 		getGame().scripter.CallPrecompiledMethod("runActorStepInThread",who->scriptMirror);
 	}
 	getLevel()->getCurrentAction()=0;
@@ -253,6 +255,7 @@ BOOL CAction::OnDetach(CActor* who)
 	iActionUsageCount--;
 	DEBUG_LASTACTION(toString("Actor '%s' Script.Off method, action=%s",who->data.p_sName,this->p_sActionName));
 	if(sScriptEnd.GetLength()){
+		who->scriptMirror.SetValue("__action_step",3);
 		getGame().scripter.CallPrecompiledMethod(sScriptEnd,who->scriptMirror,STEPOFF_CLASS);
 	}
 	who->SetStatusTextOverload("");
