@@ -221,7 +221,7 @@
 		::suspend();
 	}
 	
-	location_AttachCamera({_name="SCENES_Tutorial::DOT1"});
+	location_AttachCamera("SCENES_Tutorial::DOT1");
 	actor_SitOnChair(thisActor,"TABLE.AGATASIDE",true);
 //	actorWait_Timeout(2);
 	gui_ShowDialog(dialogFile, { _section="DIALOG122", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
