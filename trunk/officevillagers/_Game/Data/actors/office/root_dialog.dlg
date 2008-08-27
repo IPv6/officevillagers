@@ -30,7 +30,7 @@
 -Name:GuiSkipCutscene
 -Texture:\gui\menu_button.spr?button=comic_buttons
 -Size: w2.5
--Position: x12.6 y12 z-2.01
+-Position: x13.1 y12.3 z-2.01
 -Label:GUI.LEVEL.SKIP.BUTTON
 -Event.Mouse.Over.Image:\gui\menu_button_over.spr?button=comic_buttons
 -Event.Mouse.Click.Sound:menu_button_click

@@ -29,19 +29,23 @@ function setMainFloorClamp(bUseMain)
 }
 
 // Методы
+g_DebugCmap <- false;
 function clampPosition(object)
 {
 	local res=false;
 	// Левый край
+	$ifdebug if(g_DebugCmap) core_Warning(format("wx=%.02f wy=%.02f",object._x,object._y));
 	if(object._x > object._w/4+floorClamps[floorClampsNum]._l )
 	{
 		object._x=object._w/4+floorClamps[floorClampsNum]._l;
+		$ifdebug if(g_DebugCmap) core_Warning(format("l=%.02f",floorClamps[floorClampsNum]._l));
 		res=true;
 	}
 	
 	if(object._x < -object._w/4+floorClamps[floorClampsNum]._r )
 	{
 		object._x = -object._w/4+floorClamps[floorClampsNum]._r;
+		$ifdebug if(g_DebugCmap) core_Warning(format("r=%.02f",floorClamps[floorClampsNum]._r));
 		res=true;
 	}
 
@@ -49,15 +53,18 @@ function clampPosition(object)
 	if(object._y > object._h/4+floorClamps[floorClampsNum]._u )
 	{
 		object._y=object._h/4+floorClamps[floorClampsNum]._u;
+		$ifdebug if(g_DebugCmap) core_Warning(format("u=%.02f",floorClamps[floorClampsNum]._u));
 		res=true;
 	}
 	
 	if(object._y < -object._h/4+floorClamps[floorClampsNum]._d )
 	{
 		object._y = -object._h/4+floorClamps[floorClampsNum]._d;
+		$ifdebug if(g_DebugCmap) core_Warning(format("d=%.02f",floorClamps[floorClampsNum]._d));
 		res=true;
 	}
 	//if(res){core_Warning(format("clampx=%f clampy=%f",object._x,object._y));}
+	$ifdebug if(g_DebugCmap) core_Warning(format("wxO=%.02f wyO=%.02f",object._x,object._y));
 	return res;
 }
 
@@ -190,7 +197,7 @@ function floorAttachLoop(param)
 		local loca=nloc_GetLocation(floorAttachTarget);
 		if(loca != false){
 			ok = true;
-			offset._x = -loca._x;
+			offset._x = -loca._x;//Для (floorAttachTargetTime == 0) это неверно
 			offset._y = -loca._y;
 		}	
 	}
@@ -251,6 +258,7 @@ function actor_AttachCamera(Actor)
 
 function location_AttachCamera(Location)
 {
+	//g_DebugCmap = true;
 	gui_StopSoftActorWatch();
 	floorAttachTargetType=1;
 	floorAttachTarget=Location;
@@ -260,7 +268,7 @@ function location_AttachCamera(Location)
 	}
 	local locFixed=nloc_GetLocation(floorAttachTarget);
 	floorAttachTarget=locFixed._name;
-	floorAttachTargetTime = 0;
+	floorAttachTargetTime = 100;
 	if("_time" in Location){
 		floorAttachTargetTime = Location._time*1000.0;
 	}

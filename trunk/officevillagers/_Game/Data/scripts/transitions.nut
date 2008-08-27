@@ -1,5 +1,5 @@
 // Эти методы обеспечивают различные виды художественного открытия диалога (левела) // - перетекание через затемнение экрана
-transitionSequenceThread <- 0;
+::transitionSequenceThread <- 0;
 transitionInterval <- 0;
 flag_TransitionState <- 0;
 fader_Speed <- 0.02;
@@ -51,13 +51,13 @@ function onFadeClick(param)
 
 function TransitionLoop()
 {
-	if(transitionSequenceThread.getstatus()=="suspended"){
-		transitionSequenceThread.wakeup();
+	if(::transitionSequenceThread.getstatus()=="suspended"){
+		::transitionSequenceThread.wakeup();
 		return;
 	}
 	core_CancelInterval(transitionInterval);
 	core_DeleteNode("_fader");// Повторно
-	transitionSequenceThread=0;
+	::transitionSequenceThread=0;
 	transitionInterval=0;
 }
 
@@ -71,15 +71,15 @@ function TransitionOpenDialog(dialogToOpen,transitionName)
 	}
 	if(transitionInterval != 0)
 	{
-		//core_Alert("!!! Error !!!");
+		$ifdebug core_Alert("!!! Error !!! double transition");
 		return;//Больше одного нельзя!
 	}
 	flag_TransitionState = 0;
 	// Создаем отдельный поток на аниматоре, который запустит переход, дождется транзишна и закончит переход
 	if(transitionName=="fade"){
-		transitionSequenceThread <- ::newthread(runTransitionInThread_Fade);
+		::transitionSequenceThread = ::newthread(runTransitionInThread_Fade);
 	}
-	transitionSequenceThread.call(dialogToOpen);
+	::transitionSequenceThread.call(dialogToOpen);
 	transitionInterval <- core_SetInterval(10,"TransitionLoop();");
 }
 
@@ -93,10 +93,9 @@ function enableSprite(dprNmae,newAlpha)
 /////////////////////////////////////////////////////
 // Скриптовый фейд для катсцен и прочая
 /////////////////////////////////////////////////////
-runFadenThread_state <- 0;
-runFadenThread_stopFader <- false;
-runFadenThread_transitionSequenceThread <- 0;
-runFadenThread_transitionInterval <- 0;
+::runFadenThread_state <- 0;
+::runFadenThread_stopFader <- false;
+::runFadenThread_transitionInterval <- 0;
 function runFadenThread()
 {
 	local fader;
@@ -121,7 +120,7 @@ function runFadenThread()
 	runFadenThread_state = 3;
 	// Ждем анфейда
 	local tm=core_GetTick();
-	while(runFadenThread_stopFader==false && core_GetTick()-tm<5000){
+	while(core_GetTick()-tm<5000 && runFadenThread_stopFader==false){
 		wait(1);
 	}
 	// АнФейдим вручную
@@ -140,34 +139,43 @@ function runFadenThread()
 	return;
 }
 
-function gui_FadeIn()
-{
-	gui_FadeInX(2000);
-}
-
 function FadeLoop()
 {
-	if(runFadenThread_transitionSequenceThread.getstatus()=="suspended"){
-		runFadenThread_transitionSequenceThread.wakeup();
+	$ifdebug if(runFadenThread_transitionInterval==-1) {core_Alert("th1=" + runFadenThread_tseqThread.tostring())}
+	if(::runFadenThread_tseqThread.getstatus()=="suspended"){
+		::runFadenThread_tseqThread.wakeup();
 		return;
 	}
 	core_CancelInterval(runFadenThread_transitionInterval);
 	core_DeleteNode("_fader");// Повторно
-	runFadenThread_transitionSequenceThread=0;
+	runFadenThread_stopFader = false;
+	::runFadenThread_tseqThread=0;
 	runFadenThread_transitionInterval=0;
 }
 
+
+function runFadenThread2()
+{
+
+}
+
+::runFadenThread_tseqThread <- 0;//core_GetTick();
 function gui_FadeInX(time)
 {
 	gui_StopSoftActorWatch(); 
-	core_Warning("gui_FadeInX - begin");
-    if(runFadenThread_state!=0){
-		core_Warning("gui_FadeInX - fail!!!");
-         return;
+	if(runFadenThread_state!=0){
+		$ifdebug core_Warning("gui_FadeInX - fail!!! st="+runFadenThread_state.tostring()+" gt3="+runFadenThread_tseqThread.tostring());
+		return;
 	}
-	runFadenThread_transitionSequenceThread <- ::newthread(runFadenThread);
-	runFadenThread_transitionSequenceThread.call();
+	$ifdebug core_Warning("gui_FadeInX - begin gt="+runFadenThread_tseqThread.tostring());
+	::runFadenThread_tseqThread = ::newthread(runFadenThread);
+	::runFadenThread_tseqThread.call();
 	runFadenThread_transitionInterval <- core_SetInterval(10,"FadeLoop();");
+}
+
+function gui_FadeIn()
+{
+	gui_FadeInX(2000);
 }
 
 function gui_FadeOut()
@@ -177,6 +185,7 @@ function gui_FadeOut()
 
 function gui_FadeOutX(time)
 {
+	$ifdebug core_Warning("gui_FadeOutX - begin");
 	runFadenThread_stopFader <- true;
 }
 
