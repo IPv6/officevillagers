@@ -151,12 +151,12 @@ function level_CloseQuests()
 
 function quest_timecompare(a,b)
 {
-	if(a.openTime>b.openTime){
-		return 1;
-	}else if(a.openTime<b.openTime){
-		return -1;
-	}
-	return 0;
+     if(a.openTime>b.openTime){
+          return -1;
+     }else if(a.openTime<b.openTime){
+          return 1;
+     }
+     return 0;
 }
 
 function getOpenQuests()

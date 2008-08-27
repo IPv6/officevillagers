@@ -179,16 +179,10 @@
 		actor_SetAttribute(thisActor, "Level", actor_GetAttributeN(thisActor, "Level")+1);
 	}
 
-	//далее:
-	//Агата - "В текущем номере нам нужно сдать №№ статей. Для его продвижения понадобится постоянная работа минимум №№ финансисов."
-	local ProgrMax=getGlobal(format("IssueProgressMax%i", actor_GetAttributeN(thisActor, "Level")));
-	gui_SetIssueProgressMax(ProgrMax);
-	actor_SetAttribute("Office","IssueProgressMax", ProgrMax);
-	gui_SetAttribute(thisActor, "FinansierMax", getGlobal(format("FinansierMax%i", actor_GetAttributeN(thisActor, "Level"))));
-	gui_ShowDialog(dialogFile, { _section="DIALOG9", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
-	
-	//запсукается ивент  других дел по окончанию номера
-	actor_SwitchToAction(thisActor,"OFFICE.END.LEVEL.ELSE");
+	RecalcOfficeOnLevelChange();
+     gui_ShowDialog(dialogFile, { _section="DIALOG9", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
+     //запсукается ивент  других дел по окончанию номера
+     actor_SwitchToAction(thisActor,"OFFICE.END.LEVEL.ELSE");
 	
 	
 [Event]

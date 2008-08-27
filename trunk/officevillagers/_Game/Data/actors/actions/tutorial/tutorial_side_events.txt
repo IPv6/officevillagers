@@ -204,8 +204,6 @@
 	while(gui_IsDialogOpen()==true){
 		::suspend();
 	}
-	gui_SetIssueProgressMax(10);
-	gui_SetIssueProgressCur(9);
 	gui_ShowDialog(dialogFile, { _section="DIALOG11", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
 
 	actor_SendToLocation(thisActor,"SCENES_Tutorial::DOT4");
@@ -268,7 +266,6 @@
 		while(gui_IsDialogOpen()==true){
 			::suspend();
 		}
-	gui_SetIssueProgressCur(10);
 	actor_DelItem(thisActor,"article");
 	actorWait_SwitchToAction(thisActor,"Tutorial.AgataVsSintyEnd");
 

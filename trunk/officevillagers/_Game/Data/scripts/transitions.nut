@@ -148,11 +148,13 @@ function FadeLoop()
       }
     }catch(e){};
      core_CancelInterval(runFadenThread_transitionInterval);
-     core_DeleteNode("_fader");// Повторно
+     core_DeleteNode("_fader");
+     runFadenThread_state=0;
      runFadenThread_stopFader = false;
      ::runFadenThread_tseqThread=0;
      runFadenThread_transitionInterval=0;
 }
+
 
 
 function runFadenThread2()
