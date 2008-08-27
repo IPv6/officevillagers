@@ -60,8 +60,7 @@
 	game_CutsceneEnd({_changeUI=false});// Мы переходим или в  другую катсцену или в спецметод, выключать интерфейс не надо
 	if(!gui_isCutSceneWasSkipped()){
 		gui_StartCutscene("CutScene1");
-	}else{
-		gui_FadeIn();
+		return;
 	}
 	
 -Script.In:

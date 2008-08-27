@@ -54,9 +54,12 @@ function event_OnStartGame(param)
 {
 	core_SetKeyHandlerMode(1);
 	core_SetIntervalLocal("main_level_interface",1000,"gui_UpdateHud();");
-	     if(gui_QuestCheck(8)<2){
-          core_EnableNode("techs_button",false);
-     }
+	if(gui_QuestCheck(8)<2){
+		core_EnableNode("techs_button",false);
+	}
+	if(actor_IsActorExist("Heaps.Barricada")!=false && actor_GetAttributeN("Office","TECH_MUSCLES")==0 ){
+		actor_SetAttribute("Heaps.Barricada","__BUSY",1);
+	}
 }
 
 _saveCameraOverwrite <- {overwrite=false, cameraX=0.0, cameraY=0.0};

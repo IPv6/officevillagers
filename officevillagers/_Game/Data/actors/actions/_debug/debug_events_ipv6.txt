@@ -10,6 +10,10 @@
 -Script.On:
 	core_Warning("IPv6-Debug!");
 	//game_CutsceneBegin({});
+-Script.Off:
+	gui_FadeIn();
+	gui_FadeIn();
+
 -Script.In.Alt:
 	local actorAg = actor_GetActor("ACTOR.AGATA");
 	//core_Alert("Good!!");
@@ -39,7 +43,7 @@
 	//Antiquest8
 	core_EnableNode("techs_button",true);
 	
-	//if(false)
+	if(false)
 	{//Выбор имени журнала
 		//game_AskMagazineName();
 		game_StartPuzzle();
@@ -55,6 +59,12 @@
 	
 	if(false)
 	{
+		actorWait_Timeout(2);
+		location_AttachCamera({_name="SCENES_Tutorial::DOT1"});
+		actor_SitOnChair(actorAg,"TABLE.AGATASIDE",true);
+		actorWait_Timeout(7);
+		location_AttachCamera({_name="SCENES_Tutorial::Camera2"});
+		
 		//actor_SitOnChairX(actorAg,"TABLE.AGATAMAIN",2,true);
 		actor_SitOnChair(actorAg,"TABLE.AGATASIDE",true);
 		actorWait_Timeout(10);
