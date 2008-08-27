@@ -22,9 +22,16 @@
 -Priority:-1
 -Prq.IsGlobalEvent:0
 -Script.In:
-	actorWait_Timeout(15);
 	actor_SwitchToAction(thisActor,"");
 
+[Event]
+-Name:fiftiingsecondsscript2
+-Priority:-1
+-Prq.IsGlobalEvent:0
+-Script.In:
+	actorWait_GoTo(thiaActor, "FINANCIER::MAIN");
+	actor_SwitchToAction(thisActor,"");
+	
 [Event]
 -Name:Cutscene.driver.Speed2
 -Prq.IsGlobalEvent:0

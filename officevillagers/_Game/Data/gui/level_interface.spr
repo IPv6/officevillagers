@@ -124,7 +124,7 @@
 -Name:hudWTDMarker_bt
 -Texture:icons_set.png
 -Atlas:x1 y1 w8 h4
--Position:x15.2 y0.1 z0.000001
+-Position:x20.2 y0.1 z0.000001
 -Size:2
 -Event.Mouse.Click.Action:gui_ClearHint(false);
 -Event.Mouse.Click.Image:buttons\button_overlay.spr?button=0

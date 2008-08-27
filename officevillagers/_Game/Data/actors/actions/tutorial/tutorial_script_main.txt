@@ -88,7 +88,8 @@
 		::suspend();
 	}
 	gui_ShowDialog(dialogFile, { _section="DIALOG1", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
-
+	actor_SetAttribute("Office","Alarm1",1);
+	
 	{// Блок ожидания от игрока перетаскивания Шeкеля на стол с компьютерами
 		gui_ShowDialog(dialogFile, { _section="DIALOG3", _close=false, _dialogBg="\\gui\\comics_interface_dialog.png", _noMoreIcon=true});
 		actorWait_SwitchToAction(actorSh,"Tutorial.Shekel.WaitingStol");

@@ -8,8 +8,6 @@
 -Script.On:
 	game_CutsceneBegin({_who="Office", _action="CutScene1_finish", _tutorial=true, _changeUI=false});
 -Script.Off:
-	gui_QuestOpen(2);
-	gui_QuestOpen(5);
 	game_CutsceneEnd({_changeUI=false});
 	if(gui_isCutSceneWasSkipped()){
 		// Иначе - фейд в саму игру
@@ -41,14 +39,15 @@
 	gui_FadeOut();
 	game_StartPuzzle();
 	actorWait_Timeout(3);
-	actor_OrientHead(actorSh,actorAg);
-	actor_OrientHead(actorSi,actorAg);
+	actor_OrientBody(actorSh,actorAg);
+	actor_OrientBody(actorSi,actorAg);
 	gui_ShowDialog(dialogFile, { _section="DIALOG2", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
 	actor_SwitchToAction(actorBo,"CutScene1.BobWalking");
 	gui_ShowDialog(dialogFile, { _section="DIALOG2-2", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
 	actorWait_Timeout(2);
-	actor_OrientHead(actorSh,actorBo);
-	actor_OrientHead(actorAg,actorBo);
+	actor_CancelWalking(actorBo);
+	actor_OrientBody(actorBo,"Furniture::TABLE.EDITOR5_SIDE");
+	actor_OrientBody(actorSh,actorBo);
 	gui_ShowDialog(dialogFile, { _section="DIALOG3", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
 	while(gui_IsDialogOpen()==true){
 		::suspend();
@@ -60,8 +59,7 @@
 	dateNow=core_AddTime2Date(dateNow,timeToNewIsuue);
 	local addVars=[];
 	addVars.append({name="deadline_date", value=CalcDeadlineDate()});
-	actor_OrientHead(actorSh,actorAg);
-	actor_OrientHead(actorAg,actorSi);
+	actor_OrientBody(actorSh,actorAg);
 	gui_ShowDialog(dialogFile, { _section="DIALOG4", _close=true, _vars=addVars, _dialogBg="\\gui\\comics_interface_dialog.png"});
 	actorWait_Timeout(1);
 	gui_ShowDialog(dialogFile, { _section="DIALOG5", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
@@ -102,10 +100,12 @@
 	
 	// Обязательные квесты
 	actor_SetAttribute(actor_GetActor("Heaps.Barricada"),"__BUSY",1);
-	if (gui_QuestCheck(2)!=2){ gui_QuestOpen(2); };
-	if (gui_QuestCheck(5)!=2){ gui_QuestOpen(5); };
-	gui_SetIssueProgressMax(10);
-    gui_SetIssueProgressCur(0);
+	actor_SetAttribute("Office", "Level", 5);
+	RecalcOfficeOnLevelChange();
+	gui_QuestOpen(1);
+	gui_QuestOpen(2);
+	gui_QuestOpen(5);
+
     // устанавливаем профессии и сбрасываем ивенты (мы ведь не знаем в какой момент был пропуск?)
     local actorSh = actor_GetActor("ACTOR.SHEKEL");
     local actorAg = actor_GetActor("ACTOR.AGATA");
@@ -116,7 +116,7 @@
     actor_SetProfessionRaw(actorSi,"AUTHOR");
     actor_SetProfessionRaw(actorBo,"JANITOR");
 	actorWait_SwitchToAction(actorSh,"");
-	actorWait_SwitchToAction(actorAg,"fiftiingsecondsscript");
+	actorWait_SwitchToAction(actorAg,"fiftiingsecondsscript2");
 	actorWait_SwitchToAction(actorSi,"");
 	actorWait_SwitchToAction(actorBo,"");
 	actor_SetActorPos(actorSh,"SCENES_CutScene1::Shekel");

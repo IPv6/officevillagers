@@ -68,17 +68,21 @@ function gui_StartCutscene(cutSceneEvent)
 SkipCurrentCutsceneParams <- {_who="Office", _action="", _altSwitch=false, _changeUI=true};
 function gui_SkipCurrentCutscene(params)
 {
-	if(game_IsCutscene()){
-		game_CutsceneEnd(SkipCurrentCutsceneParams);
-	}
-	gui_DisableSkipCurrentCutsceneButton();
-	game_MarkSafe().lastSkippedCutScene <- game_GetSafe().lastActiveCutSceneNumber;
-	if("_altSwitch" in SkipCurrentCutsceneParams){
-		actor_SwitchActionAlt(SkipCurrentCutsceneParams._who);
-	}else{
-		actor_SwitchToAction(SkipCurrentCutsceneParams._who,SkipCurrentCutsceneParams._action);
-	}
+     if(gui_IsFade()){
+          return;
+     }
+     if(game_IsCutscene()){
+          game_CutsceneEnd(SkipCurrentCutsceneParams);
+     }
+     gui_DisableSkipCurrentCutsceneButton();
+     game_MarkSafe().lastSkippedCutScene <- game_GetSafe().lastActiveCutSceneNumber;
+     if("_altSwitch" in SkipCurrentCutsceneParams){
+          actor_SwitchActionAlt(SkipCurrentCutsceneParams._who);
+     }else{
+          actor_SwitchToAction(SkipCurrentCutsceneParams._who,SkipCurrentCutsceneParams._action);
+     }
 }
+
 
 function gui_isCutSceneWasSkipped()
 {

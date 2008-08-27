@@ -20,3 +20,12 @@ function RecalcOfficeParameters()
     }
     actor_SetAttribute("Office","FinancierCur",FinancierCur);
 }
+
+function RecalcOfficeOnLevelChange()
+{
+     local ProgrMax=getGlobal(format("IssueProgressMax%i", actor_GetAttributeN("Office", "Level")));
+     gui_SetIssueProgressMax(ProgrMax);
+     actor_SetAttribute("Office","IssueProgressMax", ProgrMax);
+     actor_SetAttribute("Office", "FinansierMax", getGlobal(format("FinansierMax%i", actor_GetAttributeN("Office", "Level"))));
+     actor_SetAttribute("Office","IssueProgressCur", gui_GetIssueProgressCur());
+}
