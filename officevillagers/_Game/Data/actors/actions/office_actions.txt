@@ -24,6 +24,7 @@
 	
 	local nextCheckTime = getTime()+30;
 	local nextAlarmTime = getTime()+10;
+	local nextParamsRecalTime = getTime();
 	local alarmsFile = core_GetDataPath("\\text\\alarm_names.lng");
 	
 	//============================================================
@@ -64,6 +65,10 @@
 				}
 			}
 		}
+		if(nowTime > nextParamsRecalTime){
+            nextParamsRecalTime = getTime()+5*60;
+            RecalcOfficeParameters();
+        }
 		//============================================================
 		if(nowTime > nextTrashTime){
 			nextTrashTime = getTime()+60;
