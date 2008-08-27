@@ -135,7 +135,7 @@
 		}
 	}
 	{// Выбор профессии Синти
-		actorWait_GoTo(actorAg,"SCENES_Tutorial::DOT6");
+		//actorWait_GoTo(actorAg,"SCENES_Tutorial::DOT6");
 		actor_OrientBody(actorAg,180);
 		actorWait_SwitchToAction(actorSi,"");// Нужно, так как сейчас паралельно синти делает другой ивент, который шлет ее по локациям!!!
 		actorWait_GoTo(actorSi,"SCENES_Tutorial::SINTI_LOOK4");
