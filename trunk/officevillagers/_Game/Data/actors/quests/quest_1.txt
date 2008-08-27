@@ -1,4 +1,4 @@
 -Name:QUEST_1
 -Description:QUEST_1_DESC
 -Reopen:0
-//UsedAttributes:AAA,BBB
+-UsedAttributes:DEADLINE_DATE,IssueProgressCur,IssueProgressMax,FinancierCur,FinancierNeed

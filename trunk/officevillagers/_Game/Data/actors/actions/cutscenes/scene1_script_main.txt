@@ -59,10 +59,7 @@
 	local dateNow=core_GetDate();
 	dateNow=core_AddTime2Date(dateNow,timeToNewIsuue);
 	local addVars=[];
-	addVars.append({name="day", value=format("%i",dateNow._day)});
-	addVars.append({name="month", value=core_Translate(format("MONTH_OF%i",dateNow._month))});
-	addVars.append({name="hour", value=format("%i",dateNow._hour)});
-	addVars.append({name="min", value=format("%i",dateNow._min)});
+	addVars.append({name="deadline_date", value=CalcDeadlineDate()});
 	actor_OrientHead(actorSh,actorAg);
 	actor_OrientHead(actorAg,actorSi);
 	gui_ShowDialog(dialogFile, { _section="DIALOG4", _close=true, _vars=addVars, _dialogBg="\\gui\\comics_interface_dialog.png"});
@@ -114,11 +111,11 @@
     local actorSi = actor_GetActor("ACTOR.SINTI");
     local actorBo = actor_GetActor("ACTOR.BOB");
     actor_SetProfessionRaw(actorSh,"CREATOR");
-    actor_SetProfessionRaw(actorAg,"FINANCIER");
+    actor_SetProfessionRaw(actorAg,"AUTHOR");
     actor_SetProfessionRaw(actorSi,"AUTHOR");
     actor_SetProfessionRaw(actorBo,"JANITOR");
 	actorWait_SwitchToAction(actorSh,"");
-	actorWait_SwitchToAction(actorAg,"");
+	actorWait_SwitchToAction(actorAg,"fiftiingsecondsscript");
 	actorWait_SwitchToAction(actorSi,"");
 	actorWait_SwitchToAction(actorBo,"");
 	actor_SetActorPos(actorSh,"SCENES_CutScene1::Shekel");
