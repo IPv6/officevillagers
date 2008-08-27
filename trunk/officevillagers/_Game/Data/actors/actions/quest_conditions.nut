@@ -45,6 +45,7 @@ function quest_conditions(conditions)
 	{
 	if(conditions.newTech=="MUSCLES"){
 		if(gui_QuestClose(8)){
+			actor_SetAttribute(actor_GetActor("Heaps.Barricada"),"__BUSY",0);
 			gui_StartCutscene("Quest8_Cutscene");
 			}		
 		}

@@ -18,6 +18,14 @@
 -Disable.Person.UI:1
 
 [Event]
+-Name:fiftiingsecondsscript
+-Priority:-1
+-Prq.IsGlobalEvent:0
+-Script.In:
+	actorWait_Timeout(15);
+	actor_SwitchToAction(thisActor,"");
+
+[Event]
 -Name:Cutscene.driver.Speed2
 -Prq.IsGlobalEvent:0
 -Protected:2
@@ -32,6 +40,7 @@
 -Priority:-1
 -Walk.Speed:4
 -Disable.Person.UI:1
+-Script.In:
 
 [Event]
 -Name:Talking

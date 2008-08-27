@@ -303,4 +303,56 @@ Cмотрите.
 А ты ничего, парень.
 Далеко пойдешь.
 #PAGEEND
+
+[DIALOG9]
+#PAGEBEGIN:(agata.png)
+Ну-с, коллеги.
+Посмотрим, от чего они так сильно отгородились.
+#PAGEEND
+
+#PAGEBEGIN:(shekel.png)
+Наверное, там что-то... невообразимое!
+И ужасное!!!
+#PAGEEND
+
+#PAGEBEGIN:(sinty.png)
+Ребята, давайте я вас здесь подожду.
+Хорошо, а?
+#PAGEEND
+
+#PAGEBEGIN:(agata.png)
+А что ты потом в мемуарах напишешь?
+"Они ушли во тьму и больше не возвращались"?
+#PAGEEND
+
+#PAGEBEGIN:(sinty.png)
+Все лучше, чем: "Я ушла во тьму и больше возвращалась".
+#PAGEEND
+
+#PAGEBEGIN:(shekel.png)
+Ладно тебе. Давай руку.
+Идем.
+#PAGEEND
+
+#PAGEBEGIN:(shekel.png)
+Не забывай, что где-то там еще есть тайник.
+#PAGEEND
+
+[DIALOG9-1]
+#PAGEBEGIN:(shekel.wow.png)
+Вау!
+#PAGEEND
+
+#PAGEBEGIN:(agata.png)
+Ничего себе.
+#PAGEEND
+
+#PAGEBEGIN:(sinty.png)
+А мне кажется, если прибраться, то будет даже уютно.
+#PAGEEND
+
+#PAGEBEGIN:(game.png)
+Конец альфа версии.
+Спасибо за внимание.
+#PAGEEND
 [END]<-Обязательный тег, указывающий на окончание файла диалогов

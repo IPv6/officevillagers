@@ -67,7 +67,12 @@ function dropOnTrash(thisActor,trashActor)
 		&& (actor_GetActorProfession(thisActor)=="JANITOR" || actor_GetActorProfession(thisActor)=="JANITOR-EXPERT"))
 	{
 		//если это баррикада, проверяем открыта ли технология
-		//if(trashActor.Name=="Heaps.Barricada" && 
+		if(trashActor.Name=="Heaps.Barricada" && actor_GetAttribute(trashActor,"__BUSY")==1){
+			//если не открыта, то выводим лейбел и не позволяем её убирать
+			actor_SetActionLabel(thisActor,"NONE_TECH");
+			actor_SwitchToAction(thisActor,"fiftiingsecondsscript");
+			return;
+		}
 		
 		// Проверяем что до этого мусора есть путь от середины корридора	
 		if(nloc_CheckWalkablePath("FurniDrops::BARR_FROM",trashActor)==false){

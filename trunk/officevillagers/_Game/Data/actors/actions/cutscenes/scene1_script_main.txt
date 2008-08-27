@@ -24,7 +24,7 @@
 	local actorBo = actor_GetActor("ACTOR.BOB");
 
 	gui_FadeIn();
-	actorWait_Timeout(1);
+	actorWait_Timeout(2);
 	actor_AttachCamera(actorAg);
 	actorWait_SwitchToAction(actorSh,"Cutscene.driver");
 	actorWait_SwitchToAction(actorAg,"Cutscene.driver");
@@ -39,6 +39,7 @@
 	actor_SitOnChairX(actorSi,"TABLE.AGATAMAIN",4,true);
 	actorWait_Timeout(1);
 	gui_FadeOut();
+	game_StartPuzzle();
 	actorWait_Timeout(3);
 	actor_OrientHead(actorSh,actorAg);
 	actor_OrientHead(actorSi,actorAg);
@@ -85,6 +86,7 @@
 -Disable.Person.UI:0
 -Think.Speed:1
 -Script.In:
+	gui_DisableSkipCurrentCutsceneButton();
 	// Предварительные действия
 	gui_FadeIn(); 
 	actorWait_Timeout(2);
@@ -103,6 +105,7 @@
 	}
 	
 	// Обязательные квесты
+	actor_SetAttribute(actor_GetActor("Heaps.Barricada"),"__BUSY",1);
 	if (gui_QuestCheck(2)!=2){ gui_QuestOpen(2); };
 	if (gui_QuestCheck(5)!=2){ gui_QuestOpen(5); };
     // устанавливаем профессии и сбрасываем ивенты (мы ведь не знаем в какой момент был пропуск?)
