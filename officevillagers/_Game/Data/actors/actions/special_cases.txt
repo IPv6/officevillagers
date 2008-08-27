@@ -17,20 +17,6 @@
 // „тобы человечка нельз€ было схватить и перетащить
 -Disable.Person.UI:1
 
-[Event]
--Name:fiftiingsecondsscript
--Priority:-1
--Prq.IsGlobalEvent:0
--Script.In:
-	actor_SwitchToAction(thisActor,"");
-
-[Event]
--Name:fiftiingsecondsscript2
--Priority:-1
--Prq.IsGlobalEvent:0
--Script.In:
-	actorWait_GoTo(thiaActor, "FINANCIER::MAIN");
-	actor_SwitchToAction(thisActor,"");
 	
 [Event]
 -Name:Cutscene.driver.Speed2
