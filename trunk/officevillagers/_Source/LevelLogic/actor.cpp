@@ -138,6 +138,7 @@ void CActor::ApplySerialization()
 			data.p_sNameLocalized=data.p_sName;
 		}
 	}
+	scriptMirror.SetValue("__action_step",0);
 	scriptMirror.SetValue("Name",data.p_sName.GetBuffer(0));
 	scriptMirror.SetValue("NameLocalized",data.p_sNameLocalized.GetBuffer(0));
 	scriptMirror.SetValue("ActorType",data.p_iActorType);
