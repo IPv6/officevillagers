@@ -48,6 +48,7 @@
 	actor_SwitchToAction(actor6,"");
 	actor_SwitchToAction(actor7,"");
 	actor_SwitchToAction(actor8,"");
+	gui_QuestOpen(7);
 	
 [Event]
 -Name:Debug_table_Script

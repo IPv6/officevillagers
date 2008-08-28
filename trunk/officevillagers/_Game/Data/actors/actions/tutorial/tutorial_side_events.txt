@@ -336,10 +336,8 @@
 -Walk.Speed:0.7
 -Script.In:
 	actor_AttachCamera(thisActor);
-	actorWait_GoTo(thisActor,"SCENES_Tutorial::DOT4");
-	actorWait_GoTo(thisActor,"SCENES_Tutorial::DOT5");
 	actorWait_GoTo(thisActor,"SCENES_Tutorial::DOT8");
-	actor_OrientBody(thisActor,180);
+	actor_OrientBody(thisActor,"Furniture::DOSKA");
 	
 [Step]
 -Name:Tutorial.AgataVsShekel3
@@ -350,7 +348,7 @@
 -Walk.Speed:0.7
 -Script.In:
 	actorWait_GoTo(thisActor,"SCENES_Tutorial::DOT8");
-	actor_OrientBody(thisActor,180);
+	actor_OrientBody(thisActor,"Furniture::DOSKA");
 	actorWait_SwitchToAction(thisActor,"Tutorial.End");
 	
 [Step]
