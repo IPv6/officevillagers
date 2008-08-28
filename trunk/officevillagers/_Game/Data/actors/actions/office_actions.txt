@@ -38,6 +38,18 @@
 		gui_ShowAlarm(core_Translate("ALARM.1",alarmsFile),300);
 		actor_SetAttribute("Office","Alarm1",1);
 	}
+
+	if (actor_GetAttributeN("Office","Alarm5")==0){
+		gui_ShowAlarm(core_Translate("ALARM.5",alarmsFile),300);
+		actor_SetAttribute("Office","Alarm5",1);
+	}
+	
+	if (actor_GetAttributeN("Office","Alarm2")==0){
+		gui_ShowAlarm(core_Translate("ALARM.4",alarmsFile),300);
+		gui_ShowAlarm(core_Translate("ALARM.3",alarmsFile),300);
+		actor_SetAttribute("Office","Alarm2",1);
+	}
+	
 	//============================================================
 	while(true){
 		if(thisActor.LevelFinish==true){

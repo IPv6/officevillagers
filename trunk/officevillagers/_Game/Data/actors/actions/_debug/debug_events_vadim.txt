@@ -48,7 +48,9 @@
 	actor_SwitchToAction(actor6,"");
 	actor_SwitchToAction(actor7,"");
 	actor_SwitchToAction(actor8,"");
-	gui_QuestOpen(7);
+	gui_QuestOpen(2);
+	core_EnableNode("techs_button",true);
+	actor_SetAttribute("Office","ideas",100);
 	
 [Event]
 -Name:Debug_table_Script
