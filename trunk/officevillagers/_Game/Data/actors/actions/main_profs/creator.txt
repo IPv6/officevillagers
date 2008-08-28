@@ -56,8 +56,9 @@
 -Prq.IsGlobalEvent:0
 -Script.In:
 	if(nloc_GetWalkableState("CREATOR::DOT1")==1){
-		actor_SetActionLabel(thisActor,"CREATOR.1");
+		actor_SetActionLabel(thisActor,"FINANCIER.2");
 		actorWait_GoTo(thisActor,"CREATOR::DOT1");
+		actor_SetActionLabel(thisActor,"ACTIONLABEL.CREATOR_Sub_any1");
 		actorWait_Timeout(10);
 	}
 	actor_SwitchToAction(thisActor,"CREATOR_WORK");
@@ -69,8 +70,9 @@
 -Prq.IsGlobalEvent:0
 -Script.In:
 	if(nloc_GetWalkableState("CREATOR::DOT2")==1){
-		actor_SetActionLabel(thisActor,"CREATOR.1");
+		actor_SetActionLabel(thisActor,"FINANCIER.2");
 		actorWait_GoTo(thisActor,"CREATOR::DOT2");
+		actor_SetActionLabel(thisActor,"ACTIONLABEL.CREATOR_Sub_any2");
 		actorWait_Timeout(10);
 	}
 	actor_SwitchToAction(thisActor,"CREATOR_WORK");
@@ -83,8 +85,9 @@
 -Prq.IsGlobalEvent:0
 -Script.In:
 	if(nloc_GetWalkableState("CREATOR::DOT3")==1){
-		actor_SetActionLabel(thisActor,"CREATOR.1");
+		actor_SetActionLabel(thisActor,"FINANCIER.2");
 		actorWait_GoTo(thisActor,"CREATOR::DOT3");
+		actor_SetActionLabel(thisActor,"ACTIONLABEL.CREATOR_Sub_any3");
 		actorWait_Timeout(10);
 	}
 		actor_SwitchToAction(thisActor,"CREATOR_WORK");
@@ -95,8 +98,9 @@
 -Prq.IsGlobalEvent:0
 -Script.In:
 	if(nloc_GetWalkableState("CREATOR::DOT4")==1){
-		actor_SetActionLabel(thisActor,"CREATOR.1");
+		actor_SetActionLabel(thisActor,"FINANCIER.2");
 		actorWait_GoTo(thisActor,"CREATOR::DOT4");
+		actor_SetActionLabel(thisActor,"ACTIONLABEL.CREATOR_Sub_any4");
 		actorWait_Timeout(10);
 	}
 	actor_SwitchToAction(thisActor,"CREATOR_WORK");
@@ -107,8 +111,9 @@
 -Prq.IsGlobalEvent:0
 -Script.In:
 	if(nloc_GetWalkableState("CREATOR::DOT5")==1){
-		actor_SetActionLabel(thisActor,"CREATOR.1");
+		actor_SetActionLabel(thisActor,"FINANCIER.2");
 		actorWait_GoTo(thisActor,"CREATOR::DOT5");
+		actor_SetActionLabel(thisActor,"ACTIONLABEL.CREATOR_Sub_any5");
 		actorWait_Timeout(10);
 	}
 	actor_SwitchToAction(thisActor,"CREATOR_WORK");
@@ -119,8 +124,9 @@
 -Prq.IsGlobalEvent:0
 -Script.In:
 	if(nloc_GetWalkableState("CREATOR::DOT6")==1){
-		actor_SetActionLabel(thisActor,"CREATOR.1");
+		actor_SetActionLabel(thisActor,"FINANCIER.2");
 		actorWait_GoTo(thisActor,"CREATOR::DOT6");
+		actor_SetActionLabel(thisActor,"ACTIONLABEL.CREATOR_Sub_any6");
 		actorWait_Timeout(10);
 	}
 	actor_SwitchToAction(thisActor,"CREATOR_WORK");
@@ -131,8 +137,9 @@
 -Prq.IsGlobalEvent:0
 -Script.In:
 	if(nloc_GetWalkableState("CREATOR::DOT7")==1){
-		actor_SetActionLabel(thisActor,"CREATOR.1");
+		actor_SetActionLabel(thisActor,"FINANCIER.2");
 		actorWait_GoTo(thisActor,"CREATOR::DOT7");
+		actor_SetActionLabel(thisActor,"ACTIONLABEL.CREATOR_Sub_any7");
 		actorWait_Timeout(10);
 	}
 	actor_SwitchToAction(thisActor,"CREATOR_WORK");
@@ -143,8 +150,9 @@
 -Prq.IsGlobalEvent:0
 -Script.In:
 	if(nloc_GetWalkableState("CREATOR::DOT8")==1){
-		actor_SetActionLabel(thisActor,"CREATOR.1");
+		actor_SetActionLabel(thisActor,"FINANCIER.2");
 		actorWait_GoTo(thisActor,"CREATOR::DOT8");
+		actor_SetActionLabel(thisActor,"ACTIONLABEL.CREATOR_Sub_any8");
 		actorWait_Timeout(10);
 	}
 	actor_SwitchToAction(thisActor,"CREATOR_WORK");

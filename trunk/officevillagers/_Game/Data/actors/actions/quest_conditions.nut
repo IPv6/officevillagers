@@ -7,7 +7,7 @@ function quest_conditions(conditions)
 		if (conditions._actorFrom.BodyLock!=1 && conditions._actorTo.Name=="ACTOR.AGATA"){
 			if(gui_QuestClose(3)){
 				local alarmsFile = core_GetDataPath("\\text\\alarm_names.lng");
-				gui_ShowAlarm(core_Translate("ALARM.6",alarmsFile),300);
+				\\gui_ShowAlarm(core_Translate("ALARM.6",alarmsFile),300);
 				gui_QuestOpen(4);
 			}
 		}
