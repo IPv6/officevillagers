@@ -114,7 +114,7 @@ CAction* CAction::Add2LevelFromDescriptionSingleSet(const CString &sDsc, const c
 			newOne->p_sNameForHUD=CString("ACTIONLABEL.")+newOne->p_sActionName;
 		}
 		if(newOne->p_sNameForHUD.GetLength()){
-			newOne->p_sNameForHUD=_ll(newOne->p_sNameForHUD,newOne->p_sNameForHUD,"text\\action_names.lng");//_l(newOne->p_sNameForHUD);
+			newOne->p_sNameForHUD=_ll(newOne->p_sNameForHUD,"","text\\action_names.lng");//_l(newOne->p_sNameForHUD);
 		}
 	}
 	if(isParam(sDscInit,"-Prq.Prophessions:",s)){
@@ -258,7 +258,7 @@ BOOL CAction::OnDetach(CActor* who)
 		who->scriptMirror.SetValue("__action_step",3);
 		getGame().scripter.CallPrecompiledMethod(sScriptEnd,who->scriptMirror,STEPOFF_CLASS);
 	}
-	who->SetStatusTextOverload("");
+	//who->SetStatusTextOverload("");
 	who->scriptMirror.SetValue("Action","");
 	getLevel()->getCurrentAction()=0;
 	DEBUG_LASTACTION("");
