@@ -117,7 +117,7 @@
     actor_SetProfessionRaw(actorSi,"AUTHOR");
     actor_SetProfessionRaw(actorBo,"JANITOR");
 	actorWait_SwitchToAction(actorSh,"");
-	actorWait_SwitchToAction(actorAg,"");
+	actorWait_SwitchToAction(actorAg,"event_15sec_stop");
 	actorWait_SwitchToAction(actorSi,"");
 	actorWait_SwitchToAction(actorBo,"");
 	actor_SetActorPos(actorSh,"SCENES_CutScene1::Shekel");

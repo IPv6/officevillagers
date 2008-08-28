@@ -31,7 +31,10 @@
 	}
 	// Предопределенные действия
 	if (actor_GetAttributeN("Office","Alarm1")==0){
-		$ifdebug core_Warning("Alarm: seat hint");
+		gui_ShowAlarm(core_Translate("ALARM.2",alarmsFile),300);
+		actor_SetAttribute("Office","Alarm1",2);
+	}
+	if (actor_GetAttributeN("Office","Alarm1")==2){
 		gui_ShowAlarm(core_Translate("ALARM.1",alarmsFile),300);
 		actor_SetAttribute("Office","Alarm1",1);
 	}

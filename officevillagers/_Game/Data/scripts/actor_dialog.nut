@@ -102,12 +102,12 @@ function gui_ShowDialog(dialogFile,dialogData)
 				continue;
 			}
 			if(strstr(line,"#")==false){
-				line=core_JustifyText(line,3.8);
+				line=core_JustifyText(line,5.3);
 			}
 			local subLines=split(line,"\n");
 			dialogStringsAfter.extend(subLines);
 		}
-		local iPageStringsMax=3;
+		local iPageStringsMax=4;
 		local iCurrentLineCounter=0;
 		local sPageIcon = "";
 		// Бежим по всем строкам

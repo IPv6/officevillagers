@@ -61,19 +61,11 @@ function dropOnPers(thisActor,persActor)
 function dropOnTrash(thisActor,trashActor)
 {
 	core_Warning(format("Drop on trash %s!",trashActor.Name));
-	
+	quest_conditions({_fromDropTrash=1, _actorFrom=thisActor, _locName=trashActor});
 	//кидаем уборщиков в мусор
-	if(actor_GetAttributeN(trashActor,"__BUSY")==0 
+	if(actor_GetAttributeN(trashActor,"__BUSY")==0
 		&& (actor_GetActorProfession(thisActor)=="JANITOR" || actor_GetActorProfession(thisActor)=="JANITOR-EXPERT"))
 	{
-		//если это баррикада, проверяем открыта ли технология
-		if(trashActor.Name=="Heaps.Barricada" && actor_GetAttribute(trashActor,"__BUSY")==1){
-			//если не открыта, то выводим лейбел и не позволяем её убирать
-			actor_SetActionLabel(thisActor,"NONE_TECH");
-			actor_SwitchToAction(thisActor,"");
-			return;
-		}
-		
 		// Проверяем что до этого мусора есть путь от середины корридора	
 		if(nloc_CheckWalkablePath("FurniDrops::BARR_FROM",trashActor)==false){
 			$ifdebug core_Warning("Drop on trash skipped: no path to "+trashActor.Name);
@@ -93,12 +85,24 @@ function dropOnTrash(thisActor,trashActor)
 			}
 			return 0;
 		}
+
+		
 		// Переводим на уборку
 		actor_SetAttribute(thisActor,"CurrentTrashName",trashActor.Name);
 		actor_SwitchToAction(thisActor,"JANITOR_script");
 		return 1;
 	}
 
+		//если это баррикада, проверяем открыта ли технология
+	if(trashActor.Name=="Heaps.Barricada" && actor_GetAttributeN(trashActor,"__BUSY")==1 
+	&& (actor_GetActorProfession(thisActor)=="JANITOR" || actor_GetActorProfession(thisActor)=="JANITOR-EXPERT")){
+		//если не открыта, то выводим лейбел и не позволяем её убирать
+		actor_SetActionLabel(thisActor,"NONE_TECH");
+		actor_SwitchToAction(thisActor,"event_15sec_stop");
+		return 1;
+	}
+	
+	
 	//кидаем персов в коллектиблы
 	if(actor_GetAttributeN(trashActor,"__BUSY")==0 
 		&& actor_GetActorProfession(thisActor)!="JANITOR" && actor_GetActorProfession(thisActor)!="JANITOR-EXPERT" 

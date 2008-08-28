@@ -19,6 +19,15 @@
 
 	
 [Event]
+-Name:event_15sec_stop
+-Prq.IsGlobalEvent:0
+-Protected:2
+-Priority:-1
+-Script.In:
+	actorWait_Timeout(15);
+	actorWait_SwitchToAction(thisActor,"");
+
+[Event]
 -Name:Cutscene.driver.Speed2
 -Prq.IsGlobalEvent:0
 -Protected:2

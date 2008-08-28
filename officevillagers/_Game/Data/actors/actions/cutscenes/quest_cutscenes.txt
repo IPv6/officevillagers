@@ -232,9 +232,12 @@
 	gui_ShowDialog(null,null);
 	actorWait_Timeout(2);
 	gui_QuestOpen(7);
+	actor_Unsit(actor_GetActor("ACTOR.AGATA"));
 	actorWait_SwitchToAction(actor_GetActor("ACTOR.AGATA"),"");
 	actorWait_SwitchToAction(actor_GetActor("ACTOR.SHEKEL"),"");
 	actorWait_SwitchToAction(actor_GetActor("ACTOR.BOB"),"");
+	actor_MakePocketEmpty(actor_GetActor("ACTOR.SHEKEL"));
+	actor_DelItem(actor_GetActor("ACTOR.SHEKEL"),"collectible_item","collectible_number=0");
     game_CutsceneEnd({});
     actor_DetachCamera();
     actor_SwitchToAction(thisActor,"Office_script");
