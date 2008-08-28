@@ -1396,4 +1396,242 @@
 	<Items>
 	</Items>
 </Actor>
+<!-- мусоры, дублирующие мусор перед барикадой -->
 
+<Actor>
+	<Name val="Musor49.cwalk.allowDown" />
+	<Enabled val="1" />
+	<Sprite val="\actors\items\trash\trashheap.spr?image=trashheap_plyazhnyi_ctolik.png&xoffset=0&yoffset=0" />
+	<Position.Location val="FurniTrashMINI2::DOT49" />
+	<ActorProphession val="COLLECTIBLE.FURNITURE" />
+	<Attributes>
+		OptionLong[exploration]=1
+		OptionLong[drag]=1
+	</Attributes>
+	<Items>
+	</Items>
+</Actor>
+<Actor>
+	<Name val="Musor50.cwalk.allowDown" />
+	<Enabled val="1" />
+	<Sprite val="\actors\items\trash\trashheap.spr?image=trashheap_plyazhnyi_ctolik.png&xoffset=0&yoffset=0" />
+	<Position.Location val="FurniTrashMINI2::DOT50" />
+	<ActorProphession val="COLLECTIBLE.FURNITURE" />
+	<Attributes>
+		OptionLong[exploration]=1
+		OptionLong[drag]=1
+	</Attributes>
+	<Items>
+	</Items>
+</Actor>
+<Actor>
+	<Name val="Musor51.cwalk.allowDown" />
+	<Enabled val="1" />
+	<Sprite val="\actors\items\trash\trashheap.spr?image=trashheap_plyazhnyi_ctolik.png&xoffset=0&yoffset=0" />
+	<Position.Location val="FurniTrashMINI2::DOT51" />
+	<ActorProphession val="COLLECTIBLE.FURNITURE" />
+	<Attributes>
+		OptionLong[exploration]=1
+		OptionLong[drag]=1
+	</Attributes>
+	<Items>
+	</Items>
+</Actor>
+<Actor>
+	<Name val="Musor52.cwalk" />
+	<Enabled val="1" />
+	<Sprite val="\actors\items\trash\trashheap.spr?image=trashheap_plyazhnyi_ctolik.png&xoffset=0&yoffset=0" />
+	<Position.Location val="FurniTrashMINI2::DOT52" />
+	<ActorProphession val="COLLECTIBLE.FURNITURE" />
+	<Attributes>
+		OptionLong[exploration]=1
+		OptionLong[drag]=1
+	</Attributes>
+	<Items>
+	</Items>
+</Actor>
+<Actor>
+	<Name val="Musor53.cwalk.allowDown" />
+	<Enabled val="1" />
+	<Sprite val="\actors\items\trash\trashheap.spr?image=trashheap_shezlong_180grad.png&xoffset=0&yoffset=0" />
+	<Position.Location val="FurniTrashMINI2::DOT53" />
+	<ActorProphession val="COLLECTIBLE.FURNITURE" />
+	<Attributes>
+		OptionLong[exploration]=1
+		OptionLong[drag]=1
+	</Attributes>
+	<Items>
+	</Items>
+</Actor>
+<Actor>
+	<Name val="Musor54.cwalk.allowDown" />
+	<Enabled val="1" />
+	<Sprite val="\actors\items\trash\trashheap.spr?image=trashheap_plyazhnyi_ctolik.png&xoffset=0&yoffset=0" />
+	<Position.Location val="FurniTrashMINI2::DOT54" />
+	<ActorProphession val="COLLECTIBLE.FURNITURE" />
+	<Attributes>
+		OptionLong[exploration]=1
+		OptionLong[drag]=1
+	</Attributes>
+	<Items>
+	</Items>
+</Actor>
+
+<Actor>
+	<Name val="Musor56.cwalk.allowDown" />
+	<Enabled val="1" />
+	<Sprite val="\actors\items\trash\trashheap.spr?image=trashheap_plyazhnyi_ctolik.png&xoffset=0&yoffset=0" />
+	<Position.Location val="FurniTrashMINI2::DOT56" />
+	<ActorProphession val="COLLECTIBLE.FURNITURE" />
+	<Attributes>
+		OptionLong[exploration]=1
+		OptionLong[drag]=1
+	</Attributes>
+	<Items>
+	</Items>
+</Actor>
+<Actor>
+	<Name val="Musor57.cwalk.allowDown" />
+	<Enabled val="1" />
+	<Sprite val="\actors\items\trash\trashheap.spr?image=trashheap_plyazhnyi_ctolik.png&xoffset=0&yoffset=0" />
+	<Position.Location val="FurniTrashMINI2::DOT57" />
+	<ActorProphession val="COLLECTIBLE.FURNITURE" />
+	<Attributes>
+		OptionLong[exploration]=1
+		OptionLong[drag]=1
+	</Attributes>
+	<Items>
+	</Items>
+</Actor>
+<Actor>
+	<Name val="Musor58.cwalk.allowDown" />
+	<Enabled val="1" />
+	<Sprite val="\actors\items\trash\trashheap.spr?image=trashheap_plyazhnyi_ctolik.png&xoffset=0&yoffset=0" />
+	<Position.Location val="FurniTrashMINI2::DOT58" />
+	<ActorProphession val="COLLECTIBLE.FURNITURE" />
+	<Attributes>
+		OptionLong[exploration]=1
+		OptionLong[drag]=1
+	</Attributes>
+	<Items>
+	</Items>
+</Actor>
+<Actor>
+	<Name val="Musor59.cwalk.allowDown" />
+	<Enabled val="1" />
+	<Sprite val="\actors\items\trash\trashheap.spr?image=trashheap_shezlong_90grad.png&xoffset=0&yoffset=0" />
+	<Position.Location val="FurniTrashMINI2::DOT59" />
+	<ActorProphession val="COLLECTIBLE.FURNITURE" />
+	<Attributes>
+		OptionLong[exploration]=1
+		OptionLong[drag]=1
+	</Attributes>
+	<Items>
+	</Items>
+</Actor>
+<Actor>
+	<Name val="Musor60.cwalk.allowDown" />
+	<Enabled val="1" />
+	<Sprite val="\actors\items\trash\trashheap.spr?image=trashheap_shezlong_135grad.png&xoffset=0&yoffset=0" />
+	<Position.Location val="FurniTrashMINI2::DOT60" />
+	<ActorProphession val="COLLECTIBLE.FURNITURE" />
+	<Attributes>
+		OptionLong[exploration]=1
+		OptionLong[drag]=1
+	</Attributes>
+	<Items>
+	</Items>
+</Actor>
+<Actor>
+	<Name val="Musor61.cwalk.allowDown" />
+	<Enabled val="1" />
+	<Sprite val="\actors\items\trash\trashheap.spr?image=trashheap_shezlong_90grad.png&xoffset=0&yoffset=0" />
+	<Position.Location val="FurniTrashMINI2::DOT61" />
+	<ActorProphession val="COLLECTIBLE.FURNITURE" />
+	<Attributes>
+		OptionLong[exploration]=1
+		OptionLong[drag]=1
+	</Attributes>
+	<Items>
+	</Items>
+</Actor>
+<Actor>
+	<Name val="Musor62.cwalk.allowDown" />
+	<Enabled val="1" />
+	<Sprite val="\actors\items\trash\trashheap.spr?image=trashheap_vanna.png&xoffset=0&yoffset=0" />
+	<Position.Location val="FurniTrashMINI2::DOT62" />
+	<ActorProphession val="COLLECTIBLE.FURNITURE" />
+	<Attributes>
+		OptionLong[exploration]=1
+		OptionLong[drag]=1
+	</Attributes>
+	<Items>
+	</Items>
+</Actor>
+<Actor>
+	<Name val="Musor64.cwalk.allowDown" />
+	<Enabled val="1" />
+	<Sprite val="\actors\items\trash\trashheap.spr?image=trashheap_plyazhnyi_ctolik.png&xoffset=0&yoffset=0" />
+	<Position.Location val="FurniTrashMINI2::DOT64" />
+	<ActorProphession val="COLLECTIBLE.FURNITURE" />
+	<Attributes>
+		OptionLong[exploration]=1
+		OptionLong[drag]=1
+	</Attributes>
+	<Items>
+	</Items>
+</Actor>
+<Actor>
+	<Name val="Musor65.cwalk.allowDown" />
+	<Enabled val="1" />
+	<Sprite val="\actors\items\trash\trashheap.spr?image=trashheap_shezlong_45grad.png&xoffset=0&yoffset=0" />
+	<Position.Location val="FurniTrashMINI2::DOT65" />
+	<ActorProphession val="COLLECTIBLE.FURNITURE" />
+	<Attributes>
+		OptionLong[exploration]=1
+		OptionLong[drag]=1
+	</Attributes>
+	<Items>
+	</Items>
+</Actor>
+
+<Actor>
+	<Name val="Musor66.cwalk.allowDown" />
+	<Enabled val="1" />
+	<Sprite val="\actors\items\trash\trashheap.spr?image=trashheap_shezlong_90grad.png&xoffset=0&yoffset=0" />
+	<Position.Location val="FurniTrashMINI2::DOT66" />
+	<ActorProphession val="COLLECTIBLE.FURNITURE" />
+	<Attributes>
+		OptionLong[exploration]=1
+		OptionLong[drag]=1
+	</Attributes>
+	<Items>
+	</Items>
+</Actor>
+
+<Actor>
+	<Name val="Musor68.cwalk.allowDown" />
+	<Enabled val="1" />
+	<Sprite val="\actors\items\trash\trashheap.spr?image=trashheap_shezlong_135grad.png&xoffset=0&yoffset=0" />
+	<Position.Location val="FurniTrashMINI2::DOT68" />
+	<ActorProphession val="COLLECTIBLE.FURNITURE" />
+	<Attributes>
+		OptionLong[exploration]=1
+		OptionLong[drag]=1
+	</Attributes>
+	<Items>
+	</Items>
+</Actor>
+<Actor>
+	<Name val="Musor70.cwalk.allowDown" />
+	<Enabled val="1" />
+	<Sprite val="\actors\items\trash\trashheap.spr?image=trashheap_plyazhnyi_ctolik.png&xoffset=0&yoffset=0" />
+	<Position.Location val="FurniTrashMINI2::DOT70" />
+	<ActorProphession val="COLLECTIBLE.FURNITURE" />
+	<Attributes>
+		OptionLong[exploration]=1
+		OptionLong[drag]=1
+	</Attributes>
+	<Items>
+	</Items>
+</Actor>

@@ -1,10 +1,13 @@
 function quest_conditions(conditions)
 {
+
 	if("_fromDrop" in conditions)
 	{// Проверки квестов, вызывающиеся из дроп-методов
 		//core_Warning("From drop!");
 		if (conditions._actorFrom.BodyLock!=1 && conditions._actorTo.Name=="ACTOR.AGATA"){
 			if(gui_QuestClose(3)){
+				local alarmsFile = core_GetDataPath("\\text\\alarm_names.lng");
+				gui_ShowAlarm(core_Translate("ALARM.6",alarmsFile),300);
 				gui_QuestOpen(4);
 			}
 		}
@@ -25,9 +28,7 @@ function quest_conditions(conditions)
 		if((actor_GetActorProfession(conditions._actorFrom)=="JANITOR" || actor_GetActorProfession(conditions._actorFrom)=="JANITOR-EXPERT")
 		&& conditions._locName.Name == "Heaps.Barricada" 
 		&& nloc_CheckWalkablePath("Furniture::DOT16","FurniDrops::BARRICADA!")!=false){
-		core_Warning("2");
 			if(gui_QuestClose(7)){
-			core_Warning("3");
 				gui_StartCutscene("Quest7_Cutscene");
 			}
 		}
@@ -37,6 +38,9 @@ function quest_conditions(conditions)
 		if (conditions.who.Name=="ACTOR.AGATA" && conditions.prof.find("FINANCIER")!= null ){
 			if(gui_QuestClose(2)){
 				gui_QuestOpen(3);
+				local alarmsFile = core_GetDataPath("\\text\\alarm_names.lng");
+				gui_ShowAlarm(core_Translate("ALARM.8",alarmsFile),300);
+				gui_ShowAlarm(core_Translate("ALARM.7",alarmsFile),300);
 			}
 		}
 	}
