@@ -18,7 +18,7 @@
 -Texture:heads_${hsex}.png
 -Atlas:x${head_x} y${head_y} w7 h16
 -Position:x${xhead} y0.5 s2
--Size:w${sign}2.3 h3.5
+-Size:w2.3 h3.5
 -ActorHeadSync:1
 
 [Sprite]

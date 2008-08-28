@@ -160,11 +160,10 @@
 	actor_SitOnChair(thisActor,thisTable,false);
 	local ProgrCur=gui_GetIssueProgressCur()+1;
 	gui_SetIssueProgressCur(ProgrCur);
-	actor_SetAttribute("Office","IssueProgressCur", ProgrCur);
 	
 	
 	//если текущая статься - последняя необходимая для сдачи номера
-	if (gui_GetIssueProgressCur() == GetIssueProgressMax()){
+	if (gui_GetIssueProgressCur() == gui_GetIssueProgressMax()){
 		//core_Warning("играет анимация и звук");
 		//отключается высчет качества номера
 		actor_SetAttribute(actor_GetActor(), "Opener_QualityCheck", 0);

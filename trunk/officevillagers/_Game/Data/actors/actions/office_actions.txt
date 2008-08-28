@@ -26,13 +26,14 @@
 	local nextAlarmTime = getTime()+10;
 	local nextParamsRecalTime = getTime();
 	local alarmsFile = core_GetDataPath("\\text\\alarm_names.lng");
-	
+	if(g_AutoSaveTime == 0){
+		g_AutoSaveTime = getTime() + 60*10;
+	}
+	// Предопределенные действия
 	if (actor_GetAttributeN("Office","Alarm1")==0){
-	core_Warning("2");
+		$ifdebug core_Warning("Alarm: seat hint");
 		gui_ShowAlarm(core_Translate("ALARM.1",alarmsFile),300);
-		core_Warning("3");
-		actor_GetAttribute("Office","Alarm1",1);
-		core_Warning("4");
+		actor_SetAttribute("Office","Alarm1",1);
 	}
 	//============================================================
 	while(true){
@@ -42,9 +43,11 @@
 		}
 		local nowTime=getTime();
 		//============================================================
+		if(nowTime > g_AutoSaveTime){
+			g_AutoSaveTime = getTime() + 60*10;
+			game_SaveGame();
+		}
 		//============================================================
-
-	
 		if(nowTime > nextTalkTime){
 			nextTalkTime = getTime()+nextTimeDelta;
 			for(i=0;i<5;i++){//5 площадок разговора за цикл
@@ -67,10 +70,11 @@
 				}
 			}
 		}
+		//============================================================
 		if(nowTime > nextParamsRecalTime){
-            nextParamsRecalTime = getTime()+5*60;
-            RecalcOfficeParameters();
-        }
+			nextParamsRecalTime = getTime()+5*60;
+			RecalcOfficeParameters();
+		}
 		//============================================================
 		if(nowTime > nextTrashTime){
 			nextTrashTime = getTime()+60;

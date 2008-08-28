@@ -102,9 +102,10 @@ void CSpriteHeadSync::externInit(CNodeBasement* node)
 	parentActor=getLevel()->getActorByID(iActorID);
 	if(parentActor && parentActor->bNodeSpawned){
 		actorHead=(CSpriteNode*)getNode(SUBID_HEAD,parentActor->node);
-		if(actorHead){
+		fPrevAtlasX=-1000;
+		/*if(actorHead){
 			fPrevAtlasX=actorHead->atlas_x;
-		}
+		}*/
 	}
 }
 
@@ -119,6 +120,7 @@ void CSpriteHeadSync::stepAnimation(CNodeBasement* node, u32 timeMs)
 	if(fPrevAtlasX!=actorHead->atlas_x){// Меняем только с того момента как основной перс покрутил головой!
 		CSpriteNode* nods=(CSpriteNode*)node;
 		nods->SetAtlasSprite(actorHead->atlas_x,nods->atlas_y,nods->atlas_xtotal,nods->atlas_ytotal);
+		fPrevAtlasX=actorHead->atlas_x;
 	}
 }
 
@@ -147,7 +149,7 @@ BOOL CFontEffectTyper::DoCharPerturbation()
 		return 1;// Строки не трогаем...
 	}
 	// Когда обновляться?
-	if(getTick()-iTime>40){
+	if(getTick()-iTime>20){
 		iTime=getTick();
 		iCurPos++;
 	}
@@ -167,11 +169,11 @@ BOOL CFontEffectTyper::DoCharPerturbation()
 		}
 		return 1;
 	}
-	if(iCurPos>charsLen-CHARS_TRAIL*0.7f){
+	/*if(iCurPos>charsLen-CHARS_TRAIL*0.7f){
 		isAllOver=1;
 		DoCharPerturbation();// Обновим
 		return 1;
-	}
+	}*/
 	/*
 	CSimpleAnykeyManager::Instance().ReserveInputTarget(1,getTick()+1);
 	if(CSimpleAnykeyManager::Instance().IsInputOccured(0,1)){

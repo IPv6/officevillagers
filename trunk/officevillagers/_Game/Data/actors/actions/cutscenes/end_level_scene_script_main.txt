@@ -180,9 +180,9 @@
 	}
 
 	RecalcOfficeOnLevelChange();
-     gui_ShowDialog(dialogFile, { _section="DIALOG9", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
-     //запсукается ивент  других дел по окончанию номера
-     actor_SwitchToAction(thisActor,"OFFICE.END.LEVEL.ELSE");
+	gui_ShowDialog(dialogFile, { _section="DIALOG9", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
+	//запсукается ивент  других дел по окончанию номера
+	actor_SwitchToAction(thisActor,"OFFICE.END.LEVEL.ELSE");
 	
 	
 [Event]
@@ -234,4 +234,5 @@
 	actorWait_SwitchToAction(actorBo,"");
 	
 	gui_SetIssueProgressCur(0);
-	actorWait_SwitchToAction(thisActor,"Office_script");	
+	RecalcOfficeOnLevelChange();
+	actorWait_SwitchToAction(thisActor,"Office_script");

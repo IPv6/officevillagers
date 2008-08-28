@@ -54,6 +54,8 @@ function game_CutsceneEnd(params)
 			actor_SwitchToAction(objectsArray[i],"",true);
 		}
 	}
+	// Выставляем аутосейв на 5 мекунд вперед
+	g_AutoSaveTime = getTime()+5;
 	return;
 }
 

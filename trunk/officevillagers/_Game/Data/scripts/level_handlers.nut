@@ -1,3 +1,5 @@
+g_AutoSaveTime <- 0;
+
 function actorGetValidMethod(thisActor)
 {
 	if(thisActor._StepInThreadType>0){
@@ -54,6 +56,7 @@ function event_OnStartGame(param)
 {
 	core_SetKeyHandlerMode(1);
 	core_SetIntervalLocal("main_level_interface",1000,"gui_UpdateHud();");
+	RecalcOfficeOnLevelChange();
 	if(gui_QuestCheck(8)<2){
 		core_EnableNode("techs_button",false);
 	}

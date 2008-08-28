@@ -2,3 +2,4 @@
 -Description:QUEST_1_DESC
 -Reopen:0
 -UsedAttributes:DEADLINE_DATE,IssueProgressCur,IssueProgressMax,FinancierCur,FinancierNeed
+-SortId:1

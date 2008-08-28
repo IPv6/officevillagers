@@ -1,3 +1,4 @@
 -Name:QUEST_8
 -Description:QUEST_8_DESC
 -Reopen:0
+-SortId:8
