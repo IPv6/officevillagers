@@ -50,8 +50,9 @@
 -Prq.IsGlobalEvent:0
 -Script.In:
 	if(nloc_GetWalkableState("FINANCIER::DOT1")==1){
-		actor_SetActionLabel(thisActor,"FINANCIER.1");
+		actor_SetActionLabel(thisActor,"FINANCIER.2");
 		actorWait_GoTo(thisActor,"FINANCIER::DOT1");
+		actor_SetActionLabel(thisActor,"ACTIONLABEL.FINANCIER_Sub_any11");
 		actorWait_Timeout(10);
 	}
 	actor_SwitchToAction(thisActor,"FINANCIER_WORK");
@@ -62,8 +63,9 @@
 -Prq.IsGlobalEvent:0
 -Script.In:
 	if(nloc_GetWalkableState("FINANCIER::DOT2")==1){
-		actor_SetActionLabel(thisActor,"FINANCIER.1");
+		actor_SetActionLabel(thisActor,"FINANCIER.2");
 		actorWait_GoTo(thisActor,"FINANCIER::DOT2");
+		actor_SetActionLabel(thisActor,"ACTIONLABEL.FINANCIER_Sub_any2");
 		actorWait_Timeout(10);
 	}
 	actor_SwitchToAction(thisActor,"FINANCIER_WORK");
@@ -74,8 +76,9 @@
 -Prq.IsGlobalEvent:0
 -Script.In:
 	if(nloc_GetWalkableState("FINANCIER::DOT3")==1){
-		actor_SetActionLabel(thisActor,"FINANCIER.1");
+		actor_SetActionLabel(thisActor,"FINANCIER.2");
 		actorWait_GoTo(thisActor,"FINANCIER::DOT3");
+		actor_SetActionLabel(thisActor,"ACTIONLABEL.FINANCIER_Sub_any3");
 		actorWait_Timeout(10);
 	}
 	actor_SwitchToAction(thisActor,"FINANCIER_WORK");
@@ -86,8 +89,9 @@
 -Prq.IsGlobalEvent:0
 -Script.In:
 	if(nloc_GetWalkableState("FINANCIER::DOT4")==1){
-		actor_SetActionLabel(thisActor,"FINANCIER.1");
+		actor_SetActionLabel(thisActor,"FINANCIER.2");
 		actorWait_GoTo(thisActor,"FINANCIER::DOT4");
+		actor_SetActionLabel(thisActor,"ACTIONLABEL.FINANCIER_Sub_any4");
 		actorWait_Timeout(10);
 	}
 	actor_SwitchToAction(thisActor,"FINANCIER_WORK");
@@ -98,8 +102,9 @@
 -Prq.IsGlobalEvent:0
 -Script.In:
 	if(nloc_GetWalkableState("FINANCIER::DOT5")==1){
-		actor_SetActionLabel(thisActor,"FINANCIER.1");
+		actor_SetActionLabel(thisActor,"FINANCIER.2");
 		actorWait_GoTo(thisActor,"FINANCIER::DOT5");
+		actor_SetActionLabel(thisActor,"ACTIONLABEL.FINANCIER_Sub_any5");
 		actorWait_Timeout(10);
 	}
 	actor_SwitchToAction(thisActor,"FINANCIER_WORK");
@@ -110,8 +115,9 @@
 -Prq.IsGlobalEvent:0
 -Script.In:
 	if(nloc_GetWalkableState("FINANCIER::DOT6")==1){
-		actor_SetActionLabel(thisActor,"FINANCIER.1");
+		actor_SetActionLabel(thisActor,"FINANCIER.2");
 		actorWait_GoTo(thisActor,"FINANCIER::DOT6");
+		actor_SetActionLabel(thisActor,"ACTIONLABEL.FINANCIER_Sub_any6");
 		actorWait_Timeout(10);
 	}
 	actor_SwitchToAction(thisActor,"FINANCIER_WORK");
@@ -122,8 +128,9 @@
 -Prq.IsGlobalEvent:0
 -Script.In:
 	if(nloc_GetWalkableState("FINANCIER::DOT7")==1){
-		actor_SetActionLabel(thisActor,"FINANCIER.1");
+		actor_SetActionLabel(thisActor,"FINANCIER.2");
 		actorWait_GoTo(thisActor,"FINANCIER::DOT7");
+		actor_SetActionLabel(thisActor,"FACTIONLABEL.FINANCIER_Sub_any7");
 		actorWait_Timeout(10);
 	}
 	actor_SwitchToAction(thisActor,"FINANCIER_WORK");
@@ -134,8 +141,9 @@
 -Prq.IsGlobalEvent:0
 -Script.In:
 	if(nloc_GetWalkableState("FINANCIER::DOT8")==1){
-		actor_SetActionLabel(thisActor,"FINANCIER.1");
+		actor_SetActionLabel(thisActor,"FINANCIER.2");
 		actorWait_GoTo(thisActor,"FINANCIER::DOT8");
+		actor_SetActionLabel(thisActor,"FACTIONLABEL.FINANCIER_Sub_any8");
 		actorWait_Timeout(10);
 	}
 	actor_SwitchToAction(thisActor,"FINANCIER_WORK");

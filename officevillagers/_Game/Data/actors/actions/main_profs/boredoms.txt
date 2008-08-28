@@ -10,7 +10,7 @@
 -Priority:-1
 -Prq.IsGlobalEvent:0
 -Script.In:
-	actor_SetActionLabel(thisActor,"ACTOR.1");
+	actor_SetActionLabel(thisActor,"ACTIONLABEL.NONE_Script_any1");
 	//промежуточный ивент с проверками
 	actor_OrientHead(thisActor,90);
 	setGlobal("rest_time",1);
@@ -42,7 +42,7 @@
 		actor_SwitchToAction(thisActor,"NONE_Script");
 		return;
 	}
-	actor_SetActionLabel(thisActor,"ACTOR.1");
+	actor_SetActionLabel(thisActor,"ACTIONLABEL.NONE_Script_any1");
 	actorWait_GoTo(thisActor,"SCENES_Tutorial::SHEKEL.1");
 	actor_SwitchToAction(thisActor,"NONE_Script_prov");
 	
@@ -57,8 +57,8 @@
 		actor_SwitchToAction(thisActor,"NONE_Script");
 		return;
 	}
-	actor_SetActionLabel(thisActor,"ACTOR.1");
 	actorWait_GoTo(thisActor,"SCENES_Tutorial::Bob2");
+	actor_SetActionLabel(thisActor,"ACTIONLABEL.NONE_Script_any2");
 	actor_SwitchToAction(thisActor,"NONE_Script_prov");
 
 
@@ -67,8 +67,12 @@
 -Priority:-1
 -Prq.IsGlobalEvent:0
 -Script.In:
-	actor_SetActionLabel(thisActor,"ACTOR.1");
-	actorWait_GoTo(thisActor,"SCENES_Tutorial::SINTI_LOOK2");
+	if(nloc_GetWalkableState("SCENES_Tutorial::DOT3")!=1){
+		actor_SwitchToAction(thisActor,"NONE_Script");
+		return;
+	}
+	actorWait_GoTo(thisActor,"SCENES_Tutorial::DOT3");
+	actor_SetActionLabel(thisActor,"ACTIONLABEL.NONE_Script_any3");
 	actor_SwitchToAction(thisActor,"NONE_Script_prov");
 
 
@@ -77,7 +81,11 @@
 -Priority:-1
 -Prq.IsGlobalEvent:0
 -Script.In:
-	actor_SetActionLabel(thisActor,"ACTOR.1");
+	if(nloc_GetWalkableState("SCENES_Tutorial::SHEKEL.0")!=1){
+		actor_SwitchToAction(thisActor,"NONE_Script");
+		return;
+	}
+	actor_SetActionLabel(thisActor,"ACTIONLABEL.NONE_Script_any4");
 	actorWait_GoTo(thisActor,"SCENES_Tutorial::SHEKEL.0");
 	actor_SwitchToAction(thisActor,"NONE_Script_prov");
 	
@@ -89,8 +97,12 @@
 -Priority:-1
 -Prq.IsGlobalEvent:0
 -Script.In:
-	actor_SetActionLabel(thisActor,"ACTOR.1");
+	if(nloc_GetWalkableState("SCENES_Tutorial::SHEKEL.3")!=1){
+		actor_SwitchToAction(thisActor,"NONE_Script");
+		return;
+	}
 	actorWait_GoTo(thisActor,"SCENES_Tutorial::SHEKEL.3");
+	actor_SetActionLabel(thisActor,"ACTIONLABEL.NONE_Script_any5");
 	actor_SwitchToAction(thisActor,"NONE_Script_prov");
 	
 
@@ -100,8 +112,12 @@
 -Priority:-1
 -Prq.IsGlobalEvent:0
 -Script.In:
-	actor_SetActionLabel(thisActor,"ACTOR.1");
-	actorWait_GoTo(thisActor,"SCENES_Tutorial::SHEKEL.2");
+	if(nloc_GetWalkableState("SCENES_Tutorial::DOT11")!=1){
+		actor_SwitchToAction(thisActor,"NONE_Script");
+		return;
+	}
+	actorWait_GoTo(thisActor,"SCENES_Tutorial::DOT11");
+	actor_SetActionLabel(thisActor,"ACTIONLABEL.NONE_Script_any6");
 	actor_SwitchToAction(thisActor,"NONE_Script_prov");
 
 	
@@ -110,8 +126,12 @@
 -Priority:-1
 -Prq.IsGlobalEvent:0
 -Script.In:
-	actor_SetActionLabel(thisActor,"ACTOR.1");
-	actorWait_GoTo(thisActor,"SCENES_Tutorial::Bob1");
+	if(nloc_GetWalkableState("SCENES_Tutorial::DOT12")!=1){
+		actor_SwitchToAction(thisActor,"NONE_Script");
+		return;
+	}
+	actor_SetActionLabel(thisActor,"ACTIONLABEL.NONE_Script_any7");
+	actorWait_GoTo(thisActor,"SCENES_Tutorial::DOT12");
 	actor_SwitchToAction(thisActor,"NONE_Script_prov");
 	
 	
@@ -120,8 +140,12 @@
 -Priority:-1
 -Prq.IsGlobalEvent:0
 -Script.In:
-	actor_SetActionLabel(thisActor,"ACTOR.1");
-	actorWait_GoTo(thisActor,"SCENES_Tutorial::Agata3");
+	if(nloc_GetWalkableState("SCENES_Tutorial::DOT8")!=1){
+		actor_SwitchToAction(thisActor,"NONE_Script");
+		return;
+	}
+	actorWait_GoTo(thisActor,"SCENES_Tutorial::DOT8");
+	actor_SetActionLabel(thisActor,"ACTIONLABEL.NONE_Script_any8");
 	actor_SwitchToAction(thisActor,"NONE_Script_prov");
 	
 [Event]
@@ -129,7 +153,11 @@
 -Priority:-1
 -Prq.IsGlobalEvent:0
 -Script.In:
-	actor_SetActionLabel(thisActor,"ACTOR.1");
+	if(nloc_GetWalkableState("SCENES_Tutorial::SHEKEL.4")!=1){
+		actor_SwitchToAction(thisActor,"NONE_Script");
+		return;
+	}
+	actor_SetActionLabel(thisActor,"ACTIONLABEL.NONE_Script_any1");
 	actorWait_GoTo(thisActor,"SCENES_Tutorial::SHEKEL.4");
 	actor_SwitchToAction(thisActor,"NONE_Script_prov");
 
@@ -138,6 +166,10 @@
 -Priority:-1
 -Prq.IsGlobalEvent:0
 -Script.In:
-	actor_SetActionLabel(thisActor,"ACTOR.1");
+	if(nloc_GetWalkableState("SCENES_Tutorial::Agata")!=1){
+		actor_SwitchToAction(thisActor,"NONE_Script");
+		return;
+	}
+	actor_SetActionLabel(thisActor,"ACTIONLABEL.NONE_Script_any7");
 	actorWait_GoTo(thisActor,"SCENES_Tutorial::Agata");
 	actor_SwitchToAction(thisActor,"NONE_Script_prov");

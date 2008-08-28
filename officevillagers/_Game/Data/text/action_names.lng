@@ -49,7 +49,7 @@ ACTIONLABEL.Quest7=ACTIONLABEL.Quest7
 
 AGATA.QUEST6LABEL=Думает, что лучше бы она занималась запуском бухгалтерии.
 
-JANITOR.WAITINGFORMUSOR=JANITOR.WAITINGFORMUSOR
+JANITOR.WAITINGFORMUSOR=Смотрит, что бы убрать
 JANITOR.1=Ищет мусор
 JANITOR.2=Убирает мусор
 
@@ -61,7 +61,17 @@ AUTHOR.5=Ищет, где бы заняться редактированием
 AUTHOR.6=Так как все места заняты, возвращает статью на место
 AUTHOR.7=Смотрит, есть ли чего поредактировать
 AUTHOR.8=Редактирует статью
-ACTOR.1=Отдыхает
+
+ACTOR.1=Оглядывает буйство красок местного дизайна
+ACTOR.2=Пьет азировку
+ACTOR.3=Пинает мешки с деньгами
+ACTOR.4=Курит
+ACTOR.5=Изучает обложки журналов
+ACTOR.6=Любуется рыбками
+ACTOR.7=Гуляет
+ACTOR.8=Изучает верстку
+ACTOR.9=
+ACTOR.10=
 
 CREATOR.1=Креативит
 ACTIONLABEL.CREATOR_Sub_any1=Ищет смысл жизни
@@ -73,9 +83,19 @@ ACTIONLABEL.CREATOR_Sub_any6=Рожает идею
 ACTIONLABEL.CREATOR_Sub_any7=Креативит нечто необычайное
 ACTIONLABEL.CREATOR_Sub_any8=Рожает идею
 
+CREATOR3=Кто-то сильно постарался, заваливая проход частями статуи
+CREATOR4=Починить, и можно будет играть
+CREATOR5=Неплохо бы ее сдуть и кинуть фонтан, после его починки
+CREATOR6=Низковата. Жаль
+CREATOR7=Жалко, у нас коммунизм
+CREATOR8=Халявная газировка всем желающим
+CREATOR9=Под этой горой может быть что-то полезное
+CREATOR10=Если его починить, у нас тут всегда будет приятный шум воды
+
 FINANCIER.1=Разбирается с бухгалтерией
+FINANCIER.2=Идет на место работы
 ACTIONLABEL.FINANCIER_Sub_any1=Разбирается в финансах
-ACTIONLABEL.FINANCIER_Sub_any2=Приводит в порядок отчётности
+ACTIONLABEL.FINANCIER_Sub_any2=Приводит в порядок отчетности
 ACTIONLABEL.FINANCIER_Sub_any3=Что-то старательно считает
 ACTIONLABEL.FINANCIER_Sub_any4=Осмысляет тенденции рынка
 ACTIONLABEL.FINANCIER_Sub_any5=Размышляет о долгах компании

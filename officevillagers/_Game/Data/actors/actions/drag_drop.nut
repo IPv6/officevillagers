@@ -93,6 +93,60 @@ function dropOnTrash(thisActor,trashActor)
 		return 1;
 	}
 
+	if(actor_GetAttributeN(trashActor,"__BUSY")==0
+		&& (actor_GetActorProfession(thisActor)=="CREATOR" || actor_GetActorProfession(thisActor)=="CREATOR-EXPERT"))
+	{
+		if(trashActor.Name=="Heaps.Barricada"){
+		//Кто-то сильно постарался, заваливая проход частями статуи
+			actor_SetActionLabel(thisActor,"CREATOR3");
+			actor_SwitchToAction(thisActor,"event_15sec_stop");
+			return 1;
+		}
+		if(trashActor.Name=="Heaps.Musor52"){
+		//Починить, и можно будет играть
+			actor_SetActionLabel(thisActor,"CREATOR4");
+			actor_SwitchToAction(thisActor,"event_15sec_stop");
+			return 1;
+		}
+		if(trashActor.Name=="Heaps.Musor57"){
+		//Неплохо бы её сдуть и кинуть фонтан, после его починки
+			actor_SetActionLabel(thisActor,"CREATOR5");
+			actor_SwitchToAction(thisActor,"event_15sec_stop");
+			return 1;
+		}
+		if(trashActor.Name=="Heaps.Musor54"){
+		//Низковата. Жаль
+			actor_SetActionLabel(thisActor,"CREATOR6");
+			actor_SwitchToAction(thisActor,"event_15sec_stop");
+			return 1;
+		}
+		if(trashActor.Name=="Heaps.Musor16"){
+		//Жалко, у нас коммунизм
+			actor_SetActionLabel(thisActor,"CREATOR7");
+			actor_SwitchToAction(thisActor,"event_15sec_stop");
+			return 1;
+		}
+		if(trashActor.Name=="Heaps.Musor23"){
+		//Халявная газировка всем желающим
+			actor_SetActionLabel(thisActor,"CREATOR8");
+			actor_SwitchToAction(thisActor,"event_15sec_stop");
+			return 1;
+		}
+		if(trashActor.Name=="Heaps.Musor27"){
+		//Под этой горой может быть что-то полезное
+			actor_SetActionLabel(thisActor,"CREATOR9");
+			actor_SwitchToAction(thisActor,"event_15sec_stop");
+			return 1;
+		}
+		if(trashActor.Name=="Heaps.Musor59"){
+		//Если его починить, у нас тут всегда будет приятный шум воды
+			actor_SetActionLabel(thisActor,"CREATOR10");
+			actor_SwitchToAction(thisActor,"event_15sec_stop");
+			return 1;
+		}
+		
+	}
+	
 		//если это баррикада, проверяем открыта ли технология
 	if(trashActor.Name=="Heaps.Barricada" && actor_GetAttributeN(trashActor,"__BUSY")==1 
 	&& (actor_GetActorProfession(thisActor)=="JANITOR" || actor_GetActorProfession(thisActor)=="JANITOR-EXPERT")){
