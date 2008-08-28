@@ -43,6 +43,34 @@
 	//Antiquest8
 	core_EnableNode("techs_button",true);
 	
+	
+	if(false)
+	{// Посадка за столом и вращение голов
+		local dialogFile = core_GetDataPath("text\\scene1_dialog.lng");
+		local actorSh = actor_GetActor("ACTOR.SHEKEL");
+		local actorAg = actor_GetActor("ACTOR.AGATA");
+		local actorSi = actor_GetActor("ACTOR.SINTI");
+		local actorBo = actor_GetActor("ACTOR.BOB");
+		actor_AttachCamera(actorAg);
+		actorWait_SwitchToAction(actorSh,"Cutscene.driver");
+		actorWait_SwitchToAction(actorAg,"Cutscene.driver");
+		actorWait_SwitchToAction(actorSi,"Cutscene.driver");
+		actorWait_SwitchToAction(actorBo,"Cutscene.driver");
+		actor_SetActorPos(actorSh,"SCENES_CutScene1::Shekel");
+		actor_SetActorPos(actorAg,"SCENES_CutScene1::Agata");
+		actor_SetActorPos(actorSi,"SCENES_CutScene1::Sinty");
+		actor_SetActorPos(actorBo,"SCENES_CutScene1::Bob");
+		actor_SitOnChair(actorAg,"TABLE.AGATASIDE",true);
+		actor_SitOnChairX(actorSh,"TABLE.AGATAMAIN",3,true);
+		actor_SitOnChairX(actorSi,"TABLE.AGATAMAIN",4,true);
+		actor_OrientBody(actorSh,actorAg);
+		actor_OrientBody(actorSi,actorAg);
+		actor_OrientBody(actorAg,actorSh);
+		gui_ShowDialog(dialogFile, { _section="DIALOG2", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
+		actor_SwitchToAction(actorBo,"CutScene1.BobWalking");
+		gui_ShowDialog(dialogFile, { _section="DIALOG2-2", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
+	}
+	
 	if(false)
 	{//Выбор имени журнала
 		//game_AskMagazineName();
@@ -93,7 +121,7 @@
 		//actor_SwitchToAction(actorSi,"NONE_Script");
 	}
 	
-	//if(false)
+	if(false)
 	{// Квесты
 		//gui_StartCutscene("Quest4_Cutscene");
 		//game_CutsceneBegin({});

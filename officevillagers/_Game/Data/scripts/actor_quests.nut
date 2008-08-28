@@ -113,6 +113,7 @@ function quest_GetQuest(questNum)
 	g_QuestCache[questName].Name <- core_Translate(Name,g_questNames);
 	//core_Alert(Name+";l "+g_questNames+"\n"+g_QuestCache[questName].Name);
 	g_QuestCache[questName].AllowReopen <- core_GetSprIniParameter("Reopen",lQuestContent).tointeger();
+	g_QuestCache[questName].SortId <- core_GetSprIniParameter("SortId",lQuestContent).tointeger();
 	g_QuestCache[questName].UsedAttributes <- ::split(core_GetSprIniParameter("UsedAttributes",lQuestContent),",; ");
 	return g_QuestCache[questName];
 }
@@ -151,10 +152,10 @@ function level_CloseQuests()
 
 function quest_timecompare(a,b)
 {
-     if(a.openTime>b.openTime){
-          return -1;
-     }else if(a.openTime<b.openTime){
+     if(a.sortId>b.sortId){
           return 1;
+     }else if(a.sortId<b.sortId){
+          return -1;
      }
      return 0;
 }
@@ -179,7 +180,7 @@ function getOpenQuests()
 			questItem.locName <- quest.Name;
 			questItem.locName = ReplaceOfficeAttrs(questItem.locName,quest.UsedAttributes);
 			questItem.state <- safe.quests[questID].State;
-			questItem.openTime <- safe.quests[questID].OpenTime;
+			questItem.sortId <- /*safe.quests[questID].OpenTime*100+*/quest.SortId;
 			//questItem.locName+=" "+questItem.openTime.tostring();
 			questItem.highlighted <- safe.quests[questID].highlighted;
 			quests.append(questItem);

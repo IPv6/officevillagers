@@ -39,6 +39,7 @@
 	gui_FadeOut();
 	game_StartPuzzle();
 	actorWait_Timeout(3);
+	actor_OrientBody(actorAg,actorSh);
 	actor_OrientBody(actorSh,actorAg);
 	actor_OrientBody(actorSi,actorAg);
 	gui_ShowDialog(dialogFile, { _section="DIALOG2", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});

@@ -11,7 +11,7 @@
     <Font>
       <InternalName val="main" />
       <Description val="gui\font_main.xml" />
-      <Scale val="7" />
+      <Scale val="6" />
     </Font>
     <Font>
       <InternalName val="alt" />

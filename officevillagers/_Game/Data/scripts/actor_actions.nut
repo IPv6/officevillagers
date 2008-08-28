@@ -35,16 +35,23 @@ function actor_NewPerson(templateName,showInterface)
 
 function gui_GetIssueProgressCur()
 {
-	return level_Progress(null,null);
+	return actor_GetAttributeN("Office","IssueProgressCur");//level_Progress(null,null);
+}
+
+function gui_GetIssueProgressMax()
+{
+	return actor_GetAttributeN("Office","IssueProgressMax");
 }
 
 function gui_SetIssueProgressMax(number)
 {
+	actor_SetAttribute("Office","IssueProgressMax", number);
 	return level_Progress(null,number);
 }
 
 function gui_SetIssueProgressCur(number)
 {
+	actor_SetAttribute("Office","IssueProgressCur", number);
 	return level_Progress(number,null);
 }
 
