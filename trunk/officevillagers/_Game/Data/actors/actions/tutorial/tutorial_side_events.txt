@@ -210,6 +210,8 @@
 	while(actor_IsInLocation(thisActor,"SCENES_Tutorial::DOT4")==false){
 		::suspend();
 	}
+	actor_OrientBody(thisActor,"SCENES_Tutorial::DOT9");
+	gui_ShowDialog(dialogFile, { _section="DIALOG112", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
 	actor_SendToLocation(thisActor,"SCENES_Tutorial::DOT1");
 	while(gui_IsDialogOpen()==true){
 		::suspend();

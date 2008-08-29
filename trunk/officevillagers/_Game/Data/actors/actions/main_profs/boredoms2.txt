@@ -1,0 +1,160 @@
+[Event]
+-Name:NONE_Script2
+-Priority:-1
+-Prq.IsGlobalEvent:0
+-Script.In:
+	eventManager(thisActor,"NONE_Script2*");	
+
+//это отдельный скрипт сделанный для тех, кто не отдыхает а просто шатается без дела туда-сюда...отличаетс яот обычного ивента скуки тем, что лейбелы для него задаются извне...плюс иконок тут нет
+	
+[Event]
+-Name:NONE_Script2_prov
+-Priority:-1
+-Prq.IsGlobalEvent:0
+-Script.In:
+	//промежуточный ивент с проверками
+	actor_OrientHead(thisActor,90);
+	
+	//чтобы усталость не стала отрицательной...потом это зафигаивается в глобальную переменную и рулится
+	if (actor_GetAttributeN(thisActor,"tire")<getGlobal("step_of_rest")){
+		actor_SetAttribute(thisActor,"tire",getGlobal("step_of_rest"));
+	}
+	//вывод актора из цикла...здесь тоже нужна та же глобальная переменная
+	actor_SetAttribute(thisActor,"tire",actor_GetAttributeN(thisActor,"tire")-getGlobal("step_of_rest"));
+	
+	if (actor_GetAttributeN(thisActor,"tire")==0){
+		actor_SwitchToAction(thisActor,"");
+		return;
+	}
+	eventManager(thisActor,"NONE_Script2*");	
+	
+[Event]
+-Name:NONE_Script2_any1
+-Priority:-1
+-Prq.IsGlobalEvent:0
+-Script.In:
+	if(nloc_GetWalkableState("SCENES_Tutorial::SHEKEL.1")!=1){
+		actor_SwitchToAction(thisActor,"NONE_Script");
+		return;
+	}
+	actorWait_GoTo(thisActor,"SCENES_Tutorial::SHEKEL.1");
+	actor_SwitchToAction(thisActor,"NONE_Script_prov");
+	
+
+	
+[Event]
+-Name:NONE_Script2_any2
+-Priority:-1
+-Prq.IsGlobalEvent:0
+-Script.In:
+	if(nloc_GetWalkableState("SCENES_Tutorial::SHEKEL.1")!=1){
+		actor_SwitchToAction(thisActor,"NONE_Script");
+		return;
+	}
+	actorWait_GoTo(thisActor,"SCENES_Tutorial::Bob2");
+	actor_SwitchToAction(thisActor,"NONE_Script_prov");
+
+
+[Event]
+-Name:NONE_Script2_any3
+-Priority:-1
+-Prq.IsGlobalEvent:0
+-Script.In:
+	if(nloc_GetWalkableState("SCENES_Tutorial::DOT3")!=1){
+		actor_SwitchToAction(thisActor,"NONE_Script");
+		return;
+	}
+	actorWait_GoTo(thisActor,"SCENES_Tutorial::DOT3");
+	actor_SwitchToAction(thisActor,"NONE_Script_prov");
+
+
+[Event]
+-Name:NONE_Script2_any4
+-Priority:-1
+-Prq.IsGlobalEvent:0
+-Script.In:
+	if(nloc_GetWalkableState("SCENES_Tutorial::SHEKEL.0")!=1){
+		actor_SwitchToAction(thisActor,"NONE_Script");
+		return;
+	}
+	actorWait_GoTo(thisActor,"SCENES_Tutorial::SHEKEL.0");
+	actor_SwitchToAction(thisActor,"NONE_Script_prov");
+	
+
+	
+
+[Event]
+-Name:NONE_Script2_any5
+-Priority:-1
+-Prq.IsGlobalEvent:0
+-Script.In:
+	if(nloc_GetWalkableState("SCENES_Tutorial::SHEKEL.3")!=1){
+		actor_SwitchToAction(thisActor,"NONE_Script");
+		return;
+	}
+	actorWait_GoTo(thisActor,"SCENES_Tutorial::SHEKEL.3");
+	actor_SwitchToAction(thisActor,"NONE_Script_prov");
+	
+
+
+[Event]
+-Name:NONE_Script2_any6
+-Priority:-1
+-Prq.IsGlobalEvent:0
+-Script.In:
+	if(nloc_GetWalkableState("SCENES_Tutorial::DOT11")!=1){
+		actor_SwitchToAction(thisActor,"NONE_Script");
+		return;
+	}
+	actorWait_GoTo(thisActor,"SCENES_Tutorial::DOT11");
+	actor_SwitchToAction(thisActor,"NONE_Script_prov");
+
+	
+[Event]
+-Name:NONE_Script2_any7
+-Priority:-1
+-Prq.IsGlobalEvent:0
+-Script.In:
+	if(nloc_GetWalkableState("SCENES_Tutorial::DOT12")!=1){
+		actor_SwitchToAction(thisActor,"NONE_Script");
+		return;
+	}
+	actorWait_GoTo(thisActor,"SCENES_Tutorial::DOT12");
+	actor_SwitchToAction(thisActor,"NONE_Script_prov");
+	
+	
+[Event]
+-Name:NONE_Script2_any8
+-Priority:-1
+-Prq.IsGlobalEvent:0
+-Script.In:
+	if(nloc_GetWalkableState("SCENES_Tutorial::DOT8")!=1){
+		actor_SwitchToAction(thisActor,"NONE_Script");
+		return;
+	}
+	actorWait_GoTo(thisActor,"SCENES_Tutorial::DOT8");
+	actor_SwitchToAction(thisActor,"NONE_Script_prov");
+	
+[Event]
+-Name:NONE_Script2_any9
+-Priority:-1
+-Prq.IsGlobalEvent:0
+-Script.In:
+	if(nloc_GetWalkableState("SCENES_Tutorial::SHEKEL.4")!=1){
+		actor_SwitchToAction(thisActor,"NONE_Script");
+		return;
+	}
+	actorWait_GoTo(thisActor,"SCENES_Tutorial::SHEKEL.4");
+	actor_SwitchToAction(thisActor,"NONE_Script_prov");
+
+[Event]
+-Name:NONE_Script2_any10
+-Priority:-1
+-Prq.IsGlobalEvent:0
+-Script.In:
+	if(nloc_GetWalkableState("SCENES_Tutorial::Agata")!=1){
+		actor_SwitchToAction(thisActor,"NONE_Script");
+		return;
+	}
+	actorWait_GoTo(thisActor,"SCENES_Tutorial::Agata");
+	actor_SwitchToAction(thisActor,"NONE_Script_prov");
