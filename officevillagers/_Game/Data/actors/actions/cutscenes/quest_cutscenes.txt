@@ -104,7 +104,7 @@ core_Warning("1");
 	actorWait_SwitchToAction(actor_GetActor("ACTOR.AGATA"),"");
 	actorWait_SwitchToAction(actor_GetActor("ACTOR.BOB"),"");
     gui_QuestOpen(6);
-	actor_SetAttribute(thisActor,"Quest7Collectibles",2);
+	actor_SetAttribute(thisActor,"Quest7Collectibles",9);
     game_CutsceneEnd({});
     actor_DetachCamera();
 	local alarmsFile = core_GetDataPath("\\text\\alarm_names.lng");

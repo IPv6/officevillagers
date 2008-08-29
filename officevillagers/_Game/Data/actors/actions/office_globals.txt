@@ -42,7 +42,7 @@ OptionLong[GLOBAL::FinansierMax9]=2
 OptionLong[GLOBAL::FinansierMax10]=2
 
 //сколько опыта набрать стажеру чтобы стать специалистом
-OptionLong[GLOBAL::StagerExpMax]=2
+OptionLong[GLOBAL::StagerExpMax]=30
 
 //сколько секунд стажер тратит на получение единицы опыта
 OptionLong[GLOBAL::StagerExpTime]=60
