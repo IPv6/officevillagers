@@ -10,46 +10,24 @@ ACTIONLABEL.pre_AUTHOR-EXPERT_Script=ACTIONLABEL.pre_AUTHOR-EXPERT_Script
 ACTIONLABEL.AUTHOR-EXPERT_Script=ACTIONLABEL.AUTHOR-EXPERT_Script
 ACTIONLABEL.AUTHOR-EXPERT_working=ACTIONLABEL.AUTHOR-EXPERT_working
 ACTIONLABEL.AUTHOR-EXPERT_Endworking=ACTIONLABEL.AUTHOR-EXPERT_Endworking
-ACTIONLABEL.NONE_Script=ACTIONLABEL.NONE_Script
-ACTIONLABEL.NONE_Script_prov=ACTIONLABEL.NONE_Script_prov
-
-ACTIONLABEL.pre_CREATOR_Script=ACTIONLABEL.pre_CREATOR_Script
-ACTIONLABEL.CREATOR_Script=ACTIONLABEL.CREATOR_Script
-ACTIONLABEL.CREATOR_WORK=ACTIONLABEL.CREATOR_WORK
-ACTIONLABEL.pre_CREATOR-EXPERT_Script=ACTIONLABEL.pre_CREATOR-EXPERT_Script
-ACTIONLABEL.pre_FINANCIER_Script=ACTIONLABEL.pre_FINANCIER_Script
-ACTIONLABEL.FINANCIER_Script=ACTIONLABEL.FINANCIER_Script
-ACTIONLABEL.FINANCIER_WORK=ACTIONLABEL.FINANCIER_WORK
-ACTIONLABEL.pre_FINANCIER-EXPERT_Script=ACTIONLABEL.pre_FINANCIER-EXPERT_Script
-ACTIONLABEL.pre_JANITOR_Script=ACTIONLABEL.pre_JANITOR_Script
-ACTIONLABEL.JANITOR_script=ACTIONLABEL.JANITOR_script
-ACTIONLABEL.JANITOR_WORK=ACTIONLABEL.JANITOR_WORK
-ACTIONLABEL.pre_STAGER_Script=ACTIONLABEL.pre_STAGER_Script
-ACTIONLABEL.STAGER_Script=ACTIONLABEL.STAGER_Script
-ACTIONLABEL.STAGER_Styding=ACTIONLABEL.STAGER_Styding
+ACTIONLABEL.pre_STAGER_Script=Учится
+ACTIONLABEL.STAGER_Script=Учится
+ACTIONLABEL.STAGER_Styding=Учится
 
 ACTIONLABEL.SleepMode=ACTIONLABEL.SleepMode
 
 ACTIONLABEL.Furniture.Barricada=ACTIONLABEL.Furniture.Barricada
 
-ACTIONLABEL.OFFICE.LEVELFINISH=ACTIONLABEL.OFFICE.LEVELFINISH
-ACTIONLABEL.OFFICE.ENDOFDAY=ACTIONLABEL.OFFICE.ENDOFDAY
-ACTIONLABEL.OFFICE.LEVELNOTFINISHED=ACTIONLABEL.OFFICE.LEVELNOTFINISHED
-ACTIONLABEL.OFFICE.CIRCULATION.CALCULATION=ACTIONLABEL.OFFICE.CIRCULATION.CALCULATION
-ACTIONLABEL.OFFICE.NEXT.LEVEL.OPTIONS=ACTIONLABEL.OFFICE.NEXT.LEVEL.OPTIONS
-ACTIONLABEL.OFFICE.END.LEVEL.ELSE=ACTIONLABEL.OFFICE.END.LEVEL.ELSE
+ACTIONLABEL.Collectibles_event=Тащит любопытный листок на исследование
 
-ACTIONLABEL.Collectibles_event=ACTIONLABEL.Collectibles_event
-
-ACTIONLABEL.JANITOR_CARRYTRASH=ACTIONLABEL.JANITOR_CARRYTRASH
-
-ACTIONLABEL.Quest7=ACTIONLABEL.Quest7
+ACTIONLABEL.JANITOR_CARRYTRASH=Несёт мусор на выброс
 
 
 
-AGATA.QUEST6LABEL=Думает, что лучше бы она занималась запуском бухгалтерии.
 
-JANITOR.WAITINGFORMUSOR=Смотрит, что бы убрать
+AGATA.QUEST6LABEL=Думает, что лучше заняться запуском бухгалтерии
+
+JANITOR.WAITINGFORMUSOR=Смотрит, какой бы мусор убрать
 JANITOR.1=Ищет мусор
 JANITOR.2=Убирает мусор
 
@@ -59,11 +37,11 @@ AUTHOR.3=Пишет статью
 AUTHOR.4=Топает сдавать статью
 AUTHOR.5=Ищет, где бы заняться редактированием
 AUTHOR.6=Так как все места заняты, возвращает статью на место
-AUTHOR.7=Смотрит, есть ли чего поредактировать
+AUTHOR.7=Смотрит, есть ли чего редактировать
 AUTHOR.8=Редактирует статью
 
 ACTOR.1=Оглядывает буйство красок местного дизайна
-ACTOR.2=Пьет азировку
+ACTOR.2=Пьет газировку
 ACTOR.3=Пинает мешки с деньгами
 ACTOR.4=Курит
 ACTOR.5=Изучает обложки журналов
@@ -75,7 +53,7 @@ ACTOR.10=
 
 CREATOR.1=Креативит
 ACTIONLABEL.CREATOR_Sub_any1=Ищет смысл жизни
-ACTIONLABEL.CREATOR_Sub_any2=Рулит титанической интеллектуальой деятельностью
+ACTIONLABEL.CREATOR_Sub_any2=Рулит титанической интеллектуальной деятельностью
 ACTIONLABEL.CREATOR_Sub_any3=Решает великие проблемы бытия
 ACTIONLABEL.CREATOR_Sub_any4=Разрабатывает планы захвата мира
 ACTIONLABEL.CREATOR_Sub_any5=Думает до посинения
@@ -86,7 +64,7 @@ ACTIONLABEL.CREATOR_Sub_any8=Рожает идею
 CREATOR3=Кто-то сильно постарался, заваливая проход частями статуи
 CREATOR4=Починить, и можно будет играть
 CREATOR5=Неплохо бы ее сдуть и кинуть фонтан, после его починки
-CREATOR6=Низковата. Жаль
+CREATOR6=Низковато. Жаль
 CREATOR7=Жалко, у нас коммунизм
 CREATOR8=Халявная газировка всем желающим
 CREATOR9=Под этой горой может быть что-то полезное
@@ -118,6 +96,7 @@ ACTIONLABEL.NONE_Script_any7=Слоняется туда-сюда
 ACTIONLABEL.NONE_Script_any8=Тренирует строевой шаг
 ACTIONLABEL.NONE_Script_any9=Насвистывает что-то
 ACTIONLABEL.NONE_Script_any10=Мается дурью
+
 ACTIONLABEL.Debug_table_Script=
 ACTIONLABEL.DEBUGCutscene=
 ACTIONLABEL.DEBUGCutscenefinish=
