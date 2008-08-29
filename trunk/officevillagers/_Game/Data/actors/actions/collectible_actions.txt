@@ -15,7 +15,7 @@
 
 	actorWait_GoTo(thisActor, "CREATOR::IDEASTABLE");
 	
-	if (actor_GetAttributeN("Office","Quest7Collectibles")==1){
+	if (actor_GetAttributeN("Office","Quest7Collectibles")<=1){
 		if(gui_QuestClose(6)){
 			gui_FadeIn();
 			actorWait_Timeout(2);
