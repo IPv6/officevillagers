@@ -183,7 +183,7 @@
     game_CutsceneEnd({});
     actor_DetachCamera();
 	local alarmsFile = core_GetDataPath("\\text\\alarm_names.lng");
-	ui_ShowAlarm(core_Translate("ALARM.10",alarmsFile),300);
+	gui_ShowAlarm(core_Translate("ALARM.10",alarmsFile),300);
     actor_SwitchToAction(thisActor,"Office_script");
     gui_FadeOut();
 	
