@@ -237,6 +237,16 @@
 -Prq.IsGlobalEvent:0
 -Protected:0
 -Disable.Person.UI:1
+-Script.Off:
+	// Удаляем мусор
+	/*
+	local newTrash=actor_GetAttributeS(thisActor,"SEMICARRY_TRASHNAME");
+	if(newTrash.len()>0 && actor_IsActorExist(newTrash)!=false){
+		actor_DeleteActor(newTrash);
+	}
+	*/
+	actor_DelItem(thisActor,"collectible_dragtrash");
+	
 -Script.In:
 	actor_SetActionLabel(thisActor,"JANITOR.CARRING_TRASH");
 	local nTrashItemNumber = actor_GetAttributeN(thisActor,"JANITOR_CARRYTRASH.ITEM");
@@ -247,8 +257,9 @@
 	actor_SetAttribute(thisActor,"JANITOR_CARRYTRASH.ITEM",0);
 	// Создаем мусор
 	local newTrash=actor_CreateActor("collectible.dragtrash","collectible.trash".toupper(),{_options=nTrashItemSprParam});
-	actor_SetActorEnabled(newTrash, true);
+	actor_SetAttribute(thisActor,"SEMICARRY_TRASHNAME",newTrash.Name);
 	// Кладем его уборщику в карман
+	actor_SetActorEnabled(newTrash, true);
 	actor_AddItem(thisActor,"collectible_dragtrash",nTrashItemSprParam);
 	actor_PutIntoPocket(thisActor,newTrash,"collectible_dragtrash");
 	// Несем его к двери
@@ -258,8 +269,6 @@
 	}
 	actor_SetAttribute(thisActor,"JANITOR_CARRYTRASH.TARGET","");
 	actorWait_GoTo(thisActor, sTarget);
-	// Удаляем мусор
 	actor_DeleteActor(newTrash);
-	actor_DelItem(thisActor,"collectible_dragtrash");
 	// Все, донесли... переходим к обычному поиску дел
 	actor_SwitchToAction(thisActor,"pre_JANITOR_Script");
