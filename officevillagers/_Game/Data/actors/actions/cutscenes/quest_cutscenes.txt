@@ -9,11 +9,15 @@
 	gui_FadeIn();
 	actorWait_Timeout(2);
 	local Stager = actor_GetFollower(actor_GetActor("ACTOR.AGATA"));
-	actorWait_SwitchToAction(Stager,"Cutscene.driver");
 	Stager = actor_GetActor(Stager);
+	actorWait_SwitchToAction(Stager,"Cutscene.driver");
 	game_CutsceneBegin({_who="Office", _action="CutScene4_finish", _changeUI=false});
 	actor_AttachCamera(Stager);
 	local actorAg = actor_GetActor("ACTOR.AGATA");
+	actor_SetActorPos(Stager,"FINANCIER::DOT9");
+	actor_SetActorPos(actorAg,"FINANCIER::DOT10");
+	actor_OrientBody(Stager,actorAg);
+	actor_OrientBody(actorAg,Stager);
 	gui_FadeOut();
 	actorWait_Timeout(2);
 	local dialogFile = core_GetDataPath("text\\quest_cutscenes_dialog.lng");
@@ -34,12 +38,15 @@
 -Script.In:
 	gui_DisableSkipCurrentCutsceneButton();
 	game_CutsceneEnd({});
-	actor_SendToLocation(actorAg,"CutScene1::Agata");
-	actor_SetProfessionRaw(actorAg,"AUTHOR-EXPERT");
 	gui_FadeIn();
-	actorWait_Timeout(1);
+	actorWait_Timeout(2);
+	actor_SendToLocation(actor_GetActor("ACTOR.AGATA"),"CutScene1::Agata");
+	actor_SetProfessionRaw(actor_GetActor("ACTOR.AGATA"),"AUTHOR-EXPERT");
+	local Stager = actor_GetFollower(actor_GetActor("ACTOR.AGATA"));
+	actorWait_SwitchToAction(actor_GetActor("ACTOR.AGATA"),"");
+	actorWait_SwitchToAction(actor_GetActor(Stager),"");
+	gui_ShowDialog(null,null);
 	actor_DetachCamera();
-	actorWait_Timeout(1);
 	gui_FadeOut();	
 	actor_SwitchToAction(thisActor,"Office_script");
 
@@ -259,7 +266,7 @@
 	local actorSh = actor_GetActor("ACTOR.SHEKEL");
 	local actorAg = actor_GetActor("ACTOR.AGATA");
 	local actorBo = actor_GetActor("ACTOR.BOB");
-	actorWait_SwitchToAction(actorSh,"Cutscene.driver.Speed2");
+	actorWait_SwitchToAction(actorSh,"Cutscene.driver.Speed4");
 	actorWait_SwitchToAction(actorAg,"Cutscene.driver");
 	actorWait_SwitchToAction(actorBo,"Cutscene.driver");
 	gui_FadeIn();
@@ -432,9 +439,10 @@
 	actor_OrientBody(actorSi,"SCENES_QuestCutscenes::DOT12");
 	actor_OrientBody(actorAg,"SCENES_QuestCutscenes::DOT12");
 	game_CutsceneBegin({_who="Office", _action="Alpha_Last_Cutscenefinish", _changeUI=false});
+	local dialogFile = core_GetDataPath("text\\quest_cutscenes_dialog.lng");
 	gui_FadeOut();
 	actorWait_Timeout(2);
-	local dialogFile = core_GetDataPath("text\\quest_cutscenes_dialog.lng");
+
 	gui_ShowDialog(dialogFile, { _section="DIALOG9", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
 	while(gui_IsDialogOpen()==true){
 		::suspend();
