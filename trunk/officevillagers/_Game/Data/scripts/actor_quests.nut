@@ -303,7 +303,7 @@ function quest_right()
 g_cnt <- 0;
 function gui_GenerateHint()
 {
- local nomer = core_Rnd(1,20);
+ local nomer = core_Rnd(1,21);
  if (nomer == 1){
  gui_ShowHint(format("Любого персонажа можно взять мышью и перетащить куда угодно"),10,0);
  }
@@ -335,7 +335,7 @@ function gui_GenerateHint()
  gui_ShowHint(format("Стажеры могут принести пользу, лишь обучаясь и собирая листки"),10,0);
  }
   if (nomer == 11){
- gui_ShowHint(format("Агата в детсве местала стать защитником мира во всём мире"),10,0);
+ gui_ShowHint(format("Агата в детсве местала стать защитником мира во всем мире"),10,0);
  }
   if (nomer == 12){
  gui_ShowHint(format("Шекель - большой поклонник аниме"),10,0);
@@ -353,7 +353,7 @@ function gui_GenerateHint()
  gui_ShowHint(format("Правой кнопкой можно быстро менять персонажей"),10,0);
  }
   if (nomer == 17){
- gui_ShowHint(format("А у Синьти есть чёрный пояс по карате"),10,0);
+ gui_ShowHint(format("А у Синьти есть черный пояс по карате"),10,0);
  }
   if (nomer == 18){
  gui_ShowHint(format("Однажды на Агату напал медведь. Сам виноват"),10,0);
@@ -363,6 +363,9 @@ function gui_GenerateHint()
  }
   if (nomer == 20){
  gui_ShowHint(format("Со временем внешний вид офиса кардинально меняется"),10,0);
+ }
+  if (nomer == 21){
+ gui_ShowHint(format("Это не баг, это фича"),10,0);
  }
 }
 
