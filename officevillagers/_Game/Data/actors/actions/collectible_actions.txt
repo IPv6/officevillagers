@@ -24,7 +24,6 @@
 			actor_OrientBody(thisActor,"CREATOR::IDEASTABLESHEKEL");
 			actor_DeleteActor(collectiobl);
 			actor_SwitchToAction("Office","Quest6_Cutscene2");
-			actor_SwitchToAction(thisActor,"");
 			return;
 		}
 	}
@@ -38,7 +37,6 @@
 			actor_DeleteActor(collectiobl);
 			actor_SetAttribute("Office","QuestName", thisActor.Name);
 			actor_SwitchToAction("Office","Quest6_Cutscene1");
-			actor_SwitchToAction(thisActor,"");
 			return;
 		}
 	}
