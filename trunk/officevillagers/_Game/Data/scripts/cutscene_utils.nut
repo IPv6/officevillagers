@@ -10,7 +10,7 @@ function game_CutsceneBegin(skipParams)
 	if(!("_skipSave" in skipParams) || (skipParams._skipSave==false)){
 		game_SaveGame();
 	}
-	if(("_forcePersStop" in skipParams) && (skipParams._forcePersStop==true)){
+	if(!("_forcePersStop" in skipParams) || (skipParams._forcePersStop==true)){
 		// Находим все актеров людей и включаем им катсцене-драйвер
 		local i=0;
 		local objectsArray=actor_GetActors({_byType=1});
