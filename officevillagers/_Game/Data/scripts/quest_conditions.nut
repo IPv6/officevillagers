@@ -48,6 +48,7 @@ function quest_conditions(conditions)
 	if("Quest4" in conditions)
 	{// четвертый квест
 		if(gui_QuestClose(4)){
+			actor_SetAttribute("Office","Quest4Stager",conditions._stager.Name);
 			gui_StartCutscene("Quest4_Cutscene");
 		}
 	}

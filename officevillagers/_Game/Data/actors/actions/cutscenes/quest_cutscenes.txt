@@ -6,24 +6,27 @@
 -Disable.Person.UI:0
 -Think.Speed:1
 -Script.In:
-	gui_FadeIn();
+core_Warning("1");
+	//gui_FadeIn();
 	actorWait_Timeout(2);
+core_Warning("2");
 	local Stager = actor_GetFollower(actor_GetActor("ACTOR.AGATA"));
-	Stager = actor_GetActor(Stager);
+	Stager = actor_GetAttribute("Office","Quest4Stager");
 	actorWait_SwitchToAction(Stager,"Cutscene.driver");
+core_Warning("22");
 	game_CutsceneBegin({_who="Office", _action="CutScene4_finish", _changeUI=false});
 	actor_AttachCamera(Stager);
 	local actorAg = actor_GetActor("ACTOR.AGATA");
+	actorWait_SwitchToAction(actorAg,"Cutscene.driver");
 	actor_SetActorPos(Stager,"FINANCIER::DOT9");
 	actor_SetActorPos(actorAg,"FINANCIER::DOT10");
 	actor_OrientBody(Stager,actorAg);
 	actor_OrientBody(actorAg,Stager);
-	gui_FadeOut();
+	//gui_FadeOut();
 	actorWait_Timeout(2);
 	local dialogFile = core_GetDataPath("text\\quest_cutscenes_dialog.lng");
-	actorWait_SwitchToAction(actorAg,"Cutscene.driver");
 	gui_ShowDialog(dialogFile, { _section="DIALOG1", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
-		while(gui_IsDialogOpen()==true){
+	while(gui_IsDialogOpen()==true){
 		::suspend();
 	}
 	actor_SwitchToAction(thisActor,"CutScene4_finish");
