@@ -9,7 +9,6 @@
 	local thisTable = actor_GetActorsByAttribute("TABLE.AUTHOR*","__BUSY",0);
 	if (!thisTable){
 		$ifdebug __DebugActor(thisActor,"no free tables");
-		
 		//если это рядовой автор, значит ему нечем заняться
 		if(actor_GetActorProfession(thisActor)=="AUTHOR"){
 			actor_SetActionLabel(thisActor,"AUTHOR.LAME");
@@ -18,7 +17,9 @@
 		//а если уж это редактор, значит вообще пиздец какой-то... куда смотрит игрок
 		if(actor_GetActorProfession(thisActor)=="AUTHOR-EXPERT"){
 			actor_SetActionLabel(thisActor,"AUTHOR-EXPERT.LAME");
+			core_Warning("3");
 		}
+		core_Warning("4");
 		actor_SwitchToAction(thisActor,"NONE_Script2");
 		return;
 	}

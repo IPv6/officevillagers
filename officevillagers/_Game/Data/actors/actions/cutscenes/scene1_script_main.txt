@@ -114,7 +114,7 @@
     local actorSi = actor_GetActor("ACTOR.SINTI");
     local actorBo = actor_GetActor("ACTOR.BOB");
     actor_SetProfessionRaw(actorSh,"CREATOR");
-    actor_SetProfessionRaw(actorAg,"AUTHOR");
+    actor_SetProfessionRaw(actorAg,"AUTHOR-EXPERT");
     actor_SetProfessionRaw(actorSi,"AUTHOR");
     actor_SetProfessionRaw(actorBo,"JANITOR");
 	actorWait_SwitchToAction(actorSh,"");

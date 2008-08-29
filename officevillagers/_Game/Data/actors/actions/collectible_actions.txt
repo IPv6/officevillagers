@@ -4,7 +4,6 @@
 -Prq.IsGlobalEvent:0
 -Protected:0
 -Script.In:
-	
 	if (thisActor.Name=="ACTOR.AGATA" && gui_QuestCheck(4)==2 && actor_GetAttributeN("Office","Quest6Agata")==1){
 			actor_SetActionLabel(thisActor,"AGATA.QUEST6LABEL");
 			actorWait_Timeout(10);
@@ -28,18 +27,17 @@
 		}
 	}
 	if (gui_QuestCheck(6)==2){
-		if (gui_QuestCheck(4)==2){
-			gui_FadeIn();
-			actorWait_Timeout(2);
-			local collectiobl = actor_GetAttributeS(thisActor,"CurrentCollectible");
-			actor_DelItem(thisActor,"collectible_item","collectible_number=0");
-			actor_OrientBody(thisActor,"CREATOR::IDEASTABLESHEKEL");
-			actor_DeleteActor(collectiobl);
-			actor_SetAttribute("Office","QuestName", thisActor.Name);
-			actor_SwitchToAction("Office","Quest6_Cutscene1");
-			return;
-		}
+		gui_FadeIn();
+		actorWait_Timeout(2);
+		local collectiobl = actor_GetAttributeS(thisActor,"CurrentCollectible");
+		actor_DelItem(thisActor,"collectible_item","collectible_number=0");
+		actor_OrientBody(thisActor,"CREATOR::IDEASTABLESHEKEL");
+		actor_DeleteActor(collectiobl);
+		actor_SetAttribute("Office","QuestName", thisActor.Name);
+		actor_SwitchToAction("Office","Quest6_Cutscene1");
+		return;
 	}
+	
 	local collectiobl = actor_GetAttributeS(thisActor,"CurrentCollectible");
 	actor_DelItem(thisActor,"collectible_item","collectible_number=0");
 	actor_DeleteActor(collectiobl);
