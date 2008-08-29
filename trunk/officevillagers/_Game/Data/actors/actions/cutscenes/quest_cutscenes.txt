@@ -7,13 +7,11 @@
 -Think.Speed:1
 -Script.In:
 core_Warning("1");
-	//gui_FadeIn();
+	gui_FadeIn();
 	actorWait_Timeout(2);
-core_Warning("2");
-	local Stager = actor_GetFollower(actor_GetActor("ACTOR.AGATA"));
-	Stager = actor_GetAttribute("Office","Quest4Stager");
+	local Stager = actor_GetAttribute("Office","Quest4Stager");
+	Stager = actor_GetActor(Stager);
 	actorWait_SwitchToAction(Stager,"Cutscene.driver");
-core_Warning("22");
 	game_CutsceneBegin({_who="Office", _action="CutScene4_finish", _changeUI=false});
 	actor_AttachCamera(Stager);
 	local actorAg = actor_GetActor("ACTOR.AGATA");
@@ -22,7 +20,7 @@ core_Warning("22");
 	actor_SetActorPos(actorAg,"FINANCIER::DOT10");
 	actor_OrientBody(Stager,actorAg);
 	actor_OrientBody(actorAg,Stager);
-	//gui_FadeOut();
+	gui_FadeOut();
 	actorWait_Timeout(2);
 	local dialogFile = core_GetDataPath("text\\quest_cutscenes_dialog.lng");
 	gui_ShowDialog(dialogFile, { _section="DIALOG1", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
@@ -40,12 +38,11 @@ core_Warning("22");
 -Think.Speed:1
 -Script.In:
 	gui_DisableSkipCurrentCutsceneButton();
-	game_CutsceneEnd({});
 	gui_FadeIn();
 	actorWait_Timeout(2);
-	actor_SendToLocation(actor_GetActor("ACTOR.AGATA"),"CutScene1::Agata");
+	game_CutsceneEnd({});
 	actor_SetProfessionRaw(actor_GetActor("ACTOR.AGATA"),"AUTHOR-EXPERT");
-	local Stager = actor_GetFollower(actor_GetActor("ACTOR.AGATA"));
+	local Stager = actor_GetAttribute("Office","Quest4Stager");
 	actorWait_SwitchToAction(actor_GetActor("ACTOR.AGATA"),"");
 	actorWait_SwitchToAction(actor_GetActor(Stager),"");
 	gui_ShowDialog(null,null);
@@ -148,7 +145,7 @@ core_Warning("22");
 	while(gui_IsDialogOpen()==true){
 		::suspend();
 	}
-	if (actor_GetAttributeS("Office","QuestName")=="ACTOR.AGATA"){
+	if (actor_GetAttributeS("Office","QuestName")=="ACTOR.AGATA" && gui_QuestCheck(4)!=3){
 		gui_ShowDialog(dialogFile, { _section="DIALOG6", _close=true, _dialogBg="\\gui\\comics_interface_dialog.png"});
 		actor_SetAttribute("Office","Quest6Agata",1);
 		}
