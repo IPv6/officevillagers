@@ -67,7 +67,7 @@
 		if(teacher){
 			teacher=actor_GetActor(teacher);
 			actor_SetProfession(thisActor, teacher.ProfessionN);
-			quest_conditions({ Quest4=1});
+			quest_conditions({ Quest4=1, _stager=thisActor});
 		}
 	}
 	
