@@ -1178,7 +1178,7 @@ void CActor::ShowActorLabels(BOOL b, CNodeBasement* onNode)
 			//CString sText=""
 			sHudText=_ll(sActorStatusTextOverload,sActorStatusTextOverload,"text\\action_names.lng");
 		}else{
-			sHudText+=data.p_ProfessionName;
+			//sHudText+=data.p_ProfessionName;
 			if(b && p_CurrentAction && p_CurrentAction->p_sNameForHUD.GetLength()>3)
 			{
 				sHudText+=" ";

@@ -279,6 +279,7 @@ function location_AttachCamera(Location)
 function gui_StopSoftActorWatch()
 {
 	if(floorSoftAttachInterval!=0){
+		actor_ShowLabels(floorAttachTarget,false);
 		core_CancelInterval(floorSoftAttachInterval);
 		floorSoftAttachInterval=0;
 	}
@@ -298,6 +299,7 @@ function gui_SoftActorWatch(thisActor)
 	floorAttachTarget=actor.Name;
 	floorAttachTargetType=0;
 	floorSoftAttachInterval = core_SetIntervalLocal("main_office_level",20,"floorAttachLoop",floorAttachTarget);
+	actor_ShowLabels(floorAttachTarget,true);
 }
 
 function location_JumpCamera(Location)
