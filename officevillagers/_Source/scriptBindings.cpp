@@ -452,6 +452,7 @@ int game_CutsceneBegin(HSQUIRRELVM v)
 	if(sa.GetType(SQ_PARAM1)!=-1){
 		iCutSceneType=sa.GetInt(SQ_PARAM1);
 	}
+	getLevel()->HideHint(TRUE,-1);
 	getLevel()->EnableCutscene(iCutSceneType);
 	return SQ_OK;
 }
@@ -592,7 +593,7 @@ void RegisterActorScriptMethods();
 void RegisterGameScriptMethods()
 {
 	SquirrelVM::CreateFunctionGlobal(game_GetGameSpeed,_T("game_GetGameSpeed"));
-	SquirrelVM::CreateFunctionGlobal(game_SetGameSpeed,_T("game_SetGameSpeed"),"*");
+	SquirrelVM::CreateFunctionGlobal(game_SetGameSpeed,_T("game_SetGameSpeed_i"),"*");
 	SquirrelVM::CreateFunctionGlobal(game_GetState,_T("game_GetState"));
 
 	SquirrelVM::CreateFunctionGlobal(nloc_Remove,_T("nloc_Remove"),"*");

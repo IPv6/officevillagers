@@ -34,6 +34,7 @@
 	local actorSi = actor_GetActor("ACTOR.SINTI");
 	local actorBo = actor_GetActor("ACTOR.BOB");
 	
+	actor_SetAttribute(actorBo,"NoChangeProf",0);
 	actor_SwitchToAction(actorSi,"SleepMode");
 	actor_SwitchToAction(actorAg,"Debug_table_Script");
 	actor_SwitchToAction(actorSh,"Debug_table_Script");//SleepMode
@@ -43,6 +44,11 @@
 	//Antiquest8
 	core_EnableNode("techs_button",true);
 	
+	//if(false)
+	{
+		actor_SetProfession(actorAg,"FINANCIER");
+		actor_NewPerson("person_male",true);
+	}
 	
 	if(false)
 	{// Посадка за столом и вращение голов
@@ -121,7 +127,7 @@
 		//actor_SwitchToAction(actorSi,"NONE_Script");
 	}
 	
-	if(false)
+	//if(false)
 	{// Квесты
 		//gui_StartCutscene("Quest4_Cutscene");
 		//game_CutsceneBegin({});

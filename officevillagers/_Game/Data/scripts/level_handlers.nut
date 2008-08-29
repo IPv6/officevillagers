@@ -173,3 +173,8 @@ function gui_UpdateHud()
 		core_SetNodeText("hudIdeasCount2",idaes);
 	}
 }
+
+function game_SetGameSpeed(speed)
+{
+	game_SetGameSpeed_i(speed);
+}
