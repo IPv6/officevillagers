@@ -300,74 +300,15 @@ function quest_right()
 	initQuestDialog(g_SkipQuest_Slots);
 }
 
+
 g_cnt <- 0;
 function gui_GenerateHint()
 {
- local nomer = core_Rnd(1,21);
- if (nomer == 1){
- gui_ShowHint(format("Любого персонажа можно взять мышью и перетащить куда угодно"),10,0);
- }
-  if (nomer == 2){
- gui_ShowHint(format("Чтобы герои обратили внимание на что-то, нужно поставить их рядом"),10,0);
- }
-  if (nomer == 3){
- gui_ShowHint(format("Цель игры - издавать журнал"),10,0);
- }
-  if (nomer == 4){
- gui_ShowHint(format("Авторы должны писать статьи, а редакторы - редактировать"),10,0);
- }
-  if (nomer == 5){
- gui_ShowHint(format("С помощью креативщиков можно исследовать окружающие предметы"),10,0);
- }
-  if (nomer == 6){
- gui_ShowHint(format("Можно переключить лишь того, кто знает больше одной профессию"),10,0);
- }
-  if (nomer == 7){
- gui_ShowHint(format("Любой специалист может обучить новичка своей профессии"),10,0);
- }
-  if (nomer == 8){
- gui_ShowHint(format("Стажер всегда мешает учителю работать"),10,0);
- }
-  if (nomer == 9){
- gui_ShowHint(format("Не позволяйте уборщикам добираться до интересных листков"),10,0);
- }
-  if (nomer == 10){
- gui_ShowHint(format("Стажеры могут принести пользу, лишь обучаясь и собирая листки"),10,0);
- }
-  if (nomer == 11){
- gui_ShowHint(format("Агата в детсве местала стать защитником мира во всем мире"),10,0);
- }
-  if (nomer == 12){
- gui_ShowHint(format("Шекель - большой поклонник аниме"),10,0);
- }
-  if (nomer == 13){
- gui_ShowHint(format("Фамилия Боба - Бобстер. Ему она не нравится"),10,0);
- }
-  if (nomer == 14){
- gui_ShowHint(format("Пока уборщик тащит мусор, его лучше не трогать"),10,0);
- }
-  if (nomer == 15){
- gui_ShowHint(format("Со временем ваш офис будет разрастаться"),10,0);
- }
-  if (nomer == 16){
- gui_ShowHint(format("Правой кнопкой можно быстро менять персонажей"),10,0);
- }
-  if (nomer == 17){
- gui_ShowHint(format("А у Синьти есть черный пояс по карате"),10,0);
- }
-  if (nomer == 18){
- gui_ShowHint(format("Однажды на Агату напал медведь. Сам виноват"),10,0);
- }
-  if (nomer == 19){
- gui_ShowHint(format("С чего вы решили, что в этих хинтах есть что-то полезное?"),10,0);
- }
-  if (nomer == 20){
- gui_ShowHint(format("Со временем внешний вид офиса кардинально меняется"),10,0);
- }
-  if (nomer == 21){
- gui_ShowHint(format("Это не баг, это фича"),10,0);
- }
+	local alarmsFile = core_GetDataPath("\\text\\alarm_names.lng");
+	local hintName=format("HELPHINT%i",core_Rnd(1,21));
+	gui_ShowHint(core_Translation(hintName,alarmsFile),10,0);
 }
+
 
 
 
