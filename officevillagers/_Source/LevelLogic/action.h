@@ -37,7 +37,7 @@ public:
 	CAction* m_parentAction;
 	BOOL p_bProtected;
 	BOOL p_bDisableUI;
-	BOOL p_iClearOnSave;
+	CString p_sSaveSafe;
 	int p_iPriority;
 	int p_iThinkSpeed;
 	int p_UniqueUsage;

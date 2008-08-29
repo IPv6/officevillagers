@@ -5,7 +5,7 @@ function game_CutsceneBegin(skipParams)
 		return;
 	}
 	level_CloseQuests();
-	level_CloseTechs()
+	level_CloseTechs();
 	if(!("lastActiveCutSceneNumber" in game_GetSafe())){
 		gui_isCutSceneWasSkipped();// Создаем параметры необходимые
 	}

@@ -383,14 +383,20 @@ void CLevel::CSerializableLevelInfo::ApplySerialization()
 void CLevel::CLevelSaveData::PrepareSerialization()
 {
 	sBaseSaveFile="";// Не балуемся...
+	// Во время сейва сбрасывать ивенты нельзя, так как сейвы идут и перед катсценами и т.п...
+	// соотсветсвенно восстановление должно быть при загрузке
+	bDirtySave=TRUE;
+/*
 	for(int i=0;i<actors.GetSize();i++)
 	{
 		CActor* actor=actors[i];
-		if(actor && actor->p_CurrentAction && actor->p_CurrentAction->p_iClearOnSave)
+		if(actor && actor->p_CurrentAction && actor->p_CurrentAction->p_sSaveSafe.GetLength()==0)
 		{
-			actor->AI_SwitchToAction("",TRUE,TRUE);
+			//actor->AI_SwitchToAction("",TRUE,TRUE);
+			bDirtySave=TRUE;
 		}
 	}
+*/
 }
 
 void CLevel::CLevelSaveData::ApplySerialization()

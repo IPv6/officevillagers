@@ -44,7 +44,7 @@
 	//Antiquest8
 	core_EnableNode("techs_button",true);
 	
-	//if(false)
+	if(false)
 	{
 		actor_SetProfession(actorAg,"FINANCIER");
 		actor_NewPerson("person_male",true);
@@ -127,7 +127,7 @@
 		//actor_SwitchToAction(actorSi,"NONE_Script");
 	}
 	
-	//if(false)
+	if(false)
 	{//  весты
 		//gui_StartCutscene("Quest4_Cutscene");
 		//game_CutsceneBegin({});

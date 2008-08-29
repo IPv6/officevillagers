@@ -16,17 +16,9 @@
 -Priority:-1
 // „тобы человечка нельз€ было схватить и перетащить
 -Disable.Person.UI:1
-
+-Script.On:
+	actor_CancelWalking(thisActor);
 	
-[Event]
--Name:event_15sec_stop
--Prq.IsGlobalEvent:0
--Protected:2
--Priority:-1
--Script.In:
-	actorWait_Timeout(15);
-	actorWait_SwitchToAction(thisActor,"");
-
 [Event]
 -Name:Cutscene.driver.Speed2
 -Prq.IsGlobalEvent:0
@@ -34,6 +26,8 @@
 -Priority:-1
 -Walk.Speed:2
 -Disable.Person.UI:1
+-Script.On:
+	actor_CancelWalking(thisActor);
 
 [Event]
 -Name:Cutscene.driver.Speed4
@@ -42,7 +36,18 @@
 -Priority:-1
 -Walk.Speed:4
 -Disable.Person.UI:1
+-Script.On:
+	actor_CancelWalking(thisActor);
+	
+[Event]
+-Name:event_15sec_stop
+-Prq.IsGlobalEvent:0
+-Protected:2
+-Priority:-1
 -Script.In:
+	actor_CancelWalking(thisActor);
+	actorWait_Timeout(15);
+	actorWait_SwitchToAction(thisActor,"");
 
 [Event]
 -Name:Talking

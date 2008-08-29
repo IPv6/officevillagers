@@ -16,7 +16,7 @@ static char THIS_FILE[]=__FILE__;
 #define ENABLOFF_CLASS "EnablOff"
 #define STEP_SECTION_NAME	"\n[Step]"
 #define EVENT_SECTION_NAME	"\n[Event]"
-
+#define SAVESAFERESET	"#"
 CAction::CAction()
 {
 	actionScriptMirror=SquirrelVM::CreateTable();
@@ -24,7 +24,7 @@ CAction::CAction()
 	m_parentAction=0;
 	p_bProtected=0;
 	p_bDisableUI=0;
-	p_iClearOnSave=0;
+	p_sSaveSafe="";
 	p_iThinkSpeed=0;
 	p_WalkSpeed=1.0f;
 	p_iPriority=0;
@@ -59,7 +59,7 @@ void CAction::CopyFrom(CAction& other,BOOL bNonUniqOnly)
 	m_parentAction=other.m_parentAction;
 	p_bProtected=other.p_bProtected;
 	p_bDisableUI=other.p_bDisableUI;
-	p_iClearOnSave=other.p_iClearOnSave;
+	p_sSaveSafe=other.p_sSaveSafe;
 	p_iPriority=other.p_iPriority;
 	p_iThinkSpeed=other.p_iThinkSpeed;
 	p_UniqueUsage=other.p_UniqueUsage;
@@ -155,8 +155,8 @@ CAction* CAction::Add2LevelFromDescriptionSingleSet(const CString &sDsc, const c
 	if(isParam(sDscInit,"-Think.Speed:",s)){
 		newOne->p_iThinkSpeed=getS32(s,0);
 	}
-	if(isParam(sDscInit,"-ClearOnSave:",s)){
-		newOne->p_iClearOnSave=getS32(s,0);
+	if(isParam(sDscInit,"-SaveSafe:",s)){
+		newOne->p_sSaveSafe=getS32(s,0);
 	}
 	if(isParam(sDscInit,"-Walk.Speed:",s)){
 		newOne->p_WalkSpeed=getF32(s,0);

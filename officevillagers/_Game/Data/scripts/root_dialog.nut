@@ -74,11 +74,7 @@ function levelKeyHandler(key)
 			//=============================================
 			if(key._key==49)//  '1'
 			{
-				quest_open(3);
-			}
-			if(key._key==50)//  '2'
-			{
-				quest_close(3);
+				actor_SetAttribute("Office","ideas",actor_GetAttributeN("Office", "ideas")+5);
 			}
 		}
 		//if(key._rmb)
@@ -146,7 +142,7 @@ function levelKeyHandler(key)
 			}
 		}
 	}
-	if(key._pressed){
+	if(key._pressed && !key._control){
 		if(core_IsDebug()){
 			if(key._key==49)//1
 			{
