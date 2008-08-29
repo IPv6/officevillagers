@@ -74,20 +74,18 @@ void CLocationManagerNavigatorY::RecalcConnections()
 	for(i=0;i<getLevel()->data.actors.GetSize();i++){
 		CActor* actor=getLevel()->data.actors[i];
 		if(actor->data.p_Enabled && actor->data.p_sInPocket_Actor.GetLength()==0){
-			if(actor->data.p_iActorType==0){
-				CLocation* loc=actor->actorLocationLocator;
-				if(actor->p_Profession && actor->p_Profession->bChangeNavigation && loc){
+			if(actor->data.p_iActorType==0 && actor->p_Profession && actor->p_Profession->bChangeNavigation && actor->data.p_actorLocationInitial.GetLength()>0){
+				CLocation* loc=CLocationManager::getInstance().getLocationByNameSoft(actor->data.p_actorLocationInitial);
+				if(loc){
 					_rctf dot=loc->Convert2rect();
 					naviwalls.push_back(dot);
 					// Ищем дополнительные локаторы
-					if(actor->data.p_actorLocationInitial.GetLength()>0){
-						for(int i=1;i<10;i++){
-							CString sAdditionalWall=toString("%s[%i]",actor->data.p_actorLocationInitial,i);
-							CLocation* addw=CLocationManager::getInstance().getLocationByNameSoft(sAdditionalWall);
-							if(addw){
-								dot=addw->Convert2rect();
-								naviwalls.push_back(dot);
-							}
+					for(int i=1;i<10;i++){
+						CString sAdditionalWall=toString("%s[%i]",actor->data.p_actorLocationInitial,i);
+						CLocation* addw=CLocationManager::getInstance().getLocationByNameSoft(sAdditionalWall);
+						if(addw){
+							dot=addw->Convert2rect();
+							naviwalls.push_back(dot);
 						}
 					}
 					// Добавляем подводы

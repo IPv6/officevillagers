@@ -29,6 +29,7 @@ public:
 		CLevelSaveData()
 		{
 			bFaked=0;
+			bDirtySave=0;
 			pMainOfficeActor=0;
 		}
 		void ApplySerialization();
@@ -38,7 +39,7 @@ public:
 		CArray< CActor*, CActor* > actors;
 		long lProgress_Max;
 		long lProgress_Cur;
-
+		long bDirtySave;
 		f32 lProgress_TimeMax;
 		f32 lProgress_TimeNow;
 		f32 fProgress_Crunch;
@@ -53,6 +54,7 @@ public:
 			MAP2XML (&lProgress_TimeNow, "ProgressTime_Now")
 			MAP2XML (&lProgress_TimeMax, "ProgressTime_Max")
 			MAP2XML (&fProgress_Crunch, "ProgressTime_Crunch")
+			MAP2XML_DEF (&bDirtySave, "DirtySave", 0)
 			MAP2XML_DEF (&lProgress_TimeAbs, "LevelAbsoluteTime", 0.0f)
 			MAP2XML_DEF (&sBaseSaveFile, "BaseSaveFile", "")
 			MAP2XML_DEF (&sMagazinName, "MagazinName", "Daily Times")

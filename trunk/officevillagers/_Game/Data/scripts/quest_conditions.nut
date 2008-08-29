@@ -50,14 +50,16 @@ function quest_conditions(conditions)
 		if(gui_QuestClose(4)){
 			gui_StartCutscene("Quest4_Cutscene");
 		}
-    }
+	}
+	
 	if("_fromTech" in conditions)//проверка квестов, вызываемых из экрана технологий
 	{
-	if(conditions.newTech=="MUSCLES"){
-		if(gui_QuestClose(8)){
-			actor_SetAttribute(actor_GetActor("Heaps.Barricada"),"__BUSY",0);
-			gui_StartCutscene("Quest8_Cutscene");
-			}		
+		if(conditions.newTech=="MUSCLES"){
+			if(gui_QuestClose(8)){
+				level_CloseTechs();
+				actor_SetAttribute(actor_GetActor("Heaps.Barricada"),"__BUSY",0);
+				gui_StartCutscene("Quest8_Cutscene");
+			}
 		}
 	}
 
@@ -65,9 +67,9 @@ function quest_conditions(conditions)
 	 {
 		if (conditions.heapName=="Heaps.Barricada" && gui_QuestClose(9)){
 			gui_StartCutscene("Alpha_Last_Cutscene");
-			}
-	 }
+		}
 	}
+}
 
 
 
