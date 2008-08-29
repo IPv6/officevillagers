@@ -15,7 +15,9 @@ function level_OpenTechs(param)
 
 function level_CloseTechs()
 {
-	core_CloseDialog("level_techs");
+	if(core_IsDialogOpened("level_techs")){
+		core_CloseDialog("level_techs");
+	}
 }
 
 function deinitTechsDialog()

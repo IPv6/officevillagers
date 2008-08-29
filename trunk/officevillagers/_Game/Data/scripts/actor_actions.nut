@@ -127,6 +127,7 @@ function actor_SetProfessionRaw(thisActor,profName)
 		// Не меняем!
 		return false;
 	}
+	actor_UnsetTeacher(thisActor);
 	actor_MakePocketEmpty(thisActor);
 	return actor_SetProfession_i(thisActor,profName,false);
 }

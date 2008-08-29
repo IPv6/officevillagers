@@ -6,7 +6,7 @@
 -Position: z-2
 -ModalDialog:1
 -FadeInEffect:1
--PauseGame:1
+-PauseGame:0
 
 [Sprite]
 -Texture:menu_button_small.spr?button=level_buttons

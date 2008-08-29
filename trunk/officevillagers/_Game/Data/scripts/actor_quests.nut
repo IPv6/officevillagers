@@ -147,7 +147,9 @@ function level_OpenQuests(param)
 
 function level_CloseQuests()
 {
-	core_CloseDialog("level_quests");
+	if(core_IsDialogOpened("level_quests")){
+		core_CloseDialog("level_quests");
+	}
 }
 
 function quest_timecompare(a,b)
@@ -203,7 +205,7 @@ function initQuestDialog(skipItems)
 	for(i=0;i<g_QuestsOnPage;i++){
 		local slotNodeName=format("quest_slot%i",g_Quest_Slots);
 		core_DeleteNode(slotNodeName);
-		core_CreateSprite("gui\\level_quest_slot.spr","level_quests",{x=-0.2, y=7-2.5*i, z=-0.0002, w=1, h=1, name=slotNodeName });
+		core_CreateSprite("gui\\level_quest_slot.spr","level_quests",{x=-0.5, y=7-2.5*i, z=-0.0002, w=1, h=1, name=slotNodeName });
 		g_Quest_Slots++;
 	}
 	local attrId=0;
@@ -219,7 +221,7 @@ function initQuestDialog(skipItems)
 		g_SkipQuest_Slots = 0;
 	}
 	local multiLineOffset=0;
-	local lLineHH=1.4;
+	local lLineHH=1.15;
 	local slotId=0;
 	local bt_next=false;
 	local bt_prev=skipItems>0?true:false;
@@ -235,14 +237,14 @@ function initQuestDialog(skipItems)
 		}else{
 			core_EnableNode(slotNode,true);
 			local questtitle=quests[thisQuestNum].locName;
-			questtitle=core_JustifyText(questtitle,4.4);
+			questtitle=core_JustifyText(questtitle,4.8);
 			slotNode._y=9-multiLineOffset;//ДО вычисления числа строк данного квеста!!!
 			// Определяем число строк
 			local lStrokNum=charsInText(questtitle,"\n");
 			slotNode._h=lLineHH*(lStrokNum+1);
 			multiLineOffset+=lLineHH*(lStrokNum+1);
 			multiLineOffset+=0.3;
-			if(multiLineOffset>17.0){
+			if(multiLineOffset>19.0){
 				// Кончилось
 				bt_next = true;
 				core_EnableNode(slotNode,false);

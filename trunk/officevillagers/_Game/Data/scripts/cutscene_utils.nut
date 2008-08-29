@@ -4,6 +4,8 @@ function game_CutsceneBegin(skipParams)
 		$ifdebug core_Alert("game_CutsceneBegin error: cutscene already present!");
 		return;
 	}
+	level_CloseQuests();
+	level_CloseTechs()
 	if(!("lastActiveCutSceneNumber" in game_GetSafe())){
 		gui_isCutSceneWasSkipped();// Создаем параметры необходимые
 	}

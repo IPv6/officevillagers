@@ -63,8 +63,12 @@
 	
 	//когда опыт набран
 	if(isProfExpaOk(thisActor)){
-		actor_SetProfession(thisActor, actor_getTeacher(thisActor).ProfessionN);
-		quest_conditions({ Quest4=1});
+		local teacher=actor_GetTeacher(thisActor);
+		if(teacher){
+			teacher=actor_GetActor(teacher);
+			actor_SetProfession(thisActor, teacher.ProfessionN);
+			quest_conditions({ Quest4=1});
+		}
 	}
 	
 	//если усталость 70 или выше, пускаем стажёра отдыхать
