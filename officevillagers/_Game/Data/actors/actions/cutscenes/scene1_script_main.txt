@@ -22,7 +22,7 @@
 	local actorBo = actor_GetActor("ACTOR.BOB");
 
 	gui_FadeIn();
-	actor_SetAttribute("Office","ALARM2",1);
+	actor_SetAttribute("Office","Alarm2",1);
 	actorWait_Timeout(2);
 	actor_AttachCamera(actorAg);
 	actorWait_SwitchToAction(actorSh,"Cutscene.driver");

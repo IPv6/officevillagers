@@ -23,8 +23,8 @@
 			actor_DelItem(thisActor,"collectible_item","collectible_number=0");
 			actor_OrientBody(thisActor,"CREATOR::IDEASTABLESHEKEL");
 			actor_DeleteActor(collectiobl);
-			actor_SwitchToAction(thisActor,"");
 			actor_SwitchToAction("Office","Quest6_Cutscene2");
+			actor_SwitchToAction(thisActor,"");
 			return;
 		}
 	}

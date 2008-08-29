@@ -23,13 +23,14 @@
 	randomizeArray(talkPlaces);
 	
 	local nextCheckTime = getTime()+30;
-	local nextAlarmTime = getTime()+10;
+	local nextAlarmTime = getTime()+100;
 	local nextParamsRecalTime = getTime();
 	local alarmsFile = core_GetDataPath("\\text\\alarm_names.lng");
 	if(g_AutoSaveTime == 0){
 		g_AutoSaveTime = getTime() + 60*10;
 	}
 	// Предопределенные действия
+
 	if (actor_GetAttributeN("Office","Alarm1")==0){
 		gui_ShowAlarm(core_Translate("ALARM.2",alarmsFile),300);
 		actor_SetAttribute("Office","Alarm1",2);
@@ -49,7 +50,6 @@
 		gui_ShowAlarm(core_Translate("ALARM.3",alarmsFile),300);
 		actor_SetAttribute("Office","Alarm2",1);
 	}
-	
 	//============================================================
 	while(true){
 		if(thisActor.LevelFinish==true){
