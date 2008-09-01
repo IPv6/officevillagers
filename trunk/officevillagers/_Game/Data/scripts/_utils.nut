@@ -149,7 +149,7 @@ function dumpVariable(var)
 		res+="\n};";
 		return res;
 	}
-	res+="'"+var.tostring()+"';";
+	res+="'"+(var==null)?"null":var.tostring()+"';";
 	return res;
 }
 

@@ -37,13 +37,6 @@ void CGameImplementation::HandleCommonDescriptionMacros(CString& sContent,_array
 		sContent.Replace("${SUBID_DEFDROP}",toString(SUBID_DEFDROP));
 		
 	}
-	if(sContent.Find("$if")!=-1){
-		if(isDebugEnabled()){
-			sContent.Replace("$ifdebug","");
-		}else{
-			sContent.Replace("$ifdebug","//");
-		}
-	}
 }
 
 #define PAUSE_EFFECT_TIME	1000
