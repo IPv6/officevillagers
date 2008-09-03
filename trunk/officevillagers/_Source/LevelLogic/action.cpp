@@ -180,6 +180,10 @@ CAction* CAction::Add2LevelFromDescriptionSingleSet(const CString &sDsc, const c
 	if(isParam(sDscInit,"-Script.Off:",s)){
 		newOne->sScriptEnd=getGame().scripter.TurnCodeIntoFunction(s,sFN,STEPOFF_CLASS,"thisActor");
 	}
+	if(isParam(sDscInit,"-Script.Restore:",s)){
+		newOne->sScriptRestore=getGame().scripter.TurnCodeIntoFunction(s,sFN+"_Rst",STEPON_CLASS,"thisActor");
+	}
+	
 	if(iStepNum==0){
 		_array_sc steps=Inifile2StrArray(sDsc,STEP_SECTION_NAME);
 		for(u32 i=0;i<steps.size();i++)
@@ -230,6 +234,13 @@ BOOL CAction::OnDuring(CActor* who)
 	getLevel()->getCurrentAction()=this;
 	lastActivationTime=CLevelThinker::getThinker()->getGameTimer();//game_GetTickCount
 	DEBUG_LASTACTION(toString("Actor '%s' Script.On method, action=%s",who->data.p_sName,this->p_sActionName));
+	if(who->actionAttachDone==-1){
+		who->actionAttachDone=0;
+		if(sScriptRestore.GetLength()){
+			who->scriptMirror.SetValue("__action_step",-1);
+			getGame().scripter.CallPrecompiledMethod(sScriptRestore,who->scriptMirror,STEPON_CLASS);
+		}
+	}
 	if(who->actionAttachDone==0){
 		who->actionAttachDone=1;
 		if(sScriptBegin.GetLength()){

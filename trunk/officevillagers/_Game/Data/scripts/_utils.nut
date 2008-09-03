@@ -136,7 +136,7 @@ function charsInText(text,charsingl)
 	return res;
 }
 
-function dumpVariable(var)
+function dump(var)
 {
 	local res="";
 	local type=typeof(var);
@@ -144,12 +144,20 @@ function dumpVariable(var)
 		res+=type+"{";
 		foreach(name,val in var){
 			res+="\n";
-			res+=name+"="+dumpVariable(val);
+			res+=name+"="+dump(val);
 		}
 		res+="\n};";
 		return res;
 	}
-	res+="'"+(var==null)?"null":var.tostring()+"';";
+	if(type!="float" && type!="integer" && type!="bool"){
+		res+="'["+type;
+		if(!var){
+			res+="-"+var.tostring()+"'";
+		}
+		res+="]';";
+	}else{
+		res+="'"+var.tostring()+"';";
+	}
 	return res;
 }
 

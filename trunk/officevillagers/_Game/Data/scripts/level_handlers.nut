@@ -94,7 +94,7 @@ function event_OnLoadGame(gameSafe)
 	// Грузим дерево технологий
 	local lTechs=core_ReadTextFile(core_GetDataPath("\\actors\\quests\\techtree.txt"));
 	g_techTree <- core_DeserializeObj(lTechs,true);
-	//core_Alert(dumpVariable(g_techTree));
+	//core_Alert(dump(g_techTree));
 }
 
 function setGlobal(name,value)
