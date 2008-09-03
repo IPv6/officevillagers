@@ -34,6 +34,7 @@ public:
 	CString sScriptIn;
 	CString sScriptIn2;
 	CString sScriptEnd;
+	CString sScriptRestore;
 	CAction* m_parentAction;
 	BOOL p_bProtected;
 	BOOL p_bDisableUI;

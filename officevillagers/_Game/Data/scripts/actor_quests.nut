@@ -291,7 +291,7 @@ function quest_left()
 			prev=g_SkipQuest_Slots_Prev[i];
 		}
 	}
-	//core_Alert(g_SkipQuest_Slots.tostring());//dumpVariable(g_SkipQuest_Slots_Prev));
+	//core_Alert(g_SkipQuest_Slots.tostring());//dump(g_SkipQuest_Slots_Prev));
 	initQuestDialog(prev);
 }
 

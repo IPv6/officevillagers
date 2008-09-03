@@ -66,6 +66,9 @@ void CActor::PrepareSerialization()
 
 void CActor::ApplySerialization()
 {
+	if(getLevel()->data.bDirtySave){
+		actionAttachDone=-1;
+	}
 	// Профессия. ДО всего так как содержит некторые дефолты
 	SetProf(data.p_ProfessionName,-1);
 	data.p_ValidProphession=CString(",")+data.p_ValidProphession+CString(",");

@@ -42,7 +42,7 @@ function initTechsDialog()
 		if(iSlotNum>=g_TechsOnPage){
 			break;
 		}
-		//core_Alert(dumpVariable(singletech));
+		//core_Alert(dump(singletech));
 		// Проверяем доcтупна ли технология
 		if(singletech.Points2View>points){
 			continue;
