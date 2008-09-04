@@ -36,3 +36,8 @@ function RecalcOfficeOnLevelChange()
 	actor_SetAttribute("Office","IssueProgressCur", gui_GetIssueProgressCur());
 	RecalcOfficeParameters();
 }
+
+function office_CalcSkipTime()
+{
+	return 4.0;
+}

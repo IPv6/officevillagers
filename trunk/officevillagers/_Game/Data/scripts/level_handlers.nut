@@ -87,7 +87,7 @@ function event_OnLoadGame(gameSafe)
 			setFloorPosition({_x=safe.cameraX, _y=safe.cameraY});
 		}else{
 			// Начальное положение "Камеры"
-			local officeActor=actor_GetActorPos(null);
+			local officeActor=actor_GetActorPos("Office");
 			setFloorPosition({_x=-officeActor._x, _y=-officeActor._y});
 		}
 	}
@@ -99,22 +99,22 @@ function event_OnLoadGame(gameSafe)
 
 function setGlobal(name,value)
 {
-	actor_SetAttribute(actor_GetActor(),"GLOBAL::"+name,value);
+	actor_SetAttribute(actor_GetActor("Office"),"GLOBAL::"+name,value);
 }
 
 function getGlobal(name)
 {
-	return actor_GetAttributeN(actor_GetActor(),"GLOBAL::"+name);
+	return actor_GetAttributeN(actor_GetActor("Office"),"GLOBAL::"+name);
 }
 
 function setLevelGlobal(name,value)
 {
-	actor_SetAttribute(actor_GetActor(),"GLOBAL::LEVEL::"+name,value);
+	actor_SetAttribute(actor_GetActor("Office"),"GLOBAL::LEVEL::"+name,value);
 }
 
 function getLevelGlobal(name)
 {
-	return actor_GetAttributeN(actor_GetActor(),"GLOBAL::LEVEL::"+name);
+	return actor_GetAttributeN(actor_GetActor("Office"),"GLOBAL::LEVEL::"+name);
 }
 
 g_lastActor <- {Name="????Any"};
@@ -143,12 +143,35 @@ function gui_JumpToNextActor()
 	gui_SoftActorWatch(g_lastActor);
 }
 
+function level_StartForLoad()
+{
+	local lHoursToSkip=office_CalcSkipTime();
+	// Вычисляем сколько часов надо пропустить
+	if(lHoursToSkip>0.0){
+		//game_SetFastForward(lHoursToSkip);
+		core_CreateNode("\\gui\\preloader\\clocks.spr","pole");
+		core_SetProfileOption("LEVEL_HoursToSkip",lHoursToSkip);//LEVEL_HoursToSkip - особый элемент профиля
+	}
+}
+
 function level_WaitForLoad()
 {
-	while(game_GetState()<3){
-		wait(1);
+	local hrArrow=core_GetNode("_clock_hour_arrow");
+	local mnArrow=core_GetNode("_clock_min_arrow");
+	while(game_GetState()<3 || game_IsFastForward()){
+		if(hrArrow){
+			// Ставим время!
+			local timer=game_GetIngameRealTime();
+			mnArrow._rotation=-(timer._min)*3.1415*2.0/60;
+			hrArrow._rotation=-((timer._hour%12).tofloat()+timer._min.tofloat()/60.0)*3.1415*2.0/12;
+			core_SetNode(mnArrow,mnArrow);
+			core_SetNode(hrArrow,hrArrow);
+		}
+		wait(100);
 	}
+	wait(100);
 	//core_Alert("load done");
+	core_DeleteNode("_ff_clocks");
 }
 
 function event_BarricadeOff(param)
@@ -177,4 +200,10 @@ function gui_UpdateHud()
 function game_SetGameSpeed(speed)
 {
 	game_SetGameSpeed_i(speed);
+}
+
+function event_OnTimeOut(safe)
+{
+	core_Warning("Time is out!");
+	level_ResetTimeToNewIssue();
 }

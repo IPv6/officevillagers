@@ -49,9 +49,6 @@ CActor* getActor(StackHandler& sa, int iParaNum,BOOL bSilently=0)
 	BOOL bByName=0;
 	CString sByName;
 	int iType=sa.GetType(iParaNum);
-	if(iType==OT_NULL || iType==-1){
-		return getLevel()->data.pMainOfficeActor;
-	}
 	if(iType==OT_STRING){// по имени
 		sByName=sa.GetString(iParaNum);
 		bByName=1;
@@ -77,6 +74,8 @@ CActor* getActor(StackHandler& sa, int iParaNum,BOOL bSilently=0)
 	int iID=-1;
 	if(iType==OT_INTEGER){// по ID ноды
 		iID=sa.GetInt(iParaNum);
+	}else{
+		return NULL;
 	}
 	CArray< CActor*,CActor* >& actors=getLevel()->data.actors;
 	for(int i=0;i<actors.GetSize();i++)

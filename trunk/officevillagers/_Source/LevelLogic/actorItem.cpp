@@ -17,6 +17,7 @@ CActorItemDesc::CActorItemDesc()
 	bAutoArrange=0;
 	iInSprParent=-1;
 	bSaveItemInSaves=1;
+	lSkipInFF=0;
 };
 
 CActorItem::CActorItem()
@@ -55,7 +56,7 @@ BOOL CActorItem::OnItemAttach(CActor* who)
 		}
 	}
 	bCheckHideIf=TRUE;
-	CActorItem::OnItemSpawnUI(this,who);
+	CActorItem::SpawnItemUI(this,who);
 	return TRUE;
 }
 
@@ -106,9 +107,9 @@ public:
 	}
 };
 
-BOOL CActorItem::OnItemSpawnUI(CActorItem* item, CActor* who)
+BOOL CActorItem::SpawnItemUI(CActorItem* item, CActor* who)
 {
-	if(!who->bNodeSpawned){
+	if(!who->bNodeSpawned || getLevel()->dwFastForwardLeft){
 		return FALSE;
 	}
 	if(item && item->itemNode){// уже

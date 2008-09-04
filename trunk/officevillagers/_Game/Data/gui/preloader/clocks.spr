@@ -1,0 +1,19 @@
+[Sprite]
+-Name:_ff_clocks
+-Texture:clock_bg.png
+-Size: 5
+-Position: z-4.0
+
+[Sprite]
+-AsChild:1
+-Name:_clock_hour_arrow
+-Texture:clock_arrow1.png
+-Size: 0.6
+-Position: z-0.0001
+
+[Sprite]
+-AsChild:1
+-Name:_clock_min_arrow
+-Texture:clock_arrow1.png
+-Size: 0.9
+-Position: z-0.0002

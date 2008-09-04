@@ -24,6 +24,9 @@ CLevel::CLevel()
 	fProgressTime=0;
 	fProgressCur=0;
 	isCrunch=0;
+	dwFastForwardLeft=0;
+	lProgress_TimeAbsInitial=0;
+	lLastLoadRealTime=time(NULL);
 	data.lProgress_TimeMax=120;//2 min
 	levelNavigator=new CLocationManagerNavigatorY();
 }
@@ -178,10 +181,34 @@ void CLevel::UpdateDynLocations()
 	}
 }
 
+void CLevel::SetFastForward(long dwMillis)
+{
+	dwFastForwardLeft=dwMillis;
+	if(dwFastForwardLeft){
+		CGameImplementation::getInst().fGameSpeed=FF_SPEED;
+		CLevelThinker::getThinker()->setDiscretion(FFINKING_LEVEL_DISCRETION);
+	}else{
+		CGameImplementation::getInst().fGameSpeed=1.0f;
+		CLevelThinker::getThinker()->setDiscretion(THINKING_LEVEL_DISCRETION);
+	}
+}
+
+void CLevel::OnLevelTimeOut()
+{
+	getGame().scripter.CallPrecompiledMethod("event_OnTimeOut",data.scriptSafe);
+}
+
 void CLevel::Think(u32 timeMs,BOOL bFastForward)
 {
 	if(timeMsPrevious<0){
 		timeMsPrevious=timeMs;
+	}
+	if(dwFastForwardLeft){
+		//FF_SINGLESTEP_DISCRETION
+		dwFastForwardLeft-=(timeMs-timeMsPrevious);
+		if(dwFastForwardLeft<=0){
+			SetFastForward(0);
+		}
 	}
 	float lProgress_TimeNowBefore=data.lProgress_TimeNow;
 	f32 delta=f32(timeMs-timeMsPrevious)*0.001f;
@@ -190,6 +217,7 @@ void CLevel::Think(u32 timeMs,BOOL bFastForward)
 	fProgressTime=data.lProgress_TimeNow/data.lProgress_TimeMax;
 	if(fProgressTime>1.0f){
 		fProgressTime=1.0f;
+		OnLevelTimeOut();
 	}
 	if(aHints.size()>0){
 		CSingleHint& nht=aHints[0];
@@ -218,7 +246,7 @@ void CLevel::Think(u32 timeMs,BOOL bFastForward)
 			if(!iThinkSpeed){
 				iThinkSpeed=(THINKING_DISCRETION/THINKING_LEVEL_DISCRETION);
 			}
-			if((callCnt%iThinkSpeed)==0)
+			if(dwFastForwardLeft || (callCnt%iThinkSpeed)==0)
 			{
 				actor->Think(timeMs);
 			}
@@ -259,6 +287,14 @@ void CLevel::LoadLevelFromDescription(CSpriteNode* out,const char* sDlgContent)
 	lvl.dwLevelStateSetTime=0;
 	lvl.levelRoot=out;
 	attachAnimator(out, new CLevelThinker(plvl));
+	{// Первым делом считываем сколько часов пропустить
+		f32 fVal=f32(getGame().getProfile().uo.getDouble("LEVEL_HoursToSkip"));
+		if(fVal>0.0f){
+			lvl.SetFastForward(long(fVal*float(60*60*1000)));
+		}
+		getGame().getProfile().uo.setDouble("LEVEL_HoursToSkip",0.0f);// Сбрасываем
+	}
+	// Считываем сейв
 	CString s;
 	if(isParam(sDlgContent,"-OfficeDescription:",s)){
 		// Читаем файл с поддержкой слития нескольких кусков
@@ -303,6 +339,7 @@ void CLevel::CheckLokReashability()
 void CLevel::CSerializableLevelInfo::ApplySerialization()
 {
 	CLevel& lvl=(*getLevel());
+	lvl.lLastLoadRealTime=time(NULL);
 	{// Карта офиса
 		lvl.floor=addBillboard3(sOfficeMapDescription,_v3(0.0f,0.0f,1.0f),lvl.levelRoot);
 		lvl.floorNodeID=lvl.floor->getID();
@@ -375,7 +412,7 @@ void CLevel::CSerializableLevelInfo::ApplySerialization()
 		// Все, закончилось
 		lvl.bLoadingFromDefaultState=FALSE;
 	}
-	// Симуляция пройденного времени
+	lvl.lProgress_TimeAbsInitial=lvl.data.lProgress_TimeAbs;
 	// Скрипт-привязка
 	getGame().scripter.CallPrecompiledMethod("event_OnLoadGame",lvl.data.scriptSafe);
 }
@@ -453,11 +490,31 @@ void CLevel::CLevelSaveData::ApplySerialization()
 };
 
 
+time_t getReperTime()
+{
+	time_t tmilly=time(NULL);
+	struct tm *t=localtime(&tmilly);
+	t->tm_mday=1;
+	t->tm_mon=0;
+	t->tm_year=8;
+	t->tm_hour=0;
+	t->tm_min=0;
+	t->tm_sec=0;
+	return mktime(t);
+}
+
 BOOL CLevel::SaveGame(const char* szPostfix)
 {
+	time_t tCutTime=time(NULL);
+	time_t tRepTime=getReperTime();
+	data.lLastSaveRealTime2RepTime=long(((__int64)tCutTime)-((__int64)tRepTime));
 	static BOOL bDisableSave=atol(getGame().getOptions().GetIniParam("DisableSave"));
+	if(dwFastForwardLeft && szPostfix[0]==0){
+		AddDebugScreenLine("Warning: FasfF: Skipped game save!!!",1000);
+		return FALSE;
+	}
 	if(bDisableSave && szPostfix[0]==0){
-		AddDebugScreenLine("Warning: Cutscene Skipped game save!!!",1000);
+		AddDebugScreenLine("Warning: Cutscene: Skipped game save!!!",1000);
 		return FALSE;
 	}
 	if(bIsCutscene){
@@ -473,14 +530,14 @@ BOOL CLevel::SaveGame(const char* szPostfix)
 	//data.sSafeFile=getGame().getProfile().getProfileFolder()+getGame().getProfile().getProfileFilename("",FALSE)+"_safe.ini";SaveFile(data.sSafeFile,sSafeCnt);
 	data.sSafeFile=sSafeCnt;//Htmlize(data.sSafeFile);
 	// Сохраняем данные
-	CString sPostfix=(szPostfix && szPostfix[0])?(szPostfix):(getGame().getProfile().getProfileFilename("",FALSE)+"_level");
-	CString sLevelFile=getGame().getProfile().getProfileFolder()+sPostfix+".sav";
+	CString sPostfix=(szPostfix && szPostfix[0])?szPostfix:"last";
+	CString sLevelFile=getGame().getProfile().getProfileFolder()+getGame().getProfile().getProfileFilename("",FALSE)+"_"+sPostfix+".sav";
 	StorageNamed::CIrrXmlStorage storage(sLevelFile,false);
 	data.DoSerialization(&storage);
 	// Сохраняем еще что?
-#ifndef _DEBUG
-	getGame().getProfile().uo.setString("SaveFile",sLevelFile);
-#endif
+	if(!bDisableSave){
+		getGame().getProfile().uo.setString("SaveFile",sLevelFile);
+	}
 	return TRUE;
 }
 
@@ -497,7 +554,7 @@ void CLevel::InitOfficeObject()
 
 void CLevel::ResetOfficeObject()
 {
-	if(data.lProgress_TimeNow>data.lProgress_TimeMax){
+	if(data.lProgress_TimeNow>=data.lProgress_TimeMax){
 		//data.lProgress_TimeNow-=data.lProgress_TimeMax;
 		data.lProgress_TimeNow=0;
 	}
@@ -622,6 +679,10 @@ void CLevel::UpdateProgress()
 
 BOOL CLevel::EnableCutscene(BOOL b)
 {
+	if(b && dwFastForwardLeft>0){
+		DEBUG_ASSERT(false,"Замечена попытка включить катсцйену во время прокрутки. Прокрутка вырубается");
+		dwFastForwardLeft=0;
+	}
 	if(b){
 		HideHint(TRUE,-1);
 	}

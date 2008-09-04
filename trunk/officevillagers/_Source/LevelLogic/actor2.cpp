@@ -53,6 +53,9 @@ BOOL CActor::AddItem(const char* szNameRaw,const char* szParamsRaw,const char* s
 	CString sParams=szParamsRaw;
 	CActorItem* newOne=new CActorItem();
 	newOne->itemDsc=getLevel()->getItemDscByName(szNameRaw);
+	if(getLevel()->dwFastForwardLeft && newOne->itemDsc && newOne->itemDsc->lSkipInFF){
+		return FALSE;
+	}
 	BOOL bFake=FALSE;
 	if(newOne->itemDsc && newOne->itemDsc->bFake){
 		bFake=newOne->itemDsc->bFake;
