@@ -13,7 +13,6 @@
 	local trashObjectName=actor_GetAttributeS(thisActor,"PrefferedTrash");
 	trashObjectTable=trashObjectName;
 	if(trashObjectTable!=""){
-		
 		trashObjectTable=actor_IsActorExist(trashObjectTable);
 		if(trashObjectTable==false){
 			// Исчез уже этот мусор...
@@ -199,7 +198,7 @@
                     switchToDragTrash = isDragMusor.tointeger();
                }
 			   quest_conditions({_fromDelHeap=true, heapName=TrashName, actor=thisActor.Name});
-			   core_Warning(TrashName);
+			   //core_Warning(TrashName);
                actor_DeleteActor(TrashName);
 			   
 		}

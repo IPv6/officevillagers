@@ -60,7 +60,7 @@ function gui_QuestOpen(questNum)
 
 function gui_QuestClose(questNum)
 {
-	local office=actor_GetActor();
+	local office=actor_GetActor("Office");
 	local questState=gui_QuestCheck(questNum);
 	local quest=quest_GetQuest(questNum);
     if(questState != 2){
@@ -306,7 +306,7 @@ function gui_GenerateHint()
 {
 	local alarmsFile = core_GetDataPath("\\text\\alarm_names.lng");
 	local hintName=format("HELPHINT%i",core_Rnd(1,21));
-	gui_ShowHint(core_Translation(hintName,alarmsFile),10,0);
+	gui_ShowHint(core_Translate(hintName,alarmsFile),10,0);
 }
 
 

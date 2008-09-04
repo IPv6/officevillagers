@@ -8,6 +8,8 @@
 
 #define THINKING_DISCRETION			500
 #define THINKING_LEVEL_DISCRETION	100
+#define FFINKING_LEVEL_DISCRETION	0
+#define FF_SPEED					1500.0f
 // До загрузки
 #define LEVELSTATE_INIT				0
 // Загрузилось, инициализируется
@@ -31,6 +33,8 @@ public:
 			bFaked=0;
 			bDirtySave=0;
 			pMainOfficeActor=0;
+			lProgress_TimeAbs=0;
+			lLastSaveRealTime2RepTime=0;
 		}
 		void ApplySerialization();
 		void PrepareSerialization();
@@ -43,11 +47,12 @@ public:
 		f32 lProgress_TimeMax;
 		f32 lProgress_TimeNow;
 		f32 fProgress_Crunch;
-		f32 lProgress_TimeAbs;
+		f32 lProgress_TimeAbs;// Секунд в игре
 		CString sMagazinName;
 		CString sBaseSaveFile;
 		CString sSafeFile;
 		SquirrelObject scriptSafe;
+		long lLastSaveRealTime2RepTime;
 		MAP2XML_BEGIN("Office")
 			MAP2XML (&lProgress_Max, "ProgressMax")
 			MAP2XML (&lProgress_Cur, "ProgressCur")
@@ -55,6 +60,7 @@ public:
 			MAP2XML (&lProgress_TimeMax, "ProgressTime_Max")
 			MAP2XML (&fProgress_Crunch, "ProgressTime_Crunch")
 			MAP2XML_DEF (&bDirtySave, "DirtySave", 0)
+			MAP2XML_DEF (&lLastSaveRealTime2RepTime, "LastSaveRealTime", 0)
 			MAP2XML_DEF (&lProgress_TimeAbs, "LevelAbsoluteTime", 0.0f)
 			MAP2XML_DEF (&sBaseSaveFile, "BaseSaveFile", "")
 			MAP2XML_DEF (&sMagazinName, "MagazinName", "Daily Times")
@@ -74,6 +80,9 @@ public:
 	BOOL isCrunch;
 	f32 fProgressCur;
 	f32 fProgressTime;
+	f32 lProgress_TimeAbsInitial;
+	time_t lLastLoadRealTime;
+	long dwFastForwardLeft;
 	CSliderControl* progressCurSlider;
 	CSliderControl* progressCruSlider;
 	CSliderControl* progressTimSlider;
@@ -138,6 +147,8 @@ public:
 	void ScheduleRecalcConnections(){bRecalConnections=TRUE;};
 	CLevel();
 	~CLevel();
+	void OnLevelTimeOut();
+	void SetFastForward(long dwMillis);
 	void Think(u32 timeMs,BOOL bFastForward=0);
 	static void LoadLevelFromDescription(CSpriteNode* out,const char* sz);
 	s32 cursorOnScreenSide;

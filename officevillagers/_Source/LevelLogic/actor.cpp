@@ -885,7 +885,7 @@ BOOL CActor::AI_SwitchToAction(const char* szActionName,BOOL bManual, BOOL bNOW)
 
 void CActor::SpawnPersUI()
 {
-	if(!data.p_Enabled){// Неактивен
+	if(!data.p_Enabled || getLevel()->dwFastForwardLeft){// Неактивен
 		return;
 	}
 	bNodeSpawned=1;
@@ -917,7 +917,7 @@ void CActor::SpawnPersUI()
 	u32 i=0;
 	for(i=0;i<data.p_items.size();i++)
 	{
-		CActorItem::OnItemSpawnUI(data.p_items[i],this);
+		CActorItem::SpawnItemUI(data.p_items[i],this);
 	}
 	// Продумываем покет - чтобы не мелькал
 	ThinkPocket(TRUE);

@@ -12,7 +12,8 @@ function actorWait_GoTo(thisActor,locationName)
 		::suspend();
 		if(getTime()-lStartTime>500){
 			// Для защиты от застреваний если перс не может в течении двух минут попасть к цели - возвращаем что все, ахтунг! не может
-			$ifdebug {core_Alert(format("Goto failed (too long)!!! %s to %s",actor_GetActor(thisActor).Name,locationName.tostring()));game_SetGameSpeed(0);};
+			$ifdebug if(!game_IsFastForward()){core_Alert(format("Goto failed (too long)!!! %s to %s",actor_GetActor(thisActor).Name,locationName.tostring()));game_SetGameSpeed(0);};
+			$ifdebug $ifdebug __DebugActor(thisActor,"walk drop to nones");
 			actor_SwitchToAction(thisActor,"",true);// На прескрипты
 			::suspend();
 			return false;

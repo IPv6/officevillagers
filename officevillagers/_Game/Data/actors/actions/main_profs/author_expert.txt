@@ -166,7 +166,7 @@
 	if (gui_GetIssueProgressCur() == gui_GetIssueProgressMax()){
 		//core_Warning("играет анимация и звук");
 		//отключается высчет качества номера
-		actor_SetAttribute(actor_GetActor(), "Opener_QualityCheck", 0);
+		actor_SetAttribute(actor_GetActor("Office"), "Opener_QualityCheck", 0);
 		
 		//проверка, изобрели ли уже загашник
 		//если не изобрели, то агата сообщает, что авторов желательно переправить на другую работу/учёбу, так как пользы от них никакой, разве что опыт набирают и стажёров учат

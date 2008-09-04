@@ -9,8 +9,12 @@ function levelKeyHandler(key)
 			//17-CONTROL 16-SHIFT 18-ALT
 			//if(key._key==77)// 'M'
 			//if(key._key==78)//  'N'
-			//if(key._key==79)//  'O'
 			//105)//  Num9
+			if(key._key==79)//  'O'
+			{// Пропускаем час времени
+				core_Warning("Прокручиваем час времени");
+				game_SetFastForward(1.0);
+			}
 			if(key._key==145)// Control-Shift-ScrollLock
 			{
 				game_SetGameSpeed(20.0);

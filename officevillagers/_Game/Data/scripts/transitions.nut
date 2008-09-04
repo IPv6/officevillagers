@@ -23,6 +23,10 @@ function runTransitionInThread_Fade(dialogToOpen)
 	fader._fade=1;
 	core_SetNode("_fader",fader);
 	flag_TransitionState = 3;
+	if(dialogToOpen=="main_office_level"){
+		// Ждем окончания загрузки уровня
+		level_StartForLoad();
+	}
 	core_OpenDialog(dialogToOpen);
 	if(dialogToOpen=="main_office_level"){
 		// Ждем окончания загрузки уровня

@@ -21,6 +21,7 @@ public:
 	CString sScriptOnSpawn;
 	CString sScriptOnDetach;
 	CString sAutoClearTypes;
+	long lSkipInFF;
 	MAP2XML_BEGIN("ItemDescription")
 		MAP2XML (&sName, "Name")
 		
@@ -35,6 +36,7 @@ public:
 		MAP2XML_DEF (&sScriptOnAttach, "ScriptOnAttach", "")
 		MAP2XML_DEF (&sScriptOnSpawn, "ScriptOnSpawn", "")
 		MAP2XML_DEF (&sScriptOnDetach, "ScriptOnDetach", "")
+		MAP2XML_DEF (&lSkipInFF, "SkipInFF", 0)
 	MAP2XML_END()
 };
 typedef core::array<CActorItemDesc*> _array_CItemDscP;
@@ -70,7 +72,7 @@ public:
 	BOOL Think(CActor* who);
 	BOOL ThinkHideIf(CActor* who);
 
-	static BOOL OnItemSpawnUI(CActorItem* item, CActor* who);
+	static BOOL SpawnItemUI(CActorItem* item, CActor* who);
 	BOOL IsSerializableAsArrayItem(StorageNamed::CIrrXmlStorage* storage)
 	{
 		if(itemDsc && !itemDsc->bSaveItemInSaves){

@@ -146,16 +146,18 @@ int nloc_Save(HSQUIRRELVM v)
 
 int game_SetGameSpeed(HSQUIRRELVM v)
 {
-	StackHandler sa(v); 
-	f32 f1=sa.GetFloat(SQ_PARAM1);
-	CGameImplementation::getInst().fGameSpeed=f1;
-	if(CGameImplementation::getInst().fGameSpeed<0.0f)
-	{
-		CGameImplementation::getInst().fGameSpeed=0.0f;
-	}
-	if(CGameImplementation::getInst().fGameSpeed>500.0f)
-	{
-		CGameImplementation::getInst().fGameSpeed=500.0f;
+	StackHandler sa(v);
+	if(getLevel()->dwFastForwardLeft==0){
+		f32 f1=sa.GetFloat(SQ_PARAM1);
+		CGameImplementation::getInst().fGameSpeed=f1;
+		if(CGameImplementation::getInst().fGameSpeed<0.0f)
+		{
+			CGameImplementation::getInst().fGameSpeed=0.0f;
+		}
+		if(CGameImplementation::getInst().fGameSpeed>500.0f)
+		{
+			CGameImplementation::getInst().fGameSpeed=500.0f;
+		}
 	}
 	return sa.Return(CGameImplementation::getInst().fGameSpeed);
 }
@@ -378,6 +380,13 @@ int event_GetEvents(HSQUIRRELVM v)
 	return sa.Return(result);
 }
 
+int level_ResetTimeToNewIssue(HSQUIRRELVM v)
+{
+	StackHandler sa(v);
+	getLevel()->ResetOfficeObject();
+	return sa.Return(true);
+}
+
 int level_GetTimeToNewIssue(HSQUIRRELVM v)
 {
 	StackHandler sa(v);
@@ -589,6 +598,40 @@ int game_VisualizeNavimap(HSQUIRRELVM v)
 	return SQ_OK;
 }
 
+int game_IsFastForward(HSQUIRRELVM v)
+{
+	StackHandler sa(v);
+	if(getLevel()->dwFastForwardLeft>0){
+		return sa.Return(true);
+	}
+	return sa.Return(false);
+}
+
+int game_SetFastForward(HSQUIRRELVM v)
+{
+	StackHandler sa(v);
+	if(sa.GetType(SQ_PARAM1)==OT_NULL){
+		getLevel()->SetFastForward(0);
+	}else{
+		getLevel()->SetFastForward(long(sa.GetFloat(SQ_PARAM1)*float(60*60*1000)));// Часы в миллисекцунды
+	}
+	return SQ_OK;
+}
+
+int game_GetIngameRealTime(HSQUIRRELVM v)
+{
+	StackHandler sa(v);
+	SquirrelObject item=SquirrelVM::CreateTable();
+	f32 fSecsFromGameBeginnin=getLevel()->data.lProgress_TimeAbs-getLevel()->lProgress_TimeAbsInitial;
+	time_t tGameStart=getLevel()->lLastLoadRealTime;
+	time_t currentGameTime=time_t(tGameStart+time_t(fSecsFromGameBeginnin));
+	struct tm* t=localtime(&currentGameTime);
+	item.SetValue("_hour",t->tm_hour);
+	item.SetValue("_min",t->tm_min);
+	return sa.Return(item);
+}
+
+
 void RegisterActorScriptMethods();
 void RegisterGameScriptMethods()
 {
@@ -611,6 +654,7 @@ void RegisterGameScriptMethods()
 	SquirrelVM::CreateFunctionGlobal(level_Time,_T("level_Time"),"*");
 	SquirrelVM::CreateFunctionGlobal(level_TimeAbs,_T("level_TimeAbs"),"*");
 	SquirrelVM::CreateFunctionGlobal(level_GetTimeToNewIssue,_T("level_GetTimeToNewIssue"),"*");
+	SquirrelVM::CreateFunctionGlobal(level_ResetTimeToNewIssue,_T("level_ResetTimeToNewIssue"),"*");
 	
 	
 	SquirrelVM::CreateFunctionGlobal(level_Crunch,_T("level_Crunch"),"*");
@@ -634,6 +678,10 @@ void RegisterGameScriptMethods()
 	SquirrelVM::CreateFunctionGlobal(game_GetMagazinName,_T("game_GetMagazinName"),"*");
 	SquirrelVM::CreateFunctionGlobal(game_GetSafe,_T("game_GetSafe"),"*");
 	SquirrelVM::CreateFunctionGlobal(game_MarkSafe,_T("game_MarkSafe"),"*");
+
+	SquirrelVM::CreateFunctionGlobal(game_IsFastForward,_T("game_IsFastForward"),"*");
+	SquirrelVM::CreateFunctionGlobal(game_SetFastForward,_T("game_SetFastForward"),"*");
+	SquirrelVM::CreateFunctionGlobal(game_GetIngameRealTime,_T("game_GetIngameRealTime"),"*");
 
 	RegisterActorScriptMethods();
 }

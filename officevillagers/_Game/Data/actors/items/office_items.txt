@@ -14,6 +14,7 @@
 		<AutoArrange val="1" />
 		<InSprParent val="0" />
 		<SaveInSaves val="0" />
+		<SkipInFF val="1" />
 	</ItemDescription>
 	<ItemDescription>
 		<Name val="collectible_item" />
