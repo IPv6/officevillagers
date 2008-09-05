@@ -64,8 +64,12 @@ function game_CutsceneEnd(params)
 function gui_StartCutscene(cutSceneEvent)
 {
 	gui_StopSoftActorWatch();
+	if(game_IsFastForward()){
+		return false;
+	}
 	local office = actor_GetActor("Office");
 	actor_SwitchToAction(office,cutSceneEvent);
+	return true;
 }
 
 // Вызывется из кнопки

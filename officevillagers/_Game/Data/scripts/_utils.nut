@@ -149,7 +149,7 @@ function dump(var)
 		res+="\n};";
 		return res;
 	}
-	if(type!="float" && type!="integer" && type!="bool"){
+	if(type!="float" && type!="integer" && type!="bool" && type!="string"){
 		res+="'["+type;
 		if(!var){
 			res+="-"+var.tostring()+"'";
