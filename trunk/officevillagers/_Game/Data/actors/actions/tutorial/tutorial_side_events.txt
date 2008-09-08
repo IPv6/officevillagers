@@ -146,12 +146,14 @@
 -Script.On:
 	actor_AddItem("TABLE.AUTHOR1_L","cursor_hint_person","x[1]&y[-0.8]");
 -Script.Off:
-	actor_DelItem("TABLE.AUTHOR1_L","cursor_hint_person");	
+	actor_DelItem("TABLE.AUTHOR1_L","cursor_hint_person");
 -Script.In:
+	thisActor._onDropCustomMethod <- tutorial_fastSintyDrop;
 	while(actor_IsInLocation(thisActor,"SCENES_Tutorial::AUTHORTABLE")==false || thisActor.Profession!="AUTHOR" || humanDragInterval!=0){
 		::suspend();
 	}
 	actor_SwitchToAction(thisActor,"Tutorial.SintyWorking");
+	thisActor._onDropCustomMethod <- null;
 	
 [Step]
 -Name:Tutorial.SintyWorking

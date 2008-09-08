@@ -183,7 +183,12 @@ function dropOnLocation(thisActor,locName)
 
 function actor_OnDropActor(thisActor, targetPosition)
 {
-	
+	if("_onDropCustomMethod" in thisActor){
+		local customMethod=thisActor._onDropCustomMethod;
+		if(customMethod != null){
+			customMethod(thisActor, targetPosition);
+		}
+	}
 	//чтобы из туториала не совались
 	if(game_IsCutscene()){
 		return;
@@ -266,5 +271,16 @@ function actor_OnDropActor(thisActor, targetPosition)
 	}
 	if(bSwitchToNoneAction){
 		actor_SwitchToAction(thisActor,"NONE_Script");
+	}
+}
+
+function tutorial_fastSintyDrop(thisActor, targetPosition)
+{
+	local objectsArray=actor_GetActors( {_byPosition=targetPosition, _byName="*TABLE*"});
+	if(objectsArray.len()>0){
+		local table=actor_GetActor(objectsArray[0]);
+		if(table.Name=="TABLE.AUTHOR1_L"){
+			actor_SitOnChair("ACTOR.SINTI","TABLE.AUTHOR1_L",true);
+		}
 	}
 }

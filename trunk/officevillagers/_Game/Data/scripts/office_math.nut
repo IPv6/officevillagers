@@ -39,5 +39,5 @@ function RecalcOfficeOnLevelChange()
 
 function office_CalcSkipTime()
 {
-	return 4.0;
+	return 0.0;//4.0;
 }

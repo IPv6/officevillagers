@@ -85,6 +85,9 @@ function actor_SitOnChair(thisActor, tableActor, sitOrNot)
 		{// Проверяем не сидит ли кто там уже
 			// Актер
 			if(actor_IsSitting(thisActor)){
+				if(actor_GetAttributeS(thisActor,"SITTING")==tableActor.Name){
+					return;// а мы УЖЕ сидим на этом столе!
+				}
 				actor_Unsit_clear(thisActor);
 			}
 			// Сиденье
