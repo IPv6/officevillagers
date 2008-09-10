@@ -1,4 +1,6 @@
+// $noreload
 ::dialogSpr <- false;
+g_UseTyper <- false;
 function show_DialogPage(text, icon, dialogData)
 {
 	if(dialogSpr == false){
@@ -30,7 +32,9 @@ function show_DialogPage(text, icon, dialogData)
 	core_SetNode("_click2Next",btnClick2Next);
 	// Ёффект печатани€
 	if(dialogData._close==true){
-		sFormat+="<font-effect:typer>";
+		if(g_UseTyper){
+			sFormat+="<font-effect:typer>";
+		}
 		// »з-за того что диалоги удал€юбтс€ с задержкой (фейд), тайпер с маркером часто показывает некст баттон у —Ћ≈ƒ”ёў≈√ќ диалоге, где он может быть запрещен!
 		/*
 		if(hideMoreIcon){
@@ -158,7 +162,7 @@ function gui_ShowDialog(dialogFile,dialogData)
 			}
 			if(bWaitAnyKey){
 				gui_WaitAnyKey();
-				if(core_GetNodeAttribute(dialogSpr._name,"stopEffect")!=1){
+				if(g_UseTyper && core_GetNodeAttribute(dialogSpr._name,"stopEffect")!=1){
 					core_SetNodeAttribute(dialogSpr._name,"stopEffect",1);
 					gui_WaitAnyKey();
 				}
