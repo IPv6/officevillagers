@@ -45,7 +45,8 @@ function levelKeyHandler(key)
 			}
 			if(key._key==75)// 'K'
 			{
-				level_CheckLocks();
+				//level_CheckLocks();
+				gui_EnableInterfaceX(g_IsIFaceEnabled?false:true);
 			}
 			if(key._key==69)//  'E'
 			{

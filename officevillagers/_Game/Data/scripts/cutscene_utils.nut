@@ -25,13 +25,13 @@ function game_CutsceneBegin(skipParams)
 		cutSceneType=2;
 	}
 	game_CutsceneBegin_i(cutSceneType);
+	gui_EnableInterface(false);// Рулим кнопкой...
 	if("_who" in skipParams){
 		gui_EnableSkipCurrentCutsceneButton(skipParams);
 	}else{
 		gui_DisableSkipCurrentCutsceneButton();
 	}
 	game_MarkSafe().lastActiveCutSceneNumber++;
-	gui_EnableInterface(false);
 	return;
 }
 
@@ -115,15 +115,24 @@ function gui_DisableSkipCurrentCutsceneButton()
 	core_EnableNode("GuiSkipCutscene",false);
 }
 
+g_IsIFaceEnabled <- false;
 function gui_EnableInterface(isEnable)
 {
+	gui_EnableInterfaceX(false);
+}
+
+function gui_EnableInterfaceX(isEnable)
+{
 	if(isEnable){
+		g_IsIFaceEnabled=true;
 		core_EnableNode("main_level_interface",true);
 		core_EnableNode("cutscene_interface_static",false);
 		setMainFloorClamp(true);
 	}else{
+		g_IsIFaceEnabled=false;
 		core_EnableNode("main_level_interface",false);
 		core_EnableNode("cutscene_interface_static",true);
+		gui_DisableSkipCurrentCutsceneButton();
 		setMainFloorClamp(false);
 	}
 }
