@@ -63,6 +63,7 @@ function event_OnStartGame(param)
 	if(actor_IsActorExist("Heaps.Barricada")!=false && actor_GetAttributeN("Office","TECH_MUSCLES")==0 ){
 		actor_SetAttribute("Heaps.Barricada","__BUSY",1);
 	}
+	gui_EnableInterface(true);
 }
 
 _saveCameraOverwrite <- {overwrite=false, cameraX=0.0, cameraY=0.0};
