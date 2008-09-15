@@ -172,7 +172,7 @@
 			<Sprite val="actors\persons\human.spr?hsex=w" />
 			<Body val="0" />
 			<Head val="0" />
-			<BodyLock val="0" />
+			<BodyLock val="1" />
 			<Position.x val="0.000000" />
 			<Position.y val="0.200000" />
 			<Position.Location val="CREATOR::DOT4" />
