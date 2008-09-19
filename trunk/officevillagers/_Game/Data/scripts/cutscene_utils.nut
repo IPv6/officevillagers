@@ -118,7 +118,7 @@ function gui_DisableSkipCurrentCutsceneButton()
 g_IsIFaceEnabled <- false;
 function gui_EnableInterface(isEnable)
 {
-	gui_EnableInterfaceX(isEnable);
+     gui_EnableInterfaceX(isEnable);
 }
 
 function gui_EnableInterfaceX(isEnable)
